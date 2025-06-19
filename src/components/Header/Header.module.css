@@ -1,0 +1,110 @@
+header{
+    position: fixed;
+    background-color: transparent;
+    width: 100%;
+    padding: 50px 0;
+    z-index: 1;
+}
+header :global(.container){
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+/* MOBILE */
+
+.logoHeader{
+    width: 99px;
+    height: 54px;
+    margin-bottom: 16px;
+}
+
+.wrapperNavigationHeader{
+    display: none;
+}
+.buyBtnHeader{
+    padding: 12px 10px;
+    background-color: transparent;
+    border: 1px solid #FFFCF9;
+    border-radius: 10px;
+    color: #FFFCF9;
+    font-family: "Mulish";
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.wrapperBurger{
+    padding: 10px;
+    border: 1px solid #FFFCF9;
+    border-radius: 10px;
+}
+.burgerMenu{
+    fill: #FFFCF9;
+}
+.wrapperPartnersBtn{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.partnersBtn{
+    padding: 5px 0 0;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #FFFCF9;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #FFFCF9;
+}
+.absolutePlaceholder{
+    display: none;
+}
+
+/* COPMUCTER */
+@media (min-width:678px){
+    .wrapperBurger{
+        display: none;
+    }
+    .absolutePlaceholder{
+        display: block;
+        width: 100px;
+    }
+    header{
+        padding: 35px 0;
+    }
+.logoHeader{
+    width: auto;
+    height: auto;
+}
+.wrapperNavigationHeader{
+    display: flex;
+    gap: 130px;
+    margin: 0 20px;
+}
+.wrapperNavigationHeader li{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.headerNavigationLink{
+    text-transform: uppercase;
+    color: #FFFCF9;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -3%;
+}
+.wrapperPartnersBtn{
+    position: absolute;
+    flex-direction: column;
+    gap: 15px;
+    top: 35px;
+    right: 400px;
+}
+.buyBtnHeader{
+    font-size: 22px;
+}
+.partnersBtn{
+    font-size: 18px;
+}
+}

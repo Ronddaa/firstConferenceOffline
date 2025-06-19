@@ -1,0 +1,47 @@
+.sectionHero{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url(./hero.webp) no-repeat center top/cover;
+    /* height: 695px;  */
+    padding-top: 202px;
+}
+.mainTitle{
+font-size: 76px;
+position: relative;
+margin-bottom: 142px;
+}
+.mainTitle::after{
+    content: 'by Olimpia';
+    font-family: "Quentin";
+    font-size: 50px;
+    position: absolute;
+    bottom: -25px;
+    text-transform: none;
+    left: 70px;
+    color: #9EB7E5;
+    font-weight: 400;
+    width: 100%;
+}
+.titlePlace{
+    text-align: center;
+    font-size: 40px;
+    color: #FFFFAC;
+}
+.detailsTextHero{
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FFFCF9;
+    margin-bottom: 36px;
+}
+.buyBtnHero{
+    display: block;
+    background-color: #FFFFAC;
+    color: #1B2021;
+    padding: 34px 49px;
+    margin: 0 auto;
+    font-size: 12px;
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
