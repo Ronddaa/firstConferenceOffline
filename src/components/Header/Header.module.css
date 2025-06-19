@@ -35,10 +35,18 @@ header :global(.container){
     font-size: 12px;
     text-transform: uppercase;
 }
+.arrowList{
+    fill: #FFFCF9;
+    position: relative;
+    transform: rotate(-90deg);
+}
 .wrapperBurger{
     padding: 10px;
     border: 1px solid #FFFCF9;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .burgerMenu{
     fill: #FFFCF9;

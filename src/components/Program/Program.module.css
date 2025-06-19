@@ -1,0 +1,99 @@
+.btwsectionText{
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #797979;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 35px 0 70px;
+}
+.arrowList{
+    fill: #797979;
+}
+.wrapperDateInfo{
+    background-color: #FFFFAC;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #FFFFAC;
+    border-radius: 10px;
+    margin-bottom: 72px;
+}
+.wrapperDateInfo li:first-child{
+    padding: 18px 70px;
+}
+.date{
+    font-family: "Unbounded";
+    font-weight: 600;
+    font-size: 120px;
+    color: #1B2021;
+}
+.mounth{
+    font-family: "Unbounded";
+    font-weight: 600;
+    font-size: 36px;
+    text-transform: uppercase;
+    position: relative;
+    color: #1B2021;
+    margin-bottom: 52px;
+}
+.mounth::after{
+    content: '2025';
+    font-family: "Quentin";
+    font-size: 40px;
+    position: absolute;
+    top: 105%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    color: #9EB7E5;
+    font-weight: 400;
+}
+.wrapperDateInfo li:last-child{
+    background: url(./westinHotel.webp) center/cover;
+    padding: 79px 45px;
+    border-radius: 0 0 10px 10px;
+}
+.hotelName{
+    font-family: "Unbounded";
+    font-size: 26px;
+    text-transform: uppercase;
+    color: #FFFFAC;
+    text-align: center;
+    
+    text-decoration: underline;
+}
+.btwTexttwo{
+    text-transform: uppercase;
+    color: #FFFCF9;
+    font-size: 12px;
+    font-weight: 600;
+    position: relative;
+    left: 50%;
+    margin-bottom: 44px;
+    position: relative;
+}
+.titleProgram{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 105%;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+.titleProgram span{
+    color: transparent;
+  background: linear-gradient(90deg, #FFFCF9, #FFFFAC);
+  -webkit-background-clip: text; /* Для Safari */
+  background-clip: text;
+}
+.textUnderTitleProgram{
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 70px;
+    color: #9EB7E5;
+    max-width: 50%;
+    margin-left: auto;
+}
