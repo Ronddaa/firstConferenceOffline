@@ -1,8 +1,4 @@
 import styles from "./Tema.module.css";
-import Tema1 from "./Tema1.webp";
-import Tema2 from "./Tema2.webp";
-import Tema3 from "./Tema3.webp";
-import Tema4 from "./Tema4.webp";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 

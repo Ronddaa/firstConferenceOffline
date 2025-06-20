@@ -1,72 +1,75 @@
-.textSection{
-    font-weight:500;
-    font-size: 12px;
-    text-transform: uppercase;
-    position: absolute;
-    top: 0;
-    right: 64px;
+.textSection {
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  right: 64px;
 }
-.sectionTema :global(.mySwiper){
-    height: 812px;
+.sectionTema :global(.mySwiper) {
+  height: 100dvh;
 }
-:global(.mySwiper) .swiperTema1, 
-:global(.mySwiper) .swiperTema2, 
+:global(.mySwiper) .swiperTema1,
+:global(.mySwiper) .swiperTema2,
 :global(.mySwiper) .swiperTema3,
-:global(.mySwiper) .swiperTema4{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 65px 17px 92px;
-    justify-content: center;
+:global(.mySwiper) .swiperTema4 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 65px 17px 92px;
+  justify-content: center;
 }
-.swiperTema1{
-    background: url(./Tema1.webp) center/cover;
+.swiperTema1 {
+  background: url(./Tema1.webp) center/cover;
 }
-.swiperTema2{
-    background: url(./Tema2.webp) center/cover;
+.swiperTema2 {
+  background: url(./Tema2.webp) center/cover;
 }
-.swiperTema3{
-    background: url(./Tema3.webp) center/cover;
+.swiperTema3 {
+  background: url(./Tema3.webp) center/cover;
 }
-.swiperTema4{
-    background: url(./Tema4.webp) center/cover;
+.swiperTema4 {
+  background: url(./Tema4.webp) center/cover;
 }
 
-.titleTema1, .titleTema2, .titleTema3, .titleTema4{
-    font-weight: 600;
-    font-size: 56px;
-    text-transform: uppercase;
-    color: #434A39;
+.titleTema1,
+.titleTema2,
+.titleTema3,
+.titleTema4 {
+  font-weight: 600;
+  font-size: 56px;
+  text-transform: uppercase;
+  color: #434a39;
 }
 .titleTema1Slide1,
 .titleTema2Slide2,
 .titleTema2Slide3,
-.titleTema2Slide4{
-    color: #FFFFAC;
+.titleTema2Slide4 {
+  color: #ffffac;
 }
-.titleTema2Slide2 .titleTemaSpan{
-    color: #FFFCF9;
+.titleTema2Slide2 .titleTemaSpan {
+  color: #fffcf9;
 }
-.titleTemaSpan{
-    color: #797979;
-    font-weight: 500;
-    font-size: 12px;
+.titleTemaSpan {
+  color: #797979;
+  font-weight: 500;
+  font-size: 12px;
 }
 .swiperTema1 h2:nth-child(3),
 .swiperTema2 h2:nth-child(3),
 .swiperTema3 h2:nth-child(3),
-.swiperTema4 h2:nth-child(3){
-    margin-left: 57px;
+.swiperTema4 h2:nth-child(3) {
+  margin-left: 57px;
 }
 .swiperTema1 h2:nth-child(4),
 .swiperTema2 h2:nth-child(4),
 .swiperTema3 h2:nth-child(4),
-.swiperTema4 h2:nth-child(4){
-    margin-left: 97px;
+.swiperTema4 h2:nth-child(4) {
+  margin-left: 97px;
 }
 .swiperTema1 h2:nth-child(5),
 .swiperTema2 h2:nth-child(5),
 .swiperTema3 h2:nth-child(5),
-.swiperTema4 h2:nth-child(5){
-    text-align: right;
+.swiperTema4 h2:nth-child(5) {
+  text-align: right;
 }
