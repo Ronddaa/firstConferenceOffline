@@ -1,5 +1,9 @@
 import styles from "./Program.module.css";
 import sprite from "../icons.svg";
+import prgramLi1IMG from './programLi1.webp'
+import prgramLi2IMG from './programLi2.webp'
+import prgramLi3IMG from './programLi3.webp'
+import prgramLi4IMG from "./programLi4.webp";
 
 export default function Program() {
   return (
@@ -42,6 +46,59 @@ export default function Program() {
           <br className={styles.brMobile} /> від статі, але з
           <br className={styles.brMobile} /> українським корінням,
           <br className={styles.brMobile} /> культурою і духом
+        </p>
+
+        <ul className={styles.wrapperProgramList}>
+          <li>
+            <p className={styles.numberOfList}>(01)</p>
+            <h3 className={styles.titlelistOne}>Преміум-шоу</h3>
+            <p className={styles.textlistOne}>
+              Показ дизайнерського одягу, бренд-зона з надзвичайним товаром,
+              кейтеринг від шеф кухарів, атмосфера гала-вечері з дрес-кодом
+            </p>
+          </li>
+          <li>
+            <img src={prgramLi1IMG} alt="programIMG" />
+          </li>
+          <li>
+            <p className={styles.numberOfList}>(02)</p>
+            <h3 className={styles.titlelistTwo}>Нетворкінг</h3>
+            <p className={styles.textlistTwo}>
+              Серед 300+ учасників і лідерів української спільноти в Європі
+            </p>
+          </li>
+          <li>
+            <img src={prgramLi2IMG} alt="programIMG" />
+          </li>
+          <li>
+            <p className={styles.numberOfList}>(03)</p>
+            <h3 className={styles.titlelistThree}>
+              10+ привілейованих спікерів
+            </h3>
+            <p className={styles.textlistThree}>
+              про стан, тіло(генетику), гроші та секс
+            </p>
+          </li>
+          <li>
+            <img src={prgramLi3IMG} alt="programIMG" />
+          </li>
+          <li>
+            <p className={styles.numberOfList}>(04)</p>
+            <h3 className={styles.titlelistFour}>
+              Ексклюзивний концерт MONATIK
+            </h3>
+            <p className={styles.textlistFour}>
+              Показ дизайнерського одягу, бренд-зона з надзвичайним товаром,
+              кейтеринг від шеф кухарів, атмосфера гала-вечері з дрес-кодом
+            </p>
+          </li>
+          <li>
+            <img src={prgramLi4IMG} alt="programIMG" />
+          </li>
+        </ul>
+        <p className={styles.textUnderprogram}>
+          Якщо ти з нами, ти вже ототожнюєш спроможність свого масштабу
+          <span> преміальності</span>
         </p>
       </div>
     </section>

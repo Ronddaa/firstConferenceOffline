@@ -97,3 +97,90 @@
     max-width: 50%;
     margin-left: auto;
 }
+.wrapperProgramList{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 30px;
+}
+.wrapperProgramList li:first-child{
+    border-radius: 10px 10px 0 0;
+}
+.wrapperProgramList li:first-child,
+.wrapperProgramList li:nth-child(3),
+.wrapperProgramList li:nth-child(5){
+    background-color: #FFFFAC;
+    color: #1B2021;
+    padding: 40px 20px;
+}
+.wrapperProgramList li:nth-child(7){
+    background-color: #9EB7E5;
+    padding: 40px 20px;
+    color: #1B2021;
+}
+
+.numberOfList{
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+.titlelistOne{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 105%;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.titlelistTwo{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 105%;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.titlelistThree{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 105%;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.titlelistFour{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 105%;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.textlistOne{
+    font-size: 12px;
+    color: #1B2021;
+    margin-bottom: 24px;
+}
+.textlistTwo{
+    font-size: 12px;
+    color: #1B2021;
+    margin-bottom: 32px;
+}
+.textlistThree{
+    font-size: 12px;
+    color: #1B2021;
+    margin-bottom: 13px;
+}
+.textlistFour{
+    font-size: 12px;
+    color: #1B2021;
+}
+.textUnderprogram{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    max-width: 220px;
+    margin-bottom: 200px;
+}
+.textUnderprogram span{
+    color: transparent;
+  background: linear-gradient(90deg, #FFFCF9, #FFFFAC);
+  -webkit-background-clip: text; /* Для Safari */
+  background-clip: text;
+}
