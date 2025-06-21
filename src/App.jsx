@@ -3,7 +3,7 @@ import Hero from "./components/Hero/Hero";
 import Program from "./components/Program/Program";
 import ProgramOnConference from "./components/ProgramOnConference/ProgramOnConference";
 import Tema from "./components/Tema/Tema";
-import Tickets from "./components/TicketsSEction/TicketsSection";
+import Tickets from "./components/TicketsSection/TicketsSection";
 
 export default function App() {
   
