@@ -1,3 +1,4 @@
+import Donation from "./components/Donation/Donation";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import Program from "./components/Program/Program";
@@ -19,6 +20,7 @@ export default function App() {
       <Tema />
       <ProgramOnConference />
       <Tickets />
+      <Donation />
     </>
   )
 }
