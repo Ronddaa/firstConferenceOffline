@@ -1,0 +1,18 @@
+.sectionProgramOnConference{
+    border-bottom: 1px solid #FFFFAC;
+}
+.btwSectionText{
+    text-align: right;
+    margin-right: 12px;
+    margin-bottom: 50px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #FFFCF9;
+}
+.titlePOC{
+    font-size: 28px;
+    font-weight: 600;
+    color: #FFFCF9;
+    text-transform: uppercase;
+    max-width: 90%;
+}
