@@ -40,12 +40,12 @@ export default function Header() {
         </ul>
         <button className={styles.buyBtnHeader}>
           придбати квиток{" "}
-          <svg className={styles.arrowList} width={24} height={24}>
+          <svg className={styles.arrowList} width={21} height={21}>
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
           </svg>
         </button>
         <div className={styles.wrapperBurger}>
-          <svg className={styles.burgerMenu} width={22} height={15}>
+          <svg className={styles.burgerMenu} width={40} height={40}>
             <use xlinkHref={`${sprite}#icon-burger-menu`}></use>
           </svg>
         </div>
