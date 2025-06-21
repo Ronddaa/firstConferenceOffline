@@ -1,44 +1,31 @@
-.sectionTema{
+.sectionTema {
   padding: 0;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
 }
 
-
-.textSection {
-  font-weight: 500;
-  font-size: 12px;
-  text-transform: uppercase;
-  position: absolute;
-  top: 0;
-  right: 64px;
-  z-index: 2;
-}
 .sectionTema :global(.mySwiper) {
   height: 100dvh;
 }
+
 :global(.mySwiper) .swiperTema1,
 :global(.mySwiper) .swiperTema2,
 :global(.mySwiper) .swiperTema3,
 :global(.mySwiper) .swiperTema4 {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 65px 17px 92px;
   justify-content: center;
-}
-.swiperTema1 {
-  background: url(./Tema1.webp) center/cover;
-}
-.swiperTema2 {
-  background: url(./Tema2.webp) center/cover;
-}
-.swiperTema3 {
-  background: url(./Tema3.webp) center/cover;
-}
-.swiperTema4 {
-  background: url(./Tema4.webp) center/cover;
+  padding: 65px 17px 92px;
+  background-size: cover;
+  background-position: center;
 }
 
-.wrapperTitles{
+.swiperTema1 { background-image: url(./Tema1.webp); }
+.swiperTema2 { background-image: url(./Tema2.webp); }
+.swiperTema3 { background-image: url(./Tema3.webp); }
+.swiperTema4 { background-image: url(./Tema4.webp); }
+
+.wrapperTitles {
   position: absolute;
   z-index: 2;
   display: flex;
@@ -49,22 +36,33 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
-.defoultStylestitle{
+
+.defoultStylestitle {
   font-weight: 600;
-  text-transform: uppercase;
   font-size: 56px;
+  text-transform: uppercase;
   color: #434A39;
 }
-.defoultStylestitle span{
-  text-transform: uppercase;
+
+.defoultStylestitle span {
   font-size: 12px;
   color: #797979;
 }
 
-.activeTitle{
+.activeTitle {
   color: #FFFFAC;
 }
 
-.activeTitle span{
+.activeTitle span {
   color: #FFFCF9;
+}
+
+.textSection {
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  top: 0;
+  right: 64px;
+  z-index: 2;
+  text-transform: uppercase;
 }

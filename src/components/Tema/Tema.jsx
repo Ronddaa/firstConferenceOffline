@@ -7,89 +7,72 @@ import "swiper/css";
 import "swiper/css/effect-creative";
 
 export default function Tema() {
-  const swiperRef = useRef(null); // Сохраняем экземпляр свайпера
-  const swiperWrapperRef = useRef(null); // Ссылка на обёртку секции, чтобы отслеживать её видимость
-  const [activeIndex, setActiveIndex] = useState(0); // Текущий активный слайд
-  const [scrollLocked, setScrollLocked] = useState(false); // Блокировка scroll сайта, пока свайпер активен
+  const swiperRef = useRef(null);
+  const sectionRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isLocked, setIsLocked] = useState(false);
 
-  const totalSlides = 4; // Общее количество слайдов
+  const totalSlides = 4;
 
-  // Следим за сменой слайда и обновляем индекс
+  // Фиксируем свайпер при попадании в зону видимости
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsLocked(true);
+          document.body.style.overflow = "hidden";
+          sectionRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          setIsLocked(false);
+          document.body.style.overflow = "auto";
+        }
+      },
+      { threshold: 0.9 } // 90% секции должно быть видно
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  // Обработка смены слайда
   useEffect(() => {
     const swiper = swiperRef.current;
     if (!swiper) return;
 
-    const handleSlideChange = () => {
-      setActiveIndex(swiper.realIndex);
-    };
+    const handleSlideChange = () => setActiveIndex(swiper.realIndex);
 
     swiper.on("slideChange", handleSlideChange);
     return () => swiper.off("slideChange", handleSlideChange);
   }, []);
 
-  // Следим, попал ли свайпер в зону видимости (используем IntersectionObserver)
+  // Автопереход после последнего или первого слайда
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setScrollLocked(true);
-          document.body.style.overflow = "hidden";
-          swiperWrapperRef.current.scrollIntoView({ behavior: "smooth" });
-        } else {
-          setScrollLocked(false);
-          document.body.style.overflow = "auto";
-        }
-      },
-      {
-        threshold: 0.4, // 40% секции должно быть видно, чтобы считать её активной
-      }
-    );
-
-    if (swiperWrapperRef.current) {
-      observer.observe(swiperWrapperRef.current);
-    }
-
-    return () => {
-      if (swiperWrapperRef.current) {
-        observer.unobserve(swiperWrapperRef.current);
-      }
-      document.body.style.overflow = "auto";
-    };
-  }, []);
-
-  // Автоматический скролл вверх/вниз после крайнего слайда
-  useEffect(() => {
-    if (!scrollLocked) return;
+    if (!isLocked) return;
 
     const timeout = setTimeout(() => {
-      // Если дошли до последнего слайда, скроллим к следующему блоку
       if (activeIndex === totalSlides - 1) {
-        const nextBlock = document.querySelector("#sectionProgramOnConference");
-        if (nextBlock) {
-          document.body.style.overflow = "auto";
-          nextBlock.scrollIntoView({ behavior: "smooth" });
-        }
+        document.body.style.overflow = "auto";
+        document
+          .querySelector("#sectionProgramOnConference")
+          ?.scrollIntoView({ behavior: "smooth" });
       }
 
-      // Если на первом слайде, скроллим к блоку выше
       if (activeIndex === 0) {
-        const prevBlock = document.querySelector("#beforeSwiper");
-        if (prevBlock) {
-          document.body.style.overflow = "auto";
-          prevBlock.scrollIntoView({ behavior: "smooth" });
-        }
+        document.body.style.overflow = "auto";
+        document
+          .querySelector("#beforeSwiper")
+          ?.scrollIntoView({ behavior: "smooth" });
       }
     }, 1000);
 
     return () => clearTimeout(timeout);
-  }, [activeIndex, scrollLocked]);
+  }, [activeIndex, isLocked]);
 
   return (
-    <section
-      className={styles.sectionTema}
-      id="sectionTema"
-      ref={swiperWrapperRef} // Назначаем ссылку для IntersectionObserver
-    >
+    <section className={styles.sectionTema} id="sectionTema" ref={sectionRef}>
       <p className={styles.textSection}>(теми конференції)</p>
 
       <ul className={styles.wrapperTitles}>
@@ -137,14 +120,8 @@ export default function Tema() {
         mousewheel={{ releaseOnEdges: true }}
         effect="creative"
         creativeEffect={{
-          prev: {
-            translate: [0, "-100%", 0],
-            opacity: 0.5,
-          },
-          next: {
-            translate: [0, "100%", 0],
-            opacity: 0.5,
-          },
+          prev: { translate: [0, "-100%", 0], opacity: 0.5 },
+          next: { translate: [0, "100%", 0], opacity: 0.5 },
         }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
