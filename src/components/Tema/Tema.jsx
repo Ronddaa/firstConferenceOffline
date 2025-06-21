@@ -14,43 +14,45 @@ export default function Tema() {
 
   const totalSlides = 4;
 
-  // Для отслеживания попытки пролистать за границы свайпера
+  // Флаги для контроля выхода за пределы свайпера
   const tryingToScrollUpFromFirst = useRef(false);
   const tryingToScrollDownFromLast = useRef(false);
 
-  // Смена слайда
+  // Отслеживаем смену слайда
   useEffect(() => {
     const swiper = swiperRef.current;
     if (!swiper) return;
 
     const onSlideChange = () => {
       setActiveIndex(swiper.realIndex);
-      // Сброс попыток при смене слайда
-      tryingToScrollUpFromFirst.current = false;
-      tryingToScrollDownFromLast.current = false;
+      // Сбрасывать флаги при смене слайда не надо,
+      // чтобы избежать преждевременного сброса попыток выхода
     };
 
     swiper.on("slideChange", onSlideChange);
     return () => swiper.off("slideChange", onSlideChange);
   }, []);
 
-  // IntersectionObserver для фиксации свайпера и блокировки скролла
+  // Отслеживаем, когда свайпер попадает в зону видимости
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setScrollLocked(true);
           document.body.style.overflow = "hidden";
-          swiperWrapperRef.current.scrollIntoView({ behavior: "smooth" });
+          // Плавно скроллим к секции свайпера
+          swiperWrapperRef.current?.scrollIntoView({ behavior: "smooth" });
         } else {
           setScrollLocked(false);
           document.body.style.overflow = "auto";
+          // Сбрасываем флаги выхода при уходе со свайпера
           tryingToScrollUpFromFirst.current = false;
           tryingToScrollDownFromLast.current = false;
         }
       },
       { threshold: 0.25 }
     );
+
     if (swiperWrapperRef.current) observer.observe(swiperWrapperRef.current);
     return () => {
       if (swiperWrapperRef.current)
@@ -59,40 +61,68 @@ export default function Tema() {
     };
   }, []);
 
-  // Отслеживаем попытки прокрутить дальше первого или последнего слайда
+  // Обработка колёсика мыши для определения попытки прокрутки за край свайпера
   useEffect(() => {
     if (!scrollLocked) return;
 
     const onWheel = (e) => {
       if (!swiperRef.current) return;
-      const _swiper = swiperRef.current;
+      const isFirstSlide = activeIndex === 0;
+      const isLastSlide = activeIndex === totalSlides - 1;
 
-      // Если на первом слайде и пытаемся прокрутить вверх
-      if (activeIndex === 0 && e.deltaY < 0) {
-        // Запоминаем, что попытались прокрутить вверх с первого слайда
+      if (isFirstSlide && e.deltaY < 0) {
+        // Попытка прокрутки вверх с первого слайда
         tryingToScrollUpFromFirst.current = true;
-      }
-
-      // Если на последнем слайде и пытаемся прокрутить вниз
-      if (activeIndex === totalSlides - 1 && e.deltaY > 0) {
-        // Запоминаем, что попытались прокрутить вниз с последнего слайда
+      } else if (isLastSlide && e.deltaY > 0) {
+        // Попытка прокрутки вниз с последнего слайда
         tryingToScrollDownFromLast.current = true;
       }
     };
 
     window.addEventListener("wheel", onWheel, { passive: true });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, [scrollLocked, activeIndex]);
+
+  // Обработка тач-событий для мобильных устройств
+  useEffect(() => {
+    if (!scrollLocked) return;
+
+    let touchStartY = 0;
+
+    const onTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const onTouchMove = (e) => {
+      if (!swiperRef.current) return;
+
+      const touchCurrentY = e.touches[0].clientY;
+      const diffY = touchStartY - touchCurrentY;
+
+      const isFirstSlide = activeIndex === 0;
+      const isLastSlide = activeIndex === totalSlides - 1;
+
+      if (isFirstSlide && diffY < -10) {
+        tryingToScrollUpFromFirst.current = true;
+      } else if (isLastSlide && diffY > 10) {
+        tryingToScrollDownFromLast.current = true;
+      }
+    };
+
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
 
     return () => {
-      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
     };
   }, [scrollLocked, activeIndex]);
 
-  // Автоскролл на следующий/предыдущий блок только если пользователь действительно пытался выйти за край свайпера
+  // Автоматический скролл вверх/вниз при попытке выйти за край свайпера
   useEffect(() => {
     if (!scrollLocked) return;
 
     const timeout = setTimeout(() => {
-      // Скроллим вниз, если на последнем слайде и пользователь пытался свайпнуть дальше вниз
       if (
         activeIndex === totalSlides - 1 &&
         tryingToScrollDownFromLast.current
@@ -101,20 +131,18 @@ export default function Tema() {
         if (nextBlock) {
           document.body.style.overflow = "auto";
           nextBlock.scrollIntoView({ behavior: "smooth" });
-          tryingToScrollDownFromLast.current = false; // сбрасываем флаг
+          tryingToScrollDownFromLast.current = false;
         }
       }
-
-      // Скроллим вверх, если на первом слайде и пользователь пытался свайпнуть дальше вверх
       if (activeIndex === 0 && tryingToScrollUpFromFirst.current) {
         const prevBlock = document.querySelector("#beforeSwiper");
         if (prevBlock) {
           document.body.style.overflow = "auto";
           prevBlock.scrollIntoView({ behavior: "smooth" });
-          tryingToScrollUpFromFirst.current = false; // сбрасываем флаг
+          tryingToScrollUpFromFirst.current = false;
         }
       }
-    }, 800); // небольшой таймаут для плавности
+    }, 600);
 
     return () => clearTimeout(timeout);
   }, [activeIndex, scrollLocked]);
@@ -181,8 +209,8 @@ export default function Tema() {
             opacity: 0.5,
           },
         }}
-        onSwiper={(_swiper) => {
-          swiperRef.current = _swiper;
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
         }}
         className="mySwiper"
       >
