@@ -5,8 +5,11 @@ import ProgramOnConference from "./components/ProgramOnConference/ProgramOnConfe
 import Tema from "./components/Tema/Tema";
 import Tickets from "./components/TicketsSection/TicketsSection";
 
+// import useSmoothScroll from "./useSmoothScroll";
+
 export default function App() {
   
+  // useSmoothScroll(510)
 
   return (
     <>

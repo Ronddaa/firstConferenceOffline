@@ -84,7 +84,7 @@ export default function Program() {
           </li>
           <li>
             <p className={styles.numberOfList}>(04)</p>
-            <h3 className={styles.titlelistFour}>
+            <h3 className={styles.titlelistFour} id="beforeSwiper">
               Ексклюзивний концерт MONATIK
             </h3>
             <p className={styles.textlistFour}>
