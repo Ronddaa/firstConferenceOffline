@@ -31,7 +31,14 @@ export default function Tema() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setScrollLocked(entry.isIntersecting); // true, если свайпер в зоне видимости
+        if (entry.isIntersecting) {
+          setScrollLocked(true);
+          document.body.style.overflow = "hidden";
+          swiperWrapperRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          setScrollLocked(false);
+          document.body.style.overflow = "auto";
+        }
       },
       {
         threshold: 0.4, // 40% секции должно быть видно, чтобы считать её активной
@@ -46,6 +53,7 @@ export default function Tema() {
       if (swiperWrapperRef.current) {
         observer.unobserve(swiperWrapperRef.current);
       }
+      document.body.style.overflow = "auto";
     };
   }, []);
 
@@ -58,18 +66,20 @@ export default function Tema() {
       if (activeIndex === totalSlides - 1) {
         const nextBlock = document.querySelector("#sectionProgramOnConference");
         if (nextBlock) {
+          document.body.style.overflow = "auto";
           nextBlock.scrollIntoView({ behavior: "smooth" });
         }
       }
 
-      // Если на первом слайде и свайпнули вверх (или зашли снизу), скроллим к блоку выше
+      // Если на первом слайде, скроллим к блоку выше
       if (activeIndex === 0) {
         const prevBlock = document.querySelector("#beforeSwiper");
         if (prevBlock) {
+          document.body.style.overflow = "auto";
           prevBlock.scrollIntoView({ behavior: "smooth" });
         }
       }
-    }, 1000); // Ждём 1 секунду после перехода на слайд
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, [activeIndex, scrollLocked]);
@@ -124,7 +134,7 @@ export default function Tema() {
       <Swiper
         direction="vertical"
         modules={[Mousewheel, EffectCreative]}
-        mousewheel={{ releaseOnEdges: true }} // Разрешаем прокрутку за пределы свайпера
+        mousewheel={{ releaseOnEdges: true }}
         effect="creative"
         creativeEffect={{
           prev: {
@@ -137,7 +147,7 @@ export default function Tema() {
           },
         }}
         onSwiper={(swiper) => {
-          swiperRef.current = swiper; // Сохраняем инстанс свайпера
+          swiperRef.current = swiper;
         }}
         className="mySwiper"
       >
