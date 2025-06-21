@@ -63,6 +63,7 @@
 }
 html {
   scroll-behavior: smooth; /* Для плавного скролла по якорям и по сайту */
+  scrollbar-gutter: stable;
   color: #FFFCF9;
   background-color: #1B2021;
   font-family: "Mulish", sans-serif;

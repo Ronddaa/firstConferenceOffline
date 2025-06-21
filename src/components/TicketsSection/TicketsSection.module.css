@@ -194,3 +194,36 @@
     font-size: 12px;
     max-width: 163px;
 }
+.wrappertitleAuction{
+    margin-bottom: 20px;
+}
+.titleAuctionMobile{
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #1B2021;
+
+}
+.titleAuctionMobileMargin2, .titleAuctionMobileMargin{
+    text-align: right;
+}
+.titleAuctionMobileMargin2 span{
+    margin-right: 21px;
+}
+.titleAuctionMobileMargin3{
+    text-align: center;
+}
+.titleAuctionMobile span{
+    color: transparent;
+  background: linear-gradient(90deg, #1B2021, #9EB7E5);
+  -webkit-background-clip: text; /* Для Safari */
+  background-clip: text;
+}
+.lastTextTeckets{
+    max-width: 178px;
+    margin-left: auto;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #1B2021;
+    font-weight: 600;
+}

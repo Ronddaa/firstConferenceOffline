@@ -1,13 +1,9 @@
-
-html, body {
-  scrollbar-gutter: stable;
-}
-
+/* 
 .scroll-lock {
   overflow: hidden;
   height: 100vh;
   touch-action: none;
-}
+} */
 
 .sectionTema {
   padding: 0;
