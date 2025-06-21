@@ -31,7 +31,7 @@
     border-radius: 10px;
 }
 .heartBlock{
-    background-image: linear-gradient(#100c0959), 
+    background-image: 
     url(./heart.webp);
     background-position: center;
     background-size: cover;
