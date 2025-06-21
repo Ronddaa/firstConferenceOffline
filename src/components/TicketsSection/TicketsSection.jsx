@@ -58,8 +58,8 @@ export default function Tickets() {
             <button className={styles.btnBuyTariffGold}>придбати квиток</button>
             <button className={styles.btnPlaceShow}>переглянути місця</button>
           </li>
-          <li>
-            <h3 className={styles.titleTariffCard}></h3>
+          <li className={styles.TicketsPremium}>
+            <h3 className={styles.titleTariffCard}>premium</h3>
             <p className={styles.kolPlace}>Залишилось 30 місць</p>
             <ul className={styles.wrapperDetailsTariff}>
               <li>
