@@ -25,13 +25,16 @@ margin-bottom: 142px;
     font-size: 40px;
     color: #FFFFAC;
 }
-.detailsTextHero{
+.detailsTextHero1, .detailsTextHero2{
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     text-align: center;
     color: #FFFCF9;
     margin-bottom: 36px;
+}
+.detailsTextHero1{
+    margin-bottom: 0;
 }
 .buyBtnHero{
     display: block;
