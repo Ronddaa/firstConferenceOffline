@@ -1,5 +1,4 @@
 import styles from "./Program.module.css";
-import sprite from "../icons.svg";
 import prgramLi1IMG from './programLi1.webp'
 import prgramLi2IMG from './programLi2.webp'
 import prgramLi3IMG from './programLi3.webp'
@@ -9,12 +8,6 @@ export default function Program() {
   return (
     <section className={styles.sectionProgram}>
       <div className="container">
-        <p className={styles.btwsectionText}>
-          <svg className={styles.arrowList} width={24} height={24}>
-            <use xlinkHref={`${sprite}#icon-arrow`}></use>
-          </svg>{" "}
-          вниз
-        </p>
         <ul className={styles.wrapperDateInfo}>
           <li>
             <p className={styles.date}>23</p>
@@ -64,7 +57,7 @@ export default function Program() {
             <p className={styles.numberOfList}>(02)</p>
             <h3 className={styles.titlelistTwo}>Нетворкінг</h3>
             <p className={styles.textlistTwo}>
-              Серед 300+ учасників і лідерів української спільноти в Європі
+              Серед 300+ учасників і лідерів <br /> української спільноти в Європі
             </p>
           </li>
           <li>

@@ -21,13 +21,15 @@
     margin-bottom: 72px;
 }
 .wrapperDateInfo li:first-child{
-    padding: 18px 70px;
+    padding: 44px 70px 18px;
+    text-align: center;
 }
 .date{
     font-family: "Unbounded";
     font-weight: 600;
     font-size: 120px;
     color: #1B2021;
+    margin-bottom: -30px;
 }
 .mounth{
     font-family: "Unbounded";
@@ -44,7 +46,7 @@
     font-size: 40px;
     position: absolute;
     top: 105%;
-    left: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
     text-transform: uppercase;
     color: #9EB7E5;
@@ -52,7 +54,7 @@
 }
 .wrapperDateInfo li:last-child{
     background: url(./westinHotel.webp) center/cover;
-    padding: 79px 45px;
+    padding: 92px 45px;
     border-radius: 0 0 10px 10px;
 }
 .hotelName{
@@ -61,6 +63,7 @@
     text-transform: uppercase;
     color: #FFFFAC;
     text-align: center;
+    font-weight: 600;
     
     text-decoration: underline;
 }
@@ -175,7 +178,7 @@
     font-size: 12px;
     text-transform: uppercase;
     font-weight: 600;
-    max-width: 220px;
+    max-width: 224px;
     margin-bottom: 200px;
 }
 .textUnderprogram span{

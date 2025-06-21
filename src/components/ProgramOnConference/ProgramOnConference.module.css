@@ -1,13 +1,11 @@
-.sectionProgramOnConference{
-    border-bottom: 1px solid #FFFFAC;
-}
+
 .btwSectionText{
     text-align: right;
-    margin-right: 12px;
-    margin-bottom: 50px;
+    margin: 35px 12px 50px;
     font-size: 12px;
     font-weight: 500;
     color: #FFFCF9;
+    text-transform: uppercase;
 }
 .titlePOC{
     font-size: 28px;
@@ -15,4 +13,15 @@
     color: #FFFCF9;
     text-transform: uppercase;
     max-width: 90%;
+    position: relative;
+    margin-bottom: 35px;
+}
+.titlePOC::after{
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 2px;
+    background-color: #FFFFAC;
+    bottom: -5px;
+    left: -20%;
 }

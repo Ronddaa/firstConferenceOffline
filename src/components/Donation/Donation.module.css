@@ -31,7 +31,11 @@
     border-radius: 10px;
 }
 .heartBlock{
-    background: linear-gradient(#100c0959), url(./heart.webp) center/cover;
+    background-image: linear-gradient(#100c0959), 
+    url(./heart.webp);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 81px 20px;
 }
 .numerOf{
