@@ -8,71 +8,123 @@ import "swiper/css/effect-creative";
 
 export default function Tema() {
   const swiperRef = useRef(null);
-  const sectionRef = useRef(null);
+  const swiperWrapperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isLocked, setIsLocked] = useState(false);
+  const [scrollLocked, setScrollLocked] = useState(false);
 
   const totalSlides = 4;
 
-  // Фиксируем свайпер при попадании в зону видимости
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsLocked(true);
-          document.body.style.overflow = "hidden";
-          sectionRef.current.scrollIntoView({ behavior: "smooth" });
-        } else {
-          setIsLocked(false);
-          document.body.style.overflow = "auto";
-        }
-      },
-      { threshold: 0.9 } // 90% секции должно быть видно
-    );
+  // Для отслеживания попытки пролистать за границы свайпера
+  const tryingToScrollUpFromFirst = useRef(false);
+  const tryingToScrollDownFromLast = useRef(false);
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
-      document.body.style.overflow = "auto";
-    };
-  }, []);
-
-  // Обработка смены слайда
+  // Смена слайда
   useEffect(() => {
     const swiper = swiperRef.current;
     if (!swiper) return;
 
-    const handleSlideChange = () => setActiveIndex(swiper.realIndex);
+    const onSlideChange = () => {
+      setActiveIndex(swiper.realIndex);
+      // Сброс попыток при смене слайда
+      tryingToScrollUpFromFirst.current = false;
+      tryingToScrollDownFromLast.current = false;
+    };
 
-    swiper.on("slideChange", handleSlideChange);
-    return () => swiper.off("slideChange", handleSlideChange);
+    swiper.on("slideChange", onSlideChange);
+    return () => swiper.off("slideChange", onSlideChange);
   }, []);
 
-  // Автопереход после последнего или первого слайда
+  // IntersectionObserver для фиксации свайпера и блокировки скролла
   useEffect(() => {
-    if (!isLocked) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setScrollLocked(true);
+          document.body.style.overflow = "hidden";
+          swiperWrapperRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+          setScrollLocked(false);
+          document.body.style.overflow = "auto";
+          tryingToScrollUpFromFirst.current = false;
+          tryingToScrollDownFromLast.current = false;
+        }
+      },
+      { threshold: 0.25 }
+    );
+    if (swiperWrapperRef.current) observer.observe(swiperWrapperRef.current);
+    return () => {
+      if (swiperWrapperRef.current)
+        observer.unobserve(swiperWrapperRef.current);
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  // Отслеживаем попытки прокрутить дальше первого или последнего слайда
+  useEffect(() => {
+    if (!scrollLocked) return;
+
+    const onWheel = (e) => {
+      if (!swiperRef.current) return;
+      const _swiper = swiperRef.current;
+
+      // Если на первом слайде и пытаемся прокрутить вверх
+      if (activeIndex === 0 && e.deltaY < 0) {
+        // Запоминаем, что попытались прокрутить вверх с первого слайда
+        tryingToScrollUpFromFirst.current = true;
+      }
+
+      // Если на последнем слайде и пытаемся прокрутить вниз
+      if (activeIndex === totalSlides - 1 && e.deltaY > 0) {
+        // Запоминаем, что попытались прокрутить вниз с последнего слайда
+        tryingToScrollDownFromLast.current = true;
+      }
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+    };
+  }, [scrollLocked, activeIndex]);
+
+  // Автоскролл на следующий/предыдущий блок только если пользователь действительно пытался выйти за край свайпера
+  useEffect(() => {
+    if (!scrollLocked) return;
 
     const timeout = setTimeout(() => {
-      if (activeIndex === totalSlides - 1) {
-        document.body.style.overflow = "auto";
-        document
-          .querySelector("#sectionProgramOnConference")
-          ?.scrollIntoView({ behavior: "smooth" });
+      // Скроллим вниз, если на последнем слайде и пользователь пытался свайпнуть дальше вниз
+      if (
+        activeIndex === totalSlides - 1 &&
+        tryingToScrollDownFromLast.current
+      ) {
+        const nextBlock = document.querySelector("#sectionProgramOnConference");
+        if (nextBlock) {
+          document.body.style.overflow = "auto";
+          nextBlock.scrollIntoView({ behavior: "smooth" });
+          tryingToScrollDownFromLast.current = false; // сбрасываем флаг
+        }
       }
 
-      if (activeIndex === 0) {
-        document.body.style.overflow = "auto";
-        document
-          .querySelector("#beforeSwiper")
-          ?.scrollIntoView({ behavior: "smooth" });
+      // Скроллим вверх, если на первом слайде и пользователь пытался свайпнуть дальше вверх
+      if (activeIndex === 0 && tryingToScrollUpFromFirst.current) {
+        const prevBlock = document.querySelector("#beforeSwiper");
+        if (prevBlock) {
+          document.body.style.overflow = "auto";
+          prevBlock.scrollIntoView({ behavior: "smooth" });
+          tryingToScrollUpFromFirst.current = false; // сбрасываем флаг
+        }
       }
-    }, 1000);
+    }, 800); // небольшой таймаут для плавности
 
     return () => clearTimeout(timeout);
-  }, [activeIndex, isLocked]);
+  }, [activeIndex, scrollLocked]);
 
   return (
-    <section className={styles.sectionTema} id="sectionTema" ref={sectionRef}>
+    <section
+      className={styles.sectionTema}
+      id="sectionTema"
+      ref={swiperWrapperRef}
+    >
       <p className={styles.textSection}>(теми конференції)</p>
 
       <ul className={styles.wrapperTitles}>
@@ -120,11 +172,17 @@ export default function Tema() {
         mousewheel={{ releaseOnEdges: true }}
         effect="creative"
         creativeEffect={{
-          prev: { translate: [0, "-100%", 0], opacity: 0.5 },
-          next: { translate: [0, "100%", 0], opacity: 0.5 },
+          prev: {
+            translate: [0, "-100%", 0],
+            opacity: 0.5,
+          },
+          next: {
+            translate: [0, "100%", 0],
+            opacity: 0.5,
+          },
         }}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
+        onSwiper={(_swiper) => {
+          swiperRef.current = _swiper;
         }}
         className="mySwiper"
       >

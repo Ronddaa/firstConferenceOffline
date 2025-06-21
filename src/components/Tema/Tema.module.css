@@ -1,3 +1,14 @@
+
+html, body {
+  scrollbar-gutter: stable;
+}
+
+.scroll-lock {
+  overflow: hidden;
+  height: 100vh;
+  touch-action: none;
+}
+
 .sectionTema {
   padding: 0;
   height: 100dvh;
@@ -42,6 +53,7 @@
   font-size: 56px;
   text-transform: uppercase;
   color: #434A39;
+  transition: 0.3s;
 }
 
 .defoultStylestitle span {
