@@ -56,7 +56,10 @@ class ApiClient {
   }
 
   async createPayment(payload) {
-    const { data } = await this.axiosInstance.post("/create-payment", payload);
+    const { data } = await this.axiosInstance.post(
+      "/create-payment-womencode",
+      payload
+    );
 
     return data;
   }
