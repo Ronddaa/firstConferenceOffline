@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import styles from "./TicketsForm.module.css";
 import sprite from "../../icons.svg";
+import api from "../../../api/api";
 
 export default function TicketsForm({ isOpen, onClose }) {
   const tariffs = [
@@ -55,11 +56,32 @@ export default function TicketsForm({ isOpen, onClose }) {
     onClose();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isFormValid) return;
+
     console.log("Данные формы:", formData);
-    handleClose();
+
+    const response = await api.createPayment({
+      amount: calculateTotal(),
+      currency: 840,
+      redirectUrl: "https://warsawkod.women.place",
+      user: {
+        fullName: formData.fullName,
+        phoneNumber: formData.phone,
+        email: formData.email,
+        telegramNick: formData.telegramNick,
+      },
+      purchase: {
+        tariffs: [formData.tariff],
+        ticketsQuantity: formData.quantity,
+        totalAmount: calculateTotal(),
+      },
+    });
+
+    window.location.href = response.pageUrl;
+
+    // handleClose();
   };
 
   return (
