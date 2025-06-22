@@ -1,8 +1,14 @@
 import logo from "../../../public/logo.svg";
 import styles from "./Header.module.css";
 import sprite from "../icons.svg";
+import SpeakersForm from "../Modals/Speakers/SpeakersForm";
+import { useState } from "react";
 
 export default function Header() {
+  
+  // const [modalLogInIsOpen, setModalLogIn] = useState(false);
+  const [modalSpeakersIsOpen, setmodalSpeakers] = useState(false)
+
   return (
     <header>
       <div className="container">
@@ -52,12 +58,16 @@ export default function Header() {
       </div>
       <ul className={styles.wrapperPartnersBtn}>
         <li>
-          <button className={styles.partnersBtn}>Стати спікером</button>
+          <button className={styles.partnersBtn} onClick={() => {setmodalSpeakers(true)}}>Стати спікером</button>
         </li>
         <li>
           <button className={styles.partnersBtn}>Стати партнером</button>
         </li>
       </ul>
+      <SpeakersForm
+        isOpen={modalSpeakersIsOpen}
+        onClose={() => setmodalSpeakers(false)}
+      ></SpeakersForm>
     </header>
   );
 }
