@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./SpeakersForm.module.css";
 import sprite from "../../icons.svg";
 import Modal from "react-modal";
+import api from "../../../api/api";
 
 export default function SpeakersForm({ isOpen, onClose }) {
   const [fullName, setFullName] = useState("");
@@ -19,7 +20,18 @@ export default function SpeakersForm({ isOpen, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isValid) return;
-    // Пока ничего не делаем (в будущем можно добавить отправку в MongoDB)
+    try {
+      const formData = {
+        fullName,
+        phone,
+        telegram,
+        instagram,
+      };
+      console.log(formData);
+      api.createSpeakerApplication(formData);
+    } catch (error) {
+      console.log(error);
+    }
     console.log("Form was send!");
   };
 

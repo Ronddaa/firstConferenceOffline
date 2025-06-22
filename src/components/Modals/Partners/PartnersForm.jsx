@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import styles from "./Partners.module.css";
 import sprite from "../../icons.svg";
+import api from "../../../api/api";
 
 export default function PartnersForm({ isOpen, onClose }) {
   // Начальное состояние всех полей формы
@@ -57,6 +58,12 @@ export default function PartnersForm({ isOpen, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
+    try {
+      console.log(formData);
+      api.createPartnerApplication(formData);
+    } catch (error) {
+      console.log(error);
+    }
     // Тут будет логика отправки формы в MongoDB
     console.log("Отправлено:", formData);
     handleClose(); // закрыть и сбросить форму
