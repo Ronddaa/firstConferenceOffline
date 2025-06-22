@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --trace-warnings server.mjs --port=8080 --host=localhost",
+    "start": "node --trace-warnings server.mjs --port=3000 --host=127.1.5.121",
     "dev": "nodemon --watch . --ext js,mjs,json --exec \"node --trace-warnings server.mjs --port=8080 --host=localhost\""
   },
   "keywords": [],
