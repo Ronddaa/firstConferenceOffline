@@ -20,7 +20,7 @@ export default function SpeakersForm({ isOpen, onClose }) {
     e.preventDefault();
     if (!isValid) return;
     // Пока ничего не делаем (в будущем можно добавить отправку в MongoDB)
-    console.log("Форма отправлена");
+    console.log("Form was send!");
   };
 
   return (

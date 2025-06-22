@@ -1,0 +1,71 @@
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
+  .modalPartnersForm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1b2021b2;
+    padding: 10% 5%;
+    overflow: hidden;
+    z-index: 999;
+    transition: 0.4s;
+    border: none;
+  }
+  .modalPartnersFormContent {
+    background-color: #fffcf9;
+    padding: 53px 21px 25px;
+    width: 335px;
+    border-radius: 10px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .closeModalPartnersForm {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .titlePartnersForm {
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1b2021;
+    margin-bottom: 20px;
+  }
+  .PartnersForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .inputPartnersForm {
+    padding: 15px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #1b2021;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid #FFFFAC;
+    background-color: #F0EBEB;
+  }
+  .sendBtnPartnersForm{
+      background: linear-gradient(90deg, #1B2021, #9EB7E5);
+      padding: 34px 47px;
+      font-size: 12px;
+      margin: 30px auto 0;
+      color: #fffcf9;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 10px;
+  }
+  .sendBtnPartnersFormNoValid{
+      background: #A3A0A0;
+      color: #797979;
+  }

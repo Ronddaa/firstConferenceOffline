@@ -3,11 +3,15 @@ import styles from "./Header.module.css";
 import sprite from "../icons.svg";
 import SpeakersForm from "../Modals/Speakers/SpeakersForm";
 import { useState } from "react";
+import PartnersForm from "../Modals/Partners/PartnersForm";
+import TicketsForm from "../Modals/Tickets/TicketsForm";
 
 export default function Header() {
   
   // const [modalLogInIsOpen, setModalLogIn] = useState(false);
-  const [modalSpeakersIsOpen, setmodalSpeakers] = useState(false)
+  const [modalSpeakersIsOpen, setmodalSpeakers] = useState(false);
+  const [modalPartnersIsOpen, setmodalPartners] = useState(false);
+  const [modalTicketsIsOpen, setmodalTickets] = useState(false);
 
   return (
     <header>
@@ -44,7 +48,12 @@ export default function Header() {
           </li>
           <li className={styles.absolutePlaceholder}></li>
         </ul>
-        <button className={styles.buyBtnHeader}>
+        <button
+          className={styles.buyBtnHeader}
+          onClick={() => {
+            setmodalTickets(true);
+          }}
+        >
           придбати квиток{" "}
           <svg className={styles.arrowList} width={21} height={21}>
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
@@ -58,16 +67,38 @@ export default function Header() {
       </div>
       <ul className={styles.wrapperPartnersBtn}>
         <li>
-          <button className={styles.partnersBtn} onClick={() => {setmodalSpeakers(true)}}>Стати спікером</button>
+          <button
+            className={styles.partnersBtn}
+            onClick={() => {
+              setmodalSpeakers(true);
+            }}
+          >
+            Стати спікером
+          </button>
         </li>
         <li>
-          <button className={styles.partnersBtn}>Стати партнером</button>
+          <button
+            className={styles.partnersBtn}
+            onClick={() => {
+              setmodalPartners(true);
+            }}
+          >
+            Стати партнером
+          </button>
         </li>
       </ul>
       <SpeakersForm
         isOpen={modalSpeakersIsOpen}
         onClose={() => setmodalSpeakers(false)}
       ></SpeakersForm>
+      <PartnersForm
+        isOpen={modalPartnersIsOpen}
+        onClose={() => setmodalPartners(false)}
+      ></PartnersForm>
+      <TicketsForm
+        isOpen={modalTicketsIsOpen}
+        onClose={() => setmodalTickets(false)}
+      ></TicketsForm>
     </header>
   );
 }
