@@ -5,13 +5,14 @@ import SpeakersForm from "../Modals/Speakers/SpeakersForm";
 import { useState } from "react";
 import PartnersForm from "../Modals/Partners/PartnersForm";
 import TicketsForm from "../Modals/Tickets/TicketsForm";
+import BurgerMenu from "../Modals/BurgerMenu/BurgerMenu";
 
 export default function Header() {
-  
   // const [modalLogInIsOpen, setModalLogIn] = useState(false);
   const [modalSpeakersIsOpen, setmodalSpeakers] = useState(false);
   const [modalPartnersIsOpen, setmodalPartners] = useState(false);
   const [modalTicketsIsOpen, setmodalTickets] = useState(false);
+  const [modalBurgerMenuIsOpen, setmodalBurgerMenu] = useState(false);
 
   return (
     <header>
@@ -59,7 +60,9 @@ export default function Header() {
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
           </svg>
         </button>
-        <div className={styles.wrapperBurger}>
+        <div className={styles.wrapperBurger} onClick={() => {
+          setmodalBurgerMenu(true)
+        }}>
           <svg className={styles.burgerMenu} width={40} height={40}>
             <use xlinkHref={`${sprite}#icon-burger-menu`}></use>
           </svg>
@@ -99,6 +102,10 @@ export default function Header() {
         isOpen={modalTicketsIsOpen}
         onClose={() => setmodalTickets(false)}
       ></TicketsForm>
+      <BurgerMenu
+        isOpen={modalBurgerMenuIsOpen}
+        onClose={() => setmodalBurgerMenu(false)}
+      ></BurgerMenu>
     </header>
   );
 }
