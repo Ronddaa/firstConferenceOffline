@@ -27,6 +27,7 @@ export default function Tema() {
 
   return (
     <section className={styles.sectionTema} id="sectionTema">
+      <div className={styles.backgrondShadow}></div>
       <p className={styles.textSection}>(теми конференції)</p>
 
       <ul className={styles.wrapperTitles}>
@@ -41,27 +42,27 @@ export default function Tema() {
         </li>
         <li>
           <h2
-            className={`${styles.defoultStylestitle} ${
-              activeIndex === 1 ? styles.activeTitle : ""
-            }`}
+            className={`${styles.defoultStylestitle2} ${
+              styles.defoultStylestitle
+            } ${activeIndex === 1 ? styles.activeTitle : ""}`}
           >
             тіло<span>(генетика)</span>
           </h2>
         </li>
         <li>
           <h2
-            className={`${styles.defoultStylestitle} ${
-              activeIndex === 2 ? styles.activeTitle : ""
-            }`}
+            className={`${styles.defoultStylestitle3} ${
+              styles.defoultStylestitle
+            } ${activeIndex === 2 ? styles.activeTitle : ""}`}
           >
             гроші
           </h2>
         </li>
         <li>
           <h2
-            className={`${styles.defoultStylestitle} ${
-              activeIndex === 3 ? styles.activeTitle : ""
-            }`}
+            className={`${styles.defoultStylestitle4} ${
+              styles.defoultStylestitle
+            } ${activeIndex === 3 ? styles.activeTitle : ""}`}
           >
             секс
           </h2>

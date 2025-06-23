@@ -56,10 +56,6 @@
     color: #1B2021;
     text-transform: uppercase;
 }
-.detailsSVG{
-    width: 28px;
-    height: 28px;
-}
 .priceText{
     font-weight: 700;
     font-size: 36px;
@@ -179,10 +175,6 @@
 }
 .underPresidentRoom::after{
     
-}
-.wrapperInfoTicketOnly .detailsText .detailsSVG{
-    width: 50px;
-    height: 50px;
 }
 .wrapperAuction{
  display: flex;

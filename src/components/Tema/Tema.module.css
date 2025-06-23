@@ -11,7 +11,17 @@
   overflow: hidden;
   position: relative;
 }
-
+.backgrondShadow{
+  position: absolute;
+    z-index: 2;
+    width: 822px;
+    height: 411px;
+    background-color: #1B2021;
+    border-radius: 50%;
+    top: -30%;
+    left: -50%;
+    filter: blur(50px);
+}
 .sectionTema :global(.mySwiper) {
   height: 100dvh;
 }
@@ -51,6 +61,16 @@
   color: #434A39;
   transition: 0.3s;
 }
+
+li .defoultStylestitle2{
+margin-left: 54px;
+}
+li .defoultStylestitle3{
+  margin-left: 94px;
+  }
+  li .defoultStylestitle4{
+    margin-left: 142px;
+    }
 
 .defoultStylestitle span {
   font-size: 12px;

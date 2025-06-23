@@ -90,10 +90,10 @@ export default function Program() {
             <h3 className={styles.titlelistFour} id="beforeSwiper">
               Ексклюзивний концерт MONATIK
             </h3>
-            <p className={styles.textlistFour}>
+            {/* <p className={styles.textlistFour}>
               Показ дизайнерського одягу, бренд-зона з надзвичайним товаром,
               кейтеринг від шеф кухарів, атмосфера гала-вечері з дрес-кодом
-            </p>
+            </p> */}
           </li>
           <li>
             <img src={prgramLi4IMG} alt="programIMG" />

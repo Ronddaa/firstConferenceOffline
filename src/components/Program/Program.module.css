@@ -107,7 +107,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    opacity: 0.2;
+    opacity: 0.1;
 }
 .titleProgram span{
     color: transparent;
@@ -141,7 +141,7 @@
 }
 .wrapperProgramList li:nth-child(7){
     background-color: #9EB7E5;
-    padding: 40px 20px;
+    padding: 60px 20px 70px;
     color: #1B2021;
 }
 

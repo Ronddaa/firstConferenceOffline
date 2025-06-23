@@ -27,7 +27,7 @@
     border: 1px solid #FFFFAC;
     border-radius: 10px;
     background: linear-gradient(90deg, #1B2021, #9EB7E5);
-    width: 335px;
+    width: 100%;
     height: 335px;
     display: flex;
     flex-direction: column;

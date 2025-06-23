@@ -189,11 +189,11 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-hands`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  <span>Повноцінний обід зі спікерами</span>
+                  <span>Повноцінний обід <br /> зі спікерами</span>
                 </p>
               </li>
               <li>
-                <svg className={styles.detailsSVG} width={28} height={28}>
+                <svg className={styles.detailsSVG} width={38} height={38}>
                   <use xlinkHref={`${sprite}#icon-people`}></use>
                 </svg>
                 <p className={styles.detailsText}>
