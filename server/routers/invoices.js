@@ -4,6 +4,7 @@ import { ctrlWrapper } from "../utils/ctrlWrapper.js";
 import {
   createInvoiceController,
   getAllInvoicesController,
+  sendTicketToUserController,
 } from "../controllers/invoices.js";
 import { validateBody } from "../middlewares/validateBody.js";
 import { createInvoiceSchema } from "../validation/invoices.js";
@@ -17,5 +18,7 @@ router.post(
   validateBody(createInvoiceSchema),
   ctrlWrapper(createInvoiceController)
 );
+
+router.post("/sendTicket", ctrlWrapper(sendTicketToUserController));
 
 export default router;
