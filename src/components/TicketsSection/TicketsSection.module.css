@@ -16,6 +16,9 @@
     flex-direction: column;
     gap: 25px;
     margin-bottom: 70px;
+    position: relative;
+    z-index: 1;
+    background-color: #FFFFAC;
 }
 .TicketsGold{
     padding: 25px 20px;
@@ -142,6 +145,7 @@
     border-radius: 10px;
     border: 1px solid #1B2021;
     padding: 25px 0;
+    display: none;
 }
 .titleOnlyTiket{
     font-size: 72px;
@@ -168,9 +172,13 @@
     width: 100%;
     border-top: 1px solid #1B2021;
     border-bottom: 1px solid #1B2021;
+    position: relative;
 }
 .wrapperInfoTicketOnly .detailsText span{
     max-width: 210px;
+}
+.underPresidentRoom::after{
+    
 }
 .wrapperInfoTicketOnly .detailsText .detailsSVG{
     width: 50px;
@@ -183,12 +191,28 @@
  max-width: 182px;
  margin-left: auto;
  margin-bottom: 40px;
+ position: relative;
 }
 .wrapperAuction li:first-child{
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     color: #1B2021;
+}
+.wrapperAuction li:first-child::after{
+    content: '';
+    background-image: url(./CircleSVGLine.svg);
+    position: absolute;
+    z-index: 0;
+    top: 8px;
+    left: -20px;
+    transform: translate(-50%, -50%);
+    width: 700%;
+    height: 1700%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.2;
 }
 .wrapperAuction li:last-child{
     color: #797979;

@@ -1,7 +1,13 @@
 import styles from "./TicketsSection.module.css";
 import sprite from "../icons.svg";
+import TicketsForm from "../Modals/Tickets/TicketsForm";
+import { useState } from "react";
 
 export default function Tickets() {
+
+  const [modalTicketsIsOpen, setmodalTickets] = useState(false);
+
+
   return (
     <section className={styles.sectionTickets}>
       <div className="container">
@@ -9,7 +15,7 @@ export default function Tickets() {
         <ul className={styles.wrapperTicketsTariff}>
           <li className={styles.TicketsGold}>
             <h3 className={styles.titleTariffCard}>GOLD</h3>
-            <p className={styles.kolPlace}>Залишилось 30 місць</p>
+            <p className={styles.kolPlace}>Залишилось 98 місць</p>
             <ul className={styles.wrapperDetailsTariff}>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
@@ -22,7 +28,7 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-palms`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Напої: один келих ігристого + вода
+                  Welcome drink (один <br /> келих ігристого) + вода
                 </p>
               </li>
               <li>
@@ -42,7 +48,15 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-fire`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Участь у розіграші подарунків
+                  Участь у розіграші <br /> подарунків
+                </p>
+              </li>
+              <li>
+                <svg className={styles.detailsSVG} width={28} height={28}>
+                  <use xlinkHref={`${sprite}#icon-pazzle`}></use>
+                </svg>
+                <p className={styles.detailsText}>
+                  Пакет з подарунками <br /> gold класу
                 </p>
               </li>
               <li>
@@ -50,32 +64,37 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-micro`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Ексклюзивний концерт MONATIK
+                  Ексклюзивний <br /> концерт MONATIK
                 </p>
               </li>
             </ul>
             <p className={styles.priceText}>300$</p>
-            <button className={styles.btnBuyTariffGold}>придбати квиток</button>
+            <button
+              className={styles.btnBuyTariffGold}
+              onClick={() => {
+                setmodalTickets(true);
+              }}
+            >
+              придбати квиток
+            </button>
             <button className={styles.btnPlaceShow}>переглянути місця</button>
           </li>
           <li className={styles.TicketsPremium}>
             <h3 className={styles.titleTariffCard}>premium</h3>
-            <p className={styles.kolPlace}>Залишилось 30 місць</p>
+            <p className={styles.kolPlace}>Залишилось 52 місця</p>
             <ul className={styles.wrapperDetailsTariff}>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-diamond`}></use>
                 </svg>
-                <p className={styles.detailsText}>
-                  Місця: <span>ряди зазначені стендом Balance</span>
-                </p>
+                <p className={styles.detailsText}>Місця: позначені блакитним</p>
               </li>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-palms`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Напої: один келих <br /> ігристого + вода
+                  Welkome drink(один <br /> келих ігристого) + вода
                 </p>
               </li>
               <li>
@@ -83,7 +102,7 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-clock`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Дві кавопаузи <br /> <span>+ Легкий перекус</span>
+                  Дві кавопаузи <br /> <span>+ Асортимент закусок</span>
                 </p>
               </li>
               <li>
@@ -97,7 +116,7 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-fire`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Участь у розіграші подарунків
+                  Участь у розіграші <br /> подарунків
                 </p>
               </li>
               <li>
@@ -105,15 +124,18 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-pazzle`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Ексклюзивний концерт MONATIK
+                  Пакет з подарунками <br /> <span>premium класу</span>
                 </p>
               </li>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
-                  <use xlinkHref={`${sprite}#icon-coins`}></use>
+                  <use xlinkHref={`${sprite}#icon-blackHole`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  <span>Пакет з подарунками</span>
+                  <span>
+                    Ігристе перед концертом: <br /> келих щоб налаштуватись{" "}
+                    <br /> на вечір
+                  </span>
                 </p>
               </li>
               <li>
@@ -121,34 +143,37 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-micro`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  <span>-20% знижки на наступну конференцію</span>
+                  Ексклюзивний <br /> концерт MONATIK
                 </p>
               </li>
             </ul>
             <p className={styles.priceText}>450$</p>
-            <button className={styles.btnBuyTariffPremium}>
+            <button
+              className={styles.btnBuyTariffPremium}
+              onClick={() => {
+                setmodalTickets(true);
+              }}
+            >
               придбати квиток
             </button>
             <button className={styles.btnPlaceShow}>переглянути місця</button>
           </li>
           <li className={styles.TicketsGold}>
             <h3 className={styles.titleTariffCard}>LUXE</h3>
-            <p className={styles.kolPlace}>Залишилось 30 місць</p>
+            <p className={styles.kolPlace}>Залишилось 25 місць</p>
             <ul className={styles.wrapperDetailsTariff}>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-diamond`}></use>
                 </svg>
-                <p className={styles.detailsText}>
-                  Місця: <span>перший ряд</span>
-                </p>
+                <p className={styles.detailsText}>Місця: позначені червоним</p>
               </li>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-palms`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Напої: <span>безлімітне ігристе</span> <br />+ вода
+                  <span>безлімітне ігристе</span> <br />+ вода
                 </p>
               </li>
               <li>
@@ -156,7 +181,7 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-clock`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Дві кавопаузи <br />+ Легкий перекус
+                  Дві кавопаузи <br />+ Асортимент закусок
                 </p>
               </li>
               <li>
@@ -171,7 +196,9 @@ export default function Tickets() {
                 <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-people`}></use>
                 </svg>
-                <p className={styles.detailsText}>Нетворкінг</p>
+                <p className={styles.detailsText}>
+                  <span>Ексклюзивна зона для спілкування зі спікерами</span>
+                </p>
               </li>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
@@ -185,22 +212,9 @@ export default function Tickets() {
                 <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-pazzle`}></use>
                 </svg>
-                <p className={styles.detailsText}>Пакет з подарунками</p>
-              </li>
-              <li>
-                <svg className={styles.detailsSVG} width={28} height={28}>
-                  <use xlinkHref={`${sprite}#icon-star`}></use>
-                </svg>
                 <p className={styles.detailsText}>
-                  <span>Бранч в президенському номері </span>
-                </p>
-              </li>
-              <li>
-                <svg className={styles.detailsSVG} width={28} height={28}>
-                  <use xlinkHref={`${sprite}#icon-convert`}></use>
-                </svg>
-                <p className={styles.detailsText}>
-                  <span>Бранч в президенському номері </span>
+                  Пакет з подарунками <br />
+                  <span>luxe класу</span>
                 </p>
               </li>
               <li>
@@ -208,7 +222,29 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-coins`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  -20% знижки на наступну конференцію
+                  <span>
+                    Знижка -10% на <br /> наступну конференцію
+                  </span>
+                </p>
+              </li>
+              <li>
+                <svg className={styles.detailsSVG} width={28} height={28}>
+                  <use xlinkHref={`${sprite}#icon-star`}></use>
+                </svg>
+                <p
+                  className={`${styles.detailsText} ${styles.underPresidentRoom}`}
+                >
+                  <span>
+                    -50% знижка на бранч <br /> у президентському номері{" "}
+                  </span>
+                </p>
+              </li>
+              <li>
+                <svg className={styles.detailsSVG} width={28} height={28}>
+                  <use xlinkHref={`${sprite}#icon-convert`}></use>
+                </svg>
+                <p className={styles.detailsText}>
+                  <span>Відео та фото матеріали <br /> після заходу </span>
                 </p>
               </li>
               <li>
@@ -221,7 +257,14 @@ export default function Tickets() {
               </li>
             </ul>
             <p className={styles.priceText}>1200$</p>
-            <button className={styles.btnBuyTariffGold}>придбати квиток</button>
+            <button
+              className={styles.btnBuyTariffGold}
+              onClick={() => {
+                setmodalTickets(true);
+              }}
+            >
+              придбати квиток
+            </button>
             <button className={styles.btnPlaceShow}>переглянути місця</button>
           </li>
           <li className={styles.TicketsOnlyMonatik}>
@@ -274,10 +317,14 @@ export default function Tickets() {
         </div>
         <p className={styles.lastTextTeckets}>
           Ми зібрали ексклюзивні речі з усієї України, створені геніальними
-          українськими <br /> майстрами — кожен лот має історію, енергію й глибокий
-          сенс
+          українськими <br /> майстрами — кожен лот має історію, енергію й
+          глибокий сенс
         </p>
       </div>
+      <TicketsForm
+        isOpen={modalTicketsIsOpen}
+        onClose={() => setmodalTickets(false)}
+      ></TicketsForm>
     </section>
   );
 }
