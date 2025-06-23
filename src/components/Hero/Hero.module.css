@@ -16,10 +16,9 @@ line-height: 1;
     position: absolute;
     bottom: -25px;
     text-transform: none;
-    left: 70px;
+    right: 5px;
     color: #9EB7E5;
     font-weight: 400;
-    width: 100%;
 }
 .titlePlace{
     text-align: center;
@@ -39,7 +38,7 @@ line-height: 1;
 }
 .buyBtnHero{
     display: block;
-    background-color: #FFFFAC;
+    background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
     color: #1B2021;
     padding: 34px 49px;
     margin: 0 auto;
@@ -48,4 +47,18 @@ line-height: 1;
     font-weight: 600;
     text-transform: uppercase;
     border-radius: 10px;
+    position: relative;
+    z-index: 2;
+}
+.backgrondShadow{
+    position: absolute;
+    z-index: 1;
+    width: 822px;
+    height: 411px;
+    background-color: #1B2021;
+    border-radius: 50%;
+    bottom: -92px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    filter: blur(50px);
 }

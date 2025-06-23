@@ -7,6 +7,7 @@ import prgramLi4IMG from "./programLi4.webp";
 export default function Program() {
   return (
     <section className={styles.sectionProgram}>
+
       <div className="container">
         <ul className={styles.wrapperDateInfo}>
           <li>

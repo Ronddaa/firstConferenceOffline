@@ -1,6 +1,9 @@
 import styles from './Hero.module.css'
+import TicketsForm from '../Modals/Tickets/TicketsForm';
+import { useState } from 'react';
 
 export default function Hero() {
+  const [modalTicketsIsOpen, setmodalTickets] = useState(false);
     return (
       <section className={styles.sectionHero}>
         <div className="container">
@@ -13,8 +16,20 @@ export default function Hero() {
           <p className={styles.detailsTextHero2}>
             до Дня Незалежності —<br /> для тих, хто творить майбутнє
           </p>
-          <button className={styles.buyBtnHero}>придбати квиток</button>
+          <button
+            className={styles.buyBtnHero}
+            onClick={() => {
+              setmodalTickets(true);
+            }}
+          >
+            придбати квиток
+          </button>
         </div>
+        <div className={styles.backgrondShadow}></div>
+        <TicketsForm
+          isOpen={modalTicketsIsOpen}
+          onClose={() => setmodalTickets(false)}
+        ></TicketsForm>
       </section>
     );
 }
