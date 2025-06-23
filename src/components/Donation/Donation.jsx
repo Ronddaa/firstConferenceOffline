@@ -1,15 +1,9 @@
 import styles from './Donation.module.css'
-import donationIMG from './donationSection.webp'
 
 export default function Donation() {
     return (
       <section className={styles.sectionDonation}>
         <div className="container">
-          <img
-            className={styles.donationIMG}
-            src={donationIMG}
-            alt="donation"
-          />
           <h2 className={styles.titleDonation}>
             Підтримка благодійного фонду “Kazo Mobile”
           </h2>
@@ -19,6 +13,23 @@ export default function Donation() {
             стоматологічну допомогу захисникам на лінії зіткнення через мобільну
             пересувну стоматологію.
           </p>
+          <ul className={styles.wrapperDonationList}>
+            <li>
+              <p className={styles.textLi}>За два роки було здійснено</p>
+              <h3 className={styles.titleLih31}>35</h3>
+              <h4 className={styles.titleLih41}>виїздів</h4>
+            </li>
+            <li>
+              <p className={styles.textLi}>допомогу отримали майже</p>
+              <h3 className={styles.titleLih32}>2000</h3>
+              <h4 className={styles.titleLih42}>захисників</h4>
+            </li>
+            <li>
+              <p className={styles.textLi}>У 2023 році виїзд тривав</p>
+              <h3 className={styles.titleLih33}>200</h3>
+              <h4 className={styles.titleLih43}>днів</h4>
+            </li>
+          </ul>
           <a className={styles.detailsDonation} href="#">
             дізнатись більше
           </a>
@@ -37,6 +48,12 @@ export default function Donation() {
             Усі кошти — <br />
             <span>на підтримку</span> <span>ЗСУ</span>
           </h3>
+        </div>
+        <div className="container">
+          <p className={styles.lastTextDonation}>
+            У вас буде можливість не лише отримати <br /> унікальну річ, а й зробити
+            вагомий <br />внесок у силу, яка нас захищає
+          </p>
         </div>
       </section>
     );
