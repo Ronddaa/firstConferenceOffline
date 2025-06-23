@@ -9,7 +9,7 @@ export default function TicketsForm({ isOpen, onClose }) {
     { name: "GOLD", price: 300 },
     { name: "PREMIUM", price: 450 },
     { name: "Luxe", price: 1200 },
-    { name: "Only ticket", price: 150 },
+    // { name: "Only ticket", price: 150 },
   ];
 
   const initialState = {
