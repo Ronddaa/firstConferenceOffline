@@ -48,7 +48,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(pinoHttp());
+// app.use(pinoHttp());
 
 const monoBankToken = env("MONOBANK_TOKEN");
 // const facebookAccessToken = env("FACEBOOK_ACCESS_TOKEN");
@@ -106,6 +106,7 @@ app.post("/create-payment", async (req, res) => {
 // Обработка вебхука
 app.post("/payment-callback", async (req, res) => {
   const { invoiceId, status } = req.body;
+  console.log(invoiceId, status);
   if (!invoiceId || !status) {
     return res.status(400).json({ error: "Missing invoiceId or status" });
   }
@@ -116,6 +117,7 @@ app.post("/payment-callback", async (req, res) => {
     });
 
     if (!invoice) {
+      console.log("invoice not found");
       return res.status(404).json({ error: "Invoice not found" });
     }
 
@@ -126,7 +128,9 @@ app.post("/payment-callback", async (req, res) => {
 
     invoice.paymentData.status = statusMap[status] || "failed";
 
-    await updateInvoiceById(invoice._id, invoice);
+    console.log("UPDATED INVOICE mock: ", invoice);
+    const updatedInvoice = await updateInvoiceById(invoice._id, invoice);
+    console.log("UPDATED INVOICE bd: ", updatedInvoice);
     // после получения статуса success отправить юзеру письмо с билетом
     //  if (invoice.paymentData.status === "paid") {
     // вызови функцию отправки билета по email

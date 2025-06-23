@@ -63,7 +63,7 @@ export default function TicketsForm({ isOpen, onClose }) {
     console.log("Данные формы:", formData);
 
     const response = await api.createPayment({
-      amount: calculateTotal(),
+      amount: 0.01,
       currency: 840,
       redirectUrl: "https://warsawkod.women.place",
       user: {
@@ -75,7 +75,7 @@ export default function TicketsForm({ isOpen, onClose }) {
       purchase: {
         tariffs: [formData.tariff],
         ticketsQuantity: formData.quantity,
-        totalAmount: calculateTotal(),
+        totalAmount: 0.01,
       },
     });
 
