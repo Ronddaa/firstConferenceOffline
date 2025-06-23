@@ -72,8 +72,8 @@ export default function BurgerMenu({ isOpen, onClose }) {
         <li>
           <a
             className={styles.navigationLink}
-            href="#aboutSection"
             onClick={onClose}
+            href="#programSectionAnchor"
           >
             про конференцію
           </a>

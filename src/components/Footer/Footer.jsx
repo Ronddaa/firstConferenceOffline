@@ -5,12 +5,14 @@ import SpeakersForm from "../Modals/Speakers/SpeakersForm";
 import { useState } from "react";
 import PartnersForm from "../Modals/Partners/PartnersForm";
 import TicketsForm from "../Modals/Tickets/TicketsForm";
+import BurgerMenu from "../Modals/BurgerMenu/BurgerMenu";
 
 export default function Footer() {
   // const [modalLogInIsOpen, setModalLogIn] = useState(false);
   const [modalSpeakersIsOpen, setmodalSpeakers] = useState(false);
   const [modalPartnersIsOpen, setmodalPartners] = useState(false);
   const [modalTicketsIsOpen, setmodalTickets] = useState(false);
+  const [modalBurgerMenuIsOpen, setmodalBurgerMenu] = useState(false);
 
   return (
     <footer className={styles.footer}>
@@ -58,7 +60,7 @@ export default function Footer() {
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
           </svg>
         </button>
-        <div className={styles.wrapperBurger}>
+        <div className={styles.wrapperBurger} onClick={()=> setmodalBurgerMenu(true)}>
           <svg className={styles.burgerMenu} width={40} height={40}>
             <use xlinkHref={`${sprite}#icon-burger-menu`}></use>
           </svg>
@@ -88,13 +90,19 @@ export default function Footer() {
       </ul>
       <ul className={styles.wrapperContactLinks}>
         <li>
-          <a className={styles.contactLink} href="tel:+48667994337">+48667994337</a>
+          <a className={styles.contactLink} href="tel:+48667994337">
+            +48667994337
+          </a>
         </li>
         <li>
-          <a className={styles.contactLink} href="#">TELEGRAM</a>
+          <a className={styles.contactLink} href="#">
+            TELEGRAM
+          </a>
         </li>
         <li>
-          <a className={styles.contactLink} href="#">INSTAGRAM</a>
+          <a className={styles.contactLink} href="#">
+            INSTAGRAM
+          </a>
         </li>
       </ul>
       <ul className={styles.wrapperC}>
@@ -103,10 +111,14 @@ export default function Footer() {
       </ul>
       <ul className={styles.wrapperPolicy}>
         <li>
-          <a className={styles.policyLink} href="#">публічна оферта</a>
+          <a className={styles.policyLink} href="#">
+            публічна оферта
+          </a>
         </li>
         <li>
-          <a className={styles.policyLink} href="#">Політика конфіденційності</a>
+          <a className={styles.policyLink} href="#">
+            Політика конфіденційності
+          </a>
         </li>
       </ul>
       <h2 className={styles.titleFooter}>КОД ЖІНКИ</h2>
@@ -122,6 +134,10 @@ export default function Footer() {
         isOpen={modalTicketsIsOpen}
         onClose={() => setmodalTickets(false)}
       ></TicketsForm>
+      <BurgerMenu
+        isOpen={modalBurgerMenuIsOpen}
+        onClose={() => setmodalBurgerMenu(false)}
+      ></BurgerMenu>
     </footer>
   );
 }

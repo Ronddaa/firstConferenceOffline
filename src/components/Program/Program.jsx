@@ -33,7 +33,9 @@ export default function Program() {
 
         {/* Next Block */}
 
-        <p className={styles.btwTexttwo}>(Про конференцію)</p>
+        <p className={styles.btwTexttwo} id="programSectionAnchor">
+          (Про конференцію)
+        </p>
 
         <h2 className={styles.titleProgram}>
           створюємо <span>преміальний</span> простір для української спільноти{" "}
