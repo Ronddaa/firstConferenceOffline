@@ -75,6 +75,7 @@
     color: #1B2021;
     background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
     border-radius: 10px;
+    margin-bottom: 40px;
 }
 .heartBlock{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),

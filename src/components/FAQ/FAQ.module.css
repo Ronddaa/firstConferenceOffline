@@ -1,0 +1,55 @@
+.titleFAQ{
+    font-size: 136px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #FFFCF9;
+    margin-bottom: -58px;
+}
+.wrapperList{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transition: 0.5s;
+    overflow: hidden;
+    background-color: #1B2021;
+    position: relative;
+    z-index: 1;
+}
+.itemLi{
+    border-top: 2px solid #FFFFAC;
+    padding: 20px;
+}
+.titleQList{
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: "Mulish";
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s
+ linear, transform 0.4s
+ linear, max-height 0.3s
+ linear, margin-top 0.4s linear;
+    pointer-events: none;
+    position: relative;
+    z-index: 2;
+    max-height: 0;
+    overflow: hidden;
+}
+.content.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    max-height: 500px;
+    margin-top: 15px;
+}
+
+.contentText{
+    color: #797979;
+}
