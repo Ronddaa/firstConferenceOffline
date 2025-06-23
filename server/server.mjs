@@ -16,6 +16,7 @@ import { InvoicesCollection } from "./db/models/invoices.js";
 import router from "./routers/index.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { createInvoice, updateInvoiceById } from "./services/invoices.js";
+import { sendTicket } from "./utils/sendTicket.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -129,14 +130,20 @@ app.post("/payment-callback", async (req, res) => {
 
     invoice.paymentData.status = statusMap[status] || "failed";
 
-    console.log("UPDATED INVOICE mock: ", invoice);
-    const updatedInvoice = await updateInvoiceById(invoice._id, invoice);
-    console.log("UPDATED INVOICE bd: ", updatedInvoice);
+    await updateInvoiceById(invoice._id, invoice);
+
     // после получения статуса success отправить юзеру письмо с билетом
-    //  if (invoice.paymentData.status === "paid") {
-    // вызови функцию отправки билета по email
-    // await sendTicketEmail(invoice.user.email, invoice);
-    // }
+    if (invoice.paymentData.status === "paid") {
+      const ticketName = invoice.purchase.tariffs[0].toLowerCase() + "Ticket";
+      try {
+        await sendTicket(invoice, ticketName);
+      } catch (error) {
+        console.log(
+          `An error occured while trying to send ticket to invoice owner ${invoice.user.email} `
+        );
+      }
+      console.log();
+    }
     return res.status(200).json({ message: "Payment status updated" });
   } catch (error) {
     console.log("Error while payment-callback working: ", error);

@@ -27,6 +27,8 @@
     "pino": "^9.4.0",
     "pino-http": "^10.3.0",
     "pino-pretty": "^11.2.2",
+    "puppeteer": "^24.10.2",
+    "qrcode": "^1.5.4",
     "statuses": "^2.0.1"
   }
 }

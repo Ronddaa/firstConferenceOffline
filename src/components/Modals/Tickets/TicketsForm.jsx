@@ -69,7 +69,7 @@ export default function TicketsForm({ isOpen, onClose }) {
       user: {
         fullName: formData.fullName,
         phoneNumber: formData.phone,
-        email: formData.email,
+        email: formData.email.toLocaleLowerCase(),
         telegramNick: formData.telegramNick,
       },
       purchase: {

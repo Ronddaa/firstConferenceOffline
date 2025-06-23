@@ -6,7 +6,7 @@ export const createPartner = async (payload) => {
   const partnerData = await PartnersCollection.create(payload);
 
   // Рендерим HTML шаблон письма
-  const emailHtml = await renderTemplate("2", {
+  const emailHtml = await renderTemplate("partnersApplicationEmail", {
     companyName: partnerData.companyName,
     contactPerson: partnerData.contactPerson,
     contactInfo: partnerData.contactInfo,

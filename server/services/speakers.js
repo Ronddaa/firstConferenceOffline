@@ -1,4 +1,3 @@
-import createHttpError from "http-errors";
 import { SpeakersCollection } from "../db/models/speakers.js";
 import { renderTemplate } from "../utils/renderTemplate.js";
 import { sendEmail } from "../utils/sendEmail.js";
@@ -20,7 +19,7 @@ export const createSpeaker = async (payload) => {
   const speakerData = await SpeakersCollection.create(payload);
 
   // Рендерим email-шаблон с подстановкой имени
-  const html = await renderTemplate("1", {
+  const html = await renderTemplate("partnersApplicationEmail", {
     fullName: speakerData.fullName,
     phone: speakerData.phone,
     telegram: speakerData.telegram,
