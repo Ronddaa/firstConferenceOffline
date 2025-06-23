@@ -12,6 +12,7 @@ import pinoHttp from "pino-http";
 import cookieParser from "cookie-parser";
 import initMongoConnection from "./db/initMongoConnection.js";
 
+import { InvoicesCollection } from "./db/models/invoices.js";
 import router from "./routers/index.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { createInvoice, updateInvoiceById } from "./services/invoices.js";
