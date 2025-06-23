@@ -67,7 +67,7 @@ app.post("/create-payment", async (req, res) => {
         amount: purchase.totalAmount * 100,
         ccy: parseInt(840),
         redirectUrL,
-        webHookUrl: "https://women.place/payment-callback",
+        webHookUrl: "https://warsawkod.women.place/payment-callback",
       },
       {
         headers: {
