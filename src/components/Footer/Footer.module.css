@@ -1,0 +1,97 @@
+.wrapperNavigationFooter{
+    display: none;
+}
+
+footer{
+    background-color: #FFFFAC;
+    padding: 50px 0 80px;
+}
+footer :global(.container){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.buyBtnFooter{
+    padding: 9.8px 10px;
+    background-color: transparent;
+    border: 1px solid #1B2021;
+    border-radius: 10px;
+    color: #1B2021;
+    font-family: "Mulish";
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-left: 35px;
+}
+.arrowList{
+    fill: #1B2021;
+    position: relative;
+    transform: rotate(-90deg);
+}
+.wrapperPartnersBtn{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 0;
+    margin-bottom: 110px;
+}
+.partnersBtn{
+    padding: 5px 0 0;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #1B2021;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #1B2021;
+}
+.wrapperContactLinks{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: end;
+    padding: 0 20px;
+    margin-bottom: 110px;
+}
+.contactLink{
+    font-family: "Unbounded";
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #1B2021;
+    border-bottom: 2px solid #1B2021;
+}
+.wrapperC{
+    display: flex;
+    flex-direction: column;
+    color: #1B2021;
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+.wrapperPolicy{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 8px;
+}
+.policyLink{
+    color: #1B2021;
+}
+.titleFooter{
+    font-size: 20vw;
+    text-transform: uppercase;
+    position: relative;
+    color: #1B2021;
+    padding: 0 20px;
+}
+.titleFooter::after{
+    content: 'by Olimpia';
+    font-family: "Quentin";
+    font-size: 50px;
+    position: absolute;
+    bottom: -25px;
+    text-transform: none;
+    right: 25px;
+    color: #9EB7E5;
+    font-weight: 400;
+}
