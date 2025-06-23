@@ -15,7 +15,7 @@ export default function Footer() {
   const [modalBurgerMenuIsOpen, setmodalBurgerMenu] = useState(false);
 
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} id="footer">
       <div className="container">
         <img
           className={styles.logoFooter}

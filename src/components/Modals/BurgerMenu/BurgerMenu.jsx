@@ -81,43 +81,35 @@ export default function BurgerMenu({ isOpen, onClose }) {
         <li>
           <a
             className={styles.navigationLink}
-            href="#programSection"
+            href="#sectionProgramOnConference"
             onClick={onClose}
           >
             програма
           </a>
         </li>
         <li>
-          <a
-            className={styles.navigationLink}
-            href="#meSection"
-            onClick={onClose}
-          >
+          <a className={styles.navigationLink} href="#tariff" onClick={onClose}>
             тарифи
           </a>
         </li>
         <li>
           <a
             className={styles.navigationLink}
-            href="#reviewsSection"
+            href="#donation"
             onClick={onClose}
           >
             Благодійність
           </a>
         </li>
         <li>
-          <a
-            className={styles.navigationLink}
-            href="#questionsSection"
-            onClick={onClose}
-          >
+          <a className={styles.navigationLink} href="#FAQ" onClick={onClose}>
             FAQ
           </a>
         </li>
         <li>
           <a
             className={styles.navigationLink}
-            href="#questionsSection"
+            href="#footer"
             onClick={onClose}
           >
             контакти

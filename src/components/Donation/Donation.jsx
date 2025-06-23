@@ -2,7 +2,7 @@ import styles from './Donation.module.css'
 
 export default function Donation() {
     return (
-      <section className={styles.sectionDonation}>
+      <section className={styles.sectionDonation} id='donation'>
         <div className="container">
           <h2 className={styles.titleDonation}>
             Підтримка благодійного фонду “Kazo Mobile”
