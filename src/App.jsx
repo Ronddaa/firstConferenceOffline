@@ -1,5 +1,6 @@
 import Donation from "./components/Donation/Donation";
 import FAQ from "./components/FAQ/FAQ";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import Program from "./components/Program/Program";
@@ -23,6 +24,7 @@ export default function App() {
       <Tickets />
       <Donation />
       <FAQ />
+      <Footer />
     </>
   )
 }

@@ -6,9 +6,9 @@ import api from "../../../api/api";
 
 export default function TicketsForm({ isOpen, onClose }) {
   const tariffs = [
-    { name: "GOLD", price: 300 },
-    { name: "PREMIUM", price: 450 },
-    { name: "Luxe", price: 1200 },
+    { name: "GOLD", price: 1 },
+    { name: "PREMIUM", price: 1 },
+    { name: "Luxe", price: 1 },
     // { name: "Only ticket", price: 150 },
   ];
 

@@ -56,7 +56,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className={styles.sectionFAQ}>
+    <section className={styles.sectionFAQ} id="FAQ">
       <div className="container">
         <h2 className={styles.titleFAQ}>FAQ</h2>
         <ul className={styles.wrapperList}>

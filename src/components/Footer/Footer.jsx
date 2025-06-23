@@ -1,5 +1,5 @@
-import logo from "../../../public/logo.svg";
-import styles from "./Header.module.css";
+import styles from "./Footer.module.css";
+import logo from "./logoFooter.svg";
 import sprite from "../icons.svg";
 import SpeakersForm from "../Modals/Speakers/SpeakersForm";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import PartnersForm from "../Modals/Partners/PartnersForm";
 import TicketsForm from "../Modals/Tickets/TicketsForm";
 import BurgerMenu from "../Modals/BurgerMenu/BurgerMenu";
 
-export default function Header() {
+export default function Footer() {
   // const [modalLogInIsOpen, setModalLogIn] = useState(false);
   const [modalSpeakersIsOpen, setmodalSpeakers] = useState(false);
   const [modalPartnersIsOpen, setmodalPartners] = useState(false);
@@ -15,42 +15,42 @@ export default function Header() {
   const [modalBurgerMenuIsOpen, setmodalBurgerMenu] = useState(false);
 
   return (
-    <header>
+    <footer className={styles.footer} id="footer">
       <div className="container">
         <img
-          className={styles.logoHeader}
+          className={styles.logoFooter}
           src={logo}
           alt="logo"
-          width={188}
-          height={103}
+          width={98}
+          height={54}
         />
-        <ul className={styles.wrapperNavigationHeader}>
+        <ul className={styles.wrapperNavigationFooter}>
           <li>
-            <a href="#" className={styles.headerNavigationLink}>
+            <a href="#" className={styles.FooterNavigationLink}>
               про конференцію
             </a>
-            <a href="#" className={styles.headerNavigationLink}>
+            <a href="#" className={styles.FooterNavigationLink}>
               тарифи
             </a>
-            <a href="#" className={styles.headerNavigationLink}>
+            <a href="#" className={styles.FooterNavigationLink}>
               анонси
             </a>
           </li>
           <li>
-            <a href="#" className={styles.headerNavigationLink}>
+            <a href="#" className={styles.FooterNavigationLink}>
               благодійність
             </a>
-            <a href="#" className={styles.headerNavigationLink}>
+            <a href="#" className={styles.FooterNavigationLink}>
               FAQ
             </a>
-            <a href="#" className={styles.headerNavigationLink}>
+            <a href="#" className={styles.FooterNavigationLink}>
               контакти
             </a>
           </li>
           <li className={styles.absolutePlaceholder}></li>
         </ul>
         <button
-          className={styles.buyBtnHeader}
+          className={styles.buyBtnFooter}
           onClick={() => {
             setmodalTickets(true);
           }}
@@ -60,9 +60,7 @@ export default function Header() {
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
           </svg>
         </button>
-        <div className={styles.wrapperBurger} onClick={() => {
-          setmodalBurgerMenu(true)
-        }}>
+        <div className={styles.wrapperBurger} onClick={()=> setmodalBurgerMenu(true)}>
           <svg className={styles.burgerMenu} width={40} height={40}>
             <use xlinkHref={`${sprite}#icon-burger-menu`}></use>
           </svg>
@@ -90,6 +88,40 @@ export default function Header() {
           </button>
         </li>
       </ul>
+      <ul className={styles.wrapperContactLinks}>
+        <li>
+          <a className={styles.contactLink} href="tel:+48667994337">
+            +48667994337
+          </a>
+        </li>
+        <li>
+          <a className={styles.contactLink} href="#">
+            TELEGRAM
+          </a>
+        </li>
+        <li>
+          <a className={styles.contactLink} href="#">
+            INSTAGRAM
+          </a>
+        </li>
+      </ul>
+      <ul className={styles.wrapperC}>
+        <li>2025 &copy;</li>
+        <li>Усі права захищені</li>
+      </ul>
+      <ul className={styles.wrapperPolicy}>
+        <li>
+          <a className={styles.policyLink} href="#">
+            публічна оферта
+          </a>
+        </li>
+        <li>
+          <a className={styles.policyLink} href="#">
+            Політика конфіденційності
+          </a>
+        </li>
+      </ul>
+      <h2 className={styles.titleFooter}>КОД ЖІНКИ</h2>
       <SpeakersForm
         isOpen={modalSpeakersIsOpen}
         onClose={() => setmodalSpeakers(false)}
@@ -106,6 +138,6 @@ export default function Header() {
         isOpen={modalBurgerMenuIsOpen}
         onClose={() => setmodalBurgerMenu(false)}
       ></BurgerMenu>
-    </header>
+    </footer>
   );
 }

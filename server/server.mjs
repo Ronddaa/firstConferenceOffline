@@ -12,6 +12,7 @@ import pinoHttp from "pino-http";
 import cookieParser from "cookie-parser";
 import initMongoConnection from "./db/initMongoConnection.js";
 
+import { InvoicesCollection } from "./db/models/invoices.js";
 import router from "./routers/index.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { createInvoice, updateInvoiceById } from "./services/invoices.js";
@@ -68,7 +69,7 @@ app.post("/create-payment", async (req, res) => {
         amount: purchase.totalAmount * 100,
         ccy: parseInt(840),
         redirectUrL,
-        webHookUrl: "https://women.place/payment-callback",
+        webHookUrl: "https://warsawkod.women.place/payment-callback",
       },
       {
         headers: {

@@ -17,9 +17,10 @@ export default function SpeakersForm({ isOpen, onClose }) {
     setIsValid(Boolean(allFieldsFilled));
   }, [fullName, phone, telegram, instagram]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isValid) return;
+
     try {
       const formData = {
         fullName,
@@ -27,12 +28,23 @@ export default function SpeakersForm({ isOpen, onClose }) {
         telegram,
         instagram,
       };
+
       console.log(formData);
-      api.createSpeakerApplication(formData);
+      await api.createSpeakerApplication(formData); // ждём завершения запроса
+
+      // Очистка формы
+      setFullName("");
+      setPhone("");
+      setTelegram("");
+      setInstagram("");
+
+      // Закрытие модального окна
+      onClose();
     } catch (error) {
       console.log(error);
     }
-    console.log("Form was send!");
+
+    console.log("Form was sent!");
   };
 
   return (

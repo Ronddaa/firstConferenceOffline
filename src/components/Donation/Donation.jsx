@@ -2,7 +2,7 @@ import styles from './Donation.module.css'
 
 export default function Donation() {
     return (
-      <section className={styles.sectionDonation}>
+      <section className={styles.sectionDonation} id='donation'>
         <div className="container">
           <h2 className={styles.titleDonation}>
             Підтримка благодійного фонду “Kazo Mobile”
@@ -30,7 +30,10 @@ export default function Donation() {
               <h4 className={styles.titleLih43}>днів</h4>
             </li>
           </ul>
-          <a className={styles.detailsDonation} href="#">
+          <a
+            className={styles.detailsDonation}
+            href="https://www.instagram.com/mobile_dental_ukraine?igsh=MWoxc2czZ2RnaHRxNA=="
+          >
             дізнатись більше
           </a>
         </div>
@@ -51,8 +54,9 @@ export default function Donation() {
         </div>
         <div className="container">
           <p className={styles.lastTextDonation}>
-            У вас буде можливість не лише отримати <br /> унікальну річ, а й зробити
-            вагомий <br />внесок у силу, яка нас захищає
+            У вас буде можливість не лише отримати <br /> унікальну річ, а й
+            зробити вагомий <br />
+            внесок у силу, яка нас захищає
           </p>
         </div>
       </section>
