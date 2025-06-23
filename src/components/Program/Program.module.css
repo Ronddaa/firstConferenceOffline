@@ -1,6 +1,11 @@
 .sectionProgram{
     padding-top: 130px;
 }
+.programBackgroundSvg1{
+    position: absolute;
+    top: -40px;
+    /* transform: rotate(51deg); */
+}
 .btwsectionText{
     font-weight: 600;
     font-size: 14px;
@@ -16,7 +21,7 @@
     fill: #797979;
 }
 .wrapperDateInfo{
-    background-color: #FFFFAC;
+    background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
     display: flex;
     flex-direction: column;
     border: 1px solid #FFFFAC;
@@ -87,6 +92,22 @@
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 40px;
+    position: relative;
+}
+.titleProgram::after{
+    content: '';
+    background-image: url(./CircleSVGLine.svg);
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300%;
+    height: 700%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.2;
 }
 .titleProgram span{
     color: transparent;
@@ -189,4 +210,10 @@
   background: linear-gradient(90deg, #FFFCF9, #FFFFAC);
   -webkit-background-clip: text; /* Для Safari */
   background-clip: text;
+}
+.LinesAfterMonatikProgram{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
 }

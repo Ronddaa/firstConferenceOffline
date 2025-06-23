@@ -3,11 +3,19 @@ import prgramLi1IMG from './programLi1.webp'
 import prgramLi2IMG from './programLi2.webp'
 import prgramLi3IMG from './programLi3.webp'
 import prgramLi4IMG from "./programLi4.webp";
+import programBackgroundSvg1 from './programBackgroundSvg1.svg'
+import LinesAfterMonatikProgram from './LinesAfterMonatikProgram.svg'
 
 export default function Program() {
   return (
     <section className={styles.sectionProgram}>
-
+      <img
+        className={styles.programBackgroundSvg1}
+        src={programBackgroundSvg1}
+        alt="programBackgroundSvg1"
+        width={491}
+        height={458}
+      />
       <div className="container">
         <ul className={styles.wrapperDateInfo}>
           <li>
@@ -58,7 +66,8 @@ export default function Program() {
             <p className={styles.numberOfList}>(02)</p>
             <h3 className={styles.titlelistTwo}>Нетворкінг</h3>
             <p className={styles.textlistTwo}>
-              Серед 300+ учасників і лідерів <br /> української спільноти в Європі
+              Серед 300+ учасників і лідерів <br /> української спільноти в
+              Європі
             </p>
           </li>
           <li>
@@ -95,6 +104,13 @@ export default function Program() {
           <span> преміальності</span>
         </p>
       </div>
+      <img
+        className={styles.LinesAfterMonatikProgram}
+        src={LinesAfterMonatikProgram}
+        alt="LinesAfterMonatikProgram"
+        width={760}
+        height={360}
+      />
     </section>
   );
 }
