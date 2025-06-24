@@ -180,8 +180,8 @@ app.get("/*", (req, res) => {
 
 app.use(errorHandler);
 
-const PORT = 8081;
-const HOST = "localhost";
+const PORT = 3000;
+const HOST = "127.1.5.121";
 
 app.listen(PORT, HOST, () => {
   console.log(`Server is running on http://${HOST}:${PORT}`);
