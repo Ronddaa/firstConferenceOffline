@@ -6,9 +6,9 @@ import api from "../../../api/api";
 
 export default function TicketsForm({ isOpen, onClose }) {
   const tariffs = [
-    { name: "GOLD", price: 1 },
-    { name: "PREMIUM", price: 1 },
-    { name: "Luxe", price: 1 },
+    { name: "GOLD", price: 300 },
+    { name: "PREMIUM", price: 450 },
+    { name: "Luxe", price: 1200 },
     // { name: "Only ticket", price: 150 },
   ];
 
@@ -63,7 +63,7 @@ export default function TicketsForm({ isOpen, onClose }) {
     console.log("Данные формы:", formData);
 
     const response = await api.createPayment({
-      amount: 0.01,
+      amount: 100,
       currency: 840,
       redirectUrl: "https://warsawkod.women.place",
       user: {
