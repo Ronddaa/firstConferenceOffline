@@ -30,7 +30,7 @@ const allowedOrigins = [
   "http://localhost:5174",
   "http://127.1.2.205:3000",
 ];
-// eslint-disable-next-line no-unused-vars
+
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
