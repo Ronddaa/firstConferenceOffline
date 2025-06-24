@@ -199,7 +199,7 @@ export default function TicketsForm({ isOpen, onClose }) {
         </div>
 
         <p className={styles.SumForTickets}>
-          сума до сплати: {calculateTotal()} $
+          сума до сплати: {calculateTotal()} &euro;
         </p>
 
         <button

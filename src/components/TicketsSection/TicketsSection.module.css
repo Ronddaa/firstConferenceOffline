@@ -173,8 +173,15 @@
 .wrapperInfoTicketOnly .detailsText span{
     max-width: 210px;
 }
-.underPresidentRoom::after{
-    
+.underPresidentRoom{
+    display: flex;
+    flex-direction: column;
+}
+.TicketsGold p .underPresidentRoomSpan{
+    font-size: 12px;
+    text-transform: none;
+    color: #696969;
+    font-weight: 400;
 }
 .wrapperAuction{
  display: flex;

@@ -70,7 +70,7 @@ export default function Tickets() {
                 </p>
               </li>
             </ul>
-            <p className={styles.priceText}>300$</p>
+            <p className={styles.priceText}>300&euro;</p>
             <button
               className={styles.btnBuyTariffGold}
               onClick={() => {
@@ -156,7 +156,7 @@ export default function Tickets() {
                 </p>
               </li>
             </ul>
-            <p className={styles.priceText}>450$</p>
+            <p className={styles.priceText}>450&euro;</p>
             <button
               className={styles.btnBuyTariffPremium}
               onClick={() => {
@@ -255,6 +255,9 @@ export default function Tickets() {
                   <span>
                     -50% знижка на бранч <br /> у президентському номері{" "}
                   </span>
+                  <span className={styles.underPresidentRoomSpan}>
+                    наступного дня (24.08.2025)
+                  </span>
                 </p>
               </li>
               <li>
@@ -276,7 +279,7 @@ export default function Tickets() {
                 </p>
               </li>
             </ul>
-            <p className={styles.priceText}>1200$</p>
+            <p className={styles.priceText}>1200&euro;</p>
             <button
               className={styles.btnBuyTariffGold}
               onClick={() => {
@@ -307,7 +310,7 @@ export default function Tickets() {
                   MONATIK
                 </span>
               </p>
-              <p className={styles.priceText}>150$</p>
+              <p className={styles.priceText}>150&euro;</p>
               <button className={styles.btnBuyTariffGold}>
                 придбати квиток
               </button>
