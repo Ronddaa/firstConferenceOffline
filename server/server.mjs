@@ -67,7 +67,7 @@ app.post("/create-payment", async (req, res) => {
       "https://api.monobank.ua/api/merchant/invoice/create",
       {
         amount: purchase.totalAmount * 100,
-        ccy: parseInt(840),
+        ccy: 978,
         redirectUrL,
         webHookUrl: "https://warsawkod.women.place/payment-callback",
       },
