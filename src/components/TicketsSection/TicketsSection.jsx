@@ -2,10 +2,12 @@ import styles from "./TicketsSection.module.css";
 import sprite from "../icons.svg";
 import TicketsForm from "../Modals/Tickets/TicketsForm";
 import { useState } from "react";
+import ShowPlace from "../Modals/ShowPlace/ShowPlace";
 
 export default function Tickets() {
 
   const [modalTicketsIsOpen, setmodalTickets] = useState(false);
+  const [modalShowPlaceIsOpen, setmodalShowPlace] = useState(false);
 
 
   return (
@@ -77,7 +79,14 @@ export default function Tickets() {
             >
               придбати квиток
             </button>
-            <button className={styles.btnPlaceShow}>переглянути місця</button>
+            <button
+              className={styles.btnPlaceShow}
+              onClick={() => {
+                setmodalShowPlace(true);
+              }}
+            >
+              переглянути місця
+            </button>
           </li>
           <li className={styles.TicketsPremium}>
             <h3 className={styles.titleTariffCard}>premium</h3>
@@ -156,7 +165,14 @@ export default function Tickets() {
             >
               придбати квиток
             </button>
-            <button className={styles.btnPlaceShow}>переглянути місця</button>
+            <button
+              className={styles.btnPlaceShow}
+              onClick={() => {
+                setmodalShowPlace(true);
+              }}
+            >
+              переглянути місця
+            </button>
           </li>
           <li className={styles.TicketsGold}>
             <h3 className={styles.titleTariffCard}>LUXE</h3>
@@ -189,7 +205,9 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-hands`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  <span>Повноцінний обід <br /> зі спікерами</span>
+                  <span>
+                    Повноцінний обід <br /> зі спікерами
+                  </span>
                 </p>
               </li>
               <li>
@@ -244,7 +262,9 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-convert`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  <span>Відео та фото матеріали <br /> після заходу </span>
+                  <span>
+                    Відео та фото матеріали <br /> після заходу{" "}
+                  </span>
                 </p>
               </li>
               <li>
@@ -265,7 +285,14 @@ export default function Tickets() {
             >
               придбати квиток
             </button>
-            <button className={styles.btnPlaceShow}>переглянути місця</button>
+            <button
+              className={styles.btnPlaceShow}
+              onClick={() => {
+                setmodalShowPlace(true);
+              }}
+            >
+              переглянути місця
+            </button>
           </li>
           <li className={styles.TicketsOnlyMonatik}>
             <h3 className={styles.titleOnlyTiket}>ONLY TICKET</h3>
@@ -325,6 +352,10 @@ export default function Tickets() {
         isOpen={modalTicketsIsOpen}
         onClose={() => setmodalTickets(false)}
       ></TicketsForm>
+      <ShowPlace
+        isOpen={modalShowPlaceIsOpen}
+        onClose={() => setmodalShowPlace(false)}
+      ></ShowPlace>
     </section>
   );
 }

@@ -71,9 +71,9 @@
     text-transform: uppercase;
     color: #FFFFAC;
     text-align: center;
-    font-weight: 600;
-    
+    font-weight: 600; 
     text-decoration: underline;
+    display: inline-block;
 }
 .btwTexttwo{
     text-transform: uppercase;

@@ -23,11 +23,14 @@ export default function Program() {
             <p className={styles.mounth}>серпня</p>
           </li>
           <li>
-            <p className={styles.hotelName}>
+            <a
+              className={styles.hotelName} target="_blank"
+              href="https://www.marriott.com/en-us/hotels/wawwi-the-westin-warsaw/overview/"
+            >
               Westin hotel
               <br />
               Warsaw
-            </p>
+            </a>
           </li>
         </ul>
 

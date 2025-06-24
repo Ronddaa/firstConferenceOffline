@@ -1,0 +1,38 @@
+.modalShowPlace {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1b2021b2;
+    padding: 0;
+    overflow: hidden;
+    z-index: 999;
+    transition: 0.4s;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modalShowPlaceContent {
+    background-color: #fffcf9;
+    width: 90%;
+    height: 60%;
+    padding: 53px 21px 25px;
+    border-radius: 10px;
+    position: relative;
+    overflow: auto; /* важно: скролл при переполнении */
+  }
+  .closeModalPlaceShow{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+  }
+  .showPlaceIMG {
+    display: block;
+    max-width: none; /* позволяет быть больше контейнера */
+    width: 600px;    /* или больше — как хочешь */
+    height: auto;
+  }

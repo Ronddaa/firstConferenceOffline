@@ -60,7 +60,10 @@ export default function Footer() {
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
           </svg>
         </button>
-        <div className={styles.wrapperBurger} onClick={()=> setmodalBurgerMenu(true)}>
+        <div
+          className={styles.wrapperBurger}
+          onClick={() => setmodalBurgerMenu(true)}
+        >
           <svg className={styles.burgerMenu} width={40} height={40}>
             <use xlinkHref={`${sprite}#icon-burger-menu`}></use>
           </svg>
@@ -90,17 +93,29 @@ export default function Footer() {
       </ul>
       <ul className={styles.wrapperContactLinks}>
         <li>
-          <a className={styles.contactLink} href="tel:+48667994337">
+          <a
+            target="_blank"
+            className={styles.contactLink}
+            href="tel:+48667994337"
+          >
             +48667994337
           </a>
         </li>
         <li>
-          <a className={styles.contactLink} href="#">
+          <a
+            target="_blank"
+            className={styles.contactLink}
+            href="https://t.me/women_psyconference"
+          >
             TELEGRAM
           </a>
         </li>
         <li>
-          <a className={styles.contactLink} href="#">
+          <a
+            target="_blank"
+            className={styles.contactLink}
+            href="https://www.instagram.com/kod.zhinky?igsh=MXFoZHN2dWxoeHMyZw%3D%3D&utm_source=qr"
+          >
             INSTAGRAM
           </a>
         </li>
