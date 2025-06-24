@@ -4,32 +4,33 @@
 />
 
 <style>
-  body { font-family: "Mulish", Arial, sans-serif; color: #1b2021; margin: 0; }
-  * { box-sizing: border-box; } .ticket { background-image:
-  url("https://i.imgur.com/HrSUDoy.jpeg"); background-color: #1b2021;
-  background-position: center; background-size: cover; overflow: hidden;
-  padding: 42px 0 71px; width: 595px; margin: 0 auto; position: relative; }
+  html, body { margin: 0; padding: 0; } body { font-family: "Mulish", Arial,
+  sans-serif; color: #1B2021; margin: 0; } * { box-sizing: border-box; } .ticket
+  { background-image: url("https://i.imgur.com/HrSUDoy.jpeg"); background-color:
+  #1b2021; background-position: center; background-size: cover; padding: 42px 0
+  71px; width: 595px; margin: 0 auto; position: relative; overflow: hidden; }
   .header-title { text-align: center; font-weight: 600; font-size: 18px; margin:
   0 0 70px 0; } .tariff { font-weight: 600; text-align: center; font-size: 26px;
   white-space: nowrap; letter-spacing: -0.03em; margin: 0 0 23px 0;
   text-transform: uppercase; font-family: "Unbounded", Arial, sans-serif; }
   .dress-code-title { font-family: "Unbounded", Arial, sans-serif; margin: 0 0
   19px 0; font-weight: 600; text-align: center; font-size: 26px; }
-  .colors-labels { display: flex; justify-content: space-between; font-size:
-  18px; margin: 0 0 5px 0; padding: 0 27px; } .colors-bar { margin: 0 25px;
-  height: 100px; display: flex; border-radius: 8px; overflow: hidden; border:
-  1px solid #1b2021; } .colors-bar div { flex: 1; } .color-1 { background-color:
-  #ffffac; } .color-2 { background-color: #ffff61; } .color-3 {
-  background-color: #ffe203; } .color-4 { background-color: #9eb7e5; } .color-5
-  { background-color: #b7cbf0; } .color-6 { background-color: #d8e5fc; }
-  .color-7 { background-color: #fff9da; } .color-8 { background-color: #fff6e3;
-  } .color-9 { background-color: #ffffff; } .colors-caption { text-align:
-  center; font-size: 18px; font-style: italic; margin: 0 0 30px 0; }
-  .dress-code-images { width: 100%; display: flex; justify-content:
-  space-between; padding: 0 25px; margin: 0 0 50px 0; } .qr-caption {
-  text-align: center; font-size: 18px; font-weight: 600; margin: 0 0 20px 0; }
-  .qr-image { width: 310px; height: 310px; display: block; margin: 0 auto;
-  border-radius: 8px; }
+  .colors-labels { font-size: 18px; margin: 0 0 5px 0; padding: 0 27px; }
+  .colors-labels span { display: inline-block; width: 32%; text-align: center; }
+  .colors-bar { margin: 0 25px; height: 100px; border-radius: 8px; overflow:
+  hidden; border: 1px solid #1b2021; font-size: 0; white-space: nowrap; }
+  .colors-bar .color { display: inline-block; width: 11.11%; height: 100%; }
+  .color-1 { background-color: #ffffac; } .color-2 { background-color: #ffff61;
+  } .color-3 { background-color: #ffe203; } .color-4 { background-color:
+  #9eb7e5; } .color-5 { background-color: #b7cbf0; } .color-6 {
+  background-color: #d8e5fc; } .color-7 { background-color: #fff9da; } .color-8
+  { background-color: #fff6e3; } .color-9 { background-color: #ffffff; }
+  .colors-caption { text-align: center; font-size: 18px; font-style: italic;
+  margin: 0 0 30px 0; } .dress-code-images { text-align: center; margin: 0 0
+  50px 0; font-size: 0; } .dress-code-images img { display: inline-block; width:
+  27%; margin: 0 1%; vertical-align: top; } .qr-caption { text-align: center;
+  font-size: 18px; font-weight: 600; margin: 0 0 20px 0; } .qr-image { width:
+  310px; height: 310px; display: block; margin: 0 auto; border-radius: 8px; }
 </style>
 
 <div class="ticket">
@@ -64,35 +65,23 @@
   </div>
 
   <div class="colors-bar">
-    <div class="color-1"></div>
-    <div class="color-2"></div>
-    <div class="color-3"></div>
-    <div class="color-4"></div>
-    <div class="color-5"></div>
-    <div class="color-6"></div>
-    <div class="color-7"></div>
-    <div class="color-8"></div>
-    <div class="color-9"></div>
+    <div class="color color-1"></div>
+    <div class="color color-2"></div>
+    <div class="color color-3"></div>
+    <div class="color color-4"></div>
+    <div class="color color-5"></div>
+    <div class="color color-6"></div>
+    <div class="color color-7"></div>
+    <div class="color color-8"></div>
+    <div class="color color-9"></div>
   </div>
 
   <div class="colors-caption">кольори нашого заходу</div>
 
   <div class="dress-code-images">
-    <img
-      src="https://i.imgur.com/a6lAuiF.png"
-      alt="dress code image"
-      style="width: 27%; display: block"
-    />
-    <img
-      src="https://i.imgur.com/8bCnNZY.png"
-      alt="dress code image"
-      style="width: 27%; display: block"
-    />
-    <img
-      src="https://i.imgur.com/tCZd685.png"
-      alt="dress code image"
-      style="width: 27%; display: block"
-    />
+    <img src="https://i.imgur.com/a6lAuiF.png" alt="dress code image" />
+    <img src="https://i.imgur.com/8bCnNZY.png" alt="dress code image" />
+    <img src="https://i.imgur.com/tCZd685.png" alt="dress code image" />
   </div>
 
   <div class="qr-caption">*заскануй код на конференції</div>

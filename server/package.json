@@ -19,6 +19,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "handlebars": "^4.7.8",
+    "html-pdf": "^3.0.1",
     "joi": "^17.13.3",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.1",
@@ -27,7 +28,6 @@
     "pino": "^9.4.0",
     "pino-http": "^10.3.0",
     "pino-pretty": "^11.2.2",
-    "puppeteer": "^24.10.2",
     "qrcode": "^1.5.4",
     "statuses": "^2.0.1"
   }
