@@ -64,7 +64,7 @@ export default function TicketsForm({ isOpen, onClose }) {
 
     const response = await api.createPayment({
       amount: calculateTotal(),
-      currency: 840,
+      currency: 978,
       redirectUrl: "https://warsawkod.women.place",
       user: {
         fullName: formData.fullName,
@@ -169,7 +169,7 @@ export default function TicketsForm({ isOpen, onClose }) {
                 onClick={() => handleSelectTariff(t.name)}
               >
                 <span>{t.name}</span>
-                <span>{t.price}$</span>
+                <span>{t.price}&euro;</span>
               </li>
             ))}
           </ul>
