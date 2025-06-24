@@ -30,7 +30,7 @@ export default function Donation() {
               <h4 className={styles.titleLih43}>днів</h4>
             </li>
           </ul>
-          <a
+          <a target='_blank'
             className={styles.detailsDonation}
             href="https://www.instagram.com/mobile_dental_ukraine?igsh=MWoxc2czZ2RnaHRxNA=="
           >
