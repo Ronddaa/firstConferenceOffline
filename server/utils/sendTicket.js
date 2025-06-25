@@ -1,4 +1,3 @@
-import pdf from "html-pdf";
 import QRCode from "qrcode";
 
 import { sendEmail } from "./sendEmail.js";
@@ -19,7 +18,7 @@ export async function sendTicket(invoice, ticketName) {
     }
   };
 
-  const qrDataUrl = await QRCode.toDataURL(
+  const qrBuffer = await QRCode.toBuffer(
     `https://admin.women.place/check/${invoice._id}`,
     {
       color: {
@@ -29,54 +28,36 @@ export async function sendTicket(invoice, ticketName) {
     }
   );
 
-  // 2. Подготовим данные для шаблона
-  const data = {
-    qrImage: qrDataUrl,
-  };
+  console.log(`${ticketName} was sent to ${invoice.user.email}`);
+  const ticketHtml = await renderTemplate(ticketName, {});
 
-  const template = await renderTemplate(ticketName, data);
-
-  // 3. Генерируем PDF из HTML с помощью html-pdf
-  const pdfOptions = {
-    // Устанавливаем ширину PDF равной ширине вашего контента в HTML
-    width: "595px",
-    // Устанавливаем высоту PDF, чтобы вместить весь контент.
-    // Используйте 1490px, если это желаемая и достаточная высота для вашего билета.
-    height: "1490px",
-    border: "0",
-    margin: { top: "0mm", bottom: "0mm", left: "0mm", right: "0mm" },
-    // clip тоже должен соответствовать этим размерам для обрезки
-    clip: {
-      x: 0,
-      y: 0,
-      width: 595,
-      height: 1490,
-    },
-    printBackground: true,
-  };
-
-  const pdfBuffer = await new Promise((resolve, reject) => {
-    pdf.create(template, pdfOptions).toBuffer((err, buffer) => {
-      if (err) return reject(err);
-      resolve(buffer);
-    });
-  });
-
-  // 4. Формируем письмо
   const thxForPaymentHtml = await renderTemplate("thxForPayment", {});
 
-  // 5. Отправляем письмо с PDF вложением
-  await sendEmail({
-    to: invoice.user.email,
-    subject: "Дякуємо за покупку. Лови свій квиток!",
-    html: thxForPaymentHtml,
-    attachments: [
-      {
-        filename: "ticket.pdf",
-        content: pdfBuffer,
-      },
-    ],
-  });
+  try {
+    await sendEmail({
+      to: invoice.user.email,
+      subject: "Дякуємо за покупку. За секундку прийде твій квиток!",
+      html: thxForPaymentHtml,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  try {
+    await sendEmail({
+      to: invoice.user.email,
+      subject: "А ось і твій квиток, як і обіцяли)",
+      html: ticketHtml,
+      attachments: [
+        {
+          filename: "qrcode.png",
+          content: qrBuffer,
+          cid: "qrCode",
+        },
+      ],
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
   return { status: "success", email: invoice.user.email };
 }
