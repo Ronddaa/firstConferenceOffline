@@ -1,4 +1,4 @@
-// 📁 src/utils/sendLeadToMeta.js
+/* global fbq */
 
 /**
  * Извлекает UTM-метки из текущего URL
@@ -64,6 +64,14 @@ function getUtmParams() {
           }
         })
       });
+
+      if (typeof fbq === "function") {
+        fbq("track", "Lead", {
+          content_name: formType,
+          value: purchaseValue || 0,
+          currency: "UAH"
+        });
+      }
   
       const result = await response.json();
       console.log("✅ Meta CAPI result:", result);
