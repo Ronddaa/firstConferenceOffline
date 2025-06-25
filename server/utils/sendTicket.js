@@ -28,13 +28,11 @@ export async function sendTicket(invoice, ticketName) {
     }
   );
 
-  console.log(ticketName);
+  console.log(`${ticketName} was sent to ${invoice.user.email}`);
   const ticketHtml = await renderTemplate(ticketName, {});
 
-  // 4. Формируем письмо
   const thxForPaymentHtml = await renderTemplate("thxForPayment", {});
-  console.log(thxForPaymentHtml);
-  // 5. Отправляем письмо с PDF вложением
+
   try {
     await sendEmail({
       to: invoice.user.email,
