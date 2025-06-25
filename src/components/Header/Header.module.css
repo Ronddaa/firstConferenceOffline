@@ -4,6 +4,7 @@ header{
     width: 100%;
     padding: 50px 0;
     z-index: 10;
+    transition: 0.3s;
 }
 header :global(.container){
     display: flex;
@@ -11,12 +12,19 @@ header :global(.container){
     align-items: start;
 }
 
+.scrolledHeader {
+    background: #1B2021B2;
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.3s ease, padding 0.3s ease;
+  }
+
 /* MOBILE */
 
 .logoHeader{
     width: 99px;
     height: 54px;
-    margin-bottom: 16px;
 }
 
 .wrapperNavigationHeader{
@@ -48,6 +56,7 @@ header :global(.container){
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
+    transition: 0.3s;
 }
 .partnersBtn{
     padding: 5px 0 0;
@@ -61,6 +70,14 @@ header :global(.container){
 .absolutePlaceholder{
     display: none;
 }
+
+.hidePartnersBtn {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    max-height: 0;
+    transition: all 0.3s ease;
+  }
 
 /* COPMUCTER */
 @media (min-width:678px){
