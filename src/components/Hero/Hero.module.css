@@ -49,6 +49,8 @@ line-height: 1;
     border-radius: 10px;
     position: relative;
     z-index: 2;
+    max-width: 220px;
+    text-align: center;
 }
 .backgrondShadow{
     position: absolute;

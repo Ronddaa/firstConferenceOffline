@@ -42,13 +42,15 @@ export default function Header() {
   return (
     <header className={`${!isScrolledTop ? styles.scrolledHeader : ""}`}>
       <div className="container">
-        <img
-          className={styles.logoHeader}
-          src={logo}
-          alt="logo"
-          width={188}
-          height={103}
-        />
+        <a href="#">
+          <img
+            className={styles.logoHeader}
+            src={logo}
+            alt="logo"
+            width={188}
+            height={103}
+          />
+        </a>
         <ul className={styles.wrapperNavigationHeader}>
           <li>
             <a href="#" className={styles.headerNavigationLink}>

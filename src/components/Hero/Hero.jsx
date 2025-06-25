@@ -16,14 +16,9 @@ export default function Hero() {
           <p className={styles.detailsTextHero2}>
             до Дня Незалежності —<br /> для тих, хто творить майбутнє
           </p>
-          <button
-            className={styles.buyBtnHero}
-            onClick={() => {
-              setmodalTickets(true);
-            }}
-          >
-            придбати квиток
-          </button>
+          <a className={styles.buyBtnHero} href="#tariff">
+            обрати тариф
+          </a>
         </div>
         <div className={styles.backgrondShadow}></div>
         <TicketsForm
