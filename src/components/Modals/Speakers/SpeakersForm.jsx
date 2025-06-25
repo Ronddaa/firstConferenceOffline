@@ -3,6 +3,7 @@ import styles from "./SpeakersForm.module.css";
 import sprite from "../../icons.svg";
 import Modal from "react-modal";
 import api from "../../../api/api";
+import { sendLeadToMeta } from "../../../utils/sendLeadToMeta"; // ✅ Импорт функции для отправки события в Meta
 
 export default function SpeakersForm({ isOpen, onClose }) {
   const [fullName, setFullName] = useState("");
@@ -30,15 +31,21 @@ export default function SpeakersForm({ isOpen, onClose }) {
       };
 
       console.log(formData);
-      await api.createSpeakerApplication(formData); // ждём завершения запроса
+      await api.createSpeakerApplication(formData);
 
-      // Очистка формы
+      // ✅ Отправка события Lead в Meta CAPI
+      sendLeadToMeta({
+        formType: "speaker",
+        phone,
+        name: fullName,
+        telegram,
+      });
+
       setFullName("");
       setPhone("");
       setTelegram("");
       setInstagram("");
 
-      // Закрытие модального окна
       onClose();
     } catch (error) {
       console.log(error);

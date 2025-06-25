@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import styles from "./TicketsForm.module.css";
 import sprite from "../../icons.svg";
 import api from "../../../api/api";
+import { sendLeadToMeta } from "../../../utils/sendLeadToMeta";
 
 export default function TicketsForm({ isOpen, onClose }) {
   const tariffs = [
@@ -61,6 +62,17 @@ export default function TicketsForm({ isOpen, onClose }) {
     if (!isFormValid) return;
 
     console.log("Данные формы:", formData);
+
+    // ✅ Отправка события Lead в Meta CAPI
+    sendLeadToMeta({
+      formType: "client",
+      phone: formData.phone,
+      name: formData.fullName,
+      tariffName: formData.tariff,
+      ticketQuantity: formData.quantity,
+      purchaseValue: calculateTotal(),
+      telegram: formData.telegramNick,
+    });
 
     const response = await api.createPayment({
       amount: calculateTotal(),

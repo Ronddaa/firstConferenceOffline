@@ -3,18 +3,17 @@ import Modal from "react-modal";
 import styles from "./Partners.module.css";
 import sprite from "../../icons.svg";
 import api from "../../../api/api";
+import { sendLeadToMeta } from "../../../utils/sendLeadToMeta"; // ✅ Импорт функции Meta Pixel
 
 export default function PartnersForm({ isOpen, onClose }) {
-  // Начальное состояние всех полей формы
   const initialState = {
     companyName: "",
     contactPerson: "",
-    contactInfo: "", // email или телефон
+    contactInfo: "",
     telegramNick: "",
     instagramLink: "",
   };
 
-  // Состояние формы, то что отправляем в БД
   const [formData, setFormData] = useState(initialState);
 
   const isValidContactInfo = (value) => {
@@ -39,7 +38,6 @@ export default function PartnersForm({ isOpen, onClose }) {
     formData.telegramNick.trim() !== "" &&
     isValidUrl(formData.instagramLink.trim());
 
-  // Обработка изменения значений в полях формы
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({
@@ -48,25 +46,32 @@ export default function PartnersForm({ isOpen, onClose }) {
     }));
   };
 
-  // Обработка закрытия модального окна и сброс полей
   const handleClose = () => {
-    setFormData(initialState); // очищаем все поля
-    onClose(); // закрываем модалку
+    setFormData(initialState);
+    onClose();
   };
 
-  // Отправка формы — временно отключена (добавим позже MongoDB)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
+
     try {
       console.log(formData);
       api.createPartnerApplication(formData);
+
+      // ✅ Отправка события Lead в Meta Conversions API
+      sendLeadToMeta({
+        formType: "partner",
+        phone: formData.contactInfo,
+        name: formData.contactPerson,
+        telegram: formData.telegramNick,
+      });
     } catch (error) {
       console.log(error);
     }
-    // Тут будет логика отправки формы в MongoDB
+
     console.log("Отправлено:", formData);
-    handleClose(); // закрыть и сбросить форму
+    handleClose();
   };
 
   return (
@@ -78,7 +83,6 @@ export default function PartnersForm({ isOpen, onClose }) {
       onRequestClose={handleClose}
       ariaHideApp={false}
     >
-      {/* Кнопка закрытия */}
       <svg
         className={styles.closeModalPartnersForm}
         onClick={handleClose}
@@ -88,10 +92,8 @@ export default function PartnersForm({ isOpen, onClose }) {
         <use xlinkHref={`${sprite}#icon-close`}></use>
       </svg>
 
-      {/* Заголовок */}
       <h2 className={styles.titlePartnersForm}>стати партнером</h2>
 
-      {/* Форма */}
       <form className={styles.PartnersForm} onSubmit={handleSubmit}>
         <input
           id="companyName"
@@ -139,7 +141,6 @@ export default function PartnersForm({ isOpen, onClose }) {
           required
         />
 
-        {/* Кнопка отправки с динамическими стилями */}
         <button
           className={
             isFormValid
