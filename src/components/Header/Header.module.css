@@ -23,7 +23,7 @@ header :global(.container){
     display: none;
 }
 .buyBtnHeader{
-    padding: 9.8px 10px;
+    padding: 8.7px 10px;
     background-color: transparent;
     border: 1px solid #FFFCF9;
     border-radius: 10px;
@@ -39,7 +39,7 @@ header :global(.container){
 .arrowList{
     fill: #FFFCF9;
     position: relative;
-    transform: rotate(-90deg);
+    /* transform: rotate(-90deg); */
 }
 .burgerMenu{
     fill: #FFFCF9;
