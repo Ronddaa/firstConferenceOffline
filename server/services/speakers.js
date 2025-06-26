@@ -15,7 +15,7 @@ export const createSpeaker = async (payload) => {
   });
 
   await sendEmail({
-    to: "nikiatanik@gmail.com",
+    to: "arinailienok@gmail.com",
     subject: "Заявка на долучення до спікерів",
     html,
   });
