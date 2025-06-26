@@ -16,8 +16,8 @@ export const createPartner = async (payload) => {
 
   // Отправляем email
   await sendEmail({
-    to: "nikiatanik@gmail.com", // Укажи email, на который должна приходить заявка
-    subject: "Новая заявка на партнёрство",
+    to: "arinailienok@gmail.com", // Укажи email, на который должна приходить заявка
+    subject: "Заявка на долучення до партнерів",
     html: emailHtml,
   });
 
