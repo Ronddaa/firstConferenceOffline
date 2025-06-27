@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import Program from "./components/Program/Program";
 import ProgramOnConference from "./components/ProgramOnConference/ProgramOnConference";
+import SpeakersSection from "./components/SpeakersSection/SpeakersSection";
 import Tema from "./components/Tema/Tema";
 import Tickets from "./components/TicketsSection/TicketsSection";
 
@@ -20,6 +21,7 @@ export default function App() {
       <Hero />
       <Program />
       <Tema />
+      <SpeakersSection />
       <ProgramOnConference />
       <Tickets />
       <Donation />
