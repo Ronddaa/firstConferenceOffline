@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./SpeakersSection.module.css";
 import sprite from "../icons.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,6 +9,12 @@ import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
 
 export default function SpeakersSection() {
+  const [activeSpeakerId, setActiveSpeakerId] = useState(null);
+
+  const toggleDetails = (id) => {
+    setActiveSpeakerId((prev) => (prev === id ? null : id));
+  };
+
   const speakers = [
     {
       id: 1,
@@ -16,10 +23,10 @@ export default function SpeakersSection() {
       swiperSlideBackground: "swiperSlideBackground1",
       speakerInstagram:
         "https://www.instagram.com/dr.tolstikova?igsh=d2J6Mjg1OTRnMmk5",
-      swiperClass: "",
-      speakerNameClass: "speakerNameClass1",
+      speakerClass: "speakerNameClass1",
       numberOfSpeaker: "(01)",
       moreInfoBtnClass: "moreInfoBtnDisplayNone",
+      contentDetails: "",
     },
     {
       id: 2,
@@ -28,10 +35,10 @@ export default function SpeakersSection() {
       swiperSlideBackground: "swiperSlideBackground2",
       speakerInstagram:
         "https://www.instagram.com/kozachkova_yuliia?igsh=MXZmbjVxeXY1eHlrMQ==",
-      swiperClass: "",
-      speakerNameClass: "speakerNameClass2",
+      speakerClass: "speakerNameClass2",
       numberOfSpeaker: "(02)",
       moreInfoBtnClass: "moreInfoBtnDisplayNone",
+      contentDetails: "",
     },
     {
       id: 3,
@@ -40,10 +47,11 @@ export default function SpeakersSection() {
       swiperSlideBackground: "swiperSlideBackground3",
       speakerInstagram:
         "https://www.instagram.com/anastasia.olimpia.matushevska?igsh=MTU1bWZoa3MzNmkwaA==",
-      swiperClass: "",
-      speakerNameClass: "speakerNameClass3",
+      speakerClass: "speakerNameClass3",
       numberOfSpeaker: "(03)",
       moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Психотерапевт, сексолог. Жінка, мама, партнерка, творчиня. Автор програм для майбутніх сексологів та психотерапевтів. Засновниця проєкту  «ЖІНКИ» - серії трансформаційних подій, ретритів і конференцій про глибину, сміливість і жіночу цілісність.",
     },
     {
       id: 4,
@@ -52,10 +60,11 @@ export default function SpeakersSection() {
       swiperSlideBackground: "swiperSlideBackground4",
       speakerInstagram:
         "https://www.instagram.com/kozlova.katja?igsh=cHMwMXI2dW9jcGhy&utm_source=qr",
-      swiperClass: "",
-      speakerNameClass: "speakerNameClass4",
+      speakerClass: "speakerNameClass4",
       numberOfSpeaker: "(04)",
       moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Наставник особистих брендів, автор курсу по проявленості MANIFESTATION COURSE, трансформаційний маркетолог, модель, блогер",
     },
     {
       id: 5,
@@ -64,15 +73,17 @@ export default function SpeakersSection() {
       swiperSlideBackground: "swiperSlideBackground5",
       speakerInstagram:
         "https://www.instagram.com/lenabezb?igsh=bDVmZXR1OWoxdXc1",
-      swiperClass: "",
-      speakerNameClass: "speakerNameClass5",
+      speakerClass: "speakerNameClass5",
       numberOfSpeaker: "(05)",
       moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Магістр бізнес адміністрування, викладач економіки, до війни керувала власним мережовим бізнесом понад 10 років, бакалавр психології, практикуючий психолог, гештальт-терапевт, тілесно-орієнтований терапевт.",
     },
   ];
 
   return (
     <section className={styles.SpeakersSection}>
+      <p className={styles.textBtwSection}>(наші спікери)</p>
       <div className="container">
         <Swiper
           scrollbar={{ hide: true }}
@@ -88,11 +99,23 @@ export default function SpeakersSection() {
               <p className={styles.numberOfSpeaker}>
                 {speaker.numberOfSpeaker}
               </p>
+
+              <div
+                className={`${styles.dropUpDetails} ${
+                  activeSpeakerId === speaker.id ? styles.active : ""
+                }`}
+              >
+                <p></p>
+                <p className={styles.contentDetails}>
+                  {speaker.contentDetails}
+                </p>
+              </div>
+
               <div className={styles.wrapperSpeakerInfo}>
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles[speaker.speakerNameClass]}
+                  className={styles[speaker.speakerClass]}
                   href={speaker.speakerInstagram}
                 >
                   {speaker.speakerName}
@@ -103,7 +126,15 @@ export default function SpeakersSection() {
                   </div>
                 </a>
                 <p className={styles.speakerTema}>{speaker.speakerTema}</p>
-                <button className={styles[speaker.moreInfoBtnClass]}>детальніше</button>
+
+                {speaker.moreInfoBtnClass === "moreInfoBtn" && (
+                  <button
+                    className={styles.moreInfoBtn}
+                    onClick={() => toggleDetails(speaker.id)}
+                  >
+                    {activeSpeakerId === speaker.id ? "згорнути" : "детальніше"}
+                  </button>
+                )}
               </div>
             </SwiperSlide>
           ))}

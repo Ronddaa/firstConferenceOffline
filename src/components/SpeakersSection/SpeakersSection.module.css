@@ -1,9 +1,24 @@
+.textBtwSection{
+    font-size: 12px;
+    color: #FFFCF9;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    text-transform: uppercase;
+    font-weight: 600;
+}
 .SpeakersSection {
+    padding-top: 100px;
 }
 .SpeakersSection .mySwiper {
 }
-.SpeakersSection :global(.swiper-horizontal > .swiper-scrollbar, .swiper-scrollbar.swiper-scrollbar-horizontal){
+.SpeakersSection :global(.swiper-scrollbar){
     background-color: #ffffac9e;
+    height: 1px!important;
+}
+.SpeakersSection :global(.swiper-scrollbar-drag){
+    height: 3px!important;
+    background-color: #ffffac;
 }
 .numberOfSpeaker{
     position: absolute;
@@ -67,6 +82,7 @@
   width: 100%;
   border-top: 1px solid #ffffac;
   border-radius: 0 0 10px 10px;
+  z-index: 6;
 }
 .speakerNameClass1,
 .speakerNameClass2,
@@ -110,7 +126,34 @@ text-transform: uppercase;
     padding: 15px;
     display: block;
     width: 100%;
+    color: #B2B2B2;
+    font-style: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 .moreInfoBtnDisplayNone{
     display: none;
+}
+.dropUpDetails{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 20px 20px 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #00000099;
+    border-radius: 10px;
+    transition: 0.5s;
+    opacity: 0;
+    pointer-events: none;
+}
+.dropUpDetails.active{
+    opacity: 1;
+}
+.contentDetails{
+    max-width: 250px;
 }
