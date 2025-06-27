@@ -79,6 +79,17 @@ export default function SpeakersSection() {
       contentDetails:
         "Магістр бізнес адміністрування, викладач економіки, до війни керувала власним мережовим бізнесом понад 10 років, бакалавр психології, практикуючий психолог, гештальт-терапевт, тілесно-орієнтований терапевт.",
     },
+    {
+      id: 6,
+      speakerName: "це ще не все!\nочікуй інформацію!",
+      speakerTema: "",
+      swiperSlideBackground: "swiperSlideBackground6",
+      speakerInstagram: "",
+      speakerClass: "speakerNameClassLast",
+      numberOfSpeaker: "(02)",
+      moreInfoBtnClass: "moreInfoBtnDisplayNone",
+      contentDetails: "",
+    },
   ];
 
   return (
@@ -86,7 +97,7 @@ export default function SpeakersSection() {
       <p className={styles.textBtwSection}>(наші спікери)</p>
       <div className="container">
         <Swiper
-          scrollbar={{ hide: true }}
+          scrollbar={{ hide: false }}
           modules={[Scrollbar]}
           spaceBetween={20}
           className="mySwiper"
@@ -140,6 +151,9 @@ export default function SpeakersSection() {
           ))}
         </Swiper>
       </div>
+      <svg className={styles.leftRigrh} width={24} height={12}>
+        <use xlinkHref={`${sprite}#icon-leftRigrh`}></use>
+      </svg>
     </section>
   );
 }
