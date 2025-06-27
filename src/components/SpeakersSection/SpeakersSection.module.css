@@ -9,8 +9,13 @@
 }
 .SpeakersSection {
     padding-top: 100px;
+    background: url(./speakersBackroundSection.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .SpeakersSection .mySwiper {
+    overflow: visible;
 }
 .SpeakersSection :global(.swiper-scrollbar){
     background-color: #ffffac9e;

@@ -86,7 +86,7 @@ export default function SpeakersSection() {
       swiperSlideBackground: "swiperSlideBackground6",
       speakerInstagram: "",
       speakerClass: "speakerNameClassLast",
-      numberOfSpeaker: "(02)",
+      numberOfSpeaker: "(06)",
       moreInfoBtnClass: "moreInfoBtnDisplayNone",
       contentDetails: "",
     },
@@ -99,7 +99,8 @@ export default function SpeakersSection() {
         <Swiper
           scrollbar={{ hide: false }}
           modules={[Scrollbar]}
-          spaceBetween={20}
+                  spaceBetween={20}
+                  slidesPerView={1.02}
           className="mySwiper"
         >
           {speakers.map((speaker) => (
