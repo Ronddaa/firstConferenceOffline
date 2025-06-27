@@ -14,7 +14,7 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
-.SpeakersSection .mySwiper {
+.SpeakersSection :global(.mySwiper) {
     overflow: visible;
 }
 .SpeakersSection :global(.swiper-scrollbar){
