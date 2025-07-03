@@ -1,0 +1,40 @@
+.sectionTelegramBlock{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url(./telegramBack.webp);
+    padding: 129px 16px 129px 24px;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+}
+.sectionTelegramBlock :global(.container){
+    padding: 0;
+}
+.titleTelegram, .scndTitle{
+    font-size: 46px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.wrapperTelegramInfo{
+    max-width: 250px;
+    margin-left: 83px;
+}
+.telegramText{
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.telegramText span{
+    color: #FFFFAC;
+}
+.linkToTelegramBot{
+    padding: 24px 59px;
+    background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
+    text-transform: uppercase;
+    max-width: 198px;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #1B2021;
+}

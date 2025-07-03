@@ -6,6 +6,7 @@ import Hero from "./components/Hero/Hero";
 import Program from "./components/Program/Program";
 import ProgramOnConference from "./components/ProgramOnConference/ProgramOnConference";
 import SpeakersSection from "./components/SpeakersSection/SpeakersSection";
+import TelegramBlock from "./components/TelegramBlock/TelegramBlock";
 import Tema from "./components/Tema/Tema";
 import Tickets from "./components/TicketsSection/TicketsSection";
 
@@ -26,6 +27,7 @@ export default function App() {
       <Tickets />
       <Donation />
       <FAQ />
+      <TelegramBlock />
       <Footer />
     </>
   )

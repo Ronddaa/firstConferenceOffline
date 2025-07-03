@@ -17,6 +17,7 @@ import router from "./routers/index.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { createInvoice, updateInvoiceById } from "./services/invoices.js";
 import { sendTicket } from "./utils/sendTicket.js";
+import bot from "./telegram/bot.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
