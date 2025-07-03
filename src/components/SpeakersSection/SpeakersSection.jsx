@@ -137,14 +137,14 @@ export default function SpeakersSection() {
       swiperSlideBackground: "swiperSlideBackground12",
       speakerInstagram: "",
       speakerClass: "speakerNameClassLast",
-      numberOfSpeaker: "(06)",
+      numberOfSpeaker: "(10)",
       moreInfoBtnClass: "moreInfoBtnDisplayNone",
       contentDetails: "",
     },
   ];
 
   return (
-    <section className={styles.SpeakersSection}>
+    <section className={styles.SpeakersSection} id="speakersSection">
       <p className={styles.textBtwSection}>(наші спікери)</p>
       <div className="container">
         <Swiper

@@ -2,7 +2,7 @@ import styles from "./Program.module.css";
 import prgramLi1IMG from './programLi1.webp'
 import prgramLi2IMG from './programLi2.webp'
 import prgramLi3IMG from './programLi3.webp'
-import prgramLi4IMG from "./programLi4.webp";
+import prgramLi4IMG from "./prgramLi4IMG.webp";
 import programBackgroundSvg1 from './programBackgroundSvg1.svg'
 import LinesAfterMonatikProgram from './LinesAfterMonatikProgram.svg'
 
@@ -24,7 +24,8 @@ export default function Program() {
           </li>
           <li>
             <a
-              className={styles.hotelName} target="_blank"
+              className={styles.hotelName}
+              target="_blank"
               href="https://www.marriott.com/en-us/hotels/wawwi-the-westin-warsaw/overview/"
             >
               Westin hotel
@@ -93,7 +94,7 @@ export default function Program() {
           <li>
             <p className={styles.numberOfList}>(04)</p>
             <h3 className={styles.titlelistFour} id="beforeSwiper">
-              Ексклюзивний концерт MONATIK
+              Ексклюзивний виступ MONATIK для гостей конференції
             </h3>
             {/* <p className={styles.textlistFour}>
               Показ дизайнерського одягу, бренд-зона з надзвичайним товаром,
