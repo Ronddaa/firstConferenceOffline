@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import bodyParser from "body-parser";
+// import bodyParser from "body-parser"; // не нужен
 import axios from "axios";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
@@ -46,11 +46,19 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
+
+// Используем express.json() вместо bodyParser.json()
 app.use(express.json());
 app.use(cookieParser());
 
-// app.use(pinoHttp());
+
+import { utmTracker } from "./middlewares/utmMarks.js";
+app.use(utmTracker);
+
+// Подключаем основной маршрутизатор (API роуты)
+app.use(router);
+
+ app.use(pinoHttp()); // раскомментируй, если нужно логирование запросов
 
 const monoBankToken = env("MONOBANK_TOKEN");
 // const facebookAccessToken = env("FACEBOOK_ACCESS_TOKEN");
@@ -142,7 +150,6 @@ app.post("/payment-callback", async (req, res) => {
           `An error occured while trying to send ticket to invoice owner ${invoice.user.email} `
         );
       }
-      console.log();
     }
     return res.status(200).json({ message: "Payment status updated" });
   } catch (error) {
@@ -154,9 +161,6 @@ app.post("/payment-callback", async (req, res) => {
 });
 
 // Статические файлы
-
-app.use(router);
-
 const staticFilesPath = join(__dirname, "../");
 
 app.use(
