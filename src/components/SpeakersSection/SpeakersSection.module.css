@@ -78,7 +78,43 @@
   border: 1px solid #ffffac;
   border-radius: 10px;
 }
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground6{
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground6 {
+    width: 335px;
+    height: 565px;
+    background-image: url(./Stripko.webp);
+    background-position: center;
+    background-size: cover;
+    border: 1px solid #ffffac;
+    border-radius: 10px;
+  }
+  .SpeakersSection :global(.mySwiper) .swiperSlideBackground7 {
+    width: 335px;
+    height: 565px;
+    background-image: url(./Shihrova.webp);
+    background-position: center;
+    background-size: cover;
+    border: 1px solid #ffffac;
+    border-radius: 10px;
+  }
+  .SpeakersSection :global(.mySwiper) .swiperSlideBackground8 {
+    width: 335px;
+    height: 565px;
+    background-image: url(./Tokar.webp);
+    background-position: center;
+    background-size: cover;
+    border: 1px solid #ffffac;
+    border-radius: 10px;
+  }
+  .SpeakersSection :global(.mySwiper) .swiperSlideBackground9 {
+    width: 335px;
+    height: 565px;
+    background-image: url(./Shotropa.webp);
+    background-position: center;
+    background-size: cover;
+    border: 1px solid #ffffac;
+    border-radius: 10px;
+  }
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground12{
     width: 335px;
   height: 565px;
   background-position: center;
@@ -99,7 +135,7 @@
     left: 50%;
     transform: translate(-50%, -130%);
 }
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground6 .wrapperSpeakerInstargram{
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground12 .wrapperSpeakerInstargram{
     display: none;
 }
 .wrapperSpeakerInfo {
@@ -118,6 +154,10 @@
 .speakerNameClass3,
 .speakerNameClass4,
 .speakerNameClass5,
+.speakerNameClass6,
+.speakerNameClass7,
+.speakerNameClass8,
+.speakerNameClass9,
 .speakerNameClassLast {
   display: flex;
   gap: 10px;
@@ -133,7 +173,7 @@
   font-weight: 800;
 text-transform: uppercase;
 }
-.speakerNameClass1, .speakerNameClass2, .speakerNameClass4, .speakerNameClass5{
+.speakerNameClass1, .speakerNameClass2, .speakerNameClass4, .speakerNameClass5, .speakerNameClass6, .speakerNameClass7, .speakerNameClass8, .speakerNameClass9{
     font-size: 22px;
 }
 .speakerNameClass3{

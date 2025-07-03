@@ -81,9 +81,60 @@ export default function SpeakersSection() {
     },
     {
       id: 6,
-      speakerName: "це ще не все!\nочікуй інформацію!",
+      speakerName: "Стрипко\nТаня",
       speakerTema: "",
       swiperSlideBackground: "swiperSlideBackground6",
+      speakerInstagram:
+        "https://www.instagram.com/todorivaaa?igsh=MXBxamM1YzlnMmxxMg%3D%3D&utm_source=qr",
+      speakerClass: "speakerNameClass6",
+      numberOfSpeaker: "(06)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Підприємиця з досвідом на трьох континентах: відкривала салони краси в таких країнах, як - Україна, Італія, Канада. Продюсер, власниця продюсерської агенції - заробила за 2 роки собі і експертам запуски на 1000000+$. Навчаю запускати навчальні проєкти, створювати  бренди з нуля. Запускаю експертів, які не просто красиво говорять, а дорого продають, власниця продюсерської агенції.",
+    },
+    {
+      id: 7,
+      speakerName: "Щигрова\nЄвгенія",
+      speakerTema: "",
+      swiperSlideBackground: "swiperSlideBackground7",
+      speakerInstagram: "https://www.instagram.com/j.a.n.e_she/",
+      speakerClass: "speakerNameClass7",
+      numberOfSpeaker: "(07)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Дипломований спеціаліст у галузі «Фізична реабілітація» , персональний Тренер напрямку Stretching міжнародного рівня, власниця Online студії Jane System, спеціаліст з фітнес консалтінгу",
+    },
+    {
+      id: 8,
+      speakerName: "Токар\nЯна",
+      speakerTema: "",
+      swiperSlideBackground: "swiperSlideBackground8",
+      speakerInstagram:
+        "https://www.instagram.com/dr.yana_tokar_?igsh=YTd1cmMwcXJ3MHhv",
+      speakerClass: "speakerNameClass8",
+      numberOfSpeaker: "(08)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        'Дерматологиня, хірургиня, доктор медицини, незалежний експерт світових брендів, спікер міжнародних конгресів, автор книги "Сонячна контрацепція" та YouTube каналу "не косметолог, а ЛІКАР", засновниця University of aesthetic medicine, спікер Польського інституту естетичної медицини.',
+    },
+    {
+      id: 9,
+      speakerName: "Шотропа\nМішель",
+      speakerTema: "",
+      swiperSlideBackground: "swiperSlideBackground9",
+      speakerInstagram:
+        "https://www.instagram.com/mishel_shotropa?igsh=MTQycHk2OWZtNHV5cg==",
+      speakerClass: "speakerNameClass9",
+      numberOfSpeaker: "(09)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        'Власниця маркетингової та PR-компанії "SHOTROPA MEDIA". 11 років у бізнесі. CEO "INSTAHACKS" - перше міжнародне комʼюніті для експертів. Співпрацюю з CHELSEA. Більше 4000+ учнів моїх навчальних програм по цілому світу',
+    },
+    {
+      id: 12,
+      speakerName: "це ще не все!\nочікуй інформацію!",
+      speakerTema: "",
+      swiperSlideBackground: "swiperSlideBackground12",
       speakerInstagram: "",
       speakerClass: "speakerNameClassLast",
       numberOfSpeaker: "(06)",
