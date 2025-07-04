@@ -3,6 +3,7 @@ import FAQ from "./components/FAQ/FAQ";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
+import PartnersSection from "./components/Partners/PartnersSection";
 import Program from "./components/Program/Program";
 import ProgramOnConference from "./components/ProgramOnConference/ProgramOnConference";
 import SpeakersSection from "./components/SpeakersSection/SpeakersSection";
@@ -25,6 +26,7 @@ export default function App() {
       <SpeakersSection />
       <ProgramOnConference />
       <Tickets />
+      <PartnersSection />
       <Donation />
       <FAQ />
       <TelegramBlock />

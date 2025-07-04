@@ -30,7 +30,7 @@ export default function SpeakersSection() {
     },
     {
       id: 2,
-      speakerName: "козачкова юлія",
+      speakerName: "козачкова\nюлія",
       speakerTema: "",
       swiperSlideBackground: "swiperSlideBackground2",
       speakerInstagram:
