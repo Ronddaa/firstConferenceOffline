@@ -59,31 +59,32 @@ export default function FAQ() {
     <section className={styles.sectionFAQ} id="FAQ">
       <div className="container">
         <h2 className={styles.titleFAQ}>FAQ</h2>
-        <ul className={styles.wrapperList}>
-          {items.map((item) => {
-            const isActive = activeItem === item.id;
-
-            return (
-              <li
-                key={item.id}
-                onClick={() => handleItemClick(item.id)}
-                className={styles.itemLi}
-              >
-                <h3 className={styles.titleQList}>
-                  <span>{item.number}</span>
-                  {item.title}
-                </h3>
-
-                <div
-                  className={`${styles.content} ${isActive ? styles.show : ""}`}
-                >
-                  <p className={styles.contentText}>{item.text}</p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
       </div>
+
+      <ul className={styles.wrapperList}>
+        {items.map((item) => {
+          const isActive = activeItem === item.id;
+
+          return (
+            <li
+              key={item.id}
+              onClick={() => handleItemClick(item.id)}
+              className={styles.itemLi}
+            >
+              <h3 className={styles.titleQList}>
+                <span>{item.number}</span>
+                {item.title}
+              </h3>
+
+              <div
+                className={`${styles.content} ${isActive ? styles.show : ""}`}
+              >
+                <p className={styles.contentText}>{item.text}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }
