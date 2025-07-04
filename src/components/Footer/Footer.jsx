@@ -105,7 +105,7 @@ export default function Footer() {
           <a
             target="_blank"
             className={styles.contactLink}
-            href="https://t.me/women_psyconference"
+            href="https://t.me/warsawkod_bot"
           >
             TELEGRAM
           </a>
