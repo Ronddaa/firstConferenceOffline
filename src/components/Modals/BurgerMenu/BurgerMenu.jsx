@@ -104,6 +104,15 @@ export default function BurgerMenu({ isOpen, onClose }) {
         <li>
           <a
             className={styles.navigationLink}
+            href="#partnersSection"
+            onClick={onClose}
+          >
+            парнетри
+          </a>
+        </li>
+        <li>
+          <a
+            className={styles.navigationLink}
             href="#donation"
             onClick={onClose}
           >

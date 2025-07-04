@@ -4,6 +4,8 @@
     text-transform: uppercase;
     color: #FFFCF9;
     margin-bottom: -58px;
+    position: relative;
+    z-index: 0;
 }
 .wrapperList{
     display: flex;
@@ -13,10 +15,12 @@
     background-color: #1B2021;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 }
 .itemLi{
     position: relative;
     padding: 20px;
+    overflow: hidden;
 }
 .itemLi::after{
     content: '';

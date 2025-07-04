@@ -317,7 +317,7 @@ export default function Tickets() {
             </div>
           </li>
         </ul>
-        <ul className={styles.wrapperAuction}>
+        {/* <ul className={styles.wrapperAuction}>
           <li>(Аукціон речей зі змістом)</li>
           <li>Мистецтво, створене серцем. Для тих, хто відчуває глибше</li>
         </ul>
@@ -349,7 +349,7 @@ export default function Tickets() {
           Ми зібрали ексклюзивні речі з усієї України, створені геніальними
           українськими <br /> майстрами — кожен лот має історію, енергію й
           глибокий сенс
-        </p>
+        </p> */}
       </div>
       <TicketsForm
         isOpen={modalTicketsIsOpen}

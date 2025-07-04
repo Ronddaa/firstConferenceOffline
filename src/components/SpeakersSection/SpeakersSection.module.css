@@ -10,7 +10,7 @@
 .SpeakersSection {
     padding-top: 100px;
     background: url(./speakersBackroundSection.svg);
-    background-position: center;
+    background-position: 0 75%;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -101,7 +101,7 @@
     width: 335px;
     height: 565px;
     background-image: url(./Tokar.webp);
-  background-position: top;
+  background-position: center;
   background-size: cover;
     border: 1px solid #ffffac;
     border-radius: 10px;
