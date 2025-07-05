@@ -1,9 +1,14 @@
 import { useEffect, useState, lazy } from "react";
+import useIsDesktop from "./hooks/useIsDesktop";
+
+// 🔁 Мобильная и десктопная шапка
 import Header from "./components/Header/Header";
+import HeaderComp from "./components/Header/Computer/HeaderComp";
+
+// 📦 Остальные секции — пока только мобильные версии
 import Hero from "./components/Hero/Hero";
 import Program from "./components/Program/Program";
 
-// 💡 Остальные компоненты — лениво
 const Tema = lazy(() => import("./components/Tema/Tema"));
 const SpeakersSection = lazy(() =>
   import("./components/SpeakersSection/SpeakersSection")
@@ -26,22 +31,27 @@ const TelegramBlock = lazy(() =>
 const Footer = lazy(() => import("./components/Footer/Footer"));
 
 export default function App() {
+  const isDesktop = useIsDesktop(); // 📱 определение ширины экрана
   const [showRest, setShowRest] = useState(false);
 
-  // ⚙️ Показываем оставшиеся секции после полной загрузки первых
   useEffect(() => {
+    // ⏱️ Отложенная загрузка остальных блоков для ускорения LCP
     const timeout = setTimeout(() => {
       setShowRest(true);
-    }, 300); // можно увеличить задержку, если нужно "после рендера"
+    }, 300);
     return () => clearTimeout(timeout);
   }, []);
 
   return (
     <>
-      <Header />
+      {/* 🧭 Показываем desktop или mobile header */}
+      {isDesktop ? <HeaderComp /> : <Header />}
+
+      {/* 🟡 Первые три секции загружаются сразу */}
       <Hero />
       <Program />
 
+      {/* ⏳ Остальные секции — через lazy */}
       {showRest && (
         <>
           <Tema />
