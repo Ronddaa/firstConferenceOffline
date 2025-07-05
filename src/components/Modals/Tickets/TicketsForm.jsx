@@ -7,6 +7,7 @@ import { sendLeadToMeta } from "../../../utils/sendLeadToMeta";
 
 export default function TicketsForm({ isOpen, onClose }) {
   const tariffs = [
+    {name: "LAST MINUTE", price: 200},
     { name: "GOLD", price: 300 },
     { name: "PREMIUM", price: 450 },
     { name: "Luxe", price: 1200 },

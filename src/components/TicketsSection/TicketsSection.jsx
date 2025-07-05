@@ -15,6 +15,57 @@ export default function Tickets() {
       <div className="container">
         <p className={styles.textBtwSection}>(тарифи на участь)</p>
         <ul className={styles.wrapperTicketsTariff}>
+          <li className={styles.TicketsLastMinute}>
+            <h3 className={styles.titleLM}>LAST MINUTE</h3>
+            <p className={styles.kolPlace}>Залишилось 100 місць</p>
+            <ul className={styles.wrapperDetailsTariff}>
+              <li>
+                <svg className={styles.detailsSVG} width={28} height={28}>
+                  <use xlinkHref={`${sprite}#icon-diamond`}></use>
+                </svg>
+                <p className={styles.detailsText}>Місця: позначені зеленим</p>
+              </li>
+              <li>
+                <svg className={styles.detailsSVG} width={38} height={28}>
+                  <use xlinkHref={`${sprite}#icon-palms`}></use>
+                </svg>
+                <p className={styles.detailsText}>
+                  Welcome drink (один келих ігристого) + вода
+                </p>
+              </li>
+              <li>
+                <svg className={styles.detailsSVG} width={28} height={28}>
+                  <use xlinkHref={`${sprite}#icon-people`}></use>
+                </svg>
+                <p className={styles.detailsText}>нетворкінг</p>
+              </li>
+              <li>
+                <svg className={styles.detailsSVG} width={28} height={28}>
+                  <use xlinkHref={`${sprite}#icon-micro`}></use>
+                </svg>
+                <p className={styles.detailsText}>
+                  Ексклюзивний <br /> концерт MONATIK
+                </p>
+              </li>
+            </ul>
+            <p className={styles.priceText}>200&euro;</p>
+            <button
+              className={styles.btnBuyTariffGold}
+              onClick={() => {
+                setmodalTickets(true);
+              }}
+            >
+              придбати квиток
+            </button>
+            <button
+              className={styles.btnPlaceShow}
+              onClick={() => {
+                setmodalShowPlace(true);
+              }}
+            >
+              переглянути місця
+            </button>
+          </li>
           <li className={styles.TicketsGold}>
             <h3 className={styles.titleTariffCard}>GOLD</h3>
             <p className={styles.kolPlace}>Залишилось 98 місць</p>
@@ -37,7 +88,9 @@ export default function Tickets() {
                 <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-clock`}></use>
                 </svg>
-                <p className={styles.detailsText}>Дві кавопаузи</p>
+                <p className={styles.detailsText}>
+                  <span>Дві кавопаузи</span>
+                </p>
               </li>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
@@ -50,7 +103,9 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-fire`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Участь у розіграші <br /> подарунків
+                  <span>
+                    Участь у розіграші <br /> подарунків
+                  </span>
                 </p>
               </li>
               <li>
@@ -58,7 +113,9 @@ export default function Tickets() {
                   <use xlinkHref={`${sprite}#icon-pazzle`}></use>
                 </svg>
                 <p className={styles.detailsText}>
-                  Пакет з подарунками <br /> gold класу
+                  <span>
+                    Пакет з подарунками <br /> gold класу
+                  </span>
                 </p>
               </li>
               <li>
@@ -317,39 +374,6 @@ export default function Tickets() {
             </div>
           </li>
         </ul>
-        {/* <ul className={styles.wrapperAuction}>
-          <li>(Аукціон речей зі змістом)</li>
-          <li>Мистецтво, створене серцем. Для тих, хто відчуває глибше</li>
-        </ul>
-        <div className={styles.wrappertitleAuction}>
-          <h4 className={styles.titleAuctionMobile}>Під час конференції</h4>
-          <h4
-            className={`${styles.titleAuctionMobile} ${styles.titleAuctionMobileMargin}`}
-          >
-            <span>«Код ЖІНКИ»</span>
-          </h4>
-          <h4 className={styles.titleAuctionMobile}>
-            відбудеться благодійний{" "}
-          </h4>
-          <h4 className={styles.titleAuctionMobile}>аукціон на </h4>
-          <h4
-            className={`${styles.titleAuctionMobile} ${styles.titleAuctionMobileMargin2}`}
-          >
-            підтримку <span>Збройних</span>
-          </h4>
-          <h4
-            className={`${styles.titleAuctionMobile} ${styles.titleAuctionMobileMargin3}`}
-          >
-            <span className={styles.titleAuctionMobileMarginSpan}>
-              Сил України
-            </span>
-          </h4>
-        </div>
-        <p className={styles.lastTextTeckets}>
-          Ми зібрали ексклюзивні речі з усієї України, створені геніальними
-          українськими <br /> майстрами — кожен лот має історію, енергію й
-          глибокий сенс
-        </p> */}
       </div>
       <TicketsForm
         isOpen={modalTicketsIsOpen}
