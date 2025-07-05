@@ -51,31 +51,7 @@ export default function Header() {
             height={103}
           />
         </a>
-        <ul className={styles.wrapperNavigationHeader}>
-          <li>
-            <a href="#" className={styles.headerNavigationLink}>
-              про конференцію
-            </a>
-            <a href="#" className={styles.headerNavigationLink}>
-              тарифи
-            </a>
-            <a href="#" className={styles.headerNavigationLink}>
-              анонси
-            </a>
-          </li>
-          <li>
-            <a href="#" className={styles.headerNavigationLink}>
-              благодійність
-            </a>
-            <a href="#" className={styles.headerNavigationLink}>
-              FAQ
-            </a>
-            <a href="#" className={styles.headerNavigationLink}>
-              контакти
-            </a>
-          </li>
-          <li className={styles.absolutePlaceholder}></li>
-        </ul>
+        
 
         <button
           className={styles.buyBtnHeader}

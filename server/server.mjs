@@ -173,7 +173,7 @@ app.use(
         path.endsWith(".png") ||
         path.endsWith(".gif")
       ) {
-        res.setHeader("Cache-Control", "public, max-age=86400");
+        res.setHeader("Cache-Control", "public, max-age=31536000");
       }
     },
   })

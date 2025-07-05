@@ -15,6 +15,7 @@ export default function Program() {
         alt="programBackgroundSvg1"
         width={491}
         height={458}
+        loading="lazy"
       />
       <div className="container">
         <ul className={styles.wrapperDateInfo}>
@@ -66,7 +67,7 @@ export default function Program() {
             </p>
           </li>
           <li>
-            <img src={prgramLi1IMG} alt="programIMG" />
+            <img loading="lazy" src={prgramLi1IMG} alt="programIMG" />
           </li>
           <li>
             <p className={styles.numberOfList}>(02)</p>
@@ -77,7 +78,7 @@ export default function Program() {
             </p>
           </li>
           <li>
-            <img src={prgramLi2IMG} alt="programIMG" />
+            <img loading="lazy" src={prgramLi2IMG} alt="programIMG" />
           </li>
           <li>
             <p className={styles.numberOfList}>(03)</p>
@@ -89,7 +90,7 @@ export default function Program() {
             </p>
           </li>
           <li>
-            <img src={prgramLi3IMG} alt="programIMG" />
+            <img loading="lazy" src={prgramLi3IMG} alt="programIMG" />
           </li>
           <li>
             <p className={styles.numberOfList}>(04)</p>
@@ -102,7 +103,7 @@ export default function Program() {
             </p> */}
           </li>
           <li>
-            <img src={prgramLi4IMG} alt="programIMG" />
+            <img loading="lazy" src={prgramLi4IMG} alt="programIMG" />
           </li>
         </ul>
         <p className={styles.textUnderprogram}>
@@ -111,6 +112,7 @@ export default function Program() {
         </p>
       </div>
       <img
+        loading="lazy"
         className={styles.LinesAfterMonatikProgram}
         src={LinesAfterMonatikProgram}
         alt="LinesAfterMonatikProgram"

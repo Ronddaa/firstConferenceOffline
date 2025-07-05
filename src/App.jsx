@@ -1,39 +1,61 @@
-import Auction from "./components/Auction/Auction";
-import Donation from "./components/Donation/Donation";
-import FAQ from "./components/FAQ/FAQ";
-import Footer from "./components/Footer/Footer";
+import { useEffect, useState, lazy } from "react";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
-import PartnersSection from "./components/Partners/PartnersSection";
 import Program from "./components/Program/Program";
-import ProgramOnConference from "./components/ProgramOnConference/ProgramOnConference";
-import SpeakersSection from "./components/SpeakersSection/SpeakersSection";
-import TelegramBlock from "./components/TelegramBlock/TelegramBlock";
-import Tema from "./components/Tema/Tema";
-import Tickets from "./components/TicketsSection/TicketsSection";
 
-// import useSmoothScroll from "./useSmoothScroll";
+// 💡 Остальные компоненты — лениво
+const Tema = lazy(() => import("./components/Tema/Tema"));
+const SpeakersSection = lazy(() =>
+  import("./components/SpeakersSection/SpeakersSection")
+);
+const ProgramOnConference = lazy(() =>
+  import("./components/ProgramOnConference/ProgramOnConference")
+);
+const Tickets = lazy(() =>
+  import("./components/TicketsSection/TicketsSection")
+);
+const PartnersSection = lazy(() =>
+  import("./components/Partners/PartnersSection")
+);
+const Auction = lazy(() => import("./components/Auction/Auction"));
+const Donation = lazy(() => import("./components/Donation/Donation"));
+const FAQ = lazy(() => import("./components/FAQ/FAQ"));
+const TelegramBlock = lazy(() =>
+  import("./components/TelegramBlock/TelegramBlock")
+);
+const Footer = lazy(() => import("./components/Footer/Footer"));
 
 export default function App() {
-  
-  // useSmoothScroll(510)
+  const [showRest, setShowRest] = useState(false);
+
+  // ⚙️ Показываем оставшиеся секции после полной загрузки первых
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowRest(true);
+    }, 300); // можно увеличить задержку, если нужно "после рендера"
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <>
       <Header />
       <Hero />
       <Program />
-      <Tema />
-      <SpeakersSection />
-      <ProgramOnConference />
-      <Tickets />
-      <PartnersSection />
-      <Auction />
-      <Donation />
-      <FAQ />
-      <TelegramBlock />
-      <Footer />
-    </>
-  )
-}
 
+      {showRest && (
+        <>
+          <Tema />
+          <SpeakersSection />
+          <ProgramOnConference />
+          <Tickets />
+          <PartnersSection />
+          <Auction />
+          <Donation />
+          <FAQ />
+          <TelegramBlock />
+          <Footer />
+        </>
+      )}
+    </>
+  );
+}

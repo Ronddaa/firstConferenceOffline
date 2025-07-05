@@ -23,6 +23,7 @@ export default function Footer() {
           alt="logo"
           width={98}
           height={54}
+          loading="lazy"
         />
         <ul className={styles.wrapperNavigationFooter}>
           <li>
