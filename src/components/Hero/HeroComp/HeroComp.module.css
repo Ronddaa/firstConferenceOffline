@@ -1,5 +1,5 @@
 .HeroCompSection{
-    padding: 338px 0 83px;
+    padding: 19% 0 10%;
 }
 .heroImgWrapper {
     position: absolute;
@@ -21,29 +21,31 @@
   .wrapperHeroInfoText{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 152px;
+    margin-bottom: 5%;
   }
   .infoTextHero1{
     max-width: 302px;
     color: #FFFCF9;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 1vw;
     text-transform: uppercase;
   }
   .infoTextHero2{
     max-width: 251px;
     color: #FFFCF9;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 1vw;
     text-transform: uppercase;
     text-align: right;
   }
   .wrapperMainTitle{
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapperMainTitle div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .buyBtnHero{
     display: flex;
@@ -51,9 +53,8 @@
     align-items: center;
     background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
     color: #1B2021;
-    padding: 34px 49px;
-    margin: 0 auto;
-    font-size: 22px;
+    padding: 36px 68px;
+    font-size: 1.2vw;
     border: none;
     font-weight: 600;
     text-transform: uppercase;
@@ -63,20 +64,41 @@
     max-width: 373px;
     max-height: 123px;
     text-align: center;
-    grid-area: 1 / 1 / 2 / 3;
+    margin: 8px 0 auto;
   }
   .WarsawText{
-    grid-area: 1 / 4 / 3 / 11;
     font-family: "Unbounded";
-    font-size: 9vw;
+    font-size: 8.15vw;
     text-transform: uppercase;
     color: #FFFFAC;
     font-weight: 600;
+    text-align: right;
+    line-height: 1;
   }
   .mainTitle{
-    grid-area: 3 / 1 / 6 / 11;
     color: #FFFCF9;
     text-transform: uppercase;
     font-size: 12vw;
-    line-height: 0.5;
+    line-height: 1;
+    letter-spacing: 5.7px;
+    margin-left: -12px;
+    text-wrap: nowrap;
+    position: relative;
+  }
+  .mainTitle::after{
+    content: 'by Olimpia';
+    font-family: "Quentin";
+    font-size: 7.2vw;
+    position: absolute;
+    bottom: -45px;
+    text-transform: none;
+    right: 5px;
+    color: #9EB7E5;
+    font-weight: 400;
+  }
+
+  @media (min-width:2439px){
+    .wrapperHeroInfoText{
+        margin-bottom: 12%;
+    }
   }

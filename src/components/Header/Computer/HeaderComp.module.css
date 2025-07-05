@@ -1,7 +1,7 @@
 .header {
     max-height: 151px;
     border-radius: 0 0 10px 10px;
-    padding: 30px 0;
+    padding: 20px 0;
     backdrop-filter: blur(10px);
     background: #1b2021b2;
     transition: transform 0.3s ease, padding 0.3s ease;
@@ -29,7 +29,7 @@ header :global(.container){
 }
 .navigationLinkHeader{
     color: #FFFCF9;
-    font-size: 18px;
+    font-size: 1vw;
     text-transform: uppercase;
     font-weight: 600;
 }
@@ -44,11 +44,11 @@ header :global(.container){
     border: none;
     border-bottom: 1px solid #9EB7E5;
     color: #9EB7E5;
-    font-size: 18px;
+    font-size: 1vw;
     text-transform: uppercase;
 }
 .buyBtnHeader{
-    font-size: 18px;
+    font-size: 1vw;
     font-weight: 600;
     text-transform: uppercase;
     border: 1px solid #FFFCF9;
@@ -60,4 +60,8 @@ header :global(.container){
     background-color: transparent;
     border-radius: 10px;
     margin-bottom: auto;
+}
+.arrowList{
+    transform: rotate(-90deg);
+    fill: #FFFCF9;
 }
