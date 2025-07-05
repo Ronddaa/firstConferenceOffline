@@ -1,0 +1,82 @@
+.HeroCompSection{
+    padding: 338px 0 83px;
+}
+.heroImgWrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .heroImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    z-index: 0;
+    display: block;
+  }
+  .wrapperHeroInfoText{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 152px;
+  }
+  .infoTextHero1{
+    max-width: 302px;
+    color: #FFFCF9;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .infoTextHero2{
+    max-width: 251px;
+    color: #FFFCF9;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: right;
+  }
+  .wrapperMainTitle{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  .buyBtnHero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
+    color: #1B2021;
+    padding: 34px 49px;
+    margin: 0 auto;
+    font-size: 22px;
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    max-width: 373px;
+    max-height: 123px;
+    text-align: center;
+    grid-area: 1 / 1 / 2 / 3;
+  }
+  .WarsawText{
+    grid-area: 1 / 4 / 3 / 11;
+    font-family: "Unbounded";
+    font-size: 9vw;
+    text-transform: uppercase;
+    color: #FFFFAC;
+    font-weight: 600;
+  }
+  .mainTitle{
+    grid-area: 3 / 1 / 6 / 11;
+    color: #FFFCF9;
+    text-transform: uppercase;
+    font-size: 12vw;
+    line-height: 0.5;
+  }

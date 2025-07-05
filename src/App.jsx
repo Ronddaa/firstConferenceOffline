@@ -7,6 +7,7 @@ import HeaderComp from "./components/Header/Computer/HeaderComp";
 
 // 📦 Остальные секции — пока только мобильные версии
 import Hero from "./components/Hero/Hero";
+import HeroComp from "./components/Hero/HeroComp/HeroComp";
 import Program from "./components/Program/Program";
 
 const Tema = lazy(() => import("./components/Tema/Tema"));
@@ -48,7 +49,7 @@ export default function App() {
       {isDesktop ? <HeaderComp /> : <Header />}
 
       {/* 🟡 Первые три секции загружаются сразу */}
-      <Hero />
+      {isDesktop ? <HeroComp /> : <Hero />}
       <Program />
 
       {/* ⏳ Остальные секции — через lazy */}
