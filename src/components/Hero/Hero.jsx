@@ -1,11 +1,21 @@
 import styles from './Hero.module.css'
 import TicketsForm from '../Modals/Tickets/TicketsForm';
 import { useState } from 'react';
+import heroIMG from './hero.webp'
 
 export default function Hero() {
   const [modalTicketsIsOpen, setmodalTickets] = useState(false);
     return (
       <section className={styles.sectionHero}>
+        <picture className={styles.heroImgWrapper}>
+          <img
+            src={heroIMG}
+            alt="Фон конференції Код Жінки"
+            className={styles.heroImg}
+            fetchPriority="high"
+            loading="eager"
+          />
+        </picture>
         <div className="container">
           <h1 className={styles.mainTitle}>КОД ЖІНКИ</h1>
           <p className={styles.detailsTextHero1}>
