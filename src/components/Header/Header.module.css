@@ -3,7 +3,7 @@ header{
     background-color: transparent;
     width: 100%;
     padding: 50px 0;
-    z-index: 10;
+    z-index: 250;
     transition: 0.3s;
 }
 header :global(.container){

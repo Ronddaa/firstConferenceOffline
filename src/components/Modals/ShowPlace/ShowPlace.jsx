@@ -1,7 +1,7 @@
 import styles from './ShowPlace.module.css'
 import sprite from "../../icons.svg";
 import Modal from "react-modal";
-import showPlaceIMG from './ShowPlaceIMG.svg'
+import showPlaceIMG from './ShowPlace.svg'
 
 
 export default function ShowPlace({isOpen, onClose}) {

@@ -83,7 +83,7 @@ export default function Program() {
           <li>
             <p className={styles.numberOfList}>(03)</p>
             <h3 className={styles.titlelistThree}>
-              10+ привілейованих спікерів
+              12+ привілейованих спікерів
             </h3>
             <p className={styles.textlistThree}>
               про стан, тіло(генетику), гроші та секс
