@@ -45,6 +45,20 @@ const invoiceSchema = new Schema(
         required: true,
       },
     },
+
+    // utm-метки
+    utm_source: {
+      type: String,
+      default: "",
+    },
+    utm_medium: {
+      type: String,
+      default: "",
+    },
+    utm_campaign: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,

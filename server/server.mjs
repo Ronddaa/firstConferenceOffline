@@ -67,10 +67,12 @@ const monoBankToken = env("MONOBANK_TOKEN");
 const usersDBFilePath = join(__dirname, "usersDB.json");
 
 app.post("/create-payment", async (req, res) => {
-  const { user, purchase, redirectUrL } = req.body;
+  const { user, purchase, redirectUrL, utm = {} } = req.body;
+
   if (!user || !purchase) {
     return res.status(400).json({ error: "Missing required fields" });
   }
+
   try {
     const response = await axios.post(
       "https://api.monobank.ua/api/merchant/invoice/create",
@@ -97,6 +99,9 @@ app.post("/create-payment", async (req, res) => {
       user,
       purchase,
       paymentData,
+      utm_source: utm.utm_source || "",
+      utm_medium: utm.utm_medium || "",
+      utm_campaign: utm.utm_campaign || "",
     });
 
     res.status(200).json({

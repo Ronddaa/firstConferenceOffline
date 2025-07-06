@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import styles from "./TicketsForm.module.css";
 import sprite from "../../icons.svg";
@@ -6,12 +6,26 @@ import api from "../../../api/api";
 import { sendLeadToMeta } from "../../../utils/sendLeadToMeta";
 
 export default function TicketsForm({ isOpen, onClose }) {
+  const [utmParams, setUtmParams] = useState({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setUtmParams({
+      utm_source: params.get("utm_source") || "",
+      utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "",
+    });
+  }, []);
+
   const tariffs = [
-    {name: "LAST MINUTE", price: 200},
+    { name: "LAST MINUTE", price: 200 },
     { name: "GOLD", price: 300 },
     { name: "PREMIUM", price: 450 },
     { name: "Luxe", price: 1200 },
-    // { name: "Only ticket", price: 150 },
   ];
 
   const initialState = {
@@ -50,7 +64,18 @@ export default function TicketsForm({ isOpen, onClose }) {
 
   const calculateTotal = () => {
     const selected = tariffs.find((t) => t.name === formData.tariff);
-    return selected ? selected.price * formData.quantity : 0;
+    if (!selected) return 0;
+
+    let price = selected.price;
+
+    if (
+      utmParams.utm_medium === "discount" &&
+      ["luxe", "premium"].includes(selected.name.toLowerCase())
+    ) {
+      price *= 0.9; // Скидка 10%
+    }
+
+    return Math.round(price * formData.quantity);
   };
 
   const handleClose = () => {
@@ -62,9 +87,7 @@ export default function TicketsForm({ isOpen, onClose }) {
     e.preventDefault();
     if (!isFormValid) return;
 
-    console.log("Данные формы:", formData);
-
-    // ✅ Отправка события Lead в Meta CAPI
+    // 📤 Отправка события в Meta
     sendLeadToMeta({
       formType: "client",
       phone: formData.phone,
@@ -73,16 +96,17 @@ export default function TicketsForm({ isOpen, onClose }) {
       ticketQuantity: formData.quantity,
       purchaseValue: calculateTotal(),
       telegram: formData.telegramNick,
+      ...utmParams,
     });
 
     const response = await api.createPayment({
       amount: calculateTotal(),
       currency: 978,
-      redirectUrl: "https://warsawkod.women.place",
+      redirectUrl: "https://warsawkod.women.place/thank-you",
       user: {
         fullName: formData.fullName,
         phoneNumber: formData.phone,
-        email: formData.email.toLocaleLowerCase(),
+        email: formData.email.toLowerCase(),
         telegramNick: formData.telegramNick,
       },
       purchase: {
@@ -90,11 +114,10 @@ export default function TicketsForm({ isOpen, onClose }) {
         ticketsQuantity: formData.quantity,
         totalAmount: calculateTotal(),
       },
+      utm: utmParams, // 👈 передаём на бэкенд
     });
 
     window.location.href = response.pageUrl;
-
-    // handleClose();
   };
 
   return (
@@ -159,14 +182,14 @@ export default function TicketsForm({ isOpen, onClose }) {
           *заповнивши це поле у вас є можливість отримати подарунок від нас!
         </p>
 
-        {/* Кастомный селект с тарифами */}
+        {/* Тарифы */}
         <div className={styles.dropdownWrapper}>
           <button
             type="button"
             className={styles.dropdownToggle}
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
-            {formData.tariff || "Оберіть тариф"}
+            {formData.tariff || "Оберіть тариф"}{" "}
             <span>{dropdownOpen ? "▲" : "▼"}</span>
           </button>
 
