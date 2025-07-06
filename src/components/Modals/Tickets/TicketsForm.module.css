@@ -156,3 +156,12 @@
   background: #a3a0a0;
   color: #797979;
 }
+.discountLabel{
+  font-weight: 600;
+  margin-left: 10px;
+}
+.oldPrice{
+  font-size: 12px;
+  text-decoration: line-through;
+  opacity: 0.5;
+}

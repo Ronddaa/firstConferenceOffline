@@ -25,7 +25,7 @@ export default function TicketsForm({ isOpen, onClose }) {
     { name: "LAST MINUTE", price: 200 },
     { name: "GOLD", price: 300 },
     { name: "PREMIUM", price: 450 },
-    { name: "Luxe", price: 1200 },
+    { name: "LUXE", price: 1200 },
   ];
 
   const initialState = {
@@ -68,10 +68,11 @@ export default function TicketsForm({ isOpen, onClose }) {
 
     let price = selected.price;
 
-    if (
+    const isDiscount =
       utmParams.utm_medium === "discount" &&
-      ["luxe", "premium"].includes(selected.name.toLowerCase())
-    ) {
+      ["luxe", "premium"].includes(selected.name.toLowerCase());
+
+    if (isDiscount) {
       price *= 0.9; // Скидка 10%
     }
 
@@ -87,7 +88,6 @@ export default function TicketsForm({ isOpen, onClose }) {
     e.preventDefault();
     if (!isFormValid) return;
 
-    // 📤 Отправка события в Meta
     sendLeadToMeta({
       formType: "client",
       phone: formData.phone,
@@ -114,7 +114,7 @@ export default function TicketsForm({ isOpen, onClose }) {
         ticketsQuantity: formData.quantity,
         totalAmount: calculateTotal(),
       },
-      utm: utmParams, // 👈 передаём на бэкенд
+      utm: utmParams,
     });
 
     window.location.href = response.pageUrl;
@@ -198,16 +198,41 @@ export default function TicketsForm({ isOpen, onClose }) {
               dropdownOpen ? styles.open : ""
             }`}
           >
-            {tariffs.map((t) => (
-              <li
-                key={t.name}
-                className={styles.dropdownItem}
-                onClick={() => handleSelectTariff(t.name)}
-              >
-                <span>{t.name}</span>
-                <span>{t.price}&euro;</span>
-              </li>
-            ))}
+            {tariffs.map((t) => {
+              const isDiscount =
+                utmParams.utm_medium === "discount" &&
+                ["luxe", "premium"].includes(t.name.toLowerCase());
+
+              const discountedPrice = Math.round(t.price * 0.9);
+
+              return (
+                <li
+                  key={t.name}
+                  className={styles.dropdownItem}
+                  onClick={() => handleSelectTariff(t.name)}
+                >
+                  <span>
+                    {t.name}
+                    {isDiscount && (
+                      <span className={styles.discountLabel}> (−10%)</span>
+                    )}
+                  </span>
+
+                  <span>
+                    {isDiscount ? (
+                      <>
+                        <span className={styles.oldPrice}>{t.price}&euro;</span>{" "}
+                        <span className={styles.newPrice}>
+                          {discountedPrice}&euro;
+                        </span>
+                      </>
+                    ) : (
+                      <span>{t.price}&euro;</span>
+                    )}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
