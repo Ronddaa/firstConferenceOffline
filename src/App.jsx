@@ -1,4 +1,5 @@
 import { useEffect, useState, lazy } from "react";
+import { Routes, Route } from "react-router-dom"; // 📌 добавлено
 import useIsDesktop from "./hooks/useIsDesktop";
 
 // 🔁 Мобильная и десктопная шапка
@@ -10,6 +11,10 @@ import Hero from "./components/Hero/Hero";
 import HeroComp from "./components/Hero/HeroComp/HeroComp";
 import Program from "./components/Program/Program";
 
+// 🎯 Новая страница
+import PageThx from "./PageThx/PageThx"; // 🆕 страница благодарности
+
+// 🎯 Остальные секции
 const Tema = lazy(() => import("./components/Tema/Tema"));
 const SpeakersSection = lazy(() =>
   import("./components/SpeakersSection/SpeakersSection")
@@ -36,7 +41,6 @@ export default function App() {
   const [showRest, setShowRest] = useState(false);
 
   useEffect(() => {
-    // ⏱️ Отложенная загрузка остальных блоков для ускорения LCP
     const timeout = setTimeout(() => {
       setShowRest(true);
     }, 300);
@@ -44,29 +48,35 @@ export default function App() {
   }, []);
 
   return (
-    <>
-      {/* 🧭 Показываем desktop или mobile header */}
-      {isDesktop ? <HeaderComp /> : <Header />}
+    <Routes>
+      {/* Главная страница */}
+      <Route
+        path="/"
+        element={
+          <>
+            {isDesktop ? <HeaderComp /> : <Header />}
+            {isDesktop ? <HeroComp /> : <Hero />}
+            <Program />
+            {showRest && (
+              <>
+                <Tema />
+                <SpeakersSection />
+                <ProgramOnConference />
+                <Tickets />
+                <PartnersSection />
+                <Auction />
+                <Donation />
+                <FAQ />
+                <TelegramBlock />
+                <Footer />
+              </>
+            )}
+          </>
+        }
+      />
 
-      {/* 🟡 Первые три секции загружаются сразу */}
-      {isDesktop ? <HeroComp /> : <Hero />}
-      <Program />
-
-      {/* ⏳ Остальные секции — через lazy */}
-      {showRest && (
-        <>
-          <Tema />
-          <SpeakersSection />
-          <ProgramOnConference />
-          <Tickets />
-          <PartnersSection />
-          <Auction />
-          <Donation />
-          <FAQ />
-          <TelegramBlock />
-          <Footer />
-        </>
-      )}
-    </>
+      {/* Страница благодарности */}
+      <Route path="/thank-you" element={<PageThx />} />
+    </Routes>
   );
 }
