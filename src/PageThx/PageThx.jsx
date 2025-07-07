@@ -17,13 +17,16 @@ export default function PageThx() {
       <h2 className={styles.titleThank}>Ура, ти з нами!</h2>
       <p className={styles.lizText}>І в нас — мурахи по шкірі!</p>
       <p className={styles.iventDate}>
-        <span>23 серпня ми зустрінемось у Варшаві!</span> <br className={styles.brMobile} />
+        <span>23 серпня ми зустрінемось у Варшаві!</span>{" "}
+        <br className={styles.brMobile} />
         <br className={styles.brDesc} />
-        Там, де можна дихати на повні груди, сміятись до сліз, мовчати <br className={styles.brDesc} />
+        Там, де можна дихати на повні груди, сміятись до сліз, мовчати{" "}
+        <br className={styles.brDesc} />
         по-справжньому і бути собою — поруч із такими ж жінками!
       </p>
       <p className={styles.blueText}>
-        Ми дуже чекаємо на тебе! <br className={styles.brDesc} />І вже відчуваємо твою присутність!
+        Ми дуже чекаємо на тебе! <br className={styles.brDesc} />І вже
+        відчуваємо твою присутність!
       </p>
       <h3 className={styles.titleChoise}>
         обери, куди відправити <br className={styles.brDesc} />
@@ -32,7 +35,7 @@ export default function PageThx() {
       <ul className={styles.wrapperChoiseButtons}>
         <li>
           <button className={styles.choiseBtn}>
-            на telegram{" "}
+            на telegram
             <svg className={styles.arrowList} width={24} height={24}>
               <use xlinkHref={`${sprite}#icon-arrow`}></use>
             </svg>
@@ -40,7 +43,7 @@ export default function PageThx() {
         </li>
         <li>
           <button className={styles.choiseBtn}>
-            на пошту{" "}
+            на пошту
             <svg className={styles.arrowList} width={24} height={24}>
               <use xlinkHref={`${sprite}#icon-arrow`}></use>
             </svg>
@@ -48,7 +51,7 @@ export default function PageThx() {
         </li>
         <li>
           <button className={styles.choiseBtn}>
-            завантажити тут{" "}
+            завантажити тут
             <svg className={styles.arrowList} width={24} height={24}>
               <use xlinkHref={`${sprite}#icon-arrow`}></use>
             </svg>
@@ -56,12 +59,13 @@ export default function PageThx() {
         </li>
       </ul>
       <p className={styles.connectTelegramText}>
-        для того, щоб бути в курсі <span>всіх анонсів</span> і бекстейджу <br className={styles.brDesc} />
+        для того, щоб бути в курсі <span>всіх анонсів</span> і бекстейджу{" "}
+        <br className={styles.brDesc} />
         підготовки, приєднуйся до нашого telegram-каналу!
       </p>
       <ul className={styles.wrapperConnectTelegramList}>
         <li>
-          <a className={styles.telegramLink} href="#">
+          <a className={styles.telegramLink} href="https://t.me/warsawkod_bot">
             приєднатись
             <svg className={styles.arrowListLink} width={24} height={24}>
               <use xlinkHref={`${sprite}#icon-arrow`}></use>

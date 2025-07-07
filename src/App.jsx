@@ -13,6 +13,7 @@ import Program from "./components/Program/Program";
 
 // 🎯 Новая страница
 import PageThx from "./PageThx/PageThx"; // 🆕 страница благодарности
+import GoldTicketPage from "./TicketsPages/GoldTicketsPage/GoldTicketPage";
 
 // 🎯 Остальные секции
 const Tema = lazy(() => import("./components/Tema/Tema"));
@@ -77,6 +78,7 @@ export default function App() {
 
       {/* Страница благодарности */}
       <Route path="/thank-you" element={<PageThx />} />
+      <Route path="/goldpage" element={<GoldTicketPage />} />
     </Routes>
   );
 }
