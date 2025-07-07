@@ -78,9 +78,8 @@ app.post("/api/create-payment", async (req, res) => {
     const response = await axios.post(
       "https://api.monobank.ua/api/merchant/invoice/create",
       {
-        // amount: purchase.totalAmount * 100
-        amount: 1, // копейки
-        ccy: 980, // eur
+        amount: purchase.totalAmount * 100,
+        ccy: 978, // eur
         redirectUrl,
         webHookUrl: "https://warsawkod.women.place/payment-callback",
       },
