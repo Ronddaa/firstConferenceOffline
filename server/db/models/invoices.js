@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import {v4 as uuidv4} from 'uuid'
 
 const invoiceSchema = new Schema(
   {
@@ -43,32 +42,25 @@ const invoiceSchema = new Schema(
       status: {
         type: String,
         enum: ["pending", "paid", "failed"],
-        required: true,
+        required: false,
       },
     },
 
     // utm-метки
-    utm_source: {
-      type: String,
-      default: "",
+    utmMarks: {
+      utm_source: {
+        type: String,
+        default: "",
+      },
+      utm_medium: {
+        type: String,
+        default: "",
+      },
+      utm_campaign: {
+        type: String,
+        default: "",
+      },
     },
-    utm_medium: {
-      type: String,
-      default: "",
-    },
-    utm_campaign: {
-      type: String,
-      default: "",
-    },
-    ticketId: {
-      type: String,
-      default: () => uuidv4(),
-      unique: true,
-    },
-    ticketUrl: {
-      type: String,
-      default: "",
-    }
   },
   {
     timestamps: true,

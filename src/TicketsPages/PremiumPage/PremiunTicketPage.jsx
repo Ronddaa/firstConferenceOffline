@@ -5,31 +5,14 @@ import ourDress1 from "../ourDress1.webp";
 import ourDress2 from "../ourDress2.webp";
 import ourDress3 from "../ourDress3.webp";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import QRCode from "qrcode";
 
 export default function PremiumTicketPage() {
-  const { ticketId } = useParams();
-  const [invoice, setInvoice] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { invoiceId } = useParams();
 
   useEffect(() => {
-    async function fetchTicketData() {
-      try {
-        const res = await fetch(`/tickets/${ticketId}`); // ✅ путь поправлен
-        const data = await res.json();
-        setInvoice(data);
-      } catch (error) {
-        console.log("error with loading ticket: ", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchTicketData();
-  }, [ticketId]);
-
-  useEffect(() => {
-    if (loading || !invoice) return;
+    if (!invoiceId) return;
 
     const canvas = document.getElementById("qrCodeCanvas");
     if (!canvas) {
@@ -37,22 +20,25 @@ export default function PremiumTicketPage() {
       return;
     }
 
-      QRCode.toCanvas(
-        canvas,
-        invoice.ticketUrl,
-        {
-          width: 200,
-          color: {
-            dark: "#1B2021",
-            light: "#FFFFFF00",
-          },
+    // link to the admin panel, where security quard will check
+    // ticket data
+    const qrCodeLink = `https://admin.women.place/check/${invoiceId}`;
+    QRCode.toCanvas(
+      canvas,
+      qrCodeLink,
+      {
+        width: 200,
+        color: {
+          dark: "#1B2021",
+          light: "#FFFFFF00",
         },
-        (err) => {
-          if (err) console.error("QR code error:", err);
-          else console.log("QR code rendered successfully");
-        }
-      );
-  }, [invoice, loading]);
+      },
+      (err) => {
+        if (err) console.error("QR code error:", err);
+        else console.log("QR code rendered successfully");
+      }
+    );
+  }, [invoiceId]);
 
   return (
     <section className={styles.PremiumTicketPage}>

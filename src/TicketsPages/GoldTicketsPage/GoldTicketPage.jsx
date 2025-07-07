@@ -9,45 +9,35 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 
 export default function GoldTicketPage() {
-  const { ticketId } = useParams();
-  const [invoice, setInvoice] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { invoiceId } = useParams();
 
   useEffect(() => {
-    async function fetchTicketData() {
-      try {
-        const res = await fetch(`/tickets/${ticketId}`); // ✅ путь поправлен
-        const data = await res.json();
-        setInvoice(data);
-      } catch (error) {
-        console.log("error with loading ticket: ", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchTicketData();
-  }, [ticketId]);
-
-  useEffect(() => {
-    if (loading || !invoice) return;
+    if (!invoiceId) return;
 
     const canvas = document.getElementById("qrCodeCanvas");
     if (!canvas) {
       console.warn("Canvas not found");
       return;
     }
-
-      QRCode.toCanvas(canvas, invoice.ticketUrl, {
-          width: 200,
-          color: {
-              dark: "#1B2021",
-              light: "#FFFFFF00",
-          }
-      }, (err) => {
-      if (err) console.error("QR code error:", err);
-      else console.log("QR code rendered successfully");
-    });
-  }, [invoice, loading]);
+    // link to the admin panel, where security quard will check
+    // ticket data
+    const qrCodeLink = `https://admin.women.place/check/${invoiceId}`;
+    QRCode.toCanvas(
+      canvas,
+      qrCodeLink,
+      {
+        width: 200,
+        color: {
+          dark: "#1B2021",
+          light: "#FFFFFF00",
+        },
+      },
+      (err) => {
+        if (err) console.error("QR code error:", err);
+        else console.log("QR code rendered successfully");
+      }
+    );
+  }, [invoiceId]);
 
   return (
     <section className={styles.GoldTicketPage}>
@@ -100,7 +90,7 @@ export default function GoldTicketPage() {
         </li>
       </ul>
       <p className={styles.scanMe}>*заскануй код на конференції</p>
-          <canvas id="qrCodeCanvas" className={styles.qrCodeHere}></canvas>
+      <canvas id="qrCodeCanvas" className={styles.qrCodeHere}></canvas>
     </section>
   );
 }
