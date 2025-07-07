@@ -42,7 +42,7 @@ export const getAllInvoicesController = async (req, res) => {
 };
 
 export const sendTicketToUserController = async (req, res) => {
-  const invoice = await InvoicesCollection.findById("685c4a17687d6be0f0907f21");
+  const invoice = await InvoicesCollection.findById(req.body.id);
   const ticketName = invoice.purchase.tariffs[0].toLowerCase() + "Ticket";
   const response = await sendTicket(invoice, ticketName);
   res.status(200).json({
