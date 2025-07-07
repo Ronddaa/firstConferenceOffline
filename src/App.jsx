@@ -81,8 +81,8 @@ export default function App() {
       {/* Страница благодарности */}
       <Route path="/thank-you" element={<PageThx />} />
       <Route path="/ticket/gold/:ticketId" element={<GoldTicketPage />} />
-      <Route path="/ticket/luxe/" element={<LuxeTicketPage />} />
-      <Route path="/ticket/premium/" element={<PremiumTicketPage />} />
+      <Route path="/ticket/luxe/:ticketId" element={<LuxeTicketPage />} />
+      <Route path="/ticket/premium/:ticketId" element={<PremiumTicketPage />} />
     </Routes>
   );
 }
