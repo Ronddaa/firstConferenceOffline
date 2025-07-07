@@ -1,14 +1,10 @@
 import express from "express";
 import cors from "cors";
-import bodyParser from "body-parser";
 import axios from "axios";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import fs from "fs";
 
 import env from "./utils/env.js";
-
-import pinoHttp from "pino-http";
 import cookieParser from "cookie-parser";
 import initMongoConnection from "./db/initMongoConnection.js";
 
@@ -22,6 +18,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 await initMongoConnection();
+
 const app = express();
 
 const allowedOrigins = [
@@ -41,34 +38,54 @@ const corsOptions = {
   },
   methods: "GET,POST,PUT,DELETE,PATCH",
   allowedHeaders: "Content-Type,Authorization",
-  credentials: true, // Позволяет отправку cookies
+  credentials: true,
   optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
 
-// app.use(pinoHttp());
+import { utmTracker } from "./middlewares/utmMarks.js";
+app.use(utmTracker);
 
+app.use(router);
+
+// Токен MonoBank из env
 const monoBankToken = env("MONOBANK_TOKEN");
-// const facebookAccessToken = env("FACEBOOK_ACCESS_TOKEN");
-// const facebookPixelId = env("FACEBOOK_PIXEL_ID");
-const usersDBFilePath = join(__dirname, "usersDB.json");
 
+// Маршрут создания оплаты
 app.post("/create-payment", async (req, res) => {
-  const { user, purchase, redirectUrL } = req.body;
+  const { user, purchase, utm = {} } = req.body;
+
   if (!user || !purchase) {
     return res.status(400).json({ error: "Missing required fields" });
   }
+
   try {
+    // 1. Создаём счёт в Mongo, без invoiceId (его ещё нет)
+    const newInvoice = await createInvoice({
+      user,
+      purchase,
+      paymentData: { status: "pending" }, // invoiceId пока нет
+      utm_source: utm.utm_source || "",
+      utm_medium: utm.utm_medium || "",
+      utm_campaign: utm.utm_campaign || "",
+    });
+
+    const ticketId = newInvoice.ticketId;
+    const tariffSlug = newInvoice.purchase.tariffs[0].toLowerCase().replace(" ", "-");
+
+    // 2. URL для редиректа после оплаты, с параметрами для фронта
+    const redirectUrl = `https://warsawkod.women.place/thank-you?ticketId=${ticketId}&tariff=${tariffSlug}`;
+
+    // 3. Запрос создания счета в MonoBank
     const response = await axios.post(
       "https://api.monobank.ua/api/merchant/invoice/create",
       {
-        amount: purchase.totalAmount * 100,
-        ccy: 978,
-        redirectUrL,
+        amount: purchase.totalAmount * 100, // копейки
+        ccy: 978, // гривна
+        redirectUrl,
         webHookUrl: "https://warsawkod.women.place/payment-callback",
       },
       {
@@ -79,50 +96,43 @@ app.post("/create-payment", async (req, res) => {
       }
     );
 
-    const paymentData = {
-      invoiceId: response.data.invoiceId,
-      status: "pending",
-    };
+    // 4. Обновляем созданный invoice в Mongo с invoiceId от MonoBank
+    newInvoice.paymentData.invoiceId = response.data.invoiceId;
+    await updateInvoiceById(newInvoice._id, newInvoice);
 
-    await createInvoice({
-      user,
-      purchase,
-      paymentData,
-    });
-
+    // 5. Возвращаем данные клиенту
     res.status(200).json({
       invoiceId: response.data.invoiceId,
       pageUrl: response.data.pageUrl,
+      ticketId,
+      tariff: tariffSlug,
     });
   } catch (error) {
-    console.error(
-      "Error creating payment:",
-      error.response ? error.response.data : error.message
-    );
-    res
-      .status(500)
-      .json({ error: "Failed to create payment", message: error.message });
+    console.error("Error creating payment:", error.response?.data || error.message);
+    res.status(500).json({ error: "Failed to create payment", message: error.message });
   }
 });
 
-// Обработка вебхука
+// Обработка callback от MonoBank (обновление статуса оплаты)
 app.post("/payment-callback", async (req, res) => {
   const { invoiceId, status } = req.body;
-  console.log(invoiceId, status);
+
   if (!invoiceId || !status) {
     return res.status(400).json({ error: "Missing invoiceId or status" });
   }
 
   try {
+    // Находим счёт по invoiceId из callback
     const invoice = await InvoicesCollection.findOne({
       "paymentData.invoiceId": invoiceId,
     });
 
     if (!invoice) {
-      console.log("invoice not found");
+      console.log("Invoice not found for invoiceId:", invoiceId);
       return res.status(404).json({ error: "Invoice not found" });
     }
 
+    // Карта статусов из MonoBank в наши статусы
     const statusMap = {
       success: "paid",
       pending: "pending",
@@ -130,50 +140,46 @@ app.post("/payment-callback", async (req, res) => {
 
     invoice.paymentData.status = statusMap[status] || "failed";
 
+    // Сохраняем обновлённый статус оплаты
     await updateInvoiceById(invoice._id, invoice);
 
-    // после получения статуса success отправить юзеру письмо с билетом
+    // Если оплата прошла — формируем ссылку на билет и отправляем письмо
     if (invoice.paymentData.status === "paid") {
-      const ticketName = invoice.purchase.tariffs[0].toLowerCase() + "Ticket";
+      const ticketName = invoice.purchase.tariffs[0].toLowerCase().replace(" ", "-");
+
+      const ticketUrl = `https://warsawkod.women.place/ticket/${ticketName}/${invoice.ticketId}`;
+      invoice.ticketUrl = ticketUrl;
+
+      await updateInvoiceById(invoice._id, invoice);
+
       try {
         await sendTicket(invoice, ticketName);
       } catch (error) {
-        console.log(
-          `An error occured while trying to send ticket to invoice owner ${invoice.user.email} `
-        );
+        console.log(`Failed to send ticket email to ${invoice.user.email}`, error);
       }
-      console.log();
     }
+
     return res.status(200).json({ message: "Payment status updated" });
   } catch (error) {
-    console.log("Error while payment-callback working: ", error);
-    res
-      .status(500)
-      .json({ error: "Error caused while payment-callback working" });
+    console.error("Error in payment-callback:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
-// Статические файлы
-
-app.use(router);
-
+// Статические файлы (например, билеты, изображения)
 const staticFilesPath = join(__dirname, "../");
 
 app.use(
   express.static(staticFilesPath, {
     setHeaders: (res, path) => {
-      if (
-        path.endsWith(".webp") ||
-        path.endsWith(".jpg") ||
-        path.endsWith(".png") ||
-        path.endsWith(".gif")
-      ) {
-        res.setHeader("Cache-Control", "public, max-age=86400");
+      if (/\.(webp|jpg|png|gif)$/.test(path)) {
+        res.setHeader("Cache-Control", "public, max-age=31536000");
       }
     },
   })
 );
 
+// SPA - отдаём index.html на все остальные маршруты
 app.get("/*", (req, res) => {
   res.sendFile(join(staticFilesPath, "index.html"));
 });

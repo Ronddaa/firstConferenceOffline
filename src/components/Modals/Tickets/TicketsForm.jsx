@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import styles from "./TicketsForm.module.css";
 import sprite from "../../icons.svg";
@@ -6,11 +6,26 @@ import api from "../../../api/api";
 import { sendLeadToMeta } from "../../../utils/sendLeadToMeta";
 
 export default function TicketsForm({ isOpen, onClose }) {
+  const [utmParams, setUtmParams] = useState({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setUtmParams({
+      utm_source: params.get("utm_source") || "",
+      utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "",
+    });
+  }, []);
+
   const tariffs = [
+    { name: "LAST MINUTE", price: 200 },
     { name: "GOLD", price: 300 },
     { name: "PREMIUM", price: 450 },
-    { name: "Luxe", price: 1200 },
-    // { name: "Only ticket", price: 150 },
+    { name: "LUXE", price: 1200 },
   ];
 
   const initialState = {
@@ -49,7 +64,19 @@ export default function TicketsForm({ isOpen, onClose }) {
 
   const calculateTotal = () => {
     const selected = tariffs.find((t) => t.name === formData.tariff);
-    return selected ? selected.price * formData.quantity : 0;
+    if (!selected) return 0;
+
+    let price = selected.price;
+
+    const isDiscount =
+      utmParams.utm_medium === "discount" &&
+      ["luxe", "premium"].includes(selected.name.toLowerCase());
+
+    if (isDiscount) {
+      price *= 0.9; // Скидка 10%
+    }
+
+    return Math.round(price * formData.quantity);
   };
 
   const handleClose = () => {
@@ -61,9 +88,6 @@ export default function TicketsForm({ isOpen, onClose }) {
     e.preventDefault();
     if (!isFormValid) return;
 
-    console.log("Данные формы:", formData);
-
-    // ✅ Отправка события Lead в Meta CAPI
     sendLeadToMeta({
       formType: "client",
       phone: formData.phone,
@@ -72,28 +96,38 @@ export default function TicketsForm({ isOpen, onClose }) {
       ticketQuantity: formData.quantity,
       purchaseValue: calculateTotal(),
       telegram: formData.telegramNick,
+      ...utmParams,
     });
 
-    const response = await api.createPayment({
-      amount: calculateTotal(),
-      currency: 978,
-      redirectUrl: "https://warsawkod.women.place",
-      user: {
-        fullName: formData.fullName,
-        phoneNumber: formData.phone,
-        email: formData.email.toLocaleLowerCase(),
-        telegramNick: formData.telegramNick,
-      },
-      purchase: {
-        tariffs: [formData.tariff],
-        ticketsQuantity: formData.quantity,
-        totalAmount: calculateTotal(),
-      },
-    });
+    try {
+      const response = await api.createPayment({
+        amount: calculateTotal(),
+        currency: 978,
+        redirectUrl: "https://warsawkod.women.place/thank-you", // <-- это для Monobank
+        user: {
+          fullName: formData.fullName,
+          phoneNumber: formData.phone,
+          email: formData.email.toLowerCase(),
+          telegramNick: formData.telegramNick,
+        },
+        purchase: {
+          tariffs: [formData.tariff],
+          ticketsQuantity: formData.quantity,
+          totalAmount: calculateTotal(),
+        },
+        utm: utmParams,
+      });
 
-    window.location.href = response.pageUrl;
-
-    // handleClose();
+      // ✅ Редирект на Monobank
+      if (response.pageUrl) {
+        window.location.href = response.pageUrl;
+      } else {
+        console.error("Не удалось получить ссылку на оплату");
+      }
+    } catch (error) {
+      console.error("Ошибка при создании платежа:", error);
+      alert("Щось пішло не так. Спробуйте ще раз.");
+    }
   };
 
   return (
@@ -158,14 +192,14 @@ export default function TicketsForm({ isOpen, onClose }) {
           *заповнивши це поле у вас є можливість отримати подарунок від нас!
         </p>
 
-        {/* Кастомный селект с тарифами */}
+        {/* Тарифы */}
         <div className={styles.dropdownWrapper}>
           <button
             type="button"
             className={styles.dropdownToggle}
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
-            {formData.tariff || "Оберіть тариф"}
+            {formData.tariff || "Оберіть тариф"}{" "}
             <span>{dropdownOpen ? "▲" : "▼"}</span>
           </button>
 
@@ -174,16 +208,41 @@ export default function TicketsForm({ isOpen, onClose }) {
               dropdownOpen ? styles.open : ""
             }`}
           >
-            {tariffs.map((t) => (
-              <li
-                key={t.name}
-                className={styles.dropdownItem}
-                onClick={() => handleSelectTariff(t.name)}
-              >
-                <span>{t.name}</span>
-                <span>{t.price}&euro;</span>
-              </li>
-            ))}
+            {tariffs.map((t) => {
+              const isDiscount =
+                utmParams.utm_medium === "discount" &&
+                ["luxe", "premium"].includes(t.name.toLowerCase());
+
+              const discountedPrice = Math.round(t.price * 0.9);
+
+              return (
+                <li
+                  key={t.name}
+                  className={styles.dropdownItem}
+                  onClick={() => handleSelectTariff(t.name)}
+                >
+                  <span>
+                    {t.name}
+                    {isDiscount && (
+                      <span className={styles.discountLabel}> (−10%)</span>
+                    )}
+                  </span>
+
+                  <span>
+                    {isDiscount ? (
+                      <>
+                        <span className={styles.oldPrice}>{t.price}&euro;</span>{" "}
+                        <span className={styles.newPrice}>
+                          {discountedPrice}&euro;
+                        </span>
+                      </>
+                    ) : (
+                      <span>{t.price}&euro;</span>
+                    )}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </div>
 

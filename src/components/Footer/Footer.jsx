@@ -23,6 +23,7 @@ export default function Footer() {
           alt="logo"
           width={98}
           height={54}
+          loading="lazy"
         />
         <ul className={styles.wrapperNavigationFooter}>
           <li>
@@ -105,7 +106,7 @@ export default function Footer() {
           <a
             target="_blank"
             className={styles.contactLink}
-            href="https://t.me/women_psyconference"
+            href="https://t.me/warsawkod_bot"
           >
             TELEGRAM
           </a>

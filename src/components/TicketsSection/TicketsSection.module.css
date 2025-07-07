@@ -11,6 +11,16 @@
     margin-bottom: 30px;
     text-transform: uppercase;
 }
+.TicketsLastMinute{
+    padding: 25px 20px;
+    border: 1px solid #1B2021;
+    border-radius: 10px;
+}
+.titleLM{
+    font-size: 34px;
+    color: #1B2021;
+    margin-bottom: 30px;
+}
 .wrapperTicketsTariff{
     display: flex;
     flex-direction: column;

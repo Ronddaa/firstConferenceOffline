@@ -2,7 +2,7 @@ import styles from "./Program.module.css";
 import prgramLi1IMG from './programLi1.webp'
 import prgramLi2IMG from './programLi2.webp'
 import prgramLi3IMG from './programLi3.webp'
-import prgramLi4IMG from "./programLi4.webp";
+import prgramLi4IMG from "./prgramLi4IMG.webp";
 import programBackgroundSvg1 from './programBackgroundSvg1.svg'
 import LinesAfterMonatikProgram from './LinesAfterMonatikProgram.svg'
 
@@ -15,6 +15,7 @@ export default function Program() {
         alt="programBackgroundSvg1"
         width={491}
         height={458}
+        loading="lazy"
       />
       <div className="container">
         <ul className={styles.wrapperDateInfo}>
@@ -24,7 +25,8 @@ export default function Program() {
           </li>
           <li>
             <a
-              className={styles.hotelName} target="_blank"
+              className={styles.hotelName}
+              target="_blank"
               href="https://www.marriott.com/en-us/hotels/wawwi-the-westin-warsaw/overview/"
             >
               Westin hotel
@@ -65,7 +67,7 @@ export default function Program() {
             </p>
           </li>
           <li>
-            <img src={prgramLi1IMG} alt="programIMG" />
+            <img loading="lazy" src={prgramLi1IMG} alt="programIMG" />
           </li>
           <li>
             <p className={styles.numberOfList}>(02)</p>
@@ -76,24 +78,24 @@ export default function Program() {
             </p>
           </li>
           <li>
-            <img src={prgramLi2IMG} alt="programIMG" />
+            <img loading="lazy" src={prgramLi2IMG} alt="programIMG" />
           </li>
           <li>
             <p className={styles.numberOfList}>(03)</p>
             <h3 className={styles.titlelistThree}>
-              10+ привілейованих спікерів
+              12+ привілейованих спікерів
             </h3>
             <p className={styles.textlistThree}>
               про стан, тіло(генетику), гроші та секс
             </p>
           </li>
           <li>
-            <img src={prgramLi3IMG} alt="programIMG" />
+            <img loading="lazy" src={prgramLi3IMG} alt="programIMG" />
           </li>
           <li>
             <p className={styles.numberOfList}>(04)</p>
             <h3 className={styles.titlelistFour} id="beforeSwiper">
-              Ексклюзивний концерт MONATIK
+              Ексклюзивний виступ MONATIK для гостей конференції
             </h3>
             {/* <p className={styles.textlistFour}>
               Показ дизайнерського одягу, бренд-зона з надзвичайним товаром,
@@ -101,7 +103,7 @@ export default function Program() {
             </p> */}
           </li>
           <li>
-            <img src={prgramLi4IMG} alt="programIMG" />
+            <img loading="lazy" src={prgramLi4IMG} alt="programIMG" />
           </li>
         </ul>
         <p className={styles.textUnderprogram}>
@@ -110,6 +112,7 @@ export default function Program() {
         </p>
       </div>
       <img
+        loading="lazy"
         className={styles.LinesAfterMonatikProgram}
         src={LinesAfterMonatikProgram}
         alt="LinesAfterMonatikProgram"

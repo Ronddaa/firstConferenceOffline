@@ -1,0 +1,20 @@
+.PartnersSection{
+    padding: 70px 0;
+}
+.textBtw{
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: right;
+    margin: 0 54px 30px 0;
+}
+.wrapperPartners{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapperPartners li{
+    border: 1px solid #FFFFAC;
+    border-radius: 10px;
+    padding: 52px 24px;
+}

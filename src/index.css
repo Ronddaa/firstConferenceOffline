@@ -92,7 +92,7 @@ ol {
 a {
   text-decoration: none; /* Убираем подчеркивание ссылок */
 }
-p, li{
+p, li, a{
   white-space: pre-line;
 }
 button {

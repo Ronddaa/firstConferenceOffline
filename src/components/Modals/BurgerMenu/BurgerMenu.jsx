@@ -81,6 +81,15 @@ export default function BurgerMenu({ isOpen, onClose }) {
         <li>
           <a
             className={styles.navigationLink}
+            onClick={onClose}
+            href="#speakersSection"
+          >
+            наші спікери
+          </a>
+        </li>
+        <li>
+          <a
+            className={styles.navigationLink}
             href="#sectionProgramOnConference"
             onClick={onClose}
           >
@@ -90,6 +99,15 @@ export default function BurgerMenu({ isOpen, onClose }) {
         <li>
           <a className={styles.navigationLink} href="#tariff" onClick={onClose}>
             тарифи
+          </a>
+        </li>
+        <li>
+          <a
+            className={styles.navigationLink}
+            href="#partnersSection"
+            onClick={onClose}
+          >
+            парнетри
           </a>
         </li>
         <li>
@@ -107,11 +125,7 @@ export default function BurgerMenu({ isOpen, onClose }) {
           </a>
         </li>
         <li>
-          <a
-            className={styles.navigationLink}
-            href="#footer"
-            onClick={onClose}
-          >
+          <a className={styles.navigationLink} href="#footer" onClick={onClose}>
             контакти
           </a>
         </li>

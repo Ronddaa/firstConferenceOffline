@@ -73,7 +73,7 @@
     text-align: center;
     font-weight: 600; 
     text-decoration: underline;
-    display: inline-block;
+    display: block;
 }
 .btwTexttwo{
     text-transform: uppercase;
@@ -141,7 +141,7 @@
 }
 .wrapperProgramList li:nth-child(7){
     background-color: #9EB7E5;
-    padding: 60px 20px 70px;
+    padding: 40px 20px 50px;
     color: #1B2021;
 }
 
@@ -216,4 +216,38 @@
     bottom: 0;
     right: 0;
     z-index: -1;
+}
+
+@media (min-width:876px){
+    .wrapperDateInfo{
+        flex-direction: row;
+        max-width: 1377px;
+        margin: 0 auto 200px;
+    }
+    .wrapperDateInfo li:nth-child(1){
+        padding: 101px 30px 110px 38px;
+        display: flex;
+        align-items: end;
+    }
+    .date{
+        font-size: 194px;
+    }
+    .mounth{
+        font-size: 58px;
+        margin: 0;
+    }
+    .mounth::after{
+        top: -30px;
+        left: 110px;
+        font-size: 94px;
+    }
+    .wrapperDateInfo li:last-child{
+        padding: 164px 54.5px;
+        border-radius: 0 10px 10px 0;
+        background-size: cover;
+        width: 100%;
+    }
+    .hotelName{
+        font-size: 52px;
+    }
 }
