@@ -38,7 +38,7 @@ const invoiceSchema = new Schema(
     paymentData: {
       invoiceId: {
         type: String,
-        required: true,
+        required: false,
       },
       status: {
         type: String,

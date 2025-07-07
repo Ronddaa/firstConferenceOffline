@@ -99,25 +99,35 @@ export default function TicketsForm({ isOpen, onClose }) {
       ...utmParams,
     });
 
-    const response = await api.createPayment({
-      amount: calculateTotal(),
-      currency: 978,
-      redirectUrl: "https://warsawkod.women.place/thank-you",
-      user: {
-        fullName: formData.fullName,
-        phoneNumber: formData.phone,
-        email: formData.email.toLowerCase(),
-        telegramNick: formData.telegramNick,
-      },
-      purchase: {
-        tariffs: [formData.tariff],
-        ticketsQuantity: formData.quantity,
-        totalAmount: calculateTotal(),
-      },
-      utm: utmParams,
-    });
+    try {
+      const response = await api.createPayment({
+        amount: calculateTotal(),
+        currency: 978,
+        redirectUrl: "https://warsawkod.women.place/thank-you", // <-- это для Monobank
+        user: {
+          fullName: formData.fullName,
+          phoneNumber: formData.phone,
+          email: formData.email.toLowerCase(),
+          telegramNick: formData.telegramNick,
+        },
+        purchase: {
+          tariffs: [formData.tariff],
+          ticketsQuantity: formData.quantity,
+          totalAmount: calculateTotal(),
+        },
+        utm: utmParams,
+      });
 
-    window.location.href = `https://warsawkod.women.place/thank-you?ticketId=${response.ticketId}&tariff=${response.tariff}`;
+      // ✅ Редирект на Monobank
+      if (response.pageUrl) {
+        window.location.href = response.pageUrl;
+      } else {
+        console.error("Не удалось получить ссылку на оплату");
+      }
+    } catch (error) {
+      console.error("Ошибка при создании платежа:", error);
+      alert("Щось пішло не так. Спробуйте ще раз.");
+    }
   };
 
   return (
