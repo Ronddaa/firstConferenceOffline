@@ -56,11 +56,19 @@ class ApiClient {
   }
 
   async createPayment(payload) {
-    const { data } = await this.axiosInstance.post(
-      "/create-payment",
-      payload
-    );
+    const { data } = await this.axiosInstance.post("/create-payment", payload);
+    return data;
+  }
 
+  async getInvoiceById(id) {
+    const { data } = await this.axiosInstance.get(`/invoices/${id}`);
+    return data;
+  }
+
+  async sendTicketOnMailByInvoiceId(id) {
+    const { data } = await this.axiosInstance.post(
+      `/invoices/sendTicket/${id}`
+    );
     return data;
   }
 }

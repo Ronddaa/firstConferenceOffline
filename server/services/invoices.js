@@ -6,6 +6,17 @@ export const createInvoice = async (payload) => {
   return invoiceData;
 };
 
+export const getInvoiceById = async (id) => {
+  if (!id) {
+    throw createHttpError(400, "Invoice ID is required");
+  }
+  const invoiceData = await InvoicesCollection.findById(id);
+  if (!invoiceData) {
+    throw createHttpError(404, `Invoice with id ${id} not found`);
+  }
+  return invoiceData;
+};
+
 export const getAllInvoices = async () => {
   const invoicesData = await InvoicesCollection.find();
   return invoicesData;

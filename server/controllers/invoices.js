@@ -1,5 +1,9 @@
 import { InvoicesCollection } from "../db/models/invoices.js";
-import { createInvoice, getAllInvoices } from "../services/invoices.js";
+import {
+  createInvoice,
+  getAllInvoices,
+  getInvoiceById,
+} from "../services/invoices.js";
 import { sendTicket } from "../utils/sendTicket.js";
 
 export const createInvoiceController = async (req, res) => {
@@ -33,21 +37,30 @@ export const createInvoiceController = async (req, res) => {
 };
 
 export const getAllInvoicesController = async (req, res) => {
-  const user = await getAllInvoices();
+  const invoice = await getAllInvoices();
   res.status(200).json({
     status: 200,
     message: "Invoices was successfully found!",
-    data: user,
+    data: invoice,
+  });
+};
+
+export const getInvoiceByIdController = async (req, res) => {
+  const invoice = await getInvoiceById(req.params.id);
+  res.status(200).json({
+    status: 200,
+    message: "Invoice was successfully found!",
+    data: invoice,
   });
 };
 
 export const sendTicketToUserController = async (req, res) => {
-  const invoice = await InvoicesCollection.findById(req.body.id);
+  const invoice = await InvoicesCollection.findById(req.params.id);
   const ticketName = invoice.purchase.tariffs[0].toLowerCase() + "Ticket";
   const response = await sendTicket(invoice, ticketName);
   res.status(200).json({
     status: 200,
-    message: "Invoices was successfully found!",
+    message: "Ticket was successfully sent!",
     data: response,
   });
 };

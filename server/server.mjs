@@ -13,6 +13,7 @@ import router from "./routers/index.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { createInvoice, updateInvoiceById } from "./services/invoices.js";
 import { sendTicket } from "./utils/sendTicket.js";
+import { utmTracker } from "./middlewares/utmMarks.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -46,45 +47,40 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-import { utmTracker } from "./middlewares/utmMarks.js";
 app.use(utmTracker);
 
-app.use(router);
+app.use("/api", router);
 
 // Токен MonoBank из env
 const monoBankToken = env("MONOBANK_TOKEN");
 
 // Маршрут создания оплаты
-app.post("/create-payment", async (req, res) => {
-  const { user, purchase, utm = {} } = req.body;
+app.post("/api/create-payment", async (req, res) => {
+  const { user, purchase, utmMarks } = req.body;
 
   if (!user || !purchase) {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
   try {
-    // 1. Создаём счёт в Mongo, без invoiceId (его ещё нет)
-    const newInvoice = await createInvoice({
+    // 1. Создаем счет в монго, но без paymentData, она появиться
+    //  в обработке вебхука
+    const invoice = await createInvoice({
       user,
       purchase,
-      paymentData: { status: "pending" }, // invoiceId пока нет
-      utm_source: utm.utm_source || "",
-      utm_medium: utm.utm_medium || "",
-      utm_campaign: utm.utm_campaign || "",
+      utmMarks,
     });
 
-    const ticketId = newInvoice.ticketId;
-    const tariffSlug = newInvoice.purchase.tariffs[0].toLowerCase().replace(" ", "-");
-
     // 2. URL для редиректа после оплаты, с параметрами для фронта
-    const redirectUrl = `https://warsawkod.women.place/thank-you?ticketId=${ticketId}&tariff=${tariffSlug}`;
+    const redirectUrl = `https://warsawkod.women.place/thank-you/${invoice._id}`;
 
     // 3. Запрос создания счета в MonoBank
     const response = await axios.post(
       "https://api.monobank.ua/api/merchant/invoice/create",
       {
-        amount: purchase.totalAmount * 100, // копейки
-        ccy: 978, // гривна
+        // amount: purchase.totalAmount * 100
+        amount: 1, // копейки
+        ccy: 980, // eur
         redirectUrl,
         webHookUrl: "https://warsawkod.women.place/payment-callback",
       },
@@ -97,26 +93,40 @@ app.post("/create-payment", async (req, res) => {
     );
 
     // 4. Обновляем созданный invoice в Mongo с invoiceId от MonoBank
-    newInvoice.paymentData.invoiceId = response.data.invoiceId;
-    await updateInvoiceById(newInvoice._id, newInvoice);
+    const updatedInvoice = {
+      ...invoice,
+      paymentData: {
+        invoiceId: response.data.invoiceId,
+        status: "pending",
+      },
+    };
+    await updateInvoiceById(invoice._id, updatedInvoice);
 
     // 5. Возвращаем данные клиенту
     res.status(200).json({
       invoiceId: response.data.invoiceId,
       pageUrl: response.data.pageUrl,
-      ticketId,
-      tariff: tariffSlug,
     });
   } catch (error) {
-    console.error("Error creating payment:", error.response?.data || error.message);
-    res.status(500).json({ error: "Failed to create payment", message: error.message });
+    console.error(
+      "Error creating payment:",
+      error.response?.data || error.message
+    );
+    res
+      .status(500)
+      .json({ error: "Failed to create payment", message: error.message });
   }
 });
 
 // Обработка callback от MonoBank (обновление статуса оплаты)
-app.post("/payment-callback", async (req, res) => {
+app.post("/api/payment-callback", async (req, res) => {
   const { invoiceId, status } = req.body;
-
+  // Add this at the start of your webhook handler
+  console.log("Received payment callback:", {
+    invoiceId,
+    status,
+    timestamp: new Date().toISOString(),
+  });
   if (!invoiceId || !status) {
     return res.status(400).json({ error: "Missing invoiceId or status" });
   }
@@ -142,23 +152,6 @@ app.post("/payment-callback", async (req, res) => {
 
     // Сохраняем обновлённый статус оплаты
     await updateInvoiceById(invoice._id, invoice);
-
-    // Если оплата прошла — формируем ссылку на билет и отправляем письмо
-    if (invoice.paymentData.status === "paid") {
-      const ticketName = invoice.purchase.tariffs[0].toLowerCase().replace(" ", "-");
-
-      const ticketUrl = `https://warsawkod.women.place/ticket/${ticketName}/${invoice.ticketId}`;
-      invoice.ticketUrl = ticketUrl;
-
-      await updateInvoiceById(invoice._id, invoice);
-
-      try {
-        await sendTicket(invoice, ticketName);
-      } catch (error) {
-        console.log(`Failed to send ticket email to ${invoice.user.email}`, error);
-      }
-    }
-
     return res.status(200).json({ message: "Payment status updated" });
   } catch (error) {
     console.error("Error in payment-callback:", error);

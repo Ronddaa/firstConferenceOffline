@@ -36,15 +36,6 @@ export async function sendTicket(invoice, ticketName) {
   try {
     await sendEmail({
       to: invoice.user.email,
-      subject: "Дякуємо за покупку. За секундку прийде твій квиток!",
-      html: thxForPaymentHtml,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-  try {
-    await sendEmail({
-      to: invoice.user.email,
       subject: "А ось і твій квиток, як і обіцяли)",
       html: ticketHtml,
       attachments: [

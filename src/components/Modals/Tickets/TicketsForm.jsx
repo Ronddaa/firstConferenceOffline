@@ -101,9 +101,6 @@ export default function TicketsForm({ isOpen, onClose }) {
 
     try {
       const response = await api.createPayment({
-        amount: calculateTotal(),
-        currency: 978,
-        redirectUrl: "https://warsawkod.women.place/thank-you", // <-- это для Monobank
         user: {
           fullName: formData.fullName,
           phoneNumber: formData.phone,
@@ -115,7 +112,7 @@ export default function TicketsForm({ isOpen, onClose }) {
           ticketsQuantity: formData.quantity,
           totalAmount: calculateTotal(),
         },
-        utm: utmParams,
+        utmMarks: utmParams,
       });
 
       // ✅ Редирект на Monobank
