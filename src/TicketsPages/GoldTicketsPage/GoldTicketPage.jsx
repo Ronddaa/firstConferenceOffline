@@ -5,7 +5,7 @@ import ourDress1 from "../ourDress1.webp";
 import ourDress2 from "../ourDress2.webp";
 import ourDress3 from "../ourDress3.webp";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import QRCode from "qrcode";
 
 export default function GoldTicketPage() {
