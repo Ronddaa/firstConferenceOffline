@@ -1,7 +1,7 @@
-.GoldTicketPage{
+.PremiumTicketPage{
     width: 595px;
     text-align: center;
-    background: url(../GoldTB.webp);
+    background: url(../PremiumTB.webp);
     position: relative;
     padding: 40px 0 70px;
 }

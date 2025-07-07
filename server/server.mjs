@@ -107,6 +107,8 @@ app.post("/create-payment", async (req, res) => {
     res.status(200).json({
       invoiceId: response.data.invoiceId,
       pageUrl: response.data.pageUrl,
+      ticketId: newInvoice.ticketId,
+      tariff: newInvoice.purchase.tariffs[0].toLowerCase().replace(" ", "-")
     });
   } catch (error) {
     console.error(

@@ -117,7 +117,7 @@ export default function TicketsForm({ isOpen, onClose }) {
       utm: utmParams,
     });
 
-    window.location.href = response.pageUrl;
+    window.location.href = `https://warsawkod.women.place/thank-you?ticketId=${response.ticketId}&tariff=${response.tariff}`;
   };
 
   return (

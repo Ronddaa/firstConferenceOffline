@@ -1,7 +1,7 @@
-.GoldTicketPage{
+.LuxeTicketPage{
     width: 595px;
     text-align: center;
-    background: url(../GoldTB.webp);
+    background: url(../LuxeTB.webp);
     position: relative;
     padding: 40px 0 70px;
 }
@@ -11,19 +11,19 @@
 .textUnderlogo{
     font-weight: 600;
     font-size: 18px;
-    color: #1B2021;
+    color: #FFFCF9;
     margin-bottom: 70px;
 }
 .titleGoldTicket{
     font-size: 26px;
-    color: #1B2021;
+    color: #FFFCF9;
     margin-bottom: 20px;
 }
 .TicketsIMG{
     margin: 0 auto 20px;
 }
 .dressCode{
-    color: #1B2021;
+    color: #FFFCF9;
     font-size: 26px;   
     margin-bottom: 20px;
 }
@@ -34,12 +34,12 @@
     padding: 0 25px;
 }
 .wrapperNameColor li{
-    color: #1B2021;
+    color: #FFFCF9;
     font-size: 18px;
 }
 .wrapperColors{
     display: flex;
-    border: 1px solid #1B2021;
+    border: 1px solid #FFFCF9;
     border-radius: 10px;
     max-width: 545px;
     overflow: hidden;
@@ -77,7 +77,7 @@
     background-color: #FFFFFF;
 }
 .colorOurIvent{
-    color: #1B2021;
+    color: #FFFCF9;
     font-size: 18px;
     font-style: italic;
     margin-bottom: 30px;
@@ -92,7 +92,7 @@
     font-weight: 600;
     font-size: 18px;
     margin-bottom: 20px;
-    color: #1B2021;
+    color: #FFFCF9;
 }
 .qrCodeHere{
     margin: 0 auto;

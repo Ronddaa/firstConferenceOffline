@@ -1,5 +1,5 @@
-import styles from "./GoldTicketPage.module.css";
-import logo from "../GoldTicketLogo.svg";
+import styles from "./PremiumTicketPage.module.css";
+import logo from "../PremiumTicketLogo.svg";
 import TicketsIMG from "../TicketsIMG.webp";
 import ourDress1 from "../ourDress1.webp";
 import ourDress2 from "../ourDress2.webp";
@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 
-export default function GoldTicketPage() {
+export default function PremiumTicketPage() {
   const { ticketId } = useParams();
   const [invoice, setInvoice] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,20 +37,25 @@ export default function GoldTicketPage() {
       return;
     }
 
-      QRCode.toCanvas(canvas, invoice.ticketUrl, {
+      QRCode.toCanvas(
+        canvas,
+        invoice.ticketUrl,
+        {
           width: 200,
           color: {
-              dark: "#1B2021",
-              light: "#FFFFFF00",
-          }
-      }, (err) => {
-      if (err) console.error("QR code error:", err);
-      else console.log("QR code rendered successfully");
-    });
+            dark: "#1B2021",
+            light: "#FFFFFF00",
+          },
+        },
+        (err) => {
+          if (err) console.error("QR code error:", err);
+          else console.log("QR code rendered successfully");
+        }
+      );
   }, [invoice, loading]);
 
   return (
-    <section className={styles.GoldTicketPage}>
+    <section className={styles.PremiumTicketPage}>
       <img
         className={styles.logo}
         src={logo}
@@ -62,7 +67,7 @@ export default function GoldTicketPage() {
         Преміальна українсько-європейська <br /> конференція у форматі
         спікер-шоу
       </p>
-      <h1 className={styles.titleGoldTicket}>квиток для тарифу «gold»</h1>
+      <h1 className={styles.titleGoldTicket}>квиток для тарифу «premium»</h1>
       <img
         className={styles.TicketsIMG}
         src={TicketsIMG}
@@ -100,7 +105,7 @@ export default function GoldTicketPage() {
         </li>
       </ul>
       <p className={styles.scanMe}>*заскануй код на конференції</p>
-          <canvas id="qrCodeCanvas" className={styles.qrCodeHere}></canvas>
+      <canvas id="qrCodeCanvas" className={styles.qrCodeHere}></canvas>
     </section>
   );
 }

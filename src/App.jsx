@@ -14,6 +14,8 @@ import Program from "./components/Program/Program";
 // 🎯 Новая страница
 import PageThx from "./PageThx/PageThx"; // 🆕 страница благодарности
 import GoldTicketPage from "./TicketsPages/GoldTicketsPage/GoldTicketPage";
+import LuxeTicketPage from "./TicketsPages/LuxeTicketPage/LuxeTicketPage";
+import PremiumTicketPage from "./TicketsPages/PremiumPage/PremiunTicketPage";
 
 // 🎯 Остальные секции
 const Tema = lazy(() => import("./components/Tema/Tema"));
@@ -79,6 +81,8 @@ export default function App() {
       {/* Страница благодарности */}
       <Route path="/thank-you" element={<PageThx />} />
       <Route path="/ticket/gold/:ticketId" element={<GoldTicketPage />} />
+      <Route path="/ticket/luxe/" element={<LuxeTicketPage />} />
+      <Route path="/ticket/premium/" element={<PremiumTicketPage />} />
     </Routes>
   );
 }
