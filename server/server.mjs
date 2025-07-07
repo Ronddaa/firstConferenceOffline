@@ -148,7 +148,13 @@ app.post("/payment-callback", async (req, res) => {
 
     // после получения статуса success отправить юзеру письмо с билетом
     if (invoice.paymentData.status === "paid") {
-      const ticketName = invoice.purchase.tariffs[0].toLowerCase() + "Ticket";
+
+      const ticketName = invoice.purchase.tariffs[0].toLowerCase().replace(" ", "-");
+      const ticketUrl = `https://warsawkod.women.place/ticket/${ticketName}/${invoice.ticketId}`;
+
+      invoice.ticketUrl = ticketUrl;
+      await updateInvoiceById(invoice._id, invoice)
+
       try {
         await sendTicket(invoice, ticketName);
       } catch (error) {

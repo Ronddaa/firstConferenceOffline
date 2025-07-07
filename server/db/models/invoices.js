@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import {v4 as uuidv4} from 'uuid'
 
 const invoiceSchema = new Schema(
   {
@@ -59,6 +60,15 @@ const invoiceSchema = new Schema(
       type: String,
       default: "",
     },
+    ticketId: {
+      type: String,
+      default: () => uuidv4(),
+      unique: true,
+    },
+    ticketUrl: {
+      type: String,
+      default: "",
+    }
   },
   {
     timestamps: true,

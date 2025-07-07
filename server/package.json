@@ -29,6 +29,7 @@
     "pino-http": "^10.3.0",
     "pino-pretty": "^11.2.2",
     "qrcode": "^1.5.4",
-    "statuses": "^2.0.1"
+    "statuses": "^2.0.1",
+    "uuid": "^11.1.0"
   }
 }

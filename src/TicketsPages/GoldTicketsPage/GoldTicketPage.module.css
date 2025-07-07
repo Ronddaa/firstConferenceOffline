@@ -96,4 +96,7 @@
 }
 .qrCodeHere{
     margin: 0 auto;
+    width: 310px;
+    height: 310px;
+    border: 2px solid #1B2021;
 }

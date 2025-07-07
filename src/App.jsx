@@ -78,7 +78,7 @@ export default function App() {
 
       {/* Страница благодарности */}
       <Route path="/thank-you" element={<PageThx />} />
-      <Route path="/goldpage" element={<GoldTicketPage />} />
+      <Route path="/ticket/gold/:ticketId" element={<GoldTicketPage />} />
     </Routes>
   );
 }
