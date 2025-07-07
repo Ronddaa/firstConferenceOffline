@@ -95,7 +95,6 @@ export default function GoldTicketPage() {
       </ul>
       <p className={styles.scanMe}>*заскануй код на конференції</p>
           <canvas id="qrCodeCanvas" className={styles.qrCodeHere}></canvas>
-          <p>{invoice?.ticketUrl}</p>
     </section>
   );
 }
