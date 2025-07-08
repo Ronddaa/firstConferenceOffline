@@ -9,10 +9,6 @@
 }
 .SpeakersSection {
     padding-top: 100px;
-    background: url(./speakersBackroundSection.svg);
-    background-position: 0 75%;
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 .SpeakersSection :global(.mySwiper) {
     overflow: visible;
@@ -258,28 +254,34 @@ text-transform: uppercase;
 }
 
 @media(min-width: 768px){
-  .SpeakersSection{
-    background: none;
+  .textBtwSection{
+    font-size: 18px;
   }
-  .SpeakersSection :global(.mySwiper) .swiperSlideBackground1::before,
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground2::before,
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground3::before,
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground4::before,
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground5::before,
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground6::before,
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground7::before,
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground8::before,
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground9::before,
-.SpeakersSection :global(.mySwiper) .swiperSlideBackground12::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('./speakersBackroundSection.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: 10px;
+
+  .SpeakersSection :global(.mySwiper) .swiperSlideBackground1,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground2,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground3,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground4,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground5,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground6,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground7,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground8,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground9,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground12{
+  width: 453px !important;
+  height: 675px;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground8{
+  background-position: top;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground3 .speakerNameClass3{
+  font-size: 22px;
+  padding: 0;
+}
+.wrapperSpeakerInfo{
+  max-width: 451px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1px;
 }
 }

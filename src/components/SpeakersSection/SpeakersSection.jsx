@@ -5,15 +5,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
-import speakersBackroundSection from './speakersBackroundSection.svg'
+// import speakersBackroundSection from './speakersBackroundSection.svg'
 
 // Хук для определения slidesPerView в зависимости от ширины экрана
 function useSlidesPerView() {
   const getSlides = () => {
     const width = window.innerWidth;
     if (width < 768) return 1.02;
-    if (width < 1024) return 2.05;
-    return 3.75;
+    if (width < 1024) return 2;
+    return 3.05;
   };
 
   const [slidesPerView, setSlidesPerView] = useState(getSlides());
@@ -41,7 +41,7 @@ export default function SpeakersSection() {
   const speakers = [
     {
       id: 1,
-      speakerName: "толстікова катерина",
+      speakerName: "толстікова\nкатерина",
       speakerTema: "",
       swiperSlideBackground: "swiperSlideBackground1",
       speakerInstagram:
@@ -65,7 +65,7 @@ export default function SpeakersSection() {
     },
     {
       id: 3,
-      speakerName: "Матюшевська Анастасія - Олімпія",
+      speakerName: "Матюшевська\nАнастасія-Олімпія",
       speakerTema: "",
       swiperSlideBackground: "swiperSlideBackground3",
       speakerInstagram:
@@ -78,7 +78,7 @@ export default function SpeakersSection() {
     },
     {
       id: 4,
-      speakerName: "Козлова Катерина",
+      speakerName: "Козлова\nКатерина",
       speakerTema: "",
       swiperSlideBackground: "swiperSlideBackground4",
       speakerInstagram:
@@ -91,7 +91,7 @@ export default function SpeakersSection() {
     },
     {
       id: 5,
-      speakerName: "Безбородих Олена",
+      speakerName: "Безбородих\nОлена",
       speakerTema: "",
       swiperSlideBackground: "swiperSlideBackground5",
       speakerInstagram:

@@ -94,3 +94,26 @@ li .defoultStylestitle3{
   z-index: 2;
   text-transform: uppercase;
 }
+@media (min-width:768px){
+  .textSection{
+    font-size: 18px;
+    right: 40%;
+    opacity: 0.8;
+  }
+  .defoultStylestitle, .defoultStylestitle2, .defoultStylestitle3, .defoultStylestitle4{
+    font-size: 6vw;
+  }
+  .wrapperTitles{
+    padding-top: 250px;
+  }
+  li .defoultStylestitle2{
+    margin-left: 45%;
+    }
+    li .defoultStylestitle3{
+      margin-left: 70%;
+      }
+      li .defoultStylestitle4{
+        margin-left: 100%;
+        }
+    
+}
