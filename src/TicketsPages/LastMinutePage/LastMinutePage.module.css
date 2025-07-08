@@ -1,0 +1,101 @@
+.PremiumTicketPage{
+    width: 595px;
+    text-align: center;
+    background: url(../LastMinuteBT.webp);
+    position: relative;
+    padding: 40px 0 70px;
+}
+.logo{
+    margin: 0 auto 10px;
+}
+.textUnderlogo{
+    font-weight: 600;
+    font-size: 18px;
+    color: #1B2021;
+    margin-bottom: 70px;
+}
+.titleGoldTicket{
+    font-size: 26px;
+    color: #1B2021;
+    margin-bottom: 20px;
+}
+.TicketsIMG{
+    margin: 0 auto 20px;
+}
+.dressCode{
+    color: #1B2021;
+    font-size: 26px;   
+    margin-bottom: 20px;
+}
+.wrapperNameColor{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding: 0 25px;
+}
+.wrapperNameColor li{
+    color: #1B2021;
+    font-size: 18px;
+}
+.wrapperColors{
+    display: flex;
+    border: 1px solid #1B2021;
+    border-radius: 10px;
+    max-width: 545px;
+    overflow: hidden;
+    margin: 0 auto 5px;
+}
+.wrapperColors li{
+    width: 61px;
+    height: 100px;
+}
+.wrapperColors li:nth-child(1){
+    background-color: #FFFFAC;
+}
+.wrapperColors li:nth-child(2){
+    background-color: #FFFF61;
+}
+.wrapperColors li:nth-child(3){
+    background-color: #FFE203;
+}
+.wrapperColors li:nth-child(4){
+    background-color: #9EB7E5;
+}
+.wrapperColors li:nth-child(5){
+    background-color: #B7CBF0;
+}
+.wrapperColors li:nth-child(6){
+    background-color: #D8E5FC;
+}
+.wrapperColors li:nth-child(7){
+    background-color: #FFF9DA;
+}
+.wrapperColors li:nth-child(8){
+    background-color: #FFF6E3;
+}
+.wrapperColors li:nth-child(9){
+    background-color: #FFFFFF;
+}
+.colorOurIvent{
+    color: #1B2021;
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+.wrapperOurDressIMG{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+    margin-bottom: 40px;
+}
+.scanMe{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #1B2021;
+}
+.qrCodeHere{
+    margin: 0 auto;
+    width: 310px;
+    height: 310px;
+}

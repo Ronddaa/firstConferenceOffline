@@ -128,6 +128,8 @@
     display: grid;
     grid-template-columns: 1fr;
     margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 .wrapperProgramList li:first-child{
     border-radius: 10px 10px 0 0;
@@ -217,6 +219,9 @@
     right: 0;
     z-index: -1;
 }
+.LinesAfterMonatikProgramDesc{
+    display: none;
+}
 
 @media (min-width:876px){
     .wrapperDateInfo{
@@ -249,5 +254,89 @@
     }
     .hotelName{
         font-size: 52px;
+    }
+    .btwTexttwo{
+        font-size: 18px;
+        margin-bottom:80px;
+        margin-left: 20%;
+        text-align: center;
+    }
+    .titleProgram{
+        font-size: 5vw;
+        margin-bottom: 50px;
+    }
+    .titleProgram::after{
+        width: 120%;
+        height: 500%;
+        opacity: 0.07;
+    }
+    .brMobileTitleProgram{
+        display: none;
+    }
+    .textUnderTitleProgram{
+        font-size: 18px;
+    }
+    .wrapperProgramList{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+    .wrapperProgramList li:nth-child(1){
+        grid-area: 1 / 3 / 3 / 5;
+        border-radius: 0px;
+        padding: 80px 40px ;
+    }
+    .wrapperProgramList li:nth-child(2){
+        grid-area: 1 / 1 / 3 / 3; 
+        border-radius: 0px;
+    }
+    .wrapperProgramList li:nth-child(3){
+        grid-area: 3 / 1 / 5 / 3;
+        border-radius: 0px;
+        padding: 80px 40px ;
+    }
+    .wrapperProgramList li:nth-child(4){
+        grid-area: 1 / 5 / 3 / 7;
+        border-radius: 0px;
+    }
+    .wrapperProgramList li:nth-child(5){
+        grid-area: 3 / 5 / 5 / 7; 
+        border-radius: 0px;
+        padding: 60px 40px ;
+    }
+    .wrapperProgramList li:nth-child(6){
+        grid-area: 3 / 3 / 5 / 5; 
+        border-radius: 0px;
+    }
+    .wrapperProgramList li:nth-child(7){
+        grid-area: 5 / 4 / 8 / 7; 
+        border-radius: 0px;
+        padding: 160px 40px ;
+    }
+    .wrapperProgramList li:nth-child(8){
+        grid-area: 5 / 1 / 8 / 4;
+        border-radius: 0px;
+    }
+    .monatikIMG{
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
+    }
+    .titlelistOne, .titlelistTwo, .titlelistThree, .titlelistFour{
+        font-size: 2vw;
+    }
+    .textlistOne, .textlistTwo, .textlistThree, .textlistFour{
+        font-size: 1vw;
+    }
+    .LinesAfterMonatikProgram{
+        display: none;
+    }
+    .LinesAfterMonatikProgramDesc{
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: -120px;
     }
 }

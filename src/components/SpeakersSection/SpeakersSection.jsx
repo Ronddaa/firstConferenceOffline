@@ -1,15 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./SpeakersSection.module.css";
 import sprite from "../icons.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/scrollbar";
-
 import { Scrollbar } from "swiper/modules";
+import speakersBackroundSection from './speakersBackroundSection.svg'
+
+// Хук для определения slidesPerView в зависимости от ширины экрана
+function useSlidesPerView() {
+  const getSlides = () => {
+    const width = window.innerWidth;
+    if (width < 768) return 1.02;
+    if (width < 1024) return 2.05;
+    return 3.75;
+  };
+
+  const [slidesPerView, setSlidesPerView] = useState(getSlides());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSlidesPerView(getSlides());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return slidesPerView;
+}
 
 export default function SpeakersSection() {
   const [activeSpeakerId, setActiveSpeakerId] = useState(null);
+  const slidesPerView = useSlidesPerView();
 
   const toggleDetails = (id) => {
     setActiveSpeakerId((prev) => (prev === id ? null : id));
@@ -150,14 +173,16 @@ export default function SpeakersSection() {
         <Swiper
           scrollbar={{ hide: false }}
           modules={[Scrollbar]}
-                  spaceBetween={20}
-                  slidesPerView={1.02}
+          spaceBetween={20}
+          slidesPerView={slidesPerView}
           className="mySwiper"
         >
           {speakers.map((speaker) => (
             <SwiperSlide
               key={speaker.id}
-              className={styles[speaker.swiperSlideBackground]}
+              className={`${styles[speaker.swiperSlideBackground]} ${
+                styles.slideWrapper
+              }`}
             >
               <p className={styles.numberOfSpeaker}>
                 {speaker.numberOfSpeaker}

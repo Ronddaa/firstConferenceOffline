@@ -16,6 +16,7 @@ import PageThx from "./PageThx/PageThx"; // 🆕 страница благода
 import GoldTicketPage from "./TicketsPages/GoldTicketsPage/GoldTicketPage";
 import LuxeTicketPage from "./TicketsPages/LuxeTicketPage/LuxeTicketPage";
 import PremiumTicketPage from "./TicketsPages/PremiumPage/PremiunTicketPage";
+import LastMinutePage from "./TicketsPages/LastMinutePage/LastMinutePage";
 
 // 🎯 Остальные секции
 const Tema = lazy(() => import("./components/Tema/Tema"));
@@ -82,6 +83,7 @@ export default function App() {
       <Route path="/thank-you/:invoiceId" element={<PageThx />} />
       <Route path="/ticket/gold/:invoiceId" element={<GoldTicketPage />} />
       <Route path="/ticket/luxe/:invoiceId" element={<LuxeTicketPage />} />
+      <Route path="/ticket/last-minute/:invoiceId" element={<LastMinutePage />} />
       <Route
         path="/ticket/premium/:invoiceId"
         element={<PremiumTicketPage />}

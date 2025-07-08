@@ -5,6 +5,7 @@ import prgramLi3IMG from './programLi3.webp'
 import prgramLi4IMG from "./prgramLi4IMG.webp";
 import programBackgroundSvg1 from './programBackgroundSvg1.svg'
 import LinesAfterMonatikProgram from './LinesAfterMonatikProgram.svg'
+import LinesAfterMonatikProgramDesc from "./LinesAfterMonatikProgramDesc.svg";
 
 export default function Program() {
   return (
@@ -44,7 +45,7 @@ export default function Program() {
 
         <h2 className={styles.titleProgram}>
           створюємо <span>преміальний</span> простір для української спільноти{" "}
-          <br className={styles.brMobile} /> в<span> Європі</span>
+          <br className={styles.brMobileTitleProgram} /> в<span> Європі</span>
         </h2>
         <p className={styles.textUnderTitleProgram}>
           Це подія для тих,
@@ -103,7 +104,12 @@ export default function Program() {
             </p> */}
           </li>
           <li>
-            <img loading="lazy" src={prgramLi4IMG} alt="programIMG" />
+            <img
+              className={styles.monatikIMG}
+              loading="lazy"
+              src={prgramLi4IMG}
+              alt="programIMG"
+            />
           </li>
         </ul>
         <p className={styles.textUnderprogram}>
@@ -118,6 +124,14 @@ export default function Program() {
         alt="LinesAfterMonatikProgram"
         width={760}
         height={360}
+      />
+      <img
+        loading="lazy"
+        className={styles.LinesAfterMonatikProgramDesc}
+        src={LinesAfterMonatikProgramDesc}
+        alt="LinesAfterMonatikProgram"
+        width={650}
+        height={600}
       />
     </section>
   );

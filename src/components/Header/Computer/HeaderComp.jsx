@@ -36,12 +36,17 @@ export default function HeaderComp() {
       className={`${styles.header} ${!isVisible ? styles.hideHeader : ""}`}
     >
       <div className="container">
-        <img src="/logo.svg" alt="Warsaw Kod Zhinky" width={188} height={103} />
+        <img src="/logo.svg" alt="Warsaw Kod Zhinky" width={150} height={70} />
 
         <ul className={styles.wrapperNavigationList}>
           <li>
             <a href="#about" className={styles.navigationLinkHeader}>
               про конференцію
+            </a>
+          </li>
+          <li>
+            <a href="#ourSpeakers" className={styles.navigationLinkHeader}>
+              наші спікери
             </a>
           </li>
           <li>
@@ -52,6 +57,11 @@ export default function HeaderComp() {
           <li>
             <a href="#tariff" className={styles.navigationLinkHeader}>
               тарифи
+            </a>
+          </li>
+          <li>
+            <a href="#partners" className={styles.navigationLinkHeader}>
+              партнери
             </a>
           </li>
           <li>

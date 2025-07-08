@@ -24,12 +24,12 @@ header :global(.container){
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    gap: 15px 131px;
+    gap: 10px 131px;
     max-height: 100px;
 }
 .navigationLinkHeader{
     color: #FFFCF9;
-    font-size: 1vw;
+    font-size: 0.75vw;
     text-transform: uppercase;
     font-weight: 600;
 }
@@ -44,16 +44,16 @@ header :global(.container){
     border: none;
     border-bottom: 1px solid #9EB7E5;
     color: #9EB7E5;
-    font-size: 1vw;
+    font-size: 0.75vw;
     text-transform: uppercase;
 }
 .buyBtnHeader{
-    font-size: 1vw;
+    font-size: 0.75vw;
     font-weight: 600;
     text-transform: uppercase;
     border: 1px solid #FFFCF9;
     color: #FFFCF9;
-    padding: 24px 34px;
+    padding: 16px 34px;
     display: flex;
     justify-content: center;
     align-items: center;
