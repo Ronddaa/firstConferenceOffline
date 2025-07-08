@@ -5,4 +5,9 @@ export const createSpeakerSchema = Joi.object({
   phone: Joi.string().required(),
   telegram: Joi.string().required(),
   instagram: Joi.string().required(),
+  utmMarks: Joi.object({
+    utm_source: Joi.string(),
+    utm_medium: Joi.string(),
+    utm_campaign: Joi.string(),
+  }),
 });

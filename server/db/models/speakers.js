@@ -18,6 +18,21 @@ const speakerSchema = new Schema(
       type: String,
       required: true,
     },
+    // utm-метки
+    utmMarks: {
+      utm_source: {
+        type: String,
+        default: "",
+      },
+      utm_medium: {
+        type: String,
+        default: "",
+      },
+      utm_campaign: {
+        type: String,
+        default: "",
+      },
+    },
   },
   {
     timestamps: true,

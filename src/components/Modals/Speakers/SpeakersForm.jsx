@@ -12,6 +12,21 @@ export default function SpeakersForm({ isOpen, onClose }) {
   const [instagram, setInstagram] = useState("");
   const [isValid, setIsValid] = useState(false);
 
+  const [utmParams, setUtmParams] = useState({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setUtmParams({
+      utm_source: params.get("utm_source") || "",
+      utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "",
+    });
+  }, []);
+
   useEffect(() => {
     const allFieldsFilled =
       fullName.trim() && phone.trim() && telegram.trim() && instagram.trim();
@@ -21,19 +36,21 @@ export default function SpeakersForm({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isValid) return;
+    const formData = {
+      fullName,
+      phone,
+      telegram,
+      instagram,
+    };
 
     try {
-      const formData = {
-        fullName,
-        phone,
-        telegram,
-        instagram,
+      const dataToSend = {
+        ...formData,
+        utmMarks: utmParams,
       };
+      await api.createSpeakerApplication(dataToSend);
 
-      console.log(formData);
-      await api.createSpeakerApplication(formData);
-
-      // ✅ Отправка события Lead в Meta CAPI
+      //  ✅ Отправка события Lead в Meta CAPI
       sendLeadToMeta({
         formType: "speaker",
         phone,

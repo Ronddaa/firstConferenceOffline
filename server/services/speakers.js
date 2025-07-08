@@ -14,11 +14,11 @@ export const createSpeaker = async (payload) => {
     instagram: speakerData.instagram,
   });
 
-  await sendEmail({
-    to: "arinailienok@gmail.com",
-    subject: "Заявка на долучення до спікерів",
-    html,
-  });
+  // await sendEmail({
+  //   to: "arinailienok@gmail.com",
+  //   subject: "Заявка на долучення до спікерів",
+  //   html,
+  // });
 
   return speakerData;
 };

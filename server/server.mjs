@@ -92,15 +92,16 @@ app.post("/api/create-payment", async (req, res) => {
     );
 
     // 4. Обновляем созданный invoice в Mongo с invoiceId от MonoBank
-    const updatedInvoice = {
-      ...invoice,
-      paymentData: {
-        invoiceId: response.data.invoiceId,
-        status: "pending",
-      },
-    };
-    await updateInvoiceById(invoice._id, updatedInvoice);
 
+    const paymentData = {
+      invoiceId: response.data.invoiceId,
+      status: "pending",
+    };
+
+    const updResponse = await updateInvoiceById(invoice._id, {
+      paymentData,
+    });
+    console.log("updResponse: ", updResponse);
     // 5. Возвращаем данные клиенту
     res.status(200).json({
       invoiceId: response.data.invoiceId,
