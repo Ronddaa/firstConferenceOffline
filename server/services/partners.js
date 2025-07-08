@@ -15,11 +15,11 @@ export const createPartner = async (payload) => {
   });
 
   // Отправляем email
-  await sendEmail({
-    to: "arinailienok@gmail.com", // Укажи email, на который должна приходить заявка
-    subject: "Нова заявка на партнерство",
-    html: emailHtml,
-  });
+  // await sendEmail({
+  //   to: "arinailienok@gmail.com", // Укажи email, на который должна приходить заявка
+  //   subject: "Нова заявка на партнерство",
+  //   html: emailHtml,
+  // });
 
   return partnerData;
 };

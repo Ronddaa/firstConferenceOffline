@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import styles from "./Partners.module.css";
 import sprite from "../../icons.svg";
@@ -13,6 +13,21 @@ export default function PartnersForm({ isOpen, onClose }) {
     telegramNick: "",
     instagramLink: "",
   };
+
+  const [utmParams, setUtmParams] = useState({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setUtmParams({
+      utm_source: params.get("utm_source") || "",
+      utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "",
+    });
+  }, []);
 
   const [formData, setFormData] = useState(initialState);
 
@@ -57,8 +72,11 @@ export default function PartnersForm({ isOpen, onClose }) {
 
     try {
       console.log(formData);
-      api.createPartnerApplication(formData);
-
+      const dataToSend = {
+        ...formData,
+        utmMarks: utmParams,
+      };
+      api.createPartnerApplication(dataToSend);
       // ✅ Отправка события Lead в Meta Conversions API
       sendLeadToMeta({
         formType: "partner",

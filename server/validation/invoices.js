@@ -18,4 +18,9 @@ export const createInvoiceSchema = Joi.object({
     ticketsQuantity: Joi.number().required(),
     totalAmount: Joi.number().required(),
   }).required(),
+  utmMarks: Joi.object({
+    utm_source: Joi.string(),
+    utm_medium: Joi.string(),
+    utm_campaign: Joi.string(),
+  }),
 });
