@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import styles from "./SpeakersSection.module.css";
 import sprite from "../icons.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/scrollbar";
-import { Scrollbar } from "swiper/modules";
-// import speakersBackroundSection from './speakersBackroundSection.svg'
+import { Scrollbar, FreeMode } from "swiper/modules";
 
 // Хук для определения slidesPerView в зависимости от ширины экрана
 function useSlidesPerView() {
@@ -19,10 +18,7 @@ function useSlidesPerView() {
   const [slidesPerView, setSlidesPerView] = useState(getSlides());
 
   useEffect(() => {
-    const handleResize = () => {
-      setSlidesPerView(getSlides());
-    };
-
+    const handleResize = () => setSlidesPerView(getSlides());
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -30,13 +26,32 @@ function useSlidesPerView() {
   return slidesPerView;
 }
 
+// Хук для проверки, что устройство — desktop
+function useIsDesktop() {
+  const getIsDesktop = () => window.innerWidth >= 1024;
+  const [isDesktop, setIsDesktop] = useState(getIsDesktop());
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(getIsDesktop());
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isDesktop;
+}
+
 export default function SpeakersSection() {
   const [activeSpeakerId, setActiveSpeakerId] = useState(null);
   const slidesPerView = useSlidesPerView();
+  const isDesktop = useIsDesktop();
 
   const toggleDetails = (id) => {
     setActiveSpeakerId((prev) => (prev === id ? null : id));
   };
+
+  const swiperModules = useMemo(() => {
+    return isDesktop ? [Scrollbar, FreeMode] : [Scrollbar];
+  }, [isDesktop]);
 
   const speakers = [
     {
@@ -172,10 +187,11 @@ export default function SpeakersSection() {
       <div className="container">
         <Swiper
           scrollbar={{ hide: false }}
-          modules={[Scrollbar]}
+          modules={swiperModules}
           spaceBetween={20}
           slidesPerView={slidesPerView}
           className="mySwiper"
+          freeMode={isDesktop}
         >
           {speakers.map((speaker) => (
             <SwiperSlide
@@ -228,9 +244,6 @@ export default function SpeakersSection() {
           ))}
         </Swiper>
       </div>
-      <svg className={styles.leftRigrh} width={24} height={12}>
-        <use xlinkHref={`${sprite}#icon-leftRigrh`}></use>
-      </svg>
     </section>
   );
 }

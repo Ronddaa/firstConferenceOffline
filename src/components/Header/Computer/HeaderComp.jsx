@@ -45,7 +45,7 @@ export default function HeaderComp() {
             </a>
           </li>
           <li>
-            <a href="#ourSpeakers" className={styles.navigationLinkHeader}>
+            <a href="#speakersSection" className={styles.navigationLinkHeader}>
               наші спікери
             </a>
           </li>

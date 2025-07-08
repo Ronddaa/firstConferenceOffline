@@ -279,6 +279,7 @@ text-transform: uppercase;
   padding: 0;
 }
 .wrapperSpeakerInfo{
+  position: absolute;
   max-width: 451px;
   left: 50%;
   transform: translateX(-50%);
