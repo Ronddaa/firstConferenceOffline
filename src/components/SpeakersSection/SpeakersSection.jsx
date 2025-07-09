@@ -196,51 +196,55 @@ export default function SpeakersSection() {
           {speakers.map((speaker) => (
             <SwiperSlide
               key={speaker.id}
-              className={`${styles[speaker.swiperSlideBackground]} ${
-                styles.slideWrapper
-              }`}
             >
-              
-              <p className={styles.numberOfSpeaker}>
-                {speaker.numberOfSpeaker}
-              </p>
-
-              <div
-                className={`${styles.dropUpDetails} ${
-                  activeSpeakerId === speaker.id ? styles.active : ""
+              <article
+                className={`${styles[speaker.swiperSlideBackground]} ${
+                  styles.slideWrapper
                 }`}
               >
-                <p></p>
-                <p className={styles.contentDetails}>
-                  {speaker.contentDetails}
+                <p className={styles.numberOfSpeaker}>
+                  {speaker.numberOfSpeaker}
                 </p>
-              </div>
 
-              <div className={styles.wrapperSpeakerInfo}>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles[speaker.speakerClass]}
-                  href={speaker.speakerInstagram}
+                <div
+                  className={`${styles.dropUpDetails} ${
+                    activeSpeakerId === speaker.id ? styles.active : ""
+                  }`}
                 >
-                  {speaker.speakerName}
-                  <div className={styles.wrapperSpeakerInstargram}>
-                    <svg className={styles.instagram} width={32} height={32}>
-                      <use xlinkHref={`${sprite}#icon-inst`}></use>
-                    </svg>
-                  </div>
-                </a>
-                <p className={styles.speakerTema}>{speaker.speakerTema}</p>
+                  <p></p>
+                  <p className={styles.contentDetails}>
+                    {speaker.contentDetails}
+                  </p>
+                </div>
 
-                {speaker.moreInfoBtnClass === "moreInfoBtn" && (
-                  <button
-                    className={styles.moreInfoBtn}
-                    onClick={() => toggleDetails(speaker.id)}
+                <div className={styles.wrapperSpeakerInfo}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles[speaker.speakerClass]}
+                    href={speaker.speakerInstagram}
                   >
-                    {activeSpeakerId === speaker.id ? "згорнути" : "детальніше"}
-                  </button>
-                )}
-              </div>
+                    {speaker.speakerName}
+                    <div className={styles.wrapperSpeakerInstargram}>
+                      <svg className={styles.instagram} width={32} height={32}>
+                        <use xlinkHref={`${sprite}#icon-inst`}></use>
+                      </svg>
+                    </div>
+                  </a>
+                  <p className={styles.speakerTema}>{speaker.speakerTema}</p>
+
+                  {speaker.moreInfoBtnClass === "moreInfoBtn" && (
+                    <button
+                      className={styles.moreInfoBtn}
+                      onClick={() => toggleDetails(speaker.id)}
+                    >
+                      {activeSpeakerId === speaker.id
+                        ? "згорнути"
+                        : "детальніше"}
+                    </button>
+                  )}
+                </div>
+              </article>
             </SwiperSlide>
           ))}
         </Swiper>

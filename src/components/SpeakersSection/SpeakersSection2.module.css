@@ -1,0 +1,292 @@
+.textBtwSection{
+    font-size: 12px;
+    color: #FFFCF9;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.SpeakersSection {
+    padding-top: 100px;
+}
+.SpeakersSection :global(.mySwiper) {
+    overflow: visible;
+}
+.SpeakersSection :global(.swiper-scrollbar){
+    background-color: #ffffac9e;
+    height: 1px!important;
+}
+.SpeakersSection :global(.swiper-scrollbar-drag){
+    height: 3px!important;
+    background-color: #ffffac;
+}
+.numberOfSpeaker{
+    position: absolute;
+    z-index: 2;
+    color: #ffffac;
+    top: 20px;
+    left: 20px;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground1 {
+  width: 335px;
+  height: 565px;
+  background-image: url(./Tolstikova.webp);
+  background-size: cover;
+  border: 1px solid #ffffac;
+  background-position: top;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground2 {
+  width: 335px;
+  height: 565px;
+  background-image: url(./Kozachkova.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  border: 1px solid #ffffac;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground3 {
+  width: 335px;
+  height: 565px;
+  background-image: url(./Matushevska.webp);
+  background-position: top;
+  background-size: cover;
+  border: 1px solid #ffffac;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground4 {
+  width: 335px;
+  height: 565px;
+  background-image: url(./Kozlova.webp);
+  background-position: top;
+  background-size: cover;
+  border: 1px solid #ffffac;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground5 {
+  width: 335px;
+  height: 565px;
+  background-image: url(./Besborodih.webp);
+  background-position: top;
+  background-size: cover;
+  border: 1px solid #ffffac;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground6 {
+    width: 335px;
+    height: 565px;
+    background-image: url(./Stripko.webp);
+  background-position: top;
+  background-size: cover;
+    border: 1px solid #ffffac;
+    border-radius: 10px;
+    position: relative;
+  z-index: 1;
+  }
+  .SpeakersSection :global(.mySwiper) .swiperSlideBackground7 {
+    width: 335px;
+    height: 565px;
+    background-image: url(./Shihrova.webp);
+  background-position: top;
+  background-size: cover;
+    border: 1px solid #ffffac;
+    border-radius: 10px;
+    position: relative;
+  z-index: 1;
+  }
+  .SpeakersSection :global(.mySwiper) .swiperSlideBackground8 {
+    width: 335px;
+    height: 565px;
+    background-image: url(./Tokar.webp);
+  background-position: center;
+  background-size: cover;
+    border: 1px solid #ffffac;
+    border-radius: 10px;
+    position: relative;
+  z-index: 1;
+  }
+  .SpeakersSection :global(.mySwiper) .swiperSlideBackground9 {
+    width: 335px;
+    height: 565px;
+    background-image: url(./Shotropa.webp);
+  background-position: top;
+  background-size: cover;
+    border: 1px solid #ffffac;
+    border-radius: 10px;
+    position: relative;
+  z-index: 1;
+  }
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground12{
+    width: 335px;
+  height: 565px;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #ffffac;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.SpeakersSection .speakerNameClassLast::after{
+    position: absolute;
+    content: "?";
+    z-index: 4;
+    font-size: 200px;
+    font-weight: 800;
+    color: #ffffac;
+    font-family: "Unbounded";
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -130%);
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground12 .wrapperSpeakerInstargram{
+    display: none;
+}
+.wrapperSpeakerInfo {
+  padding: 21px 20px;
+  background-color: #1b202199;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #ffffac;
+  border-radius: 0 0 10px 10px;
+  z-index: 6;
+}
+.speakerNameClass1,
+.speakerNameClass2,
+.speakerNameClass3,
+.speakerNameClass4,
+.speakerNameClass5,
+.speakerNameClass6,
+.speakerNameClass7,
+.speakerNameClass8,
+.speakerNameClass9,
+.speakerNameClassLast {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Unbounded";
+  color: transparent;
+  background: linear-gradient(90deg, #ffffac, #fff);
+
+  -webkit-background-clip: text; /* Для Safari */
+  background-clip: text;
+  margin-bottom: 10px;
+  font-weight: 800;
+text-transform: uppercase;
+}
+.speakerNameClass1, .speakerNameClass2, .speakerNameClass4, .speakerNameClass5, .speakerNameClass6, .speakerNameClass7, .speakerNameClass8, .speakerNameClass9{
+    font-size: 22px;
+}
+.speakerNameClass3{
+    font-size: 17px;
+    padding: 5px 0;
+}
+.speakerNameClassLast{
+    font-size: 20px;
+}
+
+.wrapperSpeakerInstargram{
+    padding: 5px;
+    background-color: #ffffac;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.moreInfoBtn{
+    background-color: transparent;
+    border: 1px solid #FFFFAC80;
+    border-radius: 10px;
+    padding: 15px;
+    display: block;
+    width: 100%;
+    color: #B2B2B2;
+    font-style: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.moreInfoBtnDisplayNone{
+    display: none;
+}
+.dropUpDetails{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 20px 20px 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #00000099;
+    border-radius: 10px;
+    transition: 0.5s;
+    opacity: 0;
+    pointer-events: none;
+}
+.dropUpDetails.active{
+    opacity: 1;
+}
+.contentDetails{
+    max-width: 250px;
+}
+.leftRigrh{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    fill: #ffffac;
+    margin-top: 10px;
+}
+
+@media(min-width: 768px){
+  .SpeakersSection{
+    padding-top: 220px;
+  }
+  .textBtwSection{
+    font-size: 18px;
+    top: 140px;
+  }
+
+  .SpeakersSection :global(.mySwiper) .swiperSlideBackground1,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground2,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground3,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground4,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground5,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground6,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground7,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground8,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground9,
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground12{
+  width: 453px !important;
+  height: 675px;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground8{
+  background-position: top;
+}
+.SpeakersSection :global(.mySwiper) .swiperSlideBackground3 .speakerNameClass3{
+  font-size: 22px;
+  padding: 0;
+}
+.wrapperSpeakerInfo{
+  position: absolute;
+  max-width: 451px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1px;
+}
+}
