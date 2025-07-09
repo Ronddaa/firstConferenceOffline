@@ -39,6 +39,31 @@ export default function Tickets() {
                 </svg>
                 <p className={styles.detailsText}>нетворкінг</p>
               </li>
+              <li className={styles.LMwithList}>
+                <svg className={styles.detailsSVG} width={28} height={28}>
+                  <use xlinkHref={`${sprite}#icon-pazzle`}></use>
+                </svg>
+                <div className={styles.wrapperLMwithList}>
+                  <p className={styles.detailsText}>додаткові приємності:</p>
+                  <ul className={styles.wrapperLMList}>
+                    <li>
+                      Вільне пересування між зонами: великий зал із барними
+                      столами та камерний простір із м’якими посадками
+                    </li>
+                    <li>
+                      Частування ігристим - ми подбаємо про святковий настрій
+                    </li>
+                    <li>Бренд-зона з дегустаціями від наших партнерів</li>
+                    <li>Спікери поруч, без бар’єрів</li>
+                    <li>Відомі гості - в одному залі, на відстані розмови</li>
+                    <li>
+                      Професійне фото та відео - якщо не сховаєтесь від камери
+                      😉
+                    </li>
+                    <li>Обійми з тими, кого давно не бачили</li>
+                  </ul>
+                </div>
+              </li>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-micro`}></use>
@@ -48,7 +73,13 @@ export default function Tickets() {
                 </p>
               </li>
             </ul>
-            <p className={styles.priceText}>200&euro;</p>
+            <p className={styles.priceTextWillBe}>
+              850pln/ <span>200&euro;</span>
+            </p>
+            <p className={styles.priceText}>
+              770pln /<span>130&euro;</span>
+            </p>
+            <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>
             <button
               className={styles.btnBuyTariffGold}
               onClick={() => {
@@ -120,6 +151,18 @@ export default function Tickets() {
               </li>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
+                  <use xlinkHref={`${sprite}#icon-star`}></use>
+                </svg>
+                <p className={styles.detailsText}>
+                  <span>-10% знижка на бранч</span>
+                  <br />
+                  <span className={styles.underPresidentRoomSpan}>
+                    наступного дня (24.08.2025)
+                  </span>
+                </p>
+              </li>
+              <li>
+                <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-micro`}></use>
                 </svg>
                 <p className={styles.detailsText}>
@@ -127,7 +170,13 @@ export default function Tickets() {
                 </p>
               </li>
             </ul>
-            <p className={styles.priceText}>300&euro;</p>
+            <p className={styles.priceTextWillBe}>
+              1300pln/ <span>300&euro;</span>
+            </p>
+            <p className={styles.priceText}>
+              990pln /<span>230&euro;</span>
+            </p>
+            <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>
             <button
               className={styles.btnBuyTariffGold}
               onClick={() => {
@@ -195,6 +244,18 @@ export default function Tickets() {
               </li>
               <li>
                 <svg className={styles.detailsSVG} width={28} height={28}>
+                  <use xlinkHref={`${sprite}#icon-star`}></use>
+                </svg>
+                <p className={styles.detailsText}>
+                  <span>-15%</span> знижка на бранч
+                  <br />
+                  <span className={styles.underPresidentRoomSpan}>
+                    наступного дня (24.08.2025)
+                  </span>
+                </p>
+              </li>
+              <li>
+                <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-blackHole`}></use>
                 </svg>
                 <p className={styles.detailsText}>
@@ -213,7 +274,13 @@ export default function Tickets() {
                 </p>
               </li>
             </ul>
-            <p className={styles.priceText}>450&euro;</p>
+            <p className={styles.priceTextWillBe}>
+              1900pln/ <span>450&euro;</span>
+            </p>
+            <p className={styles.priceText}>
+              1400pln /<span>330&euro;</span>
+            </p>
+            <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>{" "}
             <button
               className={styles.btnBuyTariffPremium}
               onClick={() => {
@@ -231,7 +298,7 @@ export default function Tickets() {
               переглянути місця
             </button>
           </li>
-          <li className={styles.TicketsGold}>
+          <li className={styles.TicketsLuxe}>
             <h3 className={styles.titleTariffCard}>LUXE</h3>
             <p className={styles.kolPlace}>Залишилось 25 місць</p>
             <ul className={styles.wrapperDetailsTariff}>
@@ -306,12 +373,9 @@ export default function Tickets() {
                 <svg className={styles.detailsSVG} width={28} height={28}>
                   <use xlinkHref={`${sprite}#icon-star`}></use>
                 </svg>
-                <p
-                  className={`${styles.detailsText} ${styles.underPresidentRoom}`}
-                >
-                  <span>
-                    -50% знижка на бранч <br /> у президентському номері{" "}
-                  </span>
+                <p className={styles.detailsText}>
+                  <span>-20%</span> знижка на бранч
+                  <br />
                   <span className={styles.underPresidentRoomSpan}>
                     наступного дня (24.08.2025)
                   </span>
@@ -336,7 +400,9 @@ export default function Tickets() {
                 </p>
               </li>
             </ul>
-            <p className={styles.priceText}>1200&euro;</p>
+            <p className={styles.priceText}>
+              5000pln /<span>1200&euro;</span>
+            </p>{" "}
             <button
               className={styles.btnBuyTariffGold}
               onClick={() => {

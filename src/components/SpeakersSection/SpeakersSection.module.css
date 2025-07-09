@@ -254,8 +254,12 @@ text-transform: uppercase;
 }
 
 @media(min-width: 768px){
+  .SpeakersSection{
+    padding-top: 220px;
+  }
   .textBtwSection{
     font-size: 18px;
+    top: 140px;
   }
 
   .SpeakersSection :global(.mySwiper) .swiperSlideBackground1,

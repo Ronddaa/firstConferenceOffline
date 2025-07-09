@@ -1,263 +1,286 @@
-.sectionTickets{
-    background-color: #FFFFAC;
-    padding-top: 50px;
+.sectionTickets {
+  background-color: #ffffac;
+  padding-top: 50px;
 }
-.textBtwSection{
-    font-size: 12px;
-    text-align: right;
-    margin-right: 41px;
-    color: #1B2021;
-    font-weight: 600;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-}
-.TicketsLastMinute{
-    padding: 25px 20px;
-    border: 1px solid #1B2021;
-    border-radius: 10px;
-}
-.titleLM{
-    font-size: 34px;
-    color: #1B2021;
-    margin-bottom: 30px;
-}
-.wrapperTicketsTariff{
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    margin-bottom: 70px;
-    position: relative;
-    z-index: 1;
-    background-color: #FFFFAC;
-}
-.TicketsGold{
-    padding: 25px 20px;
-    border: 1px solid #1B2021;
-    border-radius: 10px;
-}
-.titleTariffCard{
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 36px;
-    color: #1B2021;
-    margin-bottom: 28px;
-}
-.kolPlace{
-    font-style: 12px;
-    color: #1B2021;
-    margin-bottom: 5px;
-}
-.wrapperDetailsTariff{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 30px 0 40px;
-    border-top: 1px solid #1B2021;
-    border-bottom: 1px solid #1B2021;
-}
-.wrapperDetailsTariff li{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.detailsText{
-    font-size: 14px;
-    font-weight: 800;
-    color: #1B2021;
-    text-transform: uppercase;
-}
-.priceText{
-    font-weight: 700;
-    font-size: 36px;
-    text-align: center;
-    color: #1B2021;
-    text-transform: uppercase;
-    padding: 30px 0;
-    border-bottom: 1px solid #1B2021;
-    width: 100%;
-    margin-bottom: 40px;
-}
-.btnBuyTariffGold{
-    background: linear-gradient(90deg, #1B2021, #9EB7E5);
-    padding: 34px 84px;
-    font-size: 12px;
-    color: #FFFCF9;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 10px;
-    text-transform: uppercase;
-    width: 100%;
-}
-.btnPlaceShow{
-    background-color: transparent;
-    padding: 17px 78px;
-    color: #1B2021;
-    border: 1px solid #1B2021;
-    border-radius: 10px;
-    text-transform: uppercase;
-    font-size: 12px;
-    text-align: center;
-    width: 100%;
-}
-.TicketsPremium{
-    background-color: #1B2021;
-    border-radius: 10px;
-    padding: 25px 20px;
-}
-.TicketsPremium .titleTariffCard{
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 36px;
-    color: #FFFCF9;
-    margin-bottom: 30px;
-}
-.TicketsPremium .kolPlace{
-    color: #FFFCF9;
-}
-.TicketsPremium .wrapperDetailsTariff{
-    border-bottom: 1px solid #FFFCF9;
-    border-top: 1px solid #FFFCF9;
-}
-.TicketsPremium .priceText{
-    color: #FFFCF9;
-    border-bottom: 1px solid #FFFCF9;
-    font-weight: 700;
-}
-.TicketsPremium .detailsText{
-    color: #FFFCF9;
-}
-.TicketsPremium .detailsText span, .TicketsGold .detailsText span{
-    color: #9EB7E5;
-}
-.TicketsPremium .detailsSVG{
-    fill: #FFFCF9;
-}
-.btnBuyTariffPremium{
-    background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
-    padding: 34px 84px;
-    font-size: 12px;
-    color: #1B2021;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 10px;
-    text-transform: uppercase;
-    width: 100%;
-}
-.TicketsPremium .btnPlaceShow{
-    color: #FFFCF9;
-    border: 1px solid #FFFCF9;
-}
-.TicketsOnlyMonatik{
-    border-radius: 10px;
-    border: 1px solid #1B2021;
-    padding: 25px 0;
-    display: none;
-}
-.titleOnlyTiket{
-    font-size: 72px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #1B2021;
-    text-align: center;
-    margin-bottom: 60px;
-}
-.wrapperInfoTicketOnly{
-    padding: 0 20px;
-}
-.wrapperInfoTicketOnly .kolPlace{
-    text-align: center;
-}
-.wrapperInfoTicketOnly .detailsText{
-    padding: 40px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-    font-size: 14px;
-    text-transform: uppercase;
-    width: 100%;
-    border-top: 1px solid #1B2021;
-    border-bottom: 1px solid #1B2021;
-    position: relative;
-}
-.wrapperInfoTicketOnly .detailsText span{
-    max-width: 210px;
-}
-.underPresidentRoom{
-    display: flex;
-    flex-direction: column;
-}
-.TicketsGold p .underPresidentRoomSpan{
-    font-size: 12px;
-    text-transform: none;
-    color: #696969;
-    font-weight: 400;
-}
-.wrapperAuction{
- display: flex;
- flex-direction: column;
- gap: 5px;
- max-width: 182px;
- margin-left: auto;
- margin-bottom: 40px;
- position: relative;
-}
-.wrapperAuction li:first-child{
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #1B2021;
-}
-.wrapperAuction li:first-child::after{
-    content: '';
-    background-image: url(./CircleSVGLine.svg);
-    position: absolute;
-    z-index: 0;
-    top: 8px;
-    left: -20px;
-    transform: translate(-50%, -50%);
-    width: 700%;
-    height: 1700%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    opacity: 0.2;
-}
-.wrapperAuction li:last-child{
-    color: #797979;
-    font-size: 12px;
-    max-width: 163px;
-}
-.wrappertitleAuction{
-    margin-bottom: 20px;
-}
-.titleAuctionMobile{
-    font-size: 28px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #1B2021;
 
+.textBtwSection {
+  font-size: 12px;
+  text-align: right;
+  margin-right: 41px;
+  color: #1b2021;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-transform: uppercase;
 }
-.titleAuctionMobileMargin2, .titleAuctionMobileMargin{
-    text-align: right;
+
+.wrapperTicketsTariff {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 70px;
+  position: relative;
+  z-index: 1;
+  background-color: #ffffac;
 }
-.titleAuctionMobileMargin2 span{
-    margin-right: 21px;
+
+.TicketsLastMinute,
+.TicketsGold,
+.TicketsLuxe {
+  padding: 25px 20px;
+  border: 1px solid #1b2021;
+  border-radius: 10px;
 }
-.titleAuctionMobileMargin3{
-    text-align: center;
+
+.TicketsPremium {
+  background-color: #1b2021;
+  border-radius: 10px;
+  padding: 25px 20px;
 }
-.titleAuctionMobile span{
-    color: transparent;
-  background: linear-gradient(90deg, #1B2021, #9EB7E5);
-  -webkit-background-clip: text; /* Для Safari */
-  background-clip: text;
+
+.titleLM,
+.titleTariffCard {
+  font-size: 34px;
+  color: #1b2021;
+  margin-bottom: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
-.lastTextTeckets{
-    max-width: 178px;
-    margin-left: auto;
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #1B2021;
-    font-weight: 600;
+
+.TicketsPremium .titleTariffCard {
+  color: #fffcf9;
+}
+
+.kolPlace {
+  font-style: 12px;
+  color: #1b2021;
+  margin-bottom: 5px;
+}
+
+.TicketsPremium .kolPlace {
+  color: #fffcf9;
+}
+
+.wrapperDetailsTariff {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px 0 40px;
+  border-top: 1px solid #1b2021;
+  border-bottom: 1px solid #1b2021;
+}
+
+.TicketsPremium .wrapperDetailsTariff {
+  border-top: 1px solid #fffcf9;
+  border-bottom: 1px solid #fffcf9;
+}
+
+.wrapperDetailsTariff li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detailsSVG {
+  fill: inherit;
+}
+
+.TicketsPremium .detailsSVG {
+  fill: #fffcf9;
+}
+
+.detailsText {
+  font-size: 14px;
+  font-weight: 800;
+  color: #1b2021;
+  text-transform: uppercase;
+}
+
+.TicketsPremium .detailsText {
+  color: #fffcf9;
+}
+
+.TicketsPremium .detailsText span,
+.TicketsGold .detailsText span {
+  color: #9eb7e5;
+}
+
+.priceTextWillBe {
+  font-size: 22px;
+  color: #898989;
+  opacity: 0.6;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-top: 30px;
+  position: relative;
+}
+
+.priceTextWillBe span {
+  font-size: 16px;
+}
+
+.priceTextWillBe::after {
+  content: "";
+  width: 50%;
+  height: 2px;
+  background-color: #898989;
+  opacity: 0.6;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.priceText {
+  font-weight: 700;
+  font-size: 36px;
+  text-align: center;
+  color: #1b2021;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.TicketsPremium .priceText {
+  color: #fffcf9;
+}
+
+.priceText span {
+  font-size: 22px;
+}
+
+.priceTextAfter {
+  text-align: center;
+  color: #1b2021;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #1b2021;
+  margin-bottom: 40px;
+  font-size: 12px;
+}
+
+.TicketsPremium .priceTextAfter {
+  color: #fffcf9;
+  border-bottom: 1px solid #fffcf9;
+}
+
+.btnBuyTariffGold {
+  background: linear-gradient(90deg, #1b2021, #9eb7e5);
+  padding: 34px 84px;
+  font-size: 12px;
+  color: #fffcf9;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.btnBuyTariffPremium {
+  background: linear-gradient(90deg, #ffffac, #ffffff);
+  padding: 34px 84px;
+  font-size: 12px;
+  color: #1b2021;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.btnPlaceShow {
+  background-color: transparent;
+  padding: 17px 78px;
+  color: #1b2021;
+  border: 1px solid #1b2021;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+}
+
+.TicketsPremium .btnPlaceShow {
+  color: #fffcf9;
+  border: 1px solid #fffcf9;
+}
+
+.wrapperLMwithList {
+  max-width: 254px;
+}
+
+.wrapperLMList {
+  color: #1b2021;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.wrapperLMList li {
+  position: relative;
+}
+
+.wrapperLMList li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  position: absolute;
+  left: -10px;
+  top: 5px;
+  background-color: #1b2021;
+}
+
+.underPresidentRoom {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsText .underPresidentRoomSpan {
+  font-size: 12px;
+  text-transform: none;
+  color: #696969 !important;
+  font-weight: 400;
+}
+.TicketsLuxe .detailsText span{
+    color: #9eb7e5;
+}
+
+.TicketsOnlyMonatik {
+  border-radius: 10px;
+  border: 1px solid #1b2021;
+  padding: 25px 0;
+  display: none;
+}
+
+.titleOnlyTiket {
+  font-size: 72px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #1b2021;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.wrapperInfoTicketOnly {
+  padding: 0 20px;
+}
+
+.wrapperInfoTicketOnly .kolPlace {
+  text-align: center;
+}
+
+.wrapperInfoTicketOnly .detailsText {
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  width: 100%;
+  border-top: 1px solid #1b2021;
+  border-bottom: 1px solid #1b2021;
+  position: relative;
+}
+
+.wrapperInfoTicketOnly .detailsText span {
+  max-width: 210px;
 }

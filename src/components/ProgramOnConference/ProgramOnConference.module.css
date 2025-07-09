@@ -25,3 +25,16 @@
     bottom: -5px;
     left: -20%;
 }
+
+@media (min-width:768px){
+    .btwSectionText{
+        font-size: 18px;
+        text-align: center;
+        margin-left: 20%;
+    }
+    .titlePOC{
+        font-size: 3.2vw;
+        text-align: center;
+        max-width: 100%;
+    }
+}
