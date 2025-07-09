@@ -200,6 +200,7 @@ export default function SpeakersSection() {
                 styles.slideWrapper
               }`}
             >
+              
               <p className={styles.numberOfSpeaker}>
                 {speaker.numberOfSpeaker}
               </p>
