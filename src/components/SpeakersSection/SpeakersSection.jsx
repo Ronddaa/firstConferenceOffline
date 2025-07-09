@@ -57,31 +57,31 @@ export default function SpeakersSection() {
     {
       id: 1,
       speakerName: "толстікова\nкатерина",
-      speakerTema: "",
+      speakerTema: "Уточнюється",
       swiperSlideBackground: "swiperSlideBackground1",
       speakerInstagram:
         "https://www.instagram.com/dr.tolstikova?igsh=d2J6Mjg1OTRnMmk5",
       speakerClass: "speakerNameClass1",
       numberOfSpeaker: "(01)",
-      moreInfoBtnClass: "moreInfoBtnDisplayNone",
-      contentDetails: "",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails: "Скоро дізнаєтесь про мене трохи більше. =)",
     },
     {
       id: 2,
       speakerName: "козачкова\nюлія",
-      speakerTema: "",
+      speakerTema: "Уточнюється",
       swiperSlideBackground: "swiperSlideBackground2",
       speakerInstagram:
         "https://www.instagram.com/kozachkova_yuliia?igsh=MXZmbjVxeXY1eHlrMQ==",
       speakerClass: "speakerNameClass2",
       numberOfSpeaker: "(02)",
-      moreInfoBtnClass: "moreInfoBtnDisplayNone",
-      contentDetails: "",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails: "Скоро дізнаєтесь про мене трохи більше. =)",
     },
     {
       id: 3,
       speakerName: "Матюшевська\nАнастасія-Олімпія",
-      speakerTema: "",
+      speakerTema: "Уточнюється",
       swiperSlideBackground: "swiperSlideBackground3",
       speakerInstagram:
         "https://www.instagram.com/anastasia.olimpia.matushevska?igsh=MTU1bWZoa3MzNmkwaA==",
@@ -94,7 +94,8 @@ export default function SpeakersSection() {
     {
       id: 4,
       speakerName: "Козлова\nКатерина",
-      speakerTema: "",
+      speakerTema:
+        "Автентичність і прояв: як жінці бути собою та масштабуватись через особистий бренд",
       swiperSlideBackground: "swiperSlideBackground4",
       speakerInstagram:
         "https://www.instagram.com/kozlova.katja?igsh=cHMwMXI2dW9jcGhy&utm_source=qr",
@@ -107,7 +108,7 @@ export default function SpeakersSection() {
     {
       id: 5,
       speakerName: "Безбородих\nОлена",
-      speakerTema: "",
+      speakerTema: "Уточнюється",
       swiperSlideBackground: "swiperSlideBackground5",
       speakerInstagram:
         "https://www.instagram.com/lenabezb?igsh=bDVmZXR1OWoxdXc1",
@@ -120,7 +121,7 @@ export default function SpeakersSection() {
     {
       id: 6,
       speakerName: "Стрипко\nТаня",
-      speakerTema: "",
+      speakerTema: "Уточнюється",
       swiperSlideBackground: "swiperSlideBackground6",
       speakerInstagram:
         "https://www.instagram.com/todorivaaa?igsh=MXBxamM1YzlnMmxxMg%3D%3D&utm_source=qr",
@@ -133,7 +134,7 @@ export default function SpeakersSection() {
     {
       id: 7,
       speakerName: "Щигрова\nЄвгенія",
-      speakerTema: "",
+      speakerTema: "Anti -Age, як код гнучкої жінки",
       swiperSlideBackground: "swiperSlideBackground7",
       speakerInstagram: "https://www.instagram.com/j.a.n.e_she/",
       speakerClass: "speakerNameClass7",
@@ -145,7 +146,8 @@ export default function SpeakersSection() {
     {
       id: 8,
       speakerName: "Токар\nЯна",
-      speakerTema: "",
+      speakerTema:
+        "Зовнішність можна покращити. Але чи вистачить сміливості стати собою? Про страхи жінок, які ховаються за процедурами. І про те, як я веду своїх пацієнток не до ідеалу, а до свободи.",
       swiperSlideBackground: "swiperSlideBackground8",
       speakerInstagram:
         "https://www.instagram.com/dr.yana_tokar_?igsh=YTd1cmMwcXJ3MHhv",
@@ -158,7 +160,7 @@ export default function SpeakersSection() {
     {
       id: 9,
       speakerName: "Шотропа\nМішель",
-      speakerTema: "",
+      speakerTema: "Уточнюється",
       swiperSlideBackground: "swiperSlideBackground9",
       speakerInstagram:
         "https://www.instagram.com/mishel_shotropa?igsh=MTQycHk2OWZtNHV5cg==",
@@ -171,8 +173,8 @@ export default function SpeakersSection() {
     {
       id: 12,
       speakerName: "це ще не все!\nочікуй інформацію!",
-      speakerTema: "",
-      swiperSlideBackground: "swiperSlideBackground12",
+      speakerTema: "Уточнюється",
+      swiperSlideBackground: "swiperSlideBackground122",
       speakerInstagram: "",
       speakerClass: "speakerNameClassLast",
       numberOfSpeaker: "(10)",
@@ -186,26 +188,40 @@ export default function SpeakersSection() {
       <p className={styles.textBtwSection}>(наші спікери)</p>
       <div className="container">
         <Swiper
-          scrollbar={{ hide: false }}
+          scrollbar={{ hide: false, draggable: true }}
           modules={swiperModules}
           spaceBetween={20}
           slidesPerView={slidesPerView}
           className="mySwiper"
           freeMode={isDesktop}
+          autoHeight={true}
         >
           {speakers.map((speaker) => (
-            <SwiperSlide
-              key={speaker.id}
-            >
+            <SwiperSlide key={speaker.id} className={styles.swiperSlide}>
               <article
                 className={`${styles[speaker.swiperSlideBackground]} ${
                   styles.slideWrapper
                 }`}
               >
-                <p className={styles.numberOfSpeaker}>
-                  {speaker.numberOfSpeaker}
-                </p>
-
+                <ul>
+                  <li>
+                    <p className={styles.numberOfSpeaker}>
+                      {speaker.numberOfSpeaker}
+                    </p>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles[speaker.speakerClass]}
+                      href={speaker.speakerInstagram}
+                    >
+                      <svg className={styles.instagram} width={32} height={32}>
+                        <use xlinkHref={`${sprite}#icon-inst`}></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
                 <div
                   className={`${styles.dropUpDetails} ${
                     activeSpeakerId === speaker.id ? styles.active : ""
@@ -218,33 +234,23 @@ export default function SpeakersSection() {
                 </div>
 
                 <div className={styles.wrapperSpeakerInfo}>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles[speaker.speakerClass]}
-                    href={speaker.speakerInstagram}
+                  <h3
+                    className={`${styles.speakerName} ${
+                      styles[speaker.speakerClass]
+                    }`}
                   >
                     {speaker.speakerName}
-                    <div className={styles.wrapperSpeakerInstargram}>
-                      <svg className={styles.instagram} width={32} height={32}>
-                        <use xlinkHref={`${sprite}#icon-inst`}></use>
-                      </svg>
-                    </div>
-                  </a>
-                  <p className={styles.speakerTema}>{speaker.speakerTema}</p>
-
-                  {speaker.moreInfoBtnClass === "moreInfoBtn" && (
-                    <button
-                      className={styles.moreInfoBtn}
-                      onClick={() => toggleDetails(speaker.id)}
-                    >
-                      {activeSpeakerId === speaker.id
-                        ? "згорнути"
-                        : "детальніше"}
-                    </button>
-                  )}
+                  </h3>
+                  <button
+                    className={styles[speaker.moreInfoBtnClass]}
+                    onClick={() => toggleDetails(speaker.id)}
+                  >
+                    {activeSpeakerId === speaker.id ? "-" : "+"}
+                  </button>
                 </div>
               </article>
+              <p className={styles.titleTema}>тема:</p>
+              <p className={styles.textTema}>{speaker.speakerTema}</p>
             </SwiperSlide>
           ))}
         </Swiper>
