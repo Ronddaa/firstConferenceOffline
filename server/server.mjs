@@ -48,13 +48,43 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(utmTracker);
-
 app.use("/api", router);
 
-// Токен MonoBank из env
 const monoBankToken = env("MONOBANK_TOKEN");
 
-// Маршрут создания оплаты
+// ---------- Получение курса PLN→UAH из разных источников ----------
+async function getPLNtoUAHRateFromPrivat() {
+  const { data } = await axios.get(
+    "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5"
+  );
+  const pln = data.find((entry) => entry.ccy === "PLN" && entry.base_ccy === "UAH");
+  if (!pln) throw new Error("PrivatBank: Курс PLN→UAH не найден");
+  return parseFloat(pln.sale);
+}
+
+async function getPLNtoUAHRateFromNBU() {
+  const { data } = await axios.get(
+    "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=PLN&json"
+  );
+  if (!data.length || !data[0].rate) throw new Error("NBU: Курс PLN→UAH не найден");
+  return data[0].rate;
+}
+
+async function getPLNtoUAHRate() {
+  try {
+    return await getPLNtoUAHRateFromPrivat();
+  } catch (e1) {
+    console.warn("⚠️ PrivatBank API не работает:", e1.message);
+    try {
+      return await getPLNtoUAHRateFromNBU();
+    } catch (e2) {
+      console.warn("⚠️ NBU API не работает:", e2.message);
+      throw new Error("Курс PLN→UAH недоступен ни из одного источника");
+    }
+  }
+}
+
+// ---------- Создание платежа ----------
 app.post("/api/create-payment", async (req, res) => {
   const { user, purchase, utmMarks } = req.body;
 
@@ -63,23 +93,21 @@ app.post("/api/create-payment", async (req, res) => {
   }
 
   try {
-    // 1. Создаем счет в монго, но без paymentData, она появиться
-    //  в обработке вебхука
-    const invoice = await createInvoice({
-      user,
-      purchase,
-      utmMarks,
-    });
+    // 1. Создание записи в Mongo
+    const invoice = await createInvoice({ user, purchase, utmMarks });
 
-    // 2. URL для редиректа после оплаты, с параметрами для фронта
+    // 2. Получаем курс PLN → UAH
+    const rate = await getPLNtoUAHRate();
+    const convertedAmount = Math.round(purchase.totalAmount * rate * 100);
+    console.log(`💱 Курс PLN→UAH: ${rate}, сумма: ${purchase.totalAmount} PLN → ${convertedAmount / 100} UAH`);
+
+    // 3. Ссылки редиректа
     const redirectUrl = `https://warsawkod.women.place/thank-you/${invoice._id}`;
-
-    // 3. Запрос создания счета в MonoBank
     const response = await axios.post(
       "https://api.monobank.ua/api/merchant/invoice/create",
       {
-        amount: purchase.totalAmount * 100,
-        ccy: 978, // eur
+        amount: convertedAmount,
+        ccy: 980, // UAH
         redirectUrl,
         webHookUrl: "https://warsawkod.women.place/payment-callback",
       },
@@ -91,48 +119,37 @@ app.post("/api/create-payment", async (req, res) => {
       }
     );
 
-    // 4. Обновляем созданный invoice в Mongo с invoiceId от MonoBank
-
     const paymentData = {
       invoiceId: response.data.invoiceId,
       status: "pending",
     };
 
-    const updResponse = await updateInvoiceById(invoice._id, {
-      paymentData,
-    });
-    console.log("updResponse: ", updResponse);
-    // 5. Возвращаем данные клиенту
+    await updateInvoiceById(invoice._id, { paymentData });
+
     res.status(200).json({
       invoiceId: response.data.invoiceId,
       pageUrl: response.data.pageUrl,
     });
   } catch (error) {
-    console.error(
-      "Error creating payment:",
-      error.response?.data || error.message
-    );
-    res
-      .status(500)
-      .json({ error: "Failed to create payment", message: error.message });
+    console.error("Ошибка при создании оплаты:", error.message);
+    res.status(500).json({ error: "Failed to create payment", message: error.message });
   }
 });
 
-// Обработка callback от MonoBank (обновление статуса оплаты)
+// ---------- Callback MonoBank ----------
 app.post("/api/payment-callback", async (req, res) => {
   const { invoiceId, status } = req.body;
-  // Add this at the start of your webhook handler
   console.log("Received payment callback:", {
     invoiceId,
     status,
     timestamp: new Date().toISOString(),
   });
+
   if (!invoiceId || !status) {
     return res.status(400).json({ error: "Missing invoiceId or status" });
   }
 
   try {
-    // Находим счёт по invoiceId из callback
     const invoice = await InvoicesCollection.findOne({
       "paymentData.invoiceId": invoiceId,
     });
@@ -142,24 +159,22 @@ app.post("/api/payment-callback", async (req, res) => {
       return res.status(404).json({ error: "Invoice not found" });
     }
 
-    // Карта статусов из MonoBank в наши статусы
     const statusMap = {
       success: "paid",
       pending: "pending",
     };
 
     invoice.paymentData.status = statusMap[status] || "failed";
-
-    // Сохраняем обновлённый статус оплаты
     await updateInvoiceById(invoice._id, invoice);
-    return res.status(200).json({ message: "Payment status updated" });
+
+    res.status(200).json({ message: "Payment status updated" });
   } catch (error) {
     console.error("Error in payment-callback:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 
-// Статические файлы (например, билеты, изображения)
+// ---------- Статика и SPA ----------
 const staticFilesPath = join(__dirname, "../");
 
 app.use(
@@ -172,7 +187,6 @@ app.use(
   })
 );
 
-// SPA - отдаём index.html на все остальные маршруты
 app.get("/*", (req, res) => {
   res.sendFile(join(staticFilesPath, "index.html"));
 });

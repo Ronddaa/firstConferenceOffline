@@ -22,10 +22,10 @@ export default function TicketsForm({ isOpen, onClose }) {
   }, []);
 
   const tariffs = [
-    { name: "LAST MINUTE", price: 200 },
-    { name: "GOLD", price: 300 },
-    { name: "PREMIUM", price: 450 },
-    { name: "LUXE", price: 1200 },
+    { name: "LAST MINUTE", price: 770 },
+    { name: "GOLD", price: 990 },
+    { name: "PREMIUM", price: 1400 },
+    { name: "LUXE", price: 5000 },
   ];
 
   const initialState = {
@@ -228,13 +228,13 @@ export default function TicketsForm({ isOpen, onClose }) {
                   <span>
                     {isDiscount ? (
                       <>
-                        <span className={styles.oldPrice}>{t.price}&euro;</span>{" "}
+                        <span className={styles.oldPrice}>{t.price}PLN</span>{" "}
                         <span className={styles.newPrice}>
-                          {discountedPrice}&euro;
+                          {discountedPrice}PLN
                         </span>
                       </>
                     ) : (
-                      <span>{t.price}&euro;</span>
+                      <span className={styles.newPrice}>{t.price} PLN</span>
                     )}
                   </span>
                 </li>
@@ -267,7 +267,7 @@ export default function TicketsForm({ isOpen, onClose }) {
         </div>
 
         <p className={styles.SumForTickets}>
-          сума до сплати: {calculateTotal()} &euro;
+          сума до сплати: {calculateTotal()} PLN
         </p>
 
         <button
