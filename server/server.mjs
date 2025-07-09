@@ -57,7 +57,9 @@ async function getPLNtoUAHRateFromPrivat() {
   const { data } = await axios.get(
     "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5"
   );
-  const pln = data.find((entry) => entry.ccy === "PLN" && entry.base_ccy === "UAH");
+  const pln = data.find(
+    (entry) => entry.ccy === "PLN" && entry.base_ccy === "UAH"
+  );
   if (!pln) throw new Error("PrivatBank: Курс PLN→UAH не найден");
   return parseFloat(pln.sale);
 }
@@ -66,7 +68,8 @@ async function getPLNtoUAHRateFromNBU() {
   const { data } = await axios.get(
     "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=PLN&json"
   );
-  if (!data.length || !data[0].rate) throw new Error("NBU: Курс PLN→UAH не найден");
+  if (!data.length || !data[0].rate)
+    throw new Error("NBU: Курс PLN→UAH не найден");
   return data[0].rate;
 }
 
@@ -99,7 +102,11 @@ app.post("/api/create-payment", async (req, res) => {
     // 2. Получаем курс PLN → UAH
     const rate = await getPLNtoUAHRate();
     const convertedAmount = Math.round(purchase.totalAmount * rate * 100);
-    console.log(`💱 Курс PLN→UAH: ${rate}, сумма: ${purchase.totalAmount} PLN → ${convertedAmount / 100} UAH`);
+    console.log(
+      `💱 Курс PLN→UAH: ${rate}, сумма: ${purchase.totalAmount} PLN → ${
+        convertedAmount / 100
+      } UAH`
+    );
 
     // 3. Ссылки редиректа
     const redirectUrl = `https://warsawkod.women.place/thank-you/${invoice._id}`;
@@ -109,7 +116,7 @@ app.post("/api/create-payment", async (req, res) => {
         amount: convertedAmount,
         ccy: 980, // UAH
         redirectUrl,
-        webHookUrl: "https://warsawkod.women.place/payment-callback",
+        webHookUrl: "https://warsawkod.women.place/api/payment-callback",
       },
       {
         headers: {
@@ -132,7 +139,9 @@ app.post("/api/create-payment", async (req, res) => {
     });
   } catch (error) {
     console.error("Ошибка при создании оплаты:", error.message);
-    res.status(500).json({ error: "Failed to create payment", message: error.message });
+    res
+      .status(500)
+      .json({ error: "Failed to create payment", message: error.message });
   }
 });
 
