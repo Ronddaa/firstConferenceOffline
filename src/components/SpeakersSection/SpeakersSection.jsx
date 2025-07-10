@@ -53,6 +53,10 @@ export default function SpeakersSection() {
     return isDesktop ? [Scrollbar, FreeMode] : [Scrollbar];
   }, [isDesktop]);
 
+  const swiperAutoHeigthDesc = useMemo(() => {
+    return isDesktop ? false : true
+  }, [isDesktop])
+
   const speakers = [
     {
       id: 1,
@@ -194,7 +198,7 @@ export default function SpeakersSection() {
           slidesPerView={slidesPerView}
           className="mySwiper"
           freeMode={isDesktop}
-          autoHeight={true}
+          autoHeight={swiperAutoHeigthDesc}
         >
           {speakers.map((speaker) => (
             <SwiperSlide key={speaker.id} className={styles.swiperSlide}>
