@@ -239,8 +239,8 @@
   color: #696969 !important;
   font-weight: 400;
 }
-.TicketsLuxe .detailsText span{
-    color: #9eb7e5;
+.TicketsLuxe .detailsText span {
+  color: #9eb7e5;
 }
 
 .TicketsOnlyMonatik {
@@ -283,4 +283,39 @@
 
 .wrapperInfoTicketOnly .detailsText span {
   max-width: 210px;
+}
+.TicketsLuxe .priceText{
+  padding: 30px 0;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #1b2021;
+}
+.ticketsIMG{
+  display: none;
+}
+
+@media (min-width:768px){
+  .ticketsIMG{
+    display: block;
+    object-fit: cover;
+    margin-top: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  .wrapperTicketsTariff{
+    flex-direction: row;
+    max-height: 1711px;
+  }
+  .wrapperTicketsTariff {
+    flex-direction: row;
+    align-items: stretch; /* важное дополнение */
+  }
+
+  .styleForTicketsIMG {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
 }
