@@ -69,3 +69,55 @@
        color: #1B2021;
        font-weight: 600;
    }
+   .wrappertitleAuctionDesc{
+    display: none;
+   }
+
+   @media (min-width:768px){
+    .wrapperAuction{
+        margin: 0 30% 100px 50%;
+        max-width: 350px;
+    }
+    .wrapperAuction li:first-child{
+        font-size: 18px;
+    }
+    .wrapperAuction li:last-child{
+        max-width: 320px;
+        font-size: 18px;
+    }
+    .wrappertitleAuction{
+        display: none;
+    }
+    .wrappertitleAuctionDesc{
+        display: block;
+        margin-bottom: 100px;
+    }
+    .titleAuctionDesc{
+        font-size: 4.5vw;
+        color: #1B2021;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 0 auto;
+        display: block;
+        position: relative;
+    }
+    .titleAuctionDesc span{
+        color: transparent;
+        background: linear-gradient(90deg, #1B2021, #9EB7E5);
+        -webkit-background-clip: text; /* Для Safari */
+        background-clip: text;
+    }
+    .hands{
+        margin: 0 41px -20px ;
+    }
+    .lastTextTeckets{
+        margin: 0 10% 0 auto;
+        max-width: 580px;
+        position: relative;
+        z-index: 1;
+        font-size: 18px;
+    }
+    .brMobile{
+        display: none;
+    }
+   }
