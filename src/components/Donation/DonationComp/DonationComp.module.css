@@ -1,0 +1,182 @@
+.donationSectionComp{
+    background-color: #FFFFAC;
+}
+.donationSectionComp :global(.container){
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.DonationCompArticle{
+    background-color: #1B2021;
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    border-radius: 10px;
+}
+.donationLines{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.6;
+    z-index: 0;
+}
+.titleDonation{
+    font-size: 56px;
+    text-align: center;
+    max-width: 1060px;
+    margin: 0 auto 20px;
+    color: transparent;
+    background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
+    -webkit-background-clip: text; /* Для Safari */
+    background-clip: text;
+}
+.textDonation{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    max-width: 710px;
+    margin: 0 auto 40px;
+}
+.wrapperDonationList{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+.wrapperDonationList li{
+    border: 1px solid #FFFFAC;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #1B2021, #9EB7E5);
+    width: 445px;
+    height: 445px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.textLi{
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+    filter: drop-shadow(2px 2px 5px black);
+}
+.titleLih31, .titleLih32, .titleLih33,
+.titleLih41, .titleLih42, .titleLih43{
+    color: transparent;
+    background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
+    -webkit-background-clip: text; /* Для Safari */
+    background-clip: text;
+    position: relative;
+}
+.titleLih31{
+    font-size: 191px;
+    line-height: 1;
+}
+.titleLih41{
+    font-size: 56px;
+    line-height: 1.5;
+}
+.titleLih32{
+    font-size: 106px;
+}
+.titleLih42{
+    font-size: 44px;
+}
+.titleLih33{
+    font-size: 120px;
+}
+.titleLih43{
+    font-size: 56px;
+}
+.detailsDonation{
+    padding: 54px 60px;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1B2021;
+    background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 370px;
+}
+
+
+
+
+
+
+
+
+
+.wrapperHeartBlockList{
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: center;
+}
+.wrapperHeartList{
+    max-width: 45%;
+}
+.wrapperHeart{
+    position: relative;
+    width: 898px;
+    height: 609px;
+    border-radius: 10px;
+    max-width: 50%;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 40px;
+}
+.heartIMG{
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.textInHeart{
+    color: #FFFFFF;
+    font-size: 1vw;
+    position: absolute;
+    z-index: 2;
+    display: block;
+    text-transform: uppercase;
+    bottom: 40px;
+}
+.heartList{
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    border-left: 1px solid #1B2021;
+    padding-left: 40px;
+}
+.heartList li{
+    max-width: 100%;
+}
+.number{
+    margin-bottom: 40px;
+    color: #1B2021;
+    font-size: 18px;
+    font-weight: 600;
+}
+.titleNumber{
+    font-size: 2.5vw;
+    text-transform: uppercase;
+    color: #1B2021;
+    font-weight: 600;
+    width: 100%;
+}
+.titleNumber span{
+    color: transparent;
+    background: linear-gradient(90deg, #1B2021, #9EB7E5);
+    -webkit-background-clip: text; /* Для Safari */
+    background-clip: text;
+}

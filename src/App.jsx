@@ -18,6 +18,7 @@ import LuxeTicketPage from "./TicketsPages/LuxeTicketPage/LuxeTicketPage";
 import PremiumTicketPage from "./TicketsPages/PremiumPage/PremiunTicketPage";
 import LastMinutePage from "./TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./CheckPaymentPage/CheckPaymentPage";
+import DonationComp from "./components/Donation/DonationComp/DonationComp";
 
 // 🎯 Остальные секции
 const Tema = lazy(() => import("./components/Tema/Tema"));
@@ -70,7 +71,7 @@ export default function App() {
                 <Tickets />
                 <PartnersSection />
                 <Auction />
-                <Donation />
+                {isDesktop ? <DonationComp /> : <Donation />}
                 <FAQ />
                 <TelegramBlock />
                 <Footer />
@@ -93,7 +94,10 @@ export default function App() {
         element={<PremiumTicketPage />}
       />
       <Route path="/thank-you/:invoiceId" element={<PageThx />} />
-      <Route path="/check-payment/check/123456" element={<CheckPaymentPage />} />
+      <Route
+        path="/check-payment/check/123456"
+        element={<CheckPaymentPage />}
+      />
     </Routes>
   );
 }
