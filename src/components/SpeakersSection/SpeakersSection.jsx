@@ -26,7 +26,7 @@ function useSlidesPerView() {
   return slidesPerView;
 }
 
-// Хук для проверки, что устройство — desktop
+// Хук для проверки, desktop ли экран
 function useIsDesktop() {
   const getIsDesktop = () => window.innerWidth >= 1024;
   const [isDesktop, setIsDesktop] = useState(getIsDesktop());
@@ -45,17 +45,11 @@ export default function SpeakersSection() {
   const slidesPerView = useSlidesPerView();
   const isDesktop = useIsDesktop();
 
+  const swiperAutoHeight = useMemo(() => !isDesktop, [isDesktop]);
+
   const toggleDetails = (id) => {
     setActiveSpeakerId((prev) => (prev === id ? null : id));
   };
-
-  const swiperModules = useMemo(() => {
-    return isDesktop ? [Scrollbar, FreeMode] : [Scrollbar];
-  }, [isDesktop]);
-
-  const swiperAutoHeigthDesc = useMemo(() => {
-    return isDesktop ? false : true
-  }, [isDesktop])
 
   const speakers = [
     {
@@ -190,75 +184,74 @@ export default function SpeakersSection() {
   return (
     <section className={styles.SpeakersSection} id="speakersSectionAnchor">
       <p className={styles.textBtwSection}>(наші спікери)</p>
-      <div className="container">
-        <Swiper
-          scrollbar={{ hide: false, draggable: true }}
-          modules={swiperModules}
-          spaceBetween={20}
-          slidesPerView={slidesPerView}
-          className="mySwiper"
-          freeMode={isDesktop}
-          autoHeight={swiperAutoHeigthDesc}
-        >
-          {speakers.map((speaker) => (
-            <SwiperSlide key={speaker.id} className={styles.swiperSlide}>
-              <article
-                className={`${styles[speaker.swiperSlideBackground]} ${
-                  styles.slideWrapper
+      <Swiper
+        scrollbar={{ hide: false, draggable: true }}
+        modules={[Scrollbar, FreeMode]}
+        freeMode={true}
+        touchRatio={1}
+        spaceBetween={20}
+        slidesPerView={slidesPerView}
+        className="mySwiper"
+        autoHeight={swiperAutoHeight}
+        watchOverflow
+      >
+        {speakers.map((speaker) => (
+          <SwiperSlide key={speaker.id} className={styles.swiperSlide}>
+            <article
+              className={`${styles[speaker.swiperSlideBackground]} ${
+                styles.slideWrapper
+              }`}
+            >
+              <ul>
+                <li>
+                  <p className={styles.numberOfSpeaker}>
+                    {speaker.numberOfSpeaker}
+                  </p>
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles[speaker.speakerClass]}
+                    href={speaker.speakerInstagram}
+                  >
+                    <svg className={styles.instagram} width={32} height={32}>
+                      <use xlinkHref={`${sprite}#icon-inst`} />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+              <div
+                className={`${styles.dropUpDetails} ${
+                  activeSpeakerId === speaker.id ? styles.active : ""
                 }`}
               >
-                <ul>
-                  <li>
-                    <p className={styles.numberOfSpeaker}>
-                      {speaker.numberOfSpeaker}
-                    </p>
-                  </li>
-                  <li>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles[speaker.speakerClass]}
-                      href={speaker.speakerInstagram}
-                    >
-                      <svg className={styles.instagram} width={32} height={32}>
-                        <use xlinkHref={`${sprite}#icon-inst`}></use>
-                      </svg>
-                    </a>
-                  </li>
-                </ul>
-                <div
-                  className={`${styles.dropUpDetails} ${
-                    activeSpeakerId === speaker.id ? styles.active : ""
+                <p></p>
+                <p className={styles.contentDetails}>
+                  {speaker.contentDetails}
+                </p>
+              </div>
+              <div className={styles.wrapperSpeakerInfo}>
+                <h3
+                  className={`${styles.speakerName} ${
+                    styles[speaker.speakerClass]
                   }`}
                 >
-                  <p></p>
-                  <p className={styles.contentDetails}>
-                    {speaker.contentDetails}
-                  </p>
-                </div>
-
-                <div className={styles.wrapperSpeakerInfo}>
-                  <h3
-                    className={`${styles.speakerName} ${
-                      styles[speaker.speakerClass]
-                    }`}
-                  >
-                    {speaker.speakerName}
-                  </h3>
-                  <button
-                    className={styles[speaker.moreInfoBtnClass]}
-                    onClick={() => toggleDetails(speaker.id)}
-                  >
-                    {activeSpeakerId === speaker.id ? "-" : "+"}
-                  </button>
-                </div>
-              </article>
-              <p className={styles.titleTema}>тема:</p>
-              <p className={styles.textTema}>{speaker.speakerTema}</p>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+                  {speaker.speakerName}
+                </h3>
+                <button
+                  className={styles[speaker.moreInfoBtnClass]}
+                  onClick={() => toggleDetails(speaker.id)}
+                >
+                  {activeSpeakerId === speaker.id ? "-" : "+"}
+                </button>
+              </div>
+            </article>
+            <p className={styles.titleTema}>тема:</p>
+            <p className={styles.textTema}>{speaker.speakerTema}</p>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   );
 }

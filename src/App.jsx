@@ -1,62 +1,42 @@
-import { useEffect, useState, lazy } from "react";
-import { Routes, Route } from "react-router-dom"; // 📌 добавлено
+import { Routes, Route } from "react-router-dom";
 import useIsDesktop from "./hooks/useIsDesktop";
 
-// 🔁 Мобильная и десктопная шапка
+// 🔁 Хэдеры
 import Header from "./components/Header/Header";
 import HeaderComp from "./components/Header/Computer/HeaderComp";
 
-// 📦 Остальные секции — пока только мобильные версии
+// 📦 Главный блок
 import Hero from "./components/Hero/Hero";
 import HeroComp from "./components/Hero/HeroComp/HeroComp";
-import Program from "./components/Program/Program";
 
-// 🎯 Новая страница
-import PageThx from "./PageThx/PageThx"; // 🆕 страница благодарности
+// 📌 Секции
+import Program from "./components/Program/Program";
+import Tema from "./components/Tema/Tema";
+import SpeakersSection from "./components/SpeakersSection/SpeakersSection";
+import ProgramOnConference from "./components/ProgramOnConference/ProgramOnConference";
+import Tickets from "./components/TicketsSection/TicketsSection";
+import PartnersSection from "./components/Partners/PartnersSection";
+import Auction from "./components/Auction/Auction";
+import Donation from "./components/Donation/Donation";
+import DonationComp from "./components/Donation/DonationComp/DonationComp";
+import FAQ from "./components/FAQ/FAQ";
+import TelegramBlock from "./components/TelegramBlock/TelegramBlock";
+import Footer from "./components/Footer/Footer";
+import FooterComp from "./components/Footer/FooterComp/FooterComp";
+
+// 📄 Страницы
+import PageThx from "./PageThx/PageThx";
 import GoldTicketPage from "./TicketsPages/GoldTicketsPage/GoldTicketPage";
 import LuxeTicketPage from "./TicketsPages/LuxeTicketPage/LuxeTicketPage";
 import PremiumTicketPage from "./TicketsPages/PremiumPage/PremiunTicketPage";
 import LastMinutePage from "./TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./CheckPaymentPage/CheckPaymentPage";
-import DonationComp from "./components/Donation/DonationComp/DonationComp";
-import FooterComp from "./components/Footer/FooterComp/FooterComp";
-
-// 🎯 Остальные секции
-const Tema = lazy(() => import("./components/Tema/Tema"));
-const SpeakersSection = lazy(() =>
-  import("./components/SpeakersSection/SpeakersSection")
-);
-const ProgramOnConference = lazy(() =>
-  import("./components/ProgramOnConference/ProgramOnConference")
-);
-const Tickets = lazy(() =>
-  import("./components/TicketsSection/TicketsSection")
-);
-const PartnersSection = lazy(() =>
-  import("./components/Partners/PartnersSection")
-);
-const Auction = lazy(() => import("./components/Auction/Auction"));
-const Donation = lazy(() => import("./components/Donation/Donation"));
-const FAQ = lazy(() => import("./components/FAQ/FAQ"));
-const TelegramBlock = lazy(() =>
-  import("./components/TelegramBlock/TelegramBlock")
-);
-const Footer = lazy(() => import("./components/Footer/Footer"));
 
 export default function App() {
-  const isDesktop = useIsDesktop(); // 📱 определение ширины экрана
-  const [showRest, setShowRest] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowRest(true);
-    }, 300);
-    return () => clearTimeout(timeout);
-  }, []);
+  const isDesktop = useIsDesktop();
 
   return (
     <Routes>
-      {/* Главная страница */}
       <Route
         path="/"
         element={
@@ -64,26 +44,23 @@ export default function App() {
             {isDesktop ? <HeaderComp /> : <Header />}
             {isDesktop ? <HeroComp /> : <Hero />}
 
-            {showRest && (
-              <>
-                <Program />
-                <Tema />
-                <SpeakersSection />
-                <ProgramOnConference />
-                <Tickets />
-                <PartnersSection />
-                <Auction />
-                {isDesktop ? <DonationComp /> : <Donation />}
-                <FAQ />
-                <TelegramBlock />
-                {isDesktop ? <FooterComp /> : <Footer />}
-              </>
-            )}
+            {/* Все секции сразу */}
+            <Program />
+            <Tema />
+            <SpeakersSection />
+            <ProgramOnConference />
+            <Tickets />
+            <PartnersSection />
+            <Auction />
+            {isDesktop ? <DonationComp /> : <Donation />}
+            <FAQ />
+            <TelegramBlock />
+            {isDesktop ? <FooterComp /> : <Footer />}
           </>
         }
       />
 
-      {/* Страница благодарности */}
+      {/* Страницы билетов и оплаты */}
       <Route path="/thank-you/:invoiceId" element={<PageThx />} />
       <Route path="/ticket/gold/:invoiceId" element={<GoldTicketPage />} />
       <Route path="/ticket/luxe/:invoiceId" element={<LuxeTicketPage />} />
@@ -95,7 +72,6 @@ export default function App() {
         path="/ticket/premium/:invoiceId"
         element={<PremiumTicketPage />}
       />
-      <Route path="/thank-you/:invoiceId" element={<PageThx />} />
       <Route
         path="/check-payment/check/123456"
         element={<CheckPaymentPage />}
