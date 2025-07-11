@@ -4,7 +4,7 @@ import heart from '../heart.webp'
 
 export default function DonationComp() {
   return (
-    <section className={styles.donationSectionComp}>
+    <section className={styles.donationSectionComp} id="donationSectionAnchor">
       <div className="container">
         <article className={styles.DonationCompArticle}>
           <img

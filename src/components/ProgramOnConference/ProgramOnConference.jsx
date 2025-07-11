@@ -4,7 +4,7 @@ export default function ProgramOnConference() {
     return (
       <section
         className={styles.sectionProgramOnConference}
-        id="sectionProgramOnConference"
+        id="sectionProgramOnConferenceAnchor"
       >
         <div className="container">
           <p className={styles.btwSectionText}>(програма конференції)</p>

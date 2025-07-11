@@ -188,7 +188,7 @@ export default function SpeakersSection() {
   ];
 
   return (
-    <section className={styles.SpeakersSection} id="speakersSection">
+    <section className={styles.SpeakersSection} id="speakersSectionAnchor">
       <p className={styles.textBtwSection}>(наші спікери)</p>
       <div className="container">
         <Swiper

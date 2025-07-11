@@ -15,7 +15,7 @@ export default function Tickets() {
 
 
   return (
-    <section className={styles.sectionTickets} id="tariff">
+    <section className={styles.sectionTickets} id="ticketsSectionAnchor">
       <div className="container">
         <p className={styles.textBtwSection}>(тарифи на участь)</p>
         <ul className={styles.wrapperTicketsTariff}>

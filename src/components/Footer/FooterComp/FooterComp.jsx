@@ -12,48 +12,66 @@ export default function FooterComp() {
   const [modalTicketsIsOpen, setModalTickets] = useState(false);
 
   return (
-    <footer className={styles.FooterComp}>
+    <footer className={styles.FooterComp} id="footer">
       <div className="container">
         <img src={logoFooter} alt="Warsaw Kod Zhinky" width={150} height={70} />
 
         <ul className={styles.wrapperNavigationList}>
           <li>
-            <a href="#about" className={styles.navigationLinkFooter}>
+            <a
+              href="#programSectionAnchor"
+              className={styles.navigationLinkFooter}
+            >
               про конференцію
             </a>
           </li>
           <li>
-            <a href="#speakersSection" className={styles.navigationLinkFooter}>
+            <a
+              href="#speakersSectionAnchor"
+              className={styles.navigationLinkFooter}
+            >
               наші спікери
             </a>
           </li>
           <li>
-            <a href="#program" className={styles.navigationLinkFooter}>
+            <a
+              href="#sectionProgramOnConferenceAnchor"
+              className={styles.navigationLinkFooter}
+            >
               програма
             </a>
           </li>
           <li>
-            <a href="#tariff" className={styles.navigationLinkFooter}>
+            <a
+              href="#ticketsSectionAnchor"
+              className={styles.navigationLinkFooter}
+            >
               тарифи
             </a>
           </li>
           <li>
-            <a href="#partners" className={styles.navigationLinkFooter}>
+            <a
+              href="#partnersSectionAnchor"
+              className={styles.navigationLinkFooter}
+            >
               партнери
             </a>
           </li>
           <li>
-            <a href="#donation" className={styles.navigationLinkFooter}>
+            <a
+              href="#donationSectionAnchor"
+              className={styles.navigationLinkFooter}
+            >
               благодійність
             </a>
           </li>
           <li>
-            <a href="#faq" className={styles.navigationLinkFooter}>
+            <a href="#FAQSectionAnchor" className={styles.navigationLinkFooter}>
               FAQ
             </a>
           </li>
           <li>
-            <a href="#contacts" className={styles.navigationLinkFooter}>
+            <a href="#footer" className={styles.navigationLinkFooter}>
               контакти
             </a>
           </li>
@@ -88,6 +106,54 @@ export default function FooterComp() {
           </svg>
         </button>
       </div>
+      <ul className={styles.wrapperContactLinks}>
+        <li>
+          <a
+            target="_blank"
+            className={styles.contactLink}
+            href="tel:+48667994337"
+          >
+            +48667994337
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            className={styles.contactLink}
+            href="https://t.me/warsawkod_bot"
+          >
+            TELEGRAM
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            className={styles.contactLink}
+            href="https://www.instagram.com/kod.zhinky?igsh=MXFoZHN2dWxoeHMyZw%3D%3D&utm_source=qr"
+          >
+            INSTAGRAM
+          </a>
+        </li>
+      </ul>
+      <div className={styles.wrapperPolicyC}>
+        <ul className={styles.wrapperC}>
+          <li>2025 &copy;</li>
+          <li>Усі права захищені</li>
+        </ul>
+        <ul className={styles.wrapperPolicy}>
+          <li>
+            <a className={styles.policyLink} href="#">
+              публічна оферта
+            </a>
+          </li>
+          <li>
+            <a className={styles.policyLink} href="#">
+              Політика конфіденційності
+            </a>
+          </li>
+        </ul>
+      </div>
+      <h2 className={styles.titleFooter}>КОД ЖІНКИ</h2>
       <TicketsForm
         isOpen={modalTicketsIsOpen}
         onClose={() => setModalTickets(false)}

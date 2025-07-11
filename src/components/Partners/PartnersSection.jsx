@@ -3,7 +3,7 @@ import spriteLogo from "./spriteLogo.svg";
 
 export default function PartnersSection() {
   return (
-    <section className={styles.PartnersSection} id="partnersSection">
+    <section className={styles.PartnersSection} id="partnersSectionAnchor">
       <div className="container">
         <p className={styles.textBtw}>(наші партнери)</p>
         <ul className={styles.wrapperPartners}>

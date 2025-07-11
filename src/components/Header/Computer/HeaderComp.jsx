@@ -40,42 +40,60 @@ export default function HeaderComp() {
 
         <ul className={styles.wrapperNavigationList}>
           <li>
-            <a href="#about" className={styles.navigationLinkHeader}>
+            <a
+              href="#programSectionAnchor"
+              className={styles.navigationLinkHeader}
+            >
               про конференцію
             </a>
           </li>
           <li>
-            <a href="#speakersSection" className={styles.navigationLinkHeader}>
+            <a
+              href="#speakersSectionAnchor"
+              className={styles.navigationLinkHeader}
+            >
               наші спікери
             </a>
           </li>
           <li>
-            <a href="#program" className={styles.navigationLinkHeader}>
+            <a
+              href="#sectionProgramOnConferenceAnchor"
+              className={styles.navigationLinkHeader}
+            >
               програма
             </a>
           </li>
           <li>
-            <a href="#tariff" className={styles.navigationLinkHeader}>
+            <a
+              href="#ticketsSectionAnchor"
+              className={styles.navigationLinkHeader}
+            >
               тарифи
             </a>
           </li>
           <li>
-            <a href="#partners" className={styles.navigationLinkHeader}>
+            <a
+              href="#partnersSectionAnchor"
+              className={styles.navigationLinkHeader}
+            >
               партнери
             </a>
           </li>
           <li>
-            <a href="#donation" className={styles.navigationLinkHeader}>
+            <a
+              href="#donationSectionAnchor"
+              className={styles.navigationLinkHeader}
+            >
               благодійність
             </a>
           </li>
           <li>
-            <a href="#faq" className={styles.navigationLinkHeader}>
+            <a href="#FAQSectionAnchor" className={styles.navigationLinkHeader}>
               FAQ
             </a>
           </li>
           <li>
-            <a href="#contacts" className={styles.navigationLinkHeader}>
+            <a href="#footer" className={styles.navigationLinkHeader}>
               контакти
             </a>
           </li>

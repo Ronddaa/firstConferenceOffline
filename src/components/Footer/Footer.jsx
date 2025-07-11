@@ -25,31 +25,6 @@ export default function Footer() {
           height={54}
           loading="lazy"
         />
-        <ul className={styles.wrapperNavigationFooter}>
-          <li>
-            <a href="#" className={styles.FooterNavigationLink}>
-              про конференцію
-            </a>
-            <a href="#" className={styles.FooterNavigationLink}>
-              тарифи
-            </a>
-            <a href="#" className={styles.FooterNavigationLink}>
-              анонси
-            </a>
-          </li>
-          <li>
-            <a href="#" className={styles.FooterNavigationLink}>
-              благодійність
-            </a>
-            <a href="#" className={styles.FooterNavigationLink}>
-              FAQ
-            </a>
-            <a href="#" className={styles.FooterNavigationLink}>
-              контакти
-            </a>
-          </li>
-          <li className={styles.absolutePlaceholder}></li>
-        </ul>
         <button
           className={styles.buyBtnFooter}
           onClick={() => {

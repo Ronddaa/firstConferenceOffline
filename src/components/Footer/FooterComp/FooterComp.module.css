@@ -1,1 +1,113 @@
-.FooterComp :global(.container)
+footer{
+    background-color: #FFFFAC;
+    padding: 50px 20px;
+}
+.FooterComp :global(.container){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.wrapperNavigationList{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px 131px;
+    max-height: 100px;
+}
+.navigationLinkFooter{
+    color: #1B2021;
+    font-size: 0.75vw;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.wrapperSPButtons{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: auto;
+}
+.partnersBtn{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #1B2021;
+    color: #1B2021;
+    font-size: 0.75vw;
+    text-transform: uppercase;
+}
+.buyBtnFooter{
+    font-size: 0.75vw;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid #1B2021;
+    color: #1B2021;
+    padding: 16px 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-bottom: auto;
+}
+.arrowList{
+    transform: rotate(-90deg);
+    fill: #1B2021;
+}
+.wrapperContactLinks{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 20px;
+    margin: 172px 350px 150px auto;
+    max-width: 450px;
+}
+.contactLink{
+    font-family: "Unbounded";
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #1B2021;
+    border-bottom: 2px solid #1B2021;
+}
+.wrapperPolicyC{
+    display: flex;
+    justify-content: space-between;
+}
+.wrapperC{
+    display: flex;
+    flex-direction: column;
+    color: #1B2021;
+    padding: 0 20px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.wrapperPolicy{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 8px;
+    padding: 0 20px;
+}
+.policyLink{
+    color: #1B2021;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.titleFooter{
+    font-size: 12.5vw;
+    text-transform: uppercase;
+    position: relative;
+    color: #1B2021;
+}
+.titleFooter::after{
+    content: 'by Olimpia';
+    font-family: "Quentin";
+    font-size: 118px;
+    position: absolute;
+    bottom: -55px;
+    text-transform: none;
+    right: 40px;
+    color: #9EB7E5;
+    font-weight: 400;
+}
