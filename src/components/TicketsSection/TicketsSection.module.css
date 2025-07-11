@@ -144,8 +144,11 @@
   color: #fffcf9;
 }
 
-.priceText span {
+.priceText .priceEuro {
   font-size: 22px;
+}
+.priceValue{
+  font-size: 28px;
 }
 
 .priceTextAfter {
@@ -202,7 +205,10 @@
   color: #fffcf9;
   border: 1px solid #fffcf9;
 }
-
+.wrapperDetailsTariff .LMwithList{
+  display: flex;
+  align-items: start;
+}
 .wrapperLMwithList {
   max-width: 254px;
 }
@@ -211,6 +217,7 @@
   color: #1b2021;
   font-size: 12px;
   margin-left: 10px;
+  margin-top: 5px;
 }
 
 .wrapperLMList li {
@@ -227,6 +234,24 @@
   top: 5px;
   background-color: #1b2021;
 }
+.blueTextOnTickets{
+  color: #9eb7e5;
+}
+.TicketsPremium .LMwithList .wrapperLMList li{
+  color: #fffcf9;
+  position: relative;
+}
+.TicketsPremium .LMwithList .wrapperLMList li::before{
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  position: absolute;
+  left: -10px;
+  top: 5px;
+  background-color: #fffcf9;
+}
+
 
 .underPresidentRoom {
   display: flex;

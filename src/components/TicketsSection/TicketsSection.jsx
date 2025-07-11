@@ -3,16 +3,14 @@ import sprite from "../icons.svg";
 import TicketsForm from "../Modals/Tickets/TicketsForm";
 import { useState } from "react";
 import ShowPlace from "../Modals/ShowPlace/ShowPlace";
-import LastMinuteIMG from './LastMinuteIMG.webp'
-import GoldIMG from './GoldIMG.webp'
-import PremiumIMG from './PremiumIMG.webp'
-import LuxeIMG from './LuxeIMG.webp'
+import LastMinuteIMG from "./LastMinuteIMG.webp";
+import GoldIMG from "./GoldIMG.webp";
+import PremiumIMG from "./PremiumIMG.webp";
+import LuxeIMG from "./LuxeIMG.webp";
 
 export default function Tickets() {
-
   const [modalTicketsIsOpen, setmodalTickets] = useState(false);
   const [modalShowPlaceIsOpen, setmodalShowPlace] = useState(false);
-
 
   return (
     <section className={styles.sectionTickets} id="ticketsSectionAnchor">
@@ -30,23 +28,52 @@ export default function Tickets() {
                   </svg>
                   <p className={styles.detailsText}>Місця: позначені зеленим</p>
                 </li>
-                <li>
-                  <svg className={styles.detailsSVG} width={38} height={28}>
+                <li className={styles.LMwithList}>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-palms`}></use>
                   </svg>
-                  <p className={styles.detailsText}>
-                    Welcome drink (один келих ігристого) + вода
-                  </p>
-                </li>
-                <li>
-                  <svg className={styles.detailsSVG} width={28} height={28}>
-                    <use xlinkHref={`${sprite}#icon-people`}></use>
-                  </svg>
-                  <p className={styles.detailsText}>нетворкінг</p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>
+                      Welcome drink (один келих ігристого) + вода
+                    </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        Один келих ігристого вина + вода для створення
+                        святкового настрою
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
-                    <use xlinkHref={`${sprite}#icon-pazzle`}></use>
+                    <use xlinkHref={`${sprite}#icon-people`}></use>
+                  </svg>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>нетворкінг</p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        можливість познайомитися з іншими учасниками поза межами
+                        головного залу
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li className={styles.LMwithList}>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-podkova`}></use>
+                  </svg>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>Лекційна зала:</p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        можливість послухати лекції від експертів у своїх нішах
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li className={styles.LMwithList}>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-infinity`}></use>
                   </svg>
                   <div className={styles.wrapperLMwithList}>
                     <p className={styles.detailsText}>додаткові приємності:</p>
@@ -55,34 +82,49 @@ export default function Tickets() {
                         Вільне пересування між зонами: великий зал із барними
                         столами та камерний простір із м’якими посадками
                       </li>
-                      <li>
-                        Частування ігристим - ми подбаємо про святковий настрій
-                      </li>
                       <li>Бренд-зона з дегустаціями від наших партнерів</li>
-                      <li>Спікери поруч, без бар’єрів</li>
-                      <li>Відомі гості - в одному залі, на відстані розмови</li>
+                      <li>
+                        Спікери поруч, без бар’єрів - відкрите спілкування з
+                        експертами
+                      </li>
+                      <li>
+                        Відомі гості в одному залі, на відстані розмови -
+                        можливість познайомитися з лідерами думок
+                      </li>
                       <li>
                         Професійне фото та відео - якщо не сховаєтесь від камери
                         😉
                       </li>
                       <li>Обійми з тими, кого давно не бачили</li>
+                      <li>
+                        Спеціальні умови для поселення в The WESTIN WARSAW
+                      </li>
+                      <li>Доступ до ресторану п’ятизіркового готелю</li>
+                      <li>Доступ до Telegram-каналу з бекстейджем події</li>
                     </ul>
                   </div>
+                </li>
+                <li>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-starsthree`}></use>
+                  </svg>
+                  <p className={styles.detailsText}>Дизайнерський показ</p>
                 </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-micro`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    Ексклюзивний <br /> концерт MONATIK
+                    Ексклюзивний концерт <br /> MONATIK у рамках <br />
+                    конференції «Код Жінки»
                   </p>
                 </li>
               </ul>
               <p className={styles.priceTextWillBe}>
-                850pln/ <span>200&euro;</span>
+                850<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span>/ <span>200&euro;</span>
               </p>
               <p className={styles.priceText}>
-                770pln /<span>130&euro;</span>
+                770<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span> /<span className={styles.priceEuro}>130&euro;</span>
               </p>
               <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>
               <button
@@ -115,43 +157,59 @@ export default function Tickets() {
               <h3 className={styles.titleTariffCard}>GOLD</h3>
               <p className={styles.kolPlace}>Залишилось 98 місць</p>
               <ul className={styles.wrapperDetailsTariff}>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-diamond`}></use>
                   </svg>
-                  <p className={styles.detailsText}>Місця: позначені жовтим</p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>
+                      Місця: позначені жовтим
+                    </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>за банкетними столами</li>
+                    </ul>
+                  </div>
                 </li>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-palms`}></use>
                   </svg>
-                  <p className={styles.detailsText}>
-                    Welcome drink (один <br /> келих ігристого) + вода
-                  </p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>Welcome drink</p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        один келих ігристого вина + вода для створення
+                        святкового настрою
+                      </li>
+                    </ul>
+                  </div>
                 </li>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-clock`}></use>
                   </svg>
-                  <p className={styles.detailsText}>
-                    <span>Дві кавопаузи</span>
-                  </p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>
+                      <span>Кавопаузи:</span>
+                    </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>дві можливості відпочити під час перерви</li>
+                    </ul>
+                  </div>
                 </li>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-people`}></use>
                   </svg>
-                  <p className={styles.detailsText}>Нетворкінг </p>
-                </li>
-                <li>
-                  <svg className={styles.detailsSVG} width={28} height={28}>
-                    <use xlinkHref={`${sprite}#icon-fire`}></use>
-                  </svg>
-                  <p className={styles.detailsText}>
-                    <span>
-                      Участь у розіграші <br /> подарунків
-                    </span>
-                  </p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>Нетворкінг </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        можливість познайомитися з іншими учасниками поза межами
+                        головного залу
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
@@ -175,20 +233,78 @@ export default function Tickets() {
                     </span>
                   </p>
                 </li>
+                <li className={styles.LMwithList}>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-podkova`}></use>
+                  </svg>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>Лекційна мала зала:</p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        можливість послухати лекції від експертів у своїх нішах
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li className={styles.LMwithList}>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-infinity`}></use>
+                  </svg>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>додаткові приємності:</p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        <p>
+                          Вільне пересування між зонами: <br />{" "}
+                          <span className={styles.blueTextOnTickets}>
+                            головний зал із банкетними столами та мала зала з
+                            інтерактивними лекціями від спікерів
+                          </span>
+                        </p>
+                      </li>
+                      <li>Бренд-зона з дегустаціями від наших партнерів</li>
+                      <li>
+                        Спікери поруч, без бар’єрів - відкрите спілкування з
+                        експертами
+                      </li>
+                      <li>
+                        Відомі гості в одному залі, на відстані розмови -
+                        можливість познайомитися з лідерами думок
+                      </li>
+                      <li>
+                        Професійне фото та відео (якщо не сховаєтесь від камери
+                        😉)
+                      </li>
+                      <li>Обійми з тими, кого давно не бачили</li>
+                      <li>
+                        Спеціальні умови для поселення в The WESTIN WARSAW
+                      </li>
+                      <li>Доступ до ресторану п’ятизіркового готелю</li>
+                      <li>Доступ до Telegram-каналу з бекстейджем події</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-starsthree`}></use>
+                  </svg>
+                  <p className={styles.detailsText}>Дизайнерський показ</p>
+                </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-micro`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    Ексклюзивний <br /> концерт MONATIK
+                    Ексклюзивний концерт <br /> MONATIK у рамках <br />
+                    конференції «Код Жінки»
                   </p>
                 </li>
               </ul>
               <p className={styles.priceTextWillBe}>
-                1300pln/ <span>300&euro;</span>
+                1300<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span>/ <span>300&euro;</span>
               </p>
               <p className={styles.priceText}>
-                990pln /<span>230&euro;</span>
+                990<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span> /<span className={styles.priceEuro}>230&euro;</span>
               </p>
               <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>
               <button
@@ -221,43 +337,60 @@ export default function Tickets() {
               <h3 className={styles.titleTariffCard}>premium</h3>
               <p className={styles.kolPlace}>Залишилось 52 місця</p>
               <ul className={styles.wrapperDetailsTariff}>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-diamond`}></use>
                   </svg>
-                  <p className={styles.detailsText}>
-                    Місця: позначені блакитним
-                  </p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>
+                      Місця: позначені блакитним
+                    </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>за банкетними столами</li>
+                    </ul>
+                  </div>
                 </li>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-palms`}></use>
                   </svg>
-                  <p className={styles.detailsText}>
-                    Welkome drink(один <br /> келих ігристого) + вода
-                  </p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>Welkome drink</p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        один келих ігристого вина + вода для створення
+                        святкового настрою
+                      </li>
+                    </ul>
+                  </div>
                 </li>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-clock`}></use>
                   </svg>
-                  <p className={styles.detailsText}>
-                    Дві кавопаузи <br /> <span>+ Асортимент закусок</span>
-                  </p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>
+                      Дві кавопаузи
+                      <span>+ асортимент смачних частувань:</span>
+                    </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>три можливості відпочити під час перерви</li>
+                    </ul>
+                  </div>
                 </li>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-people`}></use>
                   </svg>
-                  <p className={styles.detailsText}>Нетворкінг </p>
-                </li>
-                <li>
-                  <svg className={styles.detailsSVG} width={28} height={28}>
-                    <use xlinkHref={`${sprite}#icon-fire`}></use>
-                  </svg>
-                  <p className={styles.detailsText}>
-                    Участь у розіграші <br /> подарунків
-                  </p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>Нетворкінг </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        можливість познайомитися з іншими учасниками поза межами
+                        головного залу
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
@@ -272,21 +405,79 @@ export default function Tickets() {
                     <use xlinkHref={`${sprite}#icon-star`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    <span>-15%</span> знижка на бранч
+                    <span>-15%</span> знижка на бранч <br /> від MGVC
                     <br />
                     <span className={styles.underPresidentRoomSpan}>
                       наступного дня (24.08.2025)
                     </span>
                   </p>
                 </li>
+                <li className={styles.LMwithList}>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-podkova`}></use>
+                  </svg>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>
+                      <span>Лекційна мала зала:</span>
+                    </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        можливість послухати лекції від експертів у своїх нішах
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li className={styles.LMwithList}>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-infinity`}></use>
+                  </svg>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>додаткові приємності:</p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        <p>
+                          Вільне пересування між зонами: <br />{" "}
+                          <span className={styles.blueTextOnTickets}>
+                            головний зал із банкетними столами та мала зала з
+                            інтерактивними лекціями від спікерів
+                          </span>
+                        </p>
+                      </li>
+                      <li>Бренд-зона з дегустаціями від наших партнерів</li>
+                      <li>
+                        Спікери поруч, без бар’єрів - відкрите спілкування з
+                        експертами
+                      </li>
+                      <li>
+                        Відомі гості в одному залі, на відстані розмови -
+                        можливість познайомитися з лідерами думок
+                      </li>
+                      <li>
+                        Професійне фото та відео (якщо не сховаєтесь від камери
+                        😉)
+                      </li>
+                      <li>Обійми з тими, кого давно не бачили</li>
+                      <li>
+                        Спеціальні умови для поселення в The WESTIN WARSAW
+                      </li>
+                      <li>Доступ до ресторану п’ятизіркового готелю</li>
+                      <li>Доступ до Telegram-каналу з бекстейджем події</li>
+                    </ul>
+                  </div>
+                </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-starsthree`}></use>
+                  </svg>
+                  <p className={styles.detailsText}>Дизайнерський показ</p>
+                </li>
+                <li>
+                  <svg className={styles.detailsSVG} width={52} height={52}>
                     <use xlinkHref={`${sprite}#icon-blackHole`}></use>
                   </svg>
                   <p className={styles.detailsText}>
                     <span>
-                      Ігристе перед концертом: <br /> келих щоб налаштуватись{" "}
-                      <br /> на вечір
+                      Ігристе перед концертом: келих щоб налаштуватись на вечір
                     </span>
                   </p>
                 </li>
@@ -295,15 +486,16 @@ export default function Tickets() {
                     <use xlinkHref={`${sprite}#icon-micro`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    Ексклюзивний <br /> концерт MONATIK
+                    Ексклюзивний концерт <br /> MONATIK у рамках <br />
+                    конференції «Код Жінки»
                   </p>
                 </li>
               </ul>
               <p className={styles.priceTextWillBe}>
-                1900pln/ <span>450&euro;</span>
+                1900<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span>/ <span>450&euro;</span>
               </p>
               <p className={styles.priceText}>
-                1400pln /<span>330&euro;</span>
+                1400<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span> /<span className={styles.priceEuro}>330&euro;</span>
               </p>
               <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>{" "}
               <button
@@ -336,28 +528,36 @@ export default function Tickets() {
               <h3 className={styles.titleTariffCard}>LUXE</h3>
               <p className={styles.kolPlace}>Залишилось 25 місць</p>
               <ul className={styles.wrapperDetailsTariff}>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-diamond`}></use>
                   </svg>
-                  <p className={styles.detailsText}>
-                    Місця: позначені червоним
-                  </p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>
+                      Місця: позначені червоним
+                    </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>за банкетними столами</li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-palms`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    <span>безлімітне ігристе</span> <br />+ вода
+                    <span>безлімітне ігристе + вода</span>
                   </p>
                 </li>
                 <li>
-                  <svg className={styles.detailsSVG} width={28} height={28}>
+                  <svg className={styles.detailsSVG} width={60} height={60}>
                     <use xlinkHref={`${sprite}#icon-clock`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    Дві кавопаузи <br />+ Асортимент закусок
+                    <span>
+                      Окрема зала з безперервним доступом до напоїв та
+                      асортименту смачних <br /> частувань
+                    </span>
                   </p>
                 </li>
                 <li>
@@ -366,7 +566,7 @@ export default function Tickets() {
                   </svg>
                   <p className={styles.detailsText}>
                     <span>
-                      Повноцінний обід <br /> зі спікерами
+                      Обід зі спікерами за <br /> банкетною посадкою
                     </span>
                   </p>
                 </li>
@@ -378,21 +578,28 @@ export default function Tickets() {
                     <span>Ексклюзивна зона для спілкування зі спікерами</span>
                   </p>
                 </li>
-                <li>
+                <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-fire`}></use>
                   </svg>
-                  <p className={styles.detailsText}>
-                    Участь у розіграші подарунків
-                  </p>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>
+                      <span>Відомі гості в окремому Luxe-просторі</span>
+                    </p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        на відстані розмови - можливість познайомитися з
+                        лідерами думок
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-pazzle`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    Пакет з подарунками <br />
-                    <span>luxe класу</span>
+                    <span>Подарунки Luxe-класу від ексклюзивних партнерів</span>
                   </p>
                 </li>
                 <li>
@@ -410,21 +617,57 @@ export default function Tickets() {
                     <use xlinkHref={`${sprite}#icon-star`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    <span>-20%</span> знижка на бранч
+                    <span>-20%</span> знижка на бранч від MGVC
                     <br />
                     <span className={styles.underPresidentRoomSpan}>
                       наступного дня (24.08.2025)
                     </span>
                   </p>
                 </li>
+                <li className={styles.LMwithList}>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-infinity`}></use>
+                  </svg>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>додаткові приємності:</p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        <p>
+                          Вільне пересування між зонами: <br />{" "}
+                          <span className={styles.blueTextOnTickets}>
+                            головний зал із банкетними столами та мала зала з
+                            інтерактивними лекціями від спікерів
+                          </span>
+                        </p>
+                      </li>
+                      <li>Бренд-зона з дегустаціями від наших партнерів</li>
+                      <li>
+                        Спікери поруч, без бар’єрів - відкрите спілкування з
+                        експертами
+                      </li>
+                      <li>
+                        Відомі гості в одному залі, на відстані розмови -
+                        можливість познайомитися з лідерами думок
+                      </li>
+                      <li>
+                        Професійне фото та відео (якщо не сховаєтесь від камери
+                        😉)
+                      </li>
+                      <li>Обійми з тими, кого давно не бачили</li>
+                      <li>
+                        Спеціальні умови для поселення в The WESTIN WARSAW
+                      </li>
+                      <li>Доступ до ресторану п’ятизіркового готелю</li>
+                      <li>Доступ до Telegram-каналу з бекстейджем події</li>
+                    </ul>
+                  </div>
+                </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
-                    <use xlinkHref={`${sprite}#icon-convert`}></use>
+                    <use xlinkHref={`${sprite}#icon-starsthree`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    <span>
-                      Відео та фото матеріали <br /> після заходу{" "}
-                    </span>
+                    Дизайнерський показ <span>із посадковими місцями</span>
                   </p>
                 </li>
                 <li>
@@ -432,12 +675,13 @@ export default function Tickets() {
                     <use xlinkHref={`${sprite}#icon-micro`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    Ексклюзивний <br /> концерт MONATIK
+                    Ексклюзивний концерт <br /> MONATIK у рамках <br />
+                    конференції «Код Жінки»
                   </p>
                 </li>
               </ul>
               <p className={styles.priceText}>
-                5000pln /<span>1200&euro;</span>
+                5000<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span> /<span className={styles.priceEuro}>1200&euro;</span>
               </p>{" "}
               <button
                 className={styles.btnBuyTariffGold}
