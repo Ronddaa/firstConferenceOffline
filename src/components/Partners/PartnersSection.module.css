@@ -12,9 +12,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
-.wrapperPartners li{
+/* pdp logo */
+.wrapperLogoPDP{
     border: 1px solid #FFFFAC;
     border-radius: 10px;
     padding: 52px 24px;
+}
+/* lavande logo */
+.lavandeLogo{
+    border-radius: 10px;
+    max-width: 274px;
+    max-height: 138px;
+}
+
+@media(min-width:768px){
+    .textBtw{
+        font-size: 18px;
+        text-align: center;
+    }
+    .wrapperPartners{
+        flex-direction: row;
+    }
+    .wrapperLogoPDP{
+        padding: 80px 55px;
+    }
+    .lavandeLogo{
+        max-width: 100%;
+        max-height: 100%;
+    }
 }

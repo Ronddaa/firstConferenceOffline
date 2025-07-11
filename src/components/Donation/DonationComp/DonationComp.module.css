@@ -47,7 +47,7 @@
 .wrapperDonationList li{
     border: 1px solid #FFFFAC;
     border-radius: 10px;
-    background: linear-gradient(90deg, #1B2021, #9EB7E5);
+    background: linear-gradient(90deg, #1B2021, #63738C);
     width: 445px;
     height: 445px;
     position: relative;
@@ -62,7 +62,6 @@
     text-transform: uppercase;
     margin-bottom: 10px;
     font-weight: 600;
-    filter: drop-shadow(2px 2px 5px black);
 }
 .titleLih31, .titleLih32, .titleLih33,
 .titleLih41, .titleLih42, .titleLih43{

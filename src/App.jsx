@@ -19,6 +19,7 @@ import PremiumTicketPage from "./TicketsPages/PremiumPage/PremiunTicketPage";
 import LastMinutePage from "./TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./CheckPaymentPage/CheckPaymentPage";
 import DonationComp from "./components/Donation/DonationComp/DonationComp";
+import FooterComp from "./components/Footer/FooterComp/FooterComp";
 
 // 🎯 Остальные секции
 const Tema = lazy(() => import("./components/Tema/Tema"));
@@ -62,9 +63,10 @@ export default function App() {
           <>
             {isDesktop ? <HeaderComp /> : <Header />}
             {isDesktop ? <HeroComp /> : <Hero />}
-            <Program />
+
             {showRest && (
               <>
+                <Program />
                 <Tema />
                 <SpeakersSection />
                 <ProgramOnConference />
@@ -74,7 +76,7 @@ export default function App() {
                 {isDesktop ? <DonationComp /> : <Donation />}
                 <FAQ />
                 <TelegramBlock />
-                <Footer />
+                {isDesktop ? <FooterComp /> : <Footer />}
               </>
             )}
           </>

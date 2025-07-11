@@ -65,3 +65,38 @@
 .contentText{
     color: #797979;
 }
+
+@media(min-width:768px){
+    .titleFAQ{
+        text-align: right;
+        font-size: 370px;
+        margin-bottom: -170px;
+    }
+    .itemLi{
+        padding: 30px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: center;
+    }
+    .titleQList{
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .number{
+        position: absolute;
+        top: 30px;
+        left: 40px;
+    }
+    .content{
+        max-width: 600px;
+        font-size: 18px;
+        margin-left: auto;
+        cursor: pointer;
+        transform: translateY(-40px);
+    transition: opacity 0.65s
+ linear, transform 0.65s
+ linear, max-height 0.65s
+ linear, margin-top 0.65s linear;
+    }
+}

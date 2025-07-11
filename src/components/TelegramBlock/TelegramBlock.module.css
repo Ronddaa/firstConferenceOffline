@@ -38,3 +38,37 @@
     font-weight: 500;
     color: #1B2021;
 }
+
+@media(min-width:768px){
+    .titleTelegram, .scndTitle{
+        font-size: 180px;
+    }
+    .titleTelegram{
+        text-align: center;
+    }
+    .wrapperTelegramInfo{
+        display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 10px;
+grid-row-gap: 10px;
+margin: 0 auto;
+max-width: 100%;
+    }
+    .scndTitle{
+        grid-area: 1 / 1 / 2 / 3;
+        margin: auto 0 auto auto;
+    }
+    .telegramText{
+        grid-area: 1 / 3 / 2 / 4;
+        font-size: 38px;
+        max-width: 410px;
+    }
+    .linkToTelegramBot{
+        grid-area: 2 / 3 / 3 / 4;
+        font-size: 18px;
+        padding: 54px 105px;
+        max-height: 130px;
+        max-width: 373px;
+    }
+}

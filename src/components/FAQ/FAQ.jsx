@@ -72,7 +72,7 @@ export default function FAQ() {
               className={styles.itemLi}
             >
               <h3 className={styles.titleQList}>
-                <span>{item.number}</span>
+                <span className={styles.number}>{item.number}</span>
                 {item.title}
               </h3>
 
