@@ -4,7 +4,7 @@
 }
 .SpeakersSection :global(.mySwiper){
   overflow: visible;
-  padding-bottom: 30px;
+  padding: 0 20px 30px;
 }
 .slideWrapper{
   border: 1px solid #FFFFAC;
