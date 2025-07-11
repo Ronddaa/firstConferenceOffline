@@ -4,9 +4,19 @@ import sprite from "../icons.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/scrollbar";
-import { Scrollbar, FreeMode } from "swiper/modules";
+import { Scrollbar } from "swiper/modules"; // ⬅️ FreeMode удалён
 
-// Хук для определения slidesPerView в зависимости от ширины экрана
+import Tolstikova from "./Tolstikova.webp";
+import Kozachkova from "./Kozachkova.webp";
+import Matushevska from "./Matushevska.webp";
+import Kozlova from "./Kozlova.webp";
+import Besborodih from "./Besborodih.webp";
+import Stripko from "./Stripko.webp";
+import Shihrova from "./Shihrova.webp";
+import Tokar from "./Tokar.webp";
+import Shotropa from "./Shotropa.webp";
+import Ask from "./ask.png";
+
 function useSlidesPerView() {
   const getSlides = () => {
     const width = window.innerWidth;
@@ -26,7 +36,6 @@ function useSlidesPerView() {
   return slidesPerView;
 }
 
-// Хук для проверки, desktop ли экран
 function useIsDesktop() {
   const getIsDesktop = () => window.innerWidth >= 1024;
   const [isDesktop, setIsDesktop] = useState(getIsDesktop());
@@ -44,7 +53,6 @@ export default function SpeakersSection() {
   const [activeSpeakerId, setActiveSpeakerId] = useState(null);
   const slidesPerView = useSlidesPerView();
   const isDesktop = useIsDesktop();
-
   const swiperAutoHeight = useMemo(() => !isDesktop, [isDesktop]);
 
   const toggleDetails = (id) => {
@@ -56,9 +64,8 @@ export default function SpeakersSection() {
       id: 1,
       speakerName: "толстікова\nкатерина",
       speakerTema: "Уточнюється",
-      swiperSlideBackground: "swiperSlideBackground1",
-      speakerInstagram:
-        "https://www.instagram.com/dr.tolstikova?igsh=d2J6Mjg1OTRnMmk5",
+      image: Tolstikova,
+      speakerInstagram: "https://www.instagram.com/dr.tolstikova",
       speakerClass: "speakerNameClass1",
       numberOfSpeaker: "(01)",
       moreInfoBtnClass: "moreInfoBtn",
@@ -68,9 +75,8 @@ export default function SpeakersSection() {
       id: 2,
       speakerName: "козачкова\nюлія",
       speakerTema: "Уточнюється",
-      swiperSlideBackground: "swiperSlideBackground2",
-      speakerInstagram:
-        "https://www.instagram.com/kozachkova_yuliia?igsh=MXZmbjVxeXY1eHlrMQ==",
+      image: Kozachkova,
+      speakerInstagram: "https://www.instagram.com/kozachkova_yuliia",
       speakerClass: "speakerNameClass2",
       numberOfSpeaker: "(02)",
       moreInfoBtnClass: "moreInfoBtn",
@@ -80,99 +86,94 @@ export default function SpeakersSection() {
       id: 3,
       speakerName: "Матюшевська\nАнастасія-Олімпія",
       speakerTema: "Уточнюється",
-      swiperSlideBackground: "swiperSlideBackground3",
+      image: Matushevska,
       speakerInstagram:
-        "https://www.instagram.com/anastasia.olimpia.matushevska?igsh=MTU1bWZoa3MzNmkwaA==",
+        "https://www.instagram.com/anastasia.olimpia.matushevska",
       speakerClass: "speakerNameClass3",
       numberOfSpeaker: "(03)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Психотерапевт, сексолог. Жінка, мама, партнерка, творчиня. Автор програм для майбутніх сексологів та психотерапевтів. Засновниця проєкту  «ЖІНКИ» - серії трансформаційних подій, ретритів і конференцій про глибину, сміливість і жіночу цілісність.",
+        "Психотерапевт, сексолог. Жінка, мама, партнерка, творчиня. Автор програм для майбутніх сексологів та психотерапевтів.",
     },
     {
       id: 4,
       speakerName: "Козлова\nКатерина",
       speakerTema:
         "Автентичність і прояв: як жінці бути собою та масштабуватись через особистий бренд",
-      swiperSlideBackground: "swiperSlideBackground4",
-      speakerInstagram:
-        "https://www.instagram.com/kozlova.katja?igsh=cHMwMXI2dW9jcGhy&utm_source=qr",
+      image: Kozlova,
+      speakerInstagram: "https://www.instagram.com/kozlova.katja",
       speakerClass: "speakerNameClass4",
       numberOfSpeaker: "(04)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Наставник особистих брендів, автор курсу по проявленості MANIFESTATION COURSE, трансформаційний маркетолог, модель, блогер",
+        "Наставник особистих брендів, автор курсу по проявленості MANIFESTATION COURSE.",
     },
     {
       id: 5,
       speakerName: "Безбородих\nОлена",
       speakerTema: "Уточнюється",
-      swiperSlideBackground: "swiperSlideBackground5",
-      speakerInstagram:
-        "https://www.instagram.com/lenabezb?igsh=bDVmZXR1OWoxdXc1",
+      image: Besborodih,
+      speakerInstagram: "https://www.instagram.com/lenabezb",
       speakerClass: "speakerNameClass5",
       numberOfSpeaker: "(05)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Магістр бізнес адміністрування, викладач економіки, до війни керувала власним мережовим бізнесом понад 10 років, бакалавр психології, практикуючий психолог, гештальт-терапевт, тілесно-орієнтований терапевт.",
+        "Магістр бізнес адміністрування, бакалавр психології, гештальт-терапевт.",
     },
     {
       id: 6,
       speakerName: "Стрипко\nТаня",
       speakerTema: "Уточнюється",
-      swiperSlideBackground: "swiperSlideBackground6",
-      speakerInstagram:
-        "https://www.instagram.com/todorivaaa?igsh=MXBxamM1YzlnMmxxMg%3D%3D&utm_source=qr",
+      image: Stripko,
+      speakerInstagram: "https://www.instagram.com/todorivaaa",
       speakerClass: "speakerNameClass6",
       numberOfSpeaker: "(06)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Підприємиця з досвідом на трьох континентах: відкривала салони краси в таких країнах, як - Україна, Італія, Канада. Продюсер, власниця продюсерської агенції - заробила за 2 роки собі і експертам запуски на 1000000+$. Навчаю запускати навчальні проєкти, створювати  бренди з нуля. Запускаю експертів, які не просто красиво говорять, а дорого продають, власниця продюсерської агенції.",
+        "Продюсер, підприємиця, відкривала салони краси в Італії, Канаді та Україні.",
     },
     {
       id: 7,
       speakerName: "Щигрова\nЄвгенія",
       speakerTema: "Anti -Age, як код гнучкої жінки",
-      swiperSlideBackground: "swiperSlideBackground7",
+      image: Shihrova,
       speakerInstagram: "https://www.instagram.com/j.a.n.e_she/",
       speakerClass: "speakerNameClass7",
       numberOfSpeaker: "(07)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Дипломований спеціаліст у галузі «Фізична реабілітація» , персональний Тренер напрямку Stretching міжнародного рівня, власниця Online студії Jane System, спеціаліст з фітнес консалтінгу",
+        "Персональний тренер, власниця студії Jane System, консультант з фітнесу.",
     },
     {
       id: 8,
       speakerName: "Токар\nЯна",
       speakerTema:
-        "Зовнішність можна покращити. Але чи вистачить сміливості стати собою? Про страхи жінок, які ховаються за процедурами. І про те, як я веду своїх пацієнток не до ідеалу, а до свободи.",
-      swiperSlideBackground: "swiperSlideBackground8",
-      speakerInstagram:
-        "https://www.instagram.com/dr.yana_tokar_?igsh=YTd1cmMwcXJ3MHhv",
+        "Зовнішність можна покращити. Але чи вистачить сміливості стати собою?",
+      image: Tokar,
+      speakerInstagram: "https://www.instagram.com/dr.yana_tokar_",
       speakerClass: "speakerNameClass8",
       numberOfSpeaker: "(08)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        'Дерматологиня, хірургиня, доктор медицини, незалежний експерт світових брендів, спікер міжнародних конгресів, автор книги "Сонячна контрацепція" та YouTube каналу "не косметолог, а ЛІКАР", засновниця University of aesthetic medicine, спікер Польського інституту естетичної медицини.',
+        "Докторка медицини, експертка світових брендів, авторка книги та ютуб-каналу.",
     },
     {
       id: 9,
       speakerName: "Шотропа\nМішель",
       speakerTema: "Уточнюється",
-      swiperSlideBackground: "swiperSlideBackground9",
-      speakerInstagram:
-        "https://www.instagram.com/mishel_shotropa?igsh=MTQycHk2OWZtNHV5cg==",
+      image: Shotropa,
+      speakerInstagram: "https://www.instagram.com/mishel_shotropa",
       speakerClass: "speakerNameClass9",
       numberOfSpeaker: "(09)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        'Власниця маркетингової та PR-компанії "SHOTROPA MEDIA". 11 років у бізнесі. CEO "INSTAHACKS" - перше міжнародне комʼюніті для експертів. Співпрацюю з CHELSEA. Більше 4000+ учнів моїх навчальних програм по цілому світу',
+        "CEO Instahacks, власниця PR-компанії, 4000+ учнів по світу.",
     },
     {
       id: 12,
       speakerName: "це ще не все!\nочікуй інформацію!",
       speakerTema: "Уточнюється",
-      swiperSlideBackground: "swiperSlideBackground122",
+      image: Ask,
       speakerInstagram: "",
       speakerClass: "speakerNameClassLast",
       numberOfSpeaker: "(10)",
@@ -186,8 +187,7 @@ export default function SpeakersSection() {
       <p className={styles.textBtwSection}>(наші спікери)</p>
       <Swiper
         scrollbar={{ hide: false, draggable: true }}
-        modules={[Scrollbar, FreeMode]}
-        freeMode={true}
+        modules={[Scrollbar]} // ⬅️ только Scrollbar
         touchRatio={1}
         spaceBetween={20}
         slidesPerView={slidesPerView}
@@ -197,11 +197,12 @@ export default function SpeakersSection() {
       >
         {speakers.map((speaker) => (
           <SwiperSlide key={speaker.id} className={styles.swiperSlide}>
-            <article
-              className={`${styles[speaker.swiperSlideBackground]} ${
-                styles.slideWrapper
-              }`}
-            >
+            <article className={styles.slideWrapper}>
+              <img
+                src={speaker.image}
+                alt={speaker.speakerName}
+                className={styles.speakerImage}
+              />
               <ul>
                 <li>
                   <p className={styles.numberOfSpeaker}>
@@ -209,16 +210,18 @@ export default function SpeakersSection() {
                   </p>
                 </li>
                 <li>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles[speaker.speakerClass]}
-                    href={speaker.speakerInstagram}
-                  >
-                    <svg className={styles.instagram} width={32} height={32}>
-                      <use xlinkHref={`${sprite}#icon-inst`} />
-                    </svg>
-                  </a>
+                  {speaker.speakerInstagram && (
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles[speaker.speakerClass]}
+                      href={speaker.speakerInstagram}
+                    >
+                      <svg className={styles.instagram} width={32} height={32}>
+                        <use xlinkHref={`${sprite}#icon-inst`} />
+                      </svg>
+                    </a>
+                  )}
                 </li>
               </ul>
               <div
@@ -226,7 +229,6 @@ export default function SpeakersSection() {
                   activeSpeakerId === speaker.id ? styles.active : ""
                 }`}
               >
-                <p></p>
                 <p className={styles.contentDetails}>
                   {speaker.contentDetails}
                 </p>

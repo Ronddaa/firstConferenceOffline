@@ -26,7 +26,7 @@ export default function Hero() {
           <p className={styles.detailsTextHero2}>
             до Дня Незалежності —<br /> для тих, хто творить майбутнє
           </p>
-          <a className={styles.buyBtnHero} href="#tariff">
+          <a className={styles.buyBtnHero} href="#ticketsSectionAnchor">
             обрати тариф
           </a>
         </div>

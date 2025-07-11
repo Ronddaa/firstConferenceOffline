@@ -31,6 +31,7 @@ import LuxeTicketPage from "./TicketsPages/LuxeTicketPage/LuxeTicketPage";
 import PremiumTicketPage from "./TicketsPages/PremiumPage/PremiunTicketPage";
 import LastMinutePage from "./TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./CheckPaymentPage/CheckPaymentPage";
+import SpeakersSectionComp from "./components/SpeakersSection/SpeakresSectionComp";
 
 export default function App() {
   const isDesktop = useIsDesktop();
@@ -47,7 +48,7 @@ export default function App() {
             {/* Все секции сразу */}
             <Program />
             <Tema />
-            <SpeakersSection />
+            {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
             <ProgramOnConference />
             <Tickets />
             <PartnersSection />

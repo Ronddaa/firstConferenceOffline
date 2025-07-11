@@ -2,7 +2,7 @@ header{
     position: fixed;
     background-color: transparent;
     width: 100%;
-    padding: 50px 0;
+    padding: 20px 0;
     z-index: 250;
     transition: 0.3s;
 }
@@ -15,7 +15,6 @@ header :global(.container){
 .scrolledHeader {
     background: #1B2021B2;
     backdrop-filter: blur(10px);
-    padding: 20px 0;
     border-radius: 0 0 10px 10px;
     transition: background 0.3s ease, padding 0.3s ease;
   }
