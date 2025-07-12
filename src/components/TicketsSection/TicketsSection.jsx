@@ -8,10 +8,41 @@ import GoldIMG from "./GoldIMG.webp";
 import PremiumIMG from "./PremiumIMG.webp";
 import LuxeIMG from "./LuxeIMG.webp";
 
+const items = [
+  "Вільне пересування між зонами: великий зал із барними столами та камерний простір із м’якими посадками",
+  "Бренд-зона з дегустаціями від наших партнерів",
+  "Спікери поруч, без бар’єрів - відкрите спілкування з експертами",
+  "Відомі гості в одному залі, на відстані розмови - можливість познайомитися з лідерами думок",
+  "Професійне фото та відео - якщо не сховаєтесь від камери 😉",
+  "Обійми з тими, кого давно не бачили",
+  "Спеціальні умови для поселення в The WESTIN WARSAW",
+  "Доступ до ресторану п’ятизіркового готелю",
+  "Доступ до Telegram-каналу з бекстейджем події",
+];
+
 export default function Tickets() {
   const [modalTicketsIsOpen, setmodalTickets] = useState(false);
   const [modalShowPlaceIsOpen, setmodalShowPlace] = useState(false);
+  const [isExpandedLastMinute, setIsExpandedLastMinute] = useState(false);
+  const [isExpandedGold, setIsExpandedGold] = useState(false);
+  const [isExpandedPremium, setIsExpandedPremium] = useState(false);
+  const [isExpandedLuxe, setIsExpandedLuxe] = useState(false);
 
+  const toggleListLastMinute = () => {
+    setIsExpandedLastMinute((prev) => !prev);
+  };
+const toggleListGold = () => {
+  setIsExpandedGold((prev) => !prev);
+};const toggleListPremium = () => {
+  setIsExpandedPremium((prev) => !prev);
+};const toggleListLuxe = () => {
+  setIsExpandedLuxe((prev) => !prev);
+};
+  // Здесь в рендере вычисляем, какие элементы показывать
+  const visibleItemsLastMinute = isExpandedLastMinute ? items : items.slice(0, 2);
+  const visibleItemsGold = isExpandedGold ? items : items.slice(0, 2);
+  const visibleItemsPremium = isExpandedPremium ? items : items.slice(0, 2);
+  const visibleItemsLuxe = isExpandedLuxe ? items : items.slice(0, 2);
   return (
     <section className={styles.sectionTickets} id="ticketsSectionAnchor">
       <div className="container">
@@ -78,30 +109,13 @@ export default function Tickets() {
                   <div className={styles.wrapperLMwithList}>
                     <p className={styles.detailsText}>додаткові приємності:</p>
                     <ul className={styles.wrapperLMList}>
-                      <li>
-                        Вільне пересування між зонами: великий зал із барними
-                        столами та камерний простір із м’якими посадками
-                      </li>
-                      <li>Бренд-зона з дегустаціями від наших партнерів</li>
-                      <li>
-                        Спікери поруч, без бар’єрів - відкрите спілкування з
-                        експертами
-                      </li>
-                      <li>
-                        Відомі гості в одному залі, на відстані розмови -
-                        можливість познайомитися з лідерами думок
-                      </li>
-                      <li>
-                        Професійне фото та відео - якщо не сховаєтесь від камери
-                        😉
-                      </li>
-                      <li>Обійми з тими, кого давно не бачили</li>
-                      <li>
-                        Спеціальні умови для поселення в The WESTIN WARSAW
-                      </li>
-                      <li>Доступ до ресторану п’ятизіркового готелю</li>
-                      <li>Доступ до Telegram-каналу з бекстейджем події</li>
+                      {visibleItemsLastMinute.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
                     </ul>
+                    <button className={styles.detailsBtn} onClick={toggleListLastMinute}>
+                      {isExpandedLastMinute ? "Згорнути" : "Детальніше"}
+                    </button>
                   </div>
                 </li>
                 <li>
@@ -121,10 +135,22 @@ export default function Tickets() {
                 </li>
               </ul>
               <p className={styles.priceTextWillBe}>
-                850<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span>/ <span>200&euro;</span>
+                850
+                <span className={styles.priceValue}>
+                  <span className={styles.priceValue}>
+                    <span className={styles.priceValue}>pln</span>
+                  </span>
+                </span>
+                / <span>200&euro;</span>
               </p>
               <p className={styles.priceText}>
-                770<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span> /<span className={styles.priceEuro}>130&euro;</span>
+                770
+                <span className={styles.priceValue}>
+                  <span className={styles.priceValue}>
+                    <span className={styles.priceValue}>pln</span>
+                  </span>
+                </span>{" "}
+                /<span className={styles.priceEuro}>130&euro;</span>
               </p>
               <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>
               <button
@@ -253,35 +279,13 @@ export default function Tickets() {
                   <div className={styles.wrapperLMwithList}>
                     <p className={styles.detailsText}>додаткові приємності:</p>
                     <ul className={styles.wrapperLMList}>
-                      <li>
-                        <p>
-                          Вільне пересування між зонами: <br />{" "}
-                          <span className={styles.blueTextOnTickets}>
-                            головний зал із банкетними столами та мала зала з
-                            інтерактивними лекціями від спікерів
-                          </span>
-                        </p>
-                      </li>
-                      <li>Бренд-зона з дегустаціями від наших партнерів</li>
-                      <li>
-                        Спікери поруч, без бар’єрів - відкрите спілкування з
-                        експертами
-                      </li>
-                      <li>
-                        Відомі гості в одному залі, на відстані розмови -
-                        можливість познайомитися з лідерами думок
-                      </li>
-                      <li>
-                        Професійне фото та відео (якщо не сховаєтесь від камери
-                        😉)
-                      </li>
-                      <li>Обійми з тими, кого давно не бачили</li>
-                      <li>
-                        Спеціальні умови для поселення в The WESTIN WARSAW
-                      </li>
-                      <li>Доступ до ресторану п’ятизіркового готелю</li>
-                      <li>Доступ до Telegram-каналу з бекстейджем події</li>
+                      {visibleItemsGold.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
                     </ul>
+                    <button className={styles.detailsBtn} onClick={toggleListGold}>
+                      {isExpandedGold ? "Згорнути" : "Детальніше"}
+                    </button>
                   </div>
                 </li>
                 <li>
@@ -301,10 +305,22 @@ export default function Tickets() {
                 </li>
               </ul>
               <p className={styles.priceTextWillBe}>
-                1300<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span>/ <span>300&euro;</span>
+                1300
+                <span className={styles.priceValue}>
+                  <span className={styles.priceValue}>
+                    <span className={styles.priceValue}>pln</span>
+                  </span>
+                </span>
+                / <span>300&euro;</span>
               </p>
               <p className={styles.priceText}>
-                990<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span> /<span className={styles.priceEuro}>230&euro;</span>
+                990
+                <span className={styles.priceValue}>
+                  <span className={styles.priceValue}>
+                    <span className={styles.priceValue}>pln</span>
+                  </span>
+                </span>{" "}
+                /<span className={styles.priceEuro}>230&euro;</span>
               </p>
               <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>
               <button
@@ -434,35 +450,13 @@ export default function Tickets() {
                   <div className={styles.wrapperLMwithList}>
                     <p className={styles.detailsText}>додаткові приємності:</p>
                     <ul className={styles.wrapperLMList}>
-                      <li>
-                        <p>
-                          Вільне пересування між зонами: <br />{" "}
-                          <span className={styles.blueTextOnTickets}>
-                            головний зал із банкетними столами та мала зала з
-                            інтерактивними лекціями від спікерів
-                          </span>
-                        </p>
-                      </li>
-                      <li>Бренд-зона з дегустаціями від наших партнерів</li>
-                      <li>
-                        Спікери поруч, без бар’єрів - відкрите спілкування з
-                        експертами
-                      </li>
-                      <li>
-                        Відомі гості в одному залі, на відстані розмови -
-                        можливість познайомитися з лідерами думок
-                      </li>
-                      <li>
-                        Професійне фото та відео (якщо не сховаєтесь від камери
-                        😉)
-                      </li>
-                      <li>Обійми з тими, кого давно не бачили</li>
-                      <li>
-                        Спеціальні умови для поселення в The WESTIN WARSAW
-                      </li>
-                      <li>Доступ до ресторану п’ятизіркового готелю</li>
-                      <li>Доступ до Telegram-каналу з бекстейджем події</li>
+                      {visibleItemsPremium.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
                     </ul>
+                    <button className={styles.detailsBtn} onClick={toggleListPremium}>
+                      {isExpandedPremium ? "Згорнути" : "Детальніше"}
+                    </button>
                   </div>
                 </li>
                 <li>
@@ -492,10 +486,22 @@ export default function Tickets() {
                 </li>
               </ul>
               <p className={styles.priceTextWillBe}>
-                1900<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span>/ <span>450&euro;</span>
+                1900
+                <span className={styles.priceValue}>
+                  <span className={styles.priceValue}>
+                    <span className={styles.priceValue}>pln</span>
+                  </span>
+                </span>
+                / <span>450&euro;</span>
               </p>
               <p className={styles.priceText}>
-                1400<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span> /<span className={styles.priceEuro}>330&euro;</span>
+                1400
+                <span className={styles.priceValue}>
+                  <span className={styles.priceValue}>
+                    <span className={styles.priceValue}>pln</span>
+                  </span>
+                </span>{" "}
+                /<span className={styles.priceEuro}>330&euro;</span>
               </p>
               <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>{" "}
               <button
@@ -631,35 +637,13 @@ export default function Tickets() {
                   <div className={styles.wrapperLMwithList}>
                     <p className={styles.detailsText}>додаткові приємності:</p>
                     <ul className={styles.wrapperLMList}>
-                      <li>
-                        <p>
-                          Вільне пересування між зонами: <br />{" "}
-                          <span className={styles.blueTextOnTickets}>
-                            головний зал із банкетними столами та мала зала з
-                            інтерактивними лекціями від спікерів
-                          </span>
-                        </p>
-                      </li>
-                      <li>Бренд-зона з дегустаціями від наших партнерів</li>
-                      <li>
-                        Спікери поруч, без бар’єрів - відкрите спілкування з
-                        експертами
-                      </li>
-                      <li>
-                        Відомі гості в одному залі, на відстані розмови -
-                        можливість познайомитися з лідерами думок
-                      </li>
-                      <li>
-                        Професійне фото та відео (якщо не сховаєтесь від камери
-                        😉)
-                      </li>
-                      <li>Обійми з тими, кого давно не бачили</li>
-                      <li>
-                        Спеціальні умови для поселення в The WESTIN WARSAW
-                      </li>
-                      <li>Доступ до ресторану п’ятизіркового готелю</li>
-                      <li>Доступ до Telegram-каналу з бекстейджем події</li>
+                      {visibleItemsLuxe.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
                     </ul>
+                    <button className={styles.detailsBtn} onClick={toggleListLuxe}>
+                      {isExpandedLuxe ? "Згорнути" : "Детальніше"}
+                    </button>
                   </div>
                 </li>
                 <li>
@@ -681,7 +665,13 @@ export default function Tickets() {
                 </li>
               </ul>
               <p className={styles.priceText}>
-                5000<span className={styles.priceValue}><span className={styles.priceValue}><span className={styles.priceValue}>pln</span></span></span> /<span className={styles.priceEuro}>1200&euro;</span>
+                5000
+                <span className={styles.priceValue}>
+                  <span className={styles.priceValue}>
+                    <span className={styles.priceValue}>pln</span>
+                  </span>
+                </span>{" "}
+                /<span className={styles.priceEuro}>1200&euro;</span>
               </p>{" "}
               <button
                 className={styles.btnBuyTariffGold}

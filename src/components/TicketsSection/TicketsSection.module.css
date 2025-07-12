@@ -317,6 +317,12 @@
 .ticketsIMG{
   display: none;
 }
+.detailsBtn{
+  background-color: transparent;
+  border: none;
+  color: #797979;
+  border-bottom: 1px solid #797979;
+}
 
 @media (min-width:768px){
   .ticketsIMG{
