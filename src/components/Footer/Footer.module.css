@@ -1,6 +1,5 @@
 footer{
     background-color: #FFFFAC;
-    padding: 50px 0 80px;
 }
 footer :global(.container){
     display: flex;
@@ -83,7 +82,6 @@ footer :global(.container){
     text-transform: uppercase;
     position: relative;
     color: #1B2021;
-    padding: 0 20px;
 }
 .titleFooter::after{
     content: 'by Olimpia';
