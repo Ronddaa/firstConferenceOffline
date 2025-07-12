@@ -1,6 +1,9 @@
+#speakersSectionAnchor {
+  scroll-margin-top: 100px;
+}
 .textBtwSection{
   text-align: center;
-  margin: 0 0 0 80px;
+  margin: 0 0 40px 80px;
   text-transform: uppercase;
 }
 .SpeakersSection :global(.mySwiper){

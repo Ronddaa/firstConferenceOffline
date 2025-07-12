@@ -17,7 +17,7 @@ export default function BurgerMenu({ isOpen, onClose }) {
       isOpen={isOpen}
       overlayClassName={styles.modalBurgerMenu}
       className={styles.modalContentBurgerMenu}
-      closeTimeoutMS={400}
+      closeTimeoutMS={1}
       onRequestClose={onClose}
       ariaHideApp={false}
     >

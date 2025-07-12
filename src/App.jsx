@@ -32,9 +32,21 @@ import PremiumTicketPage from "./TicketsPages/PremiumPage/PremiunTicketPage";
 import LastMinutePage from "./TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./CheckPaymentPage/CheckPaymentPage";
 import SpeakersSectionComp from "./components/SpeakersSection/SpeakresSectionComp";
+import { useEffect } from "react";
 
 export default function App() {
   const isDesktop = useIsDesktop();
+
+  useEffect(() => {
+    if (window.location.hash === "#speakersSectionAnchor") {
+      setTimeout(() => {
+        const el = document.getElementById("speakersSectionAnchor");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 500); // даём время для рендера Swiper
+    }
+  }, []);
 
   return (
     <Routes>
