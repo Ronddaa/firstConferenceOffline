@@ -15,6 +15,7 @@ import Stripko from "./Stripko.webp";
 import Shihrova from "./Shihrova.webp";
 import Tokar from "./Tokar.webp";
 import Shotropa from "./Shotropa.webp";
+import Prudnikova from './Prudnikova.webp'
 import Ask from "./ask.png";
 
 function useSlidesPerView() {
@@ -93,7 +94,7 @@ export default function SpeakersSection() {
       numberOfSpeaker: "(03)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Психотерапевт, сексолог. Жінка, мама, партнерка, творчиня. Автор програм для майбутніх сексологів та психотерапевтів.",
+        "Психотерапевт, сексолог. Жінка, мама, партнерка, творчиня. Автор програм для майбутніх сексологів та психотерапевтів. Засновниця проєкту  «ЖІНКИ» - серії трансформаційних подій, ретритів і конференцій про глибину, сміливість і жіночу цілісність.",
     },
     {
       id: 4,
@@ -106,31 +107,31 @@ export default function SpeakersSection() {
       numberOfSpeaker: "(04)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Наставник особистих брендів, автор курсу по проявленості MANIFESTATION COURSE.",
+        "Наставник особистих брендів, автор курсу по проявленості MANIFESTATION COURSE, трансформаційний маркетолог, модель, блогер",
     },
     {
       id: 5,
       speakerName: "Безбородих\nОлена",
-      speakerTema: "Уточнюється",
+      speakerTema: "\"Хороша дівчинка\" не заробляє мільйони або Як жіночі сценарії формують фінансову стелю",
       image: Besborodih,
       speakerInstagram: "https://www.instagram.com/lenabezb",
       speakerClass: "speakerNameClass5",
       numberOfSpeaker: "(05)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Магістр бізнес адміністрування, бакалавр психології, гештальт-терапевт.",
+        "Магістр бізнес адміністрування, викладач економіки, до війни керувала власним мережовим бізнесом понад 10 років, бакалавр психології, практикуючий психолог, гештальт-терапевт, тілесно-орієнтований терапевт.",
     },
     {
       id: 6,
       speakerName: "Стрипко\nТаня",
-      speakerTema: "Уточнюється",
+      speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
       image: Stripko,
       speakerInstagram: "https://www.instagram.com/todorivaaa",
       speakerClass: "speakerNameClass6",
       numberOfSpeaker: "(06)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Продюсер, підприємиця, відкривала салони краси в Італії, Канаді та Україні.",
+        "Підприємиця з досвідом на трьох континентах: відкривала салони краси в таких країнах, як - Україна, Італія, Канада. Продюсер, власниця продюсерської агенції - заробила за 2 роки собі і експертам запуски на 1000000+$. Навчаю запускати навчальні проєкти, створювати  бренди з нуля. Запускаю експертів, які не просто красиво говорять, а дорого продають, власниця продюсерської агенції.",
     },
     {
       id: 7,
@@ -142,32 +143,43 @@ export default function SpeakersSection() {
       numberOfSpeaker: "(07)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Персональний тренер, власниця студії Jane System, консультант з фітнесу.",
+        "Дипломований спеціаліст у галузі «Фізична реабілітація» , персональний Тренер напрямку Stretching міжнародного рівня, власниця Online студії Jane System, спеціаліст з фітнес консалтінгу",
     },
     {
       id: 8,
       speakerName: "Токар\nЯна",
-      speakerTema:
-        "Зовнішність можна покращити. Але чи вистачить сміливості стати собою?",
+      speakerTema: "Коли жінка - не образ, а код",
       image: Tokar,
       speakerInstagram: "https://www.instagram.com/dr.yana_tokar_",
       speakerClass: "speakerNameClass8",
       numberOfSpeaker: "(08)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Докторка медицини, експертка світових брендів, авторка книги та ютуб-каналу.",
+        'Дерматологиня, хірургиня, доктор медицини, незалежний експерт світових брендів, спікер міжнародних конгресів, автор книги "Сонячна контрацепція" та YouTube каналу "не косметолог, а ЛІКАР", засновниця University of aesthetic medicine, спікер Польського інституту естетичної медицини.',
     },
     {
       id: 9,
       speakerName: "Шотропа\nМішель",
-      speakerTema: "Уточнюється",
+      speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
       image: Shotropa,
       speakerInstagram: "https://www.instagram.com/mishel_shotropa",
       speakerClass: "speakerNameClass9",
       numberOfSpeaker: "(09)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "CEO Instahacks, власниця PR-компанії, 4000+ учнів по світу.",
+        'Власниця маркетингової та PR-компанії "SHOTROPA MEDIA". 11 років у бізнесі. CEO "INSTAHACKS" - перше міжнародне комʼюніті для експертів. Співпрацюю з CHELSEA. Більше 4000+ учнів моїх навчальних програм по цілому світу',
+    },
+    {
+      id: 10,
+      speakerName: "вікторія холмс\n(пруднікова)",
+      speakerTema: "Уточнюється",
+      image: Prudnikova,
+      speakerInstagram: "",
+      speakerClass: "speakerNameClassLast",
+      numberOfSpeaker: "(10)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Експерт з ментальної генетики. Спеціалізується на виявленні підсвідомих неконструктивних моделей думок. Консультант, 12 000 інд. Консультацій за 13 років. Cоціолог. Блогер. Автор методики «PPF Past Present Future» та «АУДИТИ ЖИТТЯ».Автор проекту Наставництва «Жінка. Гроші. Призначення». Автор книги «Історія (не)звичайної жінки, або Випусти на волю свого генія»",
     },
     {
       id: 12,

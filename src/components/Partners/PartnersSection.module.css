@@ -25,7 +25,14 @@
 .lavandeLogo{
     border-radius: 10px;
     max-width: 274px;
-    max-height: 138px;
+    max-height: 148px;
+}
+
+@media(min-width:410px){
+    .lavandeLogo{
+        max-width: 274px;
+        max-height: 158px;
+    }
 }
 
 @media(min-width:768px){

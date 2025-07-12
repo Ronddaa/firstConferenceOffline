@@ -13,6 +13,7 @@ import Shihrova from "./Shihrova.webp";
 import Tokar from "./Tokar.webp";
 import Shotropa from "./Shotropa.webp";
 import Ask from "./ask.png";
+import Prudnikova from "./Prudnikova.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,7 +38,7 @@ export default function SpeakersSection() {
       ease: "none",
       scrollTrigger: {
         trigger: container,
-        start: "top top",
+        start: "bottom bottom",
         end: () => "+=" + container.offsetWidth,
         pin: true,
         scrub: 1,
@@ -86,73 +87,94 @@ export default function SpeakersSection() {
       speakerClass: "speakerNameClass3",
       numberOfSpeaker: "(03)",
       moreInfoBtnClass: "moreInfoBtn",
-      contentDetails: "Психотерапевт, сексолог...",
+      contentDetails:
+        "Психотерапевт, сексолог. Жінка, мама, партнерка, творчиня. Автор програм для майбутніх сексологів та психотерапевтів. Засновниця проєкту  «ЖІНКИ» - серії трансформаційних подій, ретритів і конференцій про глибину, сміливість і жіночу цілісність.",
     },
     {
       id: 4,
       image: Kozlova,
       speakerName: "Козлова\nКатерина",
-      speakerTema: "Автентичність і прояв...",
+      speakerTema:
+        "Автентичність і прояв: як жінці бути собою та масштабуватись через особистий бренд",
       speakerInstagram: "https://www.instagram.com/kozlova.katja",
       speakerClass: "speakerNameClass4",
       numberOfSpeaker: "(04)",
       moreInfoBtnClass: "moreInfoBtn",
-      contentDetails: "Наставник особистих брендів...",
+      contentDetails:
+        "Наставник особистих брендів, автор курсу по проявленості MANIFESTATION COURSE, трансформаційний маркетолог, модель, блогер",
     },
     {
       id: 5,
       image: Besborodih,
       speakerName: "Безбородих\nОлена",
-      speakerTema: "Уточнюється",
+      speakerTema:
+        '"Хороша дівчинка" не заробляє мільйони або Як жіночі сценарії формують фінансову стелю',
       speakerInstagram: "https://www.instagram.com/lenabezb",
       speakerClass: "speakerNameClass5",
       numberOfSpeaker: "(05)",
       moreInfoBtnClass: "moreInfoBtn",
-      contentDetails: "Магістр бізнес адміністрування...",
+      contentDetails:
+        "Магістр бізнес адміністрування, викладач економіки, до війни керувала власним мережовим бізнесом понад 10 років, бакалавр психології, практикуючий психолог, гештальт-терапевт, тілесно-орієнтований терапевт.",
     },
     {
       id: 6,
       image: Stripko,
       speakerName: "Стрипко\nТаня",
-      speakerTema: "Уточнюється",
+      speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
       speakerInstagram: "https://www.instagram.com/todorivaaa",
       speakerClass: "speakerNameClass6",
       numberOfSpeaker: "(06)",
       moreInfoBtnClass: "moreInfoBtn",
-      contentDetails: "Підприємиця з досвідом...",
+      contentDetails:
+        "Підприємиця з досвідом на трьох континентах: відкривала салони краси в таких країнах, як - Україна, Італія, Канада. Продюсер, власниця продюсерської агенції - заробила за 2 роки собі і експертам запуски на 1000000+$. Навчаю запускати навчальні проєкти, створювати  бренди з нуля. Запускаю експертів, які не просто красиво говорять, а дорого продають, власниця продюсерської агенції.",
     },
     {
       id: 7,
       image: Shihrova,
       speakerName: "Щигрова\nЄвгенія",
-      speakerTema: "Anti -Age, як код...",
+      speakerTema: "Anti -Age, як код гнучкої жінки",
       speakerInstagram: "https://www.instagram.com/j.a.n.e_she/",
       speakerClass: "speakerNameClass7",
       numberOfSpeaker: "(07)",
       moreInfoBtnClass: "moreInfoBtn",
-      contentDetails: "Фізична реабілітація, Stretching...",
+      contentDetails:
+        "Дипломований спеціаліст у галузі «Фізична реабілітація» , персональний Тренер напрямку Stretching міжнародного рівня, власниця Online студії Jane System, спеціаліст з фітнес консалтінгу",
     },
     {
       id: 8,
       image: Tokar,
       speakerName: "Токар\nЯна",
-      speakerTema: "Зовнішність можна покращити...",
+      speakerTema: "Коли жінка - не образ, а код",
       speakerInstagram: "https://www.instagram.com/dr.yana_tokar_",
       speakerClass: "speakerNameClass8",
       numberOfSpeaker: "(08)",
       moreInfoBtnClass: "moreInfoBtn",
-      contentDetails: "Дерматологиня, хірургиня, автор...",
+      contentDetails:
+        'Дерматологиня, хірургиня, доктор медицини, незалежний експерт світових брендів, спікер міжнародних конгресів, автор книги "Сонячна контрацепція" та YouTube каналу "не косметолог, а ЛІКАР", засновниця University of aesthetic medicine, спікер Польського інституту естетичної медицини.',
     },
     {
       id: 9,
       image: Shotropa,
       speakerName: "Шотропа\nМішель",
-      speakerTema: "Уточнюється",
+      speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
       speakerInstagram: "https://www.instagram.com/mishel_shotropa",
       speakerClass: "speakerNameClass9",
       numberOfSpeaker: "(09)",
       moreInfoBtnClass: "moreInfoBtn",
-      contentDetails: "PR-компанія, Instahacks, 11 років...",
+      contentDetails:
+        'Власниця маркетингової та PR-компанії "SHOTROPA MEDIA". 11 років у бізнесі. CEO "INSTAHACKS" - перше міжнародне комʼюніті для експертів. Співпрацюю з CHELSEA. Більше 4000+ учнів моїх навчальних програм по цілому світу',
+    },
+    {
+      id: 10,
+      speakerName: "вікторія холмс\n(пруднікова)",
+      speakerTema: "Уточнюється",
+      image: Prudnikova,
+      speakerInstagram: "",
+      speakerClass: "speakerNameClass10",
+      numberOfSpeaker: "(10)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Експерт з ментальної генетики. Спеціалізується на виявленні підсвідомих неконструктивних моделей думок. Консультант, 12 000 інд. Консультацій за 13 років. Cоціолог. Блогер. Автор методики «PPF Past Present Future» та «АУДИТИ ЖИТТЯ».Автор проекту Наставництва «Жінка. Гроші. Призначення». Автор книги «Історія (не)звичайної жінки, або Випусти на волю свого генія»",
     },
     {
       id: 12,
@@ -188,12 +210,12 @@ export default function SpeakersSection() {
                 className={`${styles[speaker.swiperSlideBackground]} ${
                   styles.slideWrapper
                 }`}
-                  >
-                      <img
-                                      src={speaker.image}
-                                      alt={speaker.speakerName}
-                                      className={styles.speakerImage}
-                                    />
+              >
+                <img
+                  src={speaker.image}
+                  alt={speaker.speakerName}
+                  className={styles.speakerImage}
+                />
                 <ul>
                   <li>
                     <p className={styles.numberOfSpeaker}>

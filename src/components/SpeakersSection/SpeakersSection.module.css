@@ -1,6 +1,7 @@
 .textBtwSection{
   text-align: center;
-  margin: 0 0 40px 80px;
+  margin: 0 0 0 80px;
+  text-transform: uppercase;
 }
 .SpeakersSection :global(.mySwiper){
   overflow: visible;
@@ -38,7 +39,7 @@
   left: 0;
   font-size: 12px;
   font-weight: 400;
-  padding: 20px 20px 170px;
+  padding: 20px 20px 110px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -53,6 +54,7 @@
 }
 .contentDetails{
   max-width: 250px;
+  margin-top: auto;
 }
 .wrapperSpeakerInfo{
   display: flex;
@@ -148,15 +150,22 @@
     width: 375px;
     height: 545px;
   }
+  
 }
 
 @media(min-width:768px){
+  .SpeakersSection{
+    padding-top: 0;
+  }
   .textBtwSection{
     font-size: 18px;
+    position: absolute;
+    top: 40px;
+    left: 45%;
   }
   .slideWrapper{
-    width: 453px;
-    height: 675px;
+    width: 360px;
+    height: 540px;
   }
   .speakerName{
     font-size: 32px;
@@ -165,6 +174,14 @@
   .speakerNameClass3{
     font-size: 28px;
     padding: 0;
+  }
+  .speakerNameClass10{
+    font-size: 24px;
+    padding: 25px 0;
+  }
+  .speakerNameClassLast{
+    font-size: 20px;
+    padding: 30px 0;
   }
   .contentDetails{
     font-size: 18px;
@@ -179,6 +196,13 @@
   display: flex;
   width: max-content;
   gap: 20px;
-  padding: 0 20px;
+  padding: 200px 20px 40px;
+}
+.speakerNameClass3{
+  font-size: 25px;
+  padding: 5px 0;
+}
+.contentDetails{
+  margin: auto 0;
 }
 }
