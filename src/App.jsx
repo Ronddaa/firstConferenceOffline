@@ -32,6 +32,8 @@ import PremiumTicketPage from "./TicketsPages/PremiumPage/PremiunTicketPage";
 import LastMinutePage from "./TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./CheckPaymentPage/CheckPaymentPage";
 import SpeakersSectionComp from "./components/SpeakersSection/SpeakresSectionComp";
+import MarysyaHorobec from "./components/MarysyaHorobecSection/MarysyaHorobec";
+import HorobecSectionComp from "./components/MarysyaHorobecSection/MarysyaHorobecSectionComp/MarysyaHorobecComp";
 
 export default function App() {
   const isDesktop = useIsDesktop();
@@ -44,11 +46,10 @@ export default function App() {
           <>
             {isDesktop ? <HeaderComp /> : <Header />}
             {isDesktop ? <HeroComp /> : <Hero />}
-
-            {/* Секции сайта */}
             <Program />
             <Tema />
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
+            {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />}
             <ProgramOnConference />
             <Tickets />
             <PartnersSection />
