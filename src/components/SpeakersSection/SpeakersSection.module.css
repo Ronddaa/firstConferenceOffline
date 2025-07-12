@@ -206,3 +206,10 @@
   margin: auto 0;
 }
 }
+
+@media(min-width:1680px){
+  .slideWrapper{
+    width: 440px;
+    height: 720px;
+  }
+}
