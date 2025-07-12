@@ -1,10 +1,10 @@
 import styles from "./PageThx.module.css";
 import logo from "./logo.svg";
 import art from "./PageThank.svg";
-import sprite from "../components/icons.svg";
+import sprite from "../../components/icons.svg";
 import { useEffect, useState, useRef } from "react";
 import html2canvas from "html2canvas";
-import api from "../api/api";
+import api from "../../api/api";
 import { useParams } from "react-router-dom";
 
 export default function PageThx() {
@@ -63,7 +63,8 @@ export default function PageThx() {
       alert("Ваш квиток було успішно надіслано на пошту!");
     } catch (error) {
       alert(
-        "На жаль, сталася помилка під час спроби надіслати вам квиток поштою. Будь ласка, спробуйте інший спосіб отримання квитка", error
+        "На жаль, сталася помилка під час спроби надіслати вам квиток поштою. Будь ласка, спробуйте інший спосіб отримання квитка",
+        error
       );
     }
   };

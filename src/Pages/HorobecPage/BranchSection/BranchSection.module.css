@@ -1,0 +1,52 @@
+.textBtw{
+    font-size: 12px;
+    text-transform: uppercase;   
+    margin-bottom: 10px;
+}
+.titleBranch{
+    font-weight: 600;
+    font-size: 18px;
+    color: #FFFFAC;
+    max-width: 80%;
+}
+.text_marginTop{
+    max-width: 60%;
+    text-transform: uppercase;
+    margin: -20px 25px 70px auto;
+    font-size: 12px;
+    position: relative;
+}
+.wrapperUlText{
+    position: relative;
+}
+.BranchSectionTitleDonatin{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+.dontationTitle{
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.dontationTitle span{
+    color: #FFFFAC;
+}
+.textDonatin{
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.wrapperBranchIMG{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.wrapperBranchIMG li:first-child{
+    display: none;
+}

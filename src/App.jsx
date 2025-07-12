@@ -23,17 +23,19 @@ import FAQ from "./components/FAQ/FAQ";
 import TelegramBlock from "./components/TelegramBlock/TelegramBlock";
 import Footer from "./components/Footer/Footer";
 import FooterComp from "./components/Footer/FooterComp/FooterComp";
-
-// 📄 Страницы
-import PageThx from "./PageThx/PageThx";
-import GoldTicketPage from "./TicketsPages/GoldTicketsPage/GoldTicketPage";
-import LuxeTicketPage from "./TicketsPages/LuxeTicketPage/LuxeTicketPage";
-import PremiumTicketPage from "./TicketsPages/PremiumPage/PremiunTicketPage";
-import LastMinutePage from "./TicketsPages/LastMinutePage/LastMinutePage";
-import CheckPaymentPage from "./CheckPaymentPage/CheckPaymentPage";
 import SpeakersSectionComp from "./components/SpeakersSection/SpeakresSectionComp";
 import MarysyaHorobec from "./components/MarysyaHorobecSection/MarysyaHorobec";
 import HorobecSectionComp from "./components/MarysyaHorobecSection/MarysyaHorobecSectionComp/MarysyaHorobecComp";
+
+
+// 📄 Страницы
+import PageThx from "./Pages/PageThx/PageThx";
+import GoldTicketPage from "./Pages/TicketsPages/GoldTicketsPage/GoldTicketPage";
+import LuxeTicketPage from "./Pages/TicketsPages/LuxeTicketPage/LuxeTicketPage";
+import PremiumTicketPage from "./Pages/TicketsPages/PremiumPage/PremiunTicketPage";
+import LastMinutePage from "./Pages/TicketsPages/LastMinutePage/LastMinutePage";
+import CheckPaymentPage from "./Pages/CheckPaymentPage/CheckPaymentPage";
+import HorobecPage from "./Pages/HorobecPage/HorobecPage";
 
 export default function App() {
   const isDesktop = useIsDesktop();
@@ -61,6 +63,10 @@ export default function App() {
           </>
         }
       />
+
+      {/* Страничка Горобец */}
+
+      <Route path="/horobec" element={<HorobecPage />} />
 
       {/* Страницы билетов и оплаты */}
       <Route path="/thank-you/:invoiceId" element={<PageThx />} />
