@@ -9,7 +9,7 @@ import LinesAfterMonatikProgramDesc from "./LinesAfterMonatikProgramDesc.svg";
 
 export default function Program() {
   return (
-    <section className={styles.sectionProgram}>
+    <section className={styles.sectionProgram} id="programSectionAnchor">
       <img
         className={styles.programBackgroundSvg1}
         src={programBackgroundSvg1}
@@ -39,9 +39,7 @@ export default function Program() {
 
         {/* Next Block */}
 
-        <p className={styles.btwTexttwo} id="programSectionAnchor">
-          (Про конференцію)
-        </p>
+        <p className={styles.btwTexttwo}>(Про конференцію)</p>
 
         <h2 className={styles.titleProgram}>
           створюємо <span>преміальний</span> простір для української спільноти{" "}
@@ -95,7 +93,7 @@ export default function Program() {
           </li>
           <li>
             <p className={styles.numberOfList}>(04)</p>
-            <h3 className={styles.titlelistFour} id="beforeSwiper">
+            <h3 className={styles.titlelistFour}>
               Ексклюзивний виступ MONATIK для гостей конференції
             </h3>
             {/* <p className={styles.textlistFour}>

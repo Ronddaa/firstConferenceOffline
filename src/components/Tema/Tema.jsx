@@ -86,7 +86,6 @@ export default function Tema() {
         <SwiperSlide className={styles.swiperTema3}></SwiperSlide>
         <SwiperSlide className={styles.swiperTema4}></SwiperSlide>
       </Swiper>
-      {/* <div className={styles.anchorSpeakers} id="speakersSectionAnchor"></div> */}
     </section>
   );
 }
