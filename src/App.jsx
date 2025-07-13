@@ -37,6 +37,9 @@ import LastMinutePage from "./Pages/TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./Pages/CheckPaymentPage/CheckPaymentPage";
 import HorobecPage from "./Pages/HorobecPage/HorobecPage";
 
+// Попытка плавного скролла
+
+
 export default function App() {
   const isDesktop = useIsDesktop();
 

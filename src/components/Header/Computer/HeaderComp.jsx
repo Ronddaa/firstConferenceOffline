@@ -36,8 +36,14 @@ export default function HeaderComp() {
       className={`${styles.header} ${!isVisible ? styles.hideHeader : ""}`}
     >
       <div className="container">
-        <img src="/logo.svg" alt="Warsaw Kod Zhinky" width={150} height={70} />
-
+        <a href="#">
+          <img
+            src="/logo.svg"
+            alt="Warsaw Kod Zhinky"
+            width={150}
+            height={70}
+          />
+        </a>
         <ul className={styles.wrapperNavigationList}>
           <li>
             <a
