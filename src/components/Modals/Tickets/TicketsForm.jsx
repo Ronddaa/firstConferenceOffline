@@ -67,13 +67,24 @@ export default function TicketsForm({ isOpen, onClose }) {
     if (!selected) return 0;
 
     let price = selected.price;
+    const tariffName = selected.name.toLowerCase();
 
     const isDiscount =
       utmParams.utm_medium === "discount" &&
-      ["luxe", "premium"].includes(selected.name.toLowerCase());
+      ["luxe", "premium"].includes(tariffName);
 
     if (isDiscount) {
-      price *= 0.9; // Скидка 10%
+      price *= 0.9;
+    }
+
+    const isGoldPricePremium =
+      utmParams.utm_medium === "goldprice" && tariffName === "premium";
+
+    if (isGoldPricePremium) {
+      const goldTariff = tariffs.find((t) => t.name.toLowerCase() === "gold");
+      if (goldTariff) {
+        price = goldTariff.price;
+      }
     }
 
     return Math.round(price * formData.quantity);
@@ -115,7 +126,6 @@ export default function TicketsForm({ isOpen, onClose }) {
         utmMarks: utmParams,
       });
 
-      // ✅ Редирект на Monobank
       if (response.pageUrl) {
         window.location.href = response.pageUrl;
       } else {
@@ -206,11 +216,20 @@ export default function TicketsForm({ isOpen, onClose }) {
             }`}
           >
             {tariffs.map((t) => {
+              const name = t.name.toLowerCase();
+
               const isDiscount =
                 utmParams.utm_medium === "discount" &&
-                ["luxe", "premium"].includes(t.name.toLowerCase());
+                ["luxe", "premium"].includes(name);
 
-              const discountedPrice = Math.round(t.price * 0.9);
+              const isGoldPricePremium =
+                utmParams.utm_medium === "goldprice" && name === "premium";
+
+              const discountedPrice = isDiscount
+                ? Math.round(t.price * 0.9)
+                : isGoldPricePremium
+                ? tariffs.find((x) => x.name.toLowerCase() === "gold")?.price
+                : t.price;
 
               return (
                 <li
@@ -220,13 +239,15 @@ export default function TicketsForm({ isOpen, onClose }) {
                 >
                   <span>
                     {t.name}
-                    {isDiscount && (
-                      <span className={styles.discountLabel}> (−10%)</span>
+                    {(isDiscount || isGoldPricePremium) && (
+                      <span className={styles.discountLabel}>
+                        {isDiscount ? " (−10%)" : " (спецціна)"}
+                      </span>
                     )}
                   </span>
 
                   <span>
-                    {isDiscount ? (
+                    {isDiscount || isGoldPricePremium ? (
                       <>
                         <span className={styles.oldPrice}>{t.price}PLN</span>{" "}
                         <span className={styles.newPrice}>
