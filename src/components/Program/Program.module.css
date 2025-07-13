@@ -283,41 +283,54 @@
         grid-column-gap: 0px;
         grid-row-gap: 0px;
     }
+    .objectFitprogramIMG{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
     .wrapperProgramList li:nth-child(1){
         grid-area: 1 / 3 / 3 / 5;
         border-radius: 0px;
         padding: 80px 40px ;
+        max-height: 432px;
     }
     .wrapperProgramList li:nth-child(2){
         grid-area: 1 / 1 / 3 / 3; 
         border-radius: 0px;
+        max-height: 432px;
     }
     .wrapperProgramList li:nth-child(3){
         grid-area: 3 / 1 / 5 / 3;
         border-radius: 0px;
+        max-height: 432px;
         padding: 80px 40px ;
     }
     .wrapperProgramList li:nth-child(4){
         grid-area: 1 / 5 / 3 / 7;
         border-radius: 0px;
+        max-height: 432px;
     }
     .wrapperProgramList li:nth-child(5){
         grid-area: 3 / 5 / 5 / 7; 
         border-radius: 0px;
         padding: 60px 40px ;
+        max-height: 432px;
     }
     .wrapperProgramList li:nth-child(6){
         grid-area: 3 / 3 / 5 / 5; 
         border-radius: 0px;
+        max-height: 432px;
     }
     .wrapperProgramList li:nth-child(7){
         grid-area: 5 / 4 / 8 / 7; 
         border-radius: 0px;
         padding: 160px 40px ;
+        max-height: 645px;
     }
     .wrapperProgramList li:nth-child(8){
         grid-area: 5 / 1 / 8 / 4;
         border-radius: 0px;
+        max-height: 645px;
     }
     .monatikIMG{
         object-fit: cover;

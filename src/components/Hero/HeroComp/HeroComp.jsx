@@ -32,7 +32,7 @@ export default function HeroComp() {
           </ul>
           <article className={styles.wrapperMainTitle}>
             <div>
-              <a className={styles.buyBtnHero} href="#tariff">
+              <a className={styles.buyBtnHero} href="#ticketsSectionAnchor">
                 обрати тариф
               </a>
               <p className={styles.WarsawText}>варшава</p>

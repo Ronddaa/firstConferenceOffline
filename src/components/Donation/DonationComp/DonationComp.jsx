@@ -72,6 +72,13 @@ export default function DonationComp() {
                 <li>
                   <p className={styles.number}>(03)</p>
                   <h3 className={styles.titleNumber}>
+                    Донат на 1000€ <span>= 2000€</span> обслуговування
+                    <span>в Kazo Mobile</span>
+                  </h3>
+                </li>
+                <li>
+                  <p className={styles.number}>(04)</p>
+                  <h3 className={styles.titleNumber}>
                     Усі кошти — <span>на підтримку ЗСУ</span>
                   </h3>
                 </li>

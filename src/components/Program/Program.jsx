@@ -66,7 +66,7 @@ export default function Program() {
             </p>
           </li>
           <li>
-            <img loading="lazy" src={prgramLi1IMG} alt="programIMG" />
+            <img loading="lazy" className={styles.objectFitprogramIMG} src={prgramLi1IMG} alt="programIMG" />
           </li>
           <li>
             <p className={styles.numberOfList}>(02)</p>
@@ -77,7 +77,7 @@ export default function Program() {
             </p>
           </li>
           <li>
-            <img loading="lazy" src={prgramLi2IMG} alt="programIMG" />
+            <img loading="lazy" className={styles.objectFitprogramIMG} src={prgramLi2IMG} alt="programIMG" />
           </li>
           <li>
             <p className={styles.numberOfList}>(03)</p>
@@ -89,7 +89,7 @@ export default function Program() {
             </p>
           </li>
           <li>
-            <img loading="lazy" src={prgramLi3IMG} alt="programIMG" />
+            <img loading="lazy" className={styles.objectFitprogramIMG} src={prgramLi3IMG} alt="programIMG" />
           </li>
           <li>
             <p className={styles.numberOfList}>(04)</p>
