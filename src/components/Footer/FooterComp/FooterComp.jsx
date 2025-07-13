@@ -12,7 +12,7 @@ export default function FooterComp() {
   const [modalTicketsIsOpen, setModalTickets] = useState(false);
 
   return (
-    <footer className={styles.FooterComp} id="footer">
+    <footer className={styles.footer} id="footer">
       <div className="container">
         <img src={logoFooter} alt="Warsaw Kod Zhinky" width={150} height={70} />
 
