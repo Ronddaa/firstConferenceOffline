@@ -1,54 +1,4 @@
-.sectionProgram{
-    padding-top: 130px;
-    padding-bottom: 200px;
-}
-.programBackgroundSvg1{
-    position: absolute;
-    top: -40px;
-    /* transform: rotate(51deg); */
-}
-.btwsectionText{
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #797979;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 35px 0 70px;
-}
-.arrowList{
-    fill: #797979;
-}
-.wrapperDateInfo{
-    background: linear-gradient(90deg, #FFFFAC, #FFFFFF);
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #FFFFAC;
-    border-radius: 10px;
-    margin-bottom: 72px;
-}
-.wrapperDateInfo li:first-child{
-    padding: 44px 70px 18px;
-    text-align: center;
-}
-.wrapperDateInfo li:last-child{
-    background: url(./westinHotel.webp) center/cover;
-    padding: 92px 45px;
-    border-radius: 0 0 10px 10px;
-}
-.hotelName{
-    font-family: "Unbounded";
-    font-size: 26px;
-    text-transform: uppercase;
-    color: #FFFFAC;
-    text-align: center;
-    font-weight: 600; 
-    text-decoration: underline;
-    display: block;
-}
-.btwTexttwo{
+.textBtw{
     text-transform: uppercase;
     color: #FFFCF9;
     font-size: 12px;
@@ -57,30 +7,6 @@
     margin-bottom: 44px;
     right: 40px;
     text-align: right;
-}
-.titleProgram{
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 105%;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 40px;
-    position: relative;
-}
-.titleProgram span{
-    color: transparent;
-  background: linear-gradient(90deg, #FFFCF9, #FFFFAC);
-  -webkit-background-clip: text; /* Для Safari */
-  background-clip: text;
-}
-.textUnderTitleProgram{
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    margin-bottom: 70px;
-    color: #9EB7E5;
-    max-width: 50%;
-    margin-left: auto;
 }
 .wrapperProgramList{
     display: grid;
@@ -171,68 +97,11 @@
   -webkit-background-clip: text; /* Для Safari */
   background-clip: text;
 }
-.LinesAfterMonatikProgram{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-}
-.LinesAfterMonatikProgramDesc{
-    display: none;
-}
 
 @media (min-width:876px){
-    .wrapperDateInfo{
-        flex-direction: row;
-        max-width: 1377px;
-        margin: 0 auto 200px;
-    }
-    .wrapperDateInfo li:nth-child(1){
-        padding: 101px 30px 110px 38px;
-        display: flex;
-        align-items: end;
-    }
-    .date{
-        font-size: 194px;
-    }
-    .mounth{
-        font-size: 58px;
-        margin: 0;
-    }
-    .mounth::after{
-        top: -30px;
-        left: 110px;
-        font-size: 94px;
-    }
-    .wrapperDateInfo li:last-child{
-        padding: 164px 54.5px;
-        border-radius: 0 10px 10px 0;
-        background-size: cover;
-        width: 100%;
-    }
-    .hotelName{
-        font-size: 52px;
-    }
-    .btwTexttwo{
+    .textBtw{
         font-size: 18px;
-        margin-bottom:80px;
-        margin-left: 20%;
-        text-align: center;
-    }
-    .titleProgram{
-        font-size: 5vw;
-        margin-bottom: 50px;
-    }
-    .titleProgram::after{
-        width: 120%;
-        height: 500%;
-        opacity: 0.07;
-    }
-    .brMobileTitleProgram{
-        display: none;
-    }
-    .textUnderTitleProgram{
-        font-size: 18px;
+        margin: 0 33.3% 80px auto;
     }
     .wrapperProgramList{
         display: grid;

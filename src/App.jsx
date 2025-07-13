@@ -10,7 +10,6 @@ import Hero from "./components/Hero/Hero";
 import HeroComp from "./components/Hero/HeroComp/HeroComp";
 
 // 📌 Секции
-import Program from "./components/Program/Program";
 import Tema from "./components/Tema/Tema";
 import SpeakersSection from "./components/SpeakersSection/SpeakersSection";
 import ProgramOnConference from "./components/ProgramOnConference/ProgramOnConference";
@@ -37,6 +36,8 @@ import LastMinutePage from "./Pages/TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./Pages/CheckPaymentPage/CheckPaymentPage";
 import HorobecPage from "./Pages/HorobecPage/HorobecPage";
 import HotelSection from "./components/HotelSection/HotelSecion";
+import AboutConference from "./components/AboutConference/AboutConference";
+import WaitYouSection from "./components/WaitYouSection/WaitYouSection";
 
 // Попытка плавного скролла
 
@@ -53,7 +54,8 @@ export default function App() {
             {isDesktop ? <HeaderComp /> : <Header />}
             {isDesktop ? <HeroComp /> : <Hero />}
             <HotelSection />
-            <Program />
+            <AboutConference />
+            <WaitYouSection />
             <Tema />
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
             {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />}

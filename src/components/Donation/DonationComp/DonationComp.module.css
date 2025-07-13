@@ -104,15 +104,17 @@
     margin: 0 auto;
     max-width: 370px;
 }
-
-
-
-
-
-
-
-
-
+.textUnderTitleNumber{
+    text-transform: uppercase;
+    color: #1B2021;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    max-width: 80%;
+}
+.textUnderTitleNumber:last-child{
+    margin-bottom: 0;
+}
 .wrapperHeartBlockList{
     display: flex;
     gap: 40px;
@@ -120,35 +122,41 @@
     align-items: center;
 }
 .wrapperHeartList{
-    max-width: 45%;
+    max-width: 40%;
 }
 .wrapperHeart{
     position: relative;
-    width: 898px;
-    height: 609px;
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
-    max-width: 50%;
+    max-width: 60%;
     border-radius: 10px;
     overflow: hidden;
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 90px;
 }
 .heartIMG{
-    position: absolute;
+    /* position: absolute;
   top: 0;
-  left: 0;
+  left: 0; */
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
+  /* z-index: 1; */
+  border-radius: 10px;
 }
 .textInHeart{
     color: #FFFFFF;
     font-size: 1vw;
-    position: absolute;
-    z-index: 2;
+    /* position: absolute; */
+    /* z-index: 2; */
     display: block;
     text-transform: uppercase;
     bottom: 40px;
+    color: #1B2021;
 }
 .heartList{
     display: flex;
@@ -167,7 +175,7 @@
     font-weight: 600;
 }
 .titleNumber{
-    font-size: 2.5vw;
+    font-size: 2vw;
     text-transform: uppercase;
     color: #1B2021;
     font-weight: 600;
