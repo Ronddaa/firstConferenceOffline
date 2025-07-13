@@ -1,5 +1,6 @@
 .sectionProgram{
     padding-top: 130px;
+    padding-bottom: 200px;
 }
 .programBackgroundSvg1{
     position: absolute;
@@ -162,7 +163,7 @@
     text-transform: uppercase;
     font-weight: 600;
     max-width: 224px;
-    margin-bottom: 200px;
+    /* margin-bottom: 200px; */
 }
 .textUnderprogram span{
     color: transparent;

@@ -50,7 +50,7 @@ export default function SpeakersSection() {
 
     return () => {
       scrollTween.kill();
-      ScrollTrigger.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // ✅ правильно
     };
   }, []);
 
