@@ -8,6 +8,8 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 
 const channelLink = "https://t.me/kodzhinky";
 const supportLink = "https://t.me/women_psyconference";
+const instagramLink = "https://www.instagram.com/kod.zhinky?igsh=MXQ5djN3cXBhenQ0bQ==";
+const siteLink = "https://warsawkod.women.place/?utm_source=Telegram_bot&utm_medium=referral&utm_campaign=telegram_bot";
 
 // Логируем все входящие сообщения для отладки
 bot.on("message", (msg) => {
@@ -44,7 +46,13 @@ bot.onText(/\/start(?: (.+))?/, async (msg, match) => {
     console.log("User saved or updated:", updatedUser);
 
     await bot.sendMessage(chatID,
-      `Вітаємо, <b>${userData.firstName}</b>! Оберіть одну з опцій нижче:`, {
+      `Вітаємо, <b>${userData.firstName}</b>! \n\n
+Ми раді, що ти тут. Це вже більше, ніж просто крок — це шлях до себе. \n\n
+Щоб ти нічого не пропустила(в): \n\n
+Вся інформація, бекстейдж, розклад і новини — у нашому Telegram-каналі. \n\n
+Якщо щось не працює чи маєш питання — натисни на кнопку «Підтримка». \n\n
+Обіймаємо тебе ще до зустрічі 💛 \n\n
+<b>Команда «Код Жінки»</b>`, {
         parse_mode: "HTML",
         disable_web_page_preview: true,
         reply_markup: {
@@ -52,6 +60,10 @@ bot.onText(/\/start(?: (.+))?/, async (msg, match) => {
             [
               { text: "📢 Канал", url: channelLink },
               { text: "💬 Підтримка", url: supportLink }
+            ],
+            [
+              {text: "Instagram", url: instagramLink},
+              {text: "Наш сайт", url: siteLink}
             ]
           ]
         }
