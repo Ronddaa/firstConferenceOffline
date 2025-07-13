@@ -23,7 +23,6 @@ export default function Footer() {
           alt="logo"
           width={98}
           height={54}
-          loading="lazy"
         />
         <button
           className={styles.buyBtnFooter}

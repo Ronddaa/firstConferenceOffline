@@ -73,7 +73,7 @@ export default function BurgerMenu({ isOpen, onClose }) {
           <a
             className={styles.navigationLink}
             onClick={onClose}
-            href="#programSectionAnchor"
+            href="#AboutConferenceSectionAnchor"
           >
             про конференцію
           </a>
@@ -82,7 +82,7 @@ export default function BurgerMenu({ isOpen, onClose }) {
           <a
             className={styles.navigationLink}
             onClick={onClose}
-            href="#AboutConferenceSectionAnchor"
+            href="#speakersSectionAnchor"
           >
             наші спікери
           </a>

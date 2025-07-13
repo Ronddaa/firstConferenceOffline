@@ -216,7 +216,7 @@ export default function SpeakersSection() {
               <img
                 src={speaker.image}
                 alt={speaker.speakerName}
-                className={`${styles.speakerImage} ${styles.speakerImageLast}`}
+                className={styles.speakerImage}
               />
               <ul>
                 <li>

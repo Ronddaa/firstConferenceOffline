@@ -61,7 +61,6 @@ export default function Header() {
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
           </svg>
         </button>
-
           <svg
             className={styles.burgerMenu}
             width={40}

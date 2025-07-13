@@ -24,7 +24,6 @@ export default function ShowPlace({isOpen, onClose}) {
         </svg>
 
         <img
-          loading="lazy"
           className={styles.showPlaceIMG}
           src={showPlaceIMG}
           alt="showPlace"

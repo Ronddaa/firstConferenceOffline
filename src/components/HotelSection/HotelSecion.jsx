@@ -11,7 +11,6 @@ export default function HotelSection() {
         alt="programBackgroundSvg1"
         width={491}
         height={458}
-        loading="lazy"
       />
       <ul className={styles.wrapperDateInfo}>
         <li>
