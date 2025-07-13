@@ -50,3 +50,12 @@
 .wrapperBranchIMG li:first-child{
     display: none;
 }
+
+@media(min-width:768px){
+    .wrapperBranchIMG{
+        flex-direction: row;
+    }
+    .wrapperBranchIMG li:first-child{
+        display: block;
+    }
+}

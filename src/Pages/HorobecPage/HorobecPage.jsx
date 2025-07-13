@@ -9,13 +9,14 @@ import useIsDesktop from "../../hooks/useIsDesktop";
 import HeroHorobec from "./Hero/HeroHorobec";
 import BranchSection from "./BranchSection/BranchSection";
 import AnastasiyaSection from "./AnastasiyaSection/AnastasiaSection";
+import HeroHorobecComp from "./Hero/HeroComp/HeroHorobecComp";
 
 export default function HorobecPage() {
     const isDesctop = useIsDesktop()
     return (
         <>
             {isDesctop ? <HeaderComp /> : <Header />}
-            <HeroHorobec />
+            {isDesctop ? <HeroHorobecComp /> : <HeroHorobec />}
             <BranchSection />
             <AnastasiyaSection />
             {isDesctop ? <FooterComp /> : <Footer />}
