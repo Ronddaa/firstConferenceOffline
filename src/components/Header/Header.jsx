@@ -51,7 +51,6 @@ export default function Header() {
             height={103}
           />
         </a>
-        
 
         <button
           className={styles.buyBtnHeader}
@@ -63,15 +62,15 @@ export default function Header() {
           </svg>
         </button>
 
-        <div
-          className={styles.wrapperBurger}
-          onClick={() => setmodalBurgerMenu(true)}
-        >
-          <svg className={styles.burgerMenu} width={40} height={40}>
+          <svg
+            className={styles.burgerMenu}
+            width={40}
+            height={40}
+            onClick={() => setmodalBurgerMenu(true)}
+          >
             <use xlinkHref={`${sprite}#icon-burger-menu`}></use>
           </svg>
         </div>
-      </div>
 
       {/* Блок с кнопками "Стати спікером / партнером" */}
       <ul

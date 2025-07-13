@@ -1,6 +1,6 @@
 import styles from "../MarysyaHorobec.module.css";
 import HorobecIMG from "../MarysyahorobecMobile.webp";
-import logoMGVC from "../LogoMGVC.svg";
+import logoMGVC from "../LogoMGVC.webp";
 import horobecSVG from './horobecSVG.svg'
 
 export default function HorobecSectionComp() {

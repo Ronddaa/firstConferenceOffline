@@ -57,7 +57,7 @@ export default function HeroHorobec() {
             <p className={styles.lastTextblock1}>та от знов у Варшаві!</p>
           </li>
           <li className={styles.block2}>
-            <h2 className={styles.titleTwoBlock1}>
+            <h2 className={styles.titleTwoBlock2}>
               Бранчі Марисі Горобець - це завжди ще й унікальні локації:
             </h2>
             <p className={styles.textblock2}>

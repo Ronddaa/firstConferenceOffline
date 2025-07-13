@@ -1,9 +1,15 @@
 import styles from "./Auction.module.css";
 import sprite from '../icons.svg'
+import backgroundAuction from './backgroundAuction.svg'
 
 export default function Auction() {
   return (
-    <section className={styles.AuctionSection}>
+    <section className={styles.AuctionSection} id="donationSectionAnchor">
+      <img
+        className={styles.backgroundAuction}
+        src={backgroundAuction}
+        alt="lines"
+      />
       <div className="container">
         <ul className={styles.wrapperAuction}>
           <li>(Аукціон речей зі змістом)</li>
@@ -49,8 +55,8 @@ export default function Auction() {
         </div>
         <p className={styles.lastTextTeckets}>
           Ми зібрали ексклюзивні речі з усієї України, створені геніальними
-          українськими <br className={styles.brMobile} /> майстрами — кожен лот має історію, енергію й
-          глибокий сенс
+          українськими майстрами - кожен лот <br />
+          має історію, енергію й глибокий сенс
         </p>
       </div>
     </section>

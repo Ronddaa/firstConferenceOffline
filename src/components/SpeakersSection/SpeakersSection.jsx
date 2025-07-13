@@ -64,7 +64,8 @@ export default function SpeakersSection() {
     {
       id: 1,
       speakerName: "толстікова\nкатерина",
-      speakerTema: "Уточнюється",
+      speakerTema:
+        "Їсти чи ні? Про що говорить наука: популярні міфи в дієтології",
       image: Tolstikova,
       speakerInstagram: "https://www.instagram.com/dr.tolstikova",
       speakerClass: "speakerNameClass1",
@@ -86,7 +87,7 @@ export default function SpeakersSection() {
     {
       id: 3,
       speakerName: "Матюшевська\nАнастасія-Олімпія",
-      speakerTema: "Уточнюється",
+      speakerTema: "Квантовий код жінки: як бажання створює реальність",
       image: Matushevska,
       speakerInstagram:
         "https://www.instagram.com/anastasia.olimpia.matushevska",
@@ -112,7 +113,8 @@ export default function SpeakersSection() {
     {
       id: 5,
       speakerName: "Безбородих\nОлена",
-      speakerTema: "\"Хороша дівчинка\" не заробляє мільйони або Як жіночі сценарії формують фінансову стелю",
+      speakerTema:
+        '"Хороша дівчинка" не заробляє мільйони або Як жіночі сценарії формують фінансову стелю',
       image: Besborodih,
       speakerInstagram: "https://www.instagram.com/lenabezb",
       speakerClass: "speakerNameClass5",
@@ -136,7 +138,7 @@ export default function SpeakersSection() {
     {
       id: 7,
       speakerName: "Щигрова\nЄвгенія",
-      speakerTema: "Anti -Age, як код гнучкої жінки",
+      speakerTema: "Anti -Age, як код гнучкої жінки.\nAnti -Age та Stretching",
       image: Shihrova,
       speakerInstagram: "https://www.instagram.com/j.a.n.e_she/",
       speakerClass: "speakerNameClass7",
@@ -148,7 +150,8 @@ export default function SpeakersSection() {
     {
       id: 8,
       speakerName: "Токар\nЯна",
-      speakerTema: "Коли жінка - не образ, а код",
+      speakerTema:
+        "Зовнішність можна покращити. Але чи вистачить сміливості стати собою?",
       image: Tokar,
       speakerInstagram: "https://www.instagram.com/dr.yana_tokar_",
       speakerClass: "speakerNameClass8",
@@ -172,10 +175,10 @@ export default function SpeakersSection() {
     {
       id: 10,
       speakerName: "вікторія холмс\n(пруднікова)",
-      speakerTema: "Уточнюється",
+      speakerTema: "Родові сценарії жінки, яка боїться мати більше",
       image: Prudnikova,
-      speakerInstagram: "",
-      speakerClass: "speakerNameClassLast",
+      speakerInstagram: "https://www.instagram.com/prudnikovavictoria/",
+      speakerClass: "speakerNameClass9",
       numberOfSpeaker: "(10)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
@@ -188,7 +191,7 @@ export default function SpeakersSection() {
       image: Ask,
       speakerInstagram: "",
       speakerClass: "speakerNameClassLast",
-      numberOfSpeaker: "(10)",
+      numberOfSpeaker: "(11)",
       moreInfoBtnClass: "moreInfoBtnDisplayNone",
       contentDetails: "",
     },
@@ -213,7 +216,7 @@ export default function SpeakersSection() {
               <img
                 src={speaker.image}
                 alt={speaker.speakerName}
-                className={styles.speakerImage}
+                className={`${styles.speakerImage} ${styles.speakerImageLast}`}
               />
               <ul>
                 <li>

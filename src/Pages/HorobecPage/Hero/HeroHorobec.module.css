@@ -110,10 +110,12 @@
     font-weight: 600;
     margin: -14px 0 0 2px;
 }
-.titleTwoBlock1{
+.titleTwoBlock2{
     color: #1B2021;
     font-size: 18px;
     font-family: "Unbounded";
+    max-width: 80%;
+    margin-bottom: 5px;
 }
 .textblock2{
     font-size: 12px;

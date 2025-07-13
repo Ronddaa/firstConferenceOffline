@@ -113,7 +113,10 @@ const toggleListGold = () => {
                         <li key={index}>{item}</li>
                       ))}
                     </ul>
-                    <button className={styles.detailsBtn} onClick={toggleListLastMinute}>
+                    <button
+                      className={styles.detailsBtn}
+                      onClick={toggleListLastMinute}
+                    >
                       {isExpandedLastMinute ? "Згорнути" : "Детальніше"}
                     </button>
                   </div>
@@ -192,7 +195,11 @@ const toggleListGold = () => {
                       Місця: позначені жовтим
                     </p>
                     <ul className={styles.wrapperLMList}>
-                      <li>за банкетними столами</li>
+                      <li>
+                        <span className={styles.colorBlueLi}>
+                          за банкетними столами
+                        </span>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -252,7 +259,7 @@ const toggleListGold = () => {
                     <use xlinkHref={`${sprite}#icon-star`}></use>
                   </svg>
                   <p className={styles.detailsText}>
-                    <span>-10% знижка на бранч</span>
+                    <span>-10% знижка на бранч від MGVC</span>
                     <br />
                     <span className={styles.underPresidentRoomSpan}>
                       наступного дня (24.08.2025)
@@ -283,7 +290,10 @@ const toggleListGold = () => {
                         <li key={index}>{item}</li>
                       ))}
                     </ul>
-                    <button className={styles.detailsBtn} onClick={toggleListGold}>
+                    <button
+                      className={styles.detailsBtn}
+                      onClick={toggleListGold}
+                    >
                       {isExpandedGold ? "Згорнути" : "Детальніше"}
                     </button>
                   </div>
@@ -433,9 +443,7 @@ const toggleListGold = () => {
                     <use xlinkHref={`${sprite}#icon-podkova`}></use>
                   </svg>
                   <div className={styles.wrapperLMwithList}>
-                    <p className={styles.detailsText}>
-                      <span>Лекційна мала зала:</span>
-                    </p>
+                    <p className={styles.detailsText}>Лекційна мала зала:</p>
                     <ul className={styles.wrapperLMList}>
                       <li>
                         можливість послухати лекції від експертів у своїх нішах
@@ -454,7 +462,10 @@ const toggleListGold = () => {
                         <li key={index}>{item}</li>
                       ))}
                     </ul>
-                    <button className={styles.detailsBtn} onClick={toggleListPremium}>
+                    <button
+                      className={styles.detailsBtn}
+                      onClick={toggleListPremium}
+                    >
                       {isExpandedPremium ? "Згорнути" : "Детальніше"}
                     </button>
                   </div>
@@ -614,9 +625,22 @@ const toggleListGold = () => {
                   </svg>
                   <p className={styles.detailsText}>
                     <span>
-                      Знижка -10% на <br /> наступну конференцію
+                      Знижка -20% на <br /> наступну конференцію
                     </span>
                   </p>
+                </li>
+                <li className={styles.LMwithList}>
+                  <svg className={styles.detailsSVG} width={28} height={28}>
+                    <use xlinkHref={`${sprite}#icon-podkova`}></use>
+                  </svg>
+                  <div className={styles.wrapperLMwithList}>
+                    <p className={styles.detailsText}>Лекційна мала зала:</p>
+                    <ul className={styles.wrapperLMList}>
+                      <li>
+                        можливість послухати лекції від експертів у своїх нішах
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
@@ -641,7 +665,10 @@ const toggleListGold = () => {
                         <li key={index}>{item}</li>
                       ))}
                     </ul>
-                    <button className={styles.detailsBtn} onClick={toggleListLuxe}>
+                    <button
+                      className={styles.detailsBtn}
+                      onClick={toggleListLuxe}
+                    >
                       {isExpandedLuxe ? "Згорнути" : "Детальніше"}
                     </button>
                   </div>

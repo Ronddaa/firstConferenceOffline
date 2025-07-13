@@ -1,6 +1,6 @@
 import styles from './MarysyaHorobec.module.css'
 import HorobecIMG from './MarysyahorobecMobile.webp'
-import logoMGVC from './LogoMGVC.svg'
+import logoMGVC from './LogoMGVC.webp'
 
 export default function MarysyaHorobec() {
     return (
@@ -18,7 +18,7 @@ export default function MarysyaHorobec() {
             <ul>
               <h2 className={styles.title}>Марися Горобець - </h2>
               <h3 className={styles.textTitle}>
-                ведуча конференції «КОД ЖІНКИ»
+                ведуча конференції <br /> «КОД ЖІНКИ»
               </h3>
             </ul>
           </div>

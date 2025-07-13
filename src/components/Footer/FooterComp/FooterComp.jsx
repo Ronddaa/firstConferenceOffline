@@ -19,7 +19,7 @@ export default function FooterComp() {
         <ul className={styles.wrapperNavigationList}>
           <li>
             <a
-              href="#programSectionAnchor"
+              href="#AboutConferenceSectionAnchor"
               className={styles.navigationLinkFooter}
             >
               про конференцію

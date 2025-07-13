@@ -8,6 +8,11 @@
 .sectionTelegramBlock :global(.container){
     padding: 0;
 }
+@media(min-width:405px){   
+.sectionTelegramBlock :global(.container){
+    margin-left: 10px;
+}
+}
 .titleTelegram, .scndTitle{
     font-size: 46px;
     text-transform: uppercase;

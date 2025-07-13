@@ -20,7 +20,7 @@
 .slideWrapper ul{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
 }
 .numberOfSpeaker{
   color: #FFFFAC;
@@ -84,7 +84,10 @@
 }
 .speakerNameClass3{
   font-size: 18px;
-  margin-bottom: 8px;
+  padding: 4px 0;
+}
+.speakerNameClass10{
+  font-size: 22px;
 }
 .speakerNameClassLast{
   font-size: 18px;
@@ -100,6 +103,7 @@
   color: #FFFFAC;
   border: none;
   height: 30px;
+  margin-bottom: 10px;
 }
 .moreInfoBtnDisplayNone{
   display: none;
@@ -128,6 +132,14 @@
   object-fit: cover;
   z-index: 0;
   border-radius: 10px;
+}
+.speakerImageLast{
+  width: 50%;
+  height: 50%;
+  object-fit:contain;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 /* Стили для трека (фон скроллбара) */
 .SpeakersSection :global(.swiper-scrollbar) {
