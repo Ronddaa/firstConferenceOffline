@@ -3,42 +3,14 @@ import prgramLi1IMG from './programLi1.webp'
 import prgramLi2IMG from './programLi2.webp'
 import prgramLi3IMG from './programLi3.webp'
 import prgramLi4IMG from "./prgramLi4IMG.webp";
-import programBackgroundSvg1 from './programBackgroundSvg1.svg'
 import LinesAfterMonatikProgram from './LinesAfterMonatikProgram.svg'
 import LinesAfterMonatikProgramDesc from "./LinesAfterMonatikProgramDesc.svg";
 
 export default function Program() {
   return (
     <section className={styles.sectionProgram} id="programSectionAnchor">
-      <img
-        className={styles.programBackgroundSvg1}
-        src={programBackgroundSvg1}
-        alt="programBackgroundSvg1"
-        width={491}
-        height={458}
-        loading="lazy"
-      />
       <div className="container">
-        <ul className={styles.wrapperDateInfo}>
-          <li>
-            <p className={styles.date}>23</p>
-            <p className={styles.mounth}>серпня</p>
-          </li>
-          <li>
-            <a
-              className={styles.hotelName}
-              target="_blank"
-              href="https://www.marriott.com/en-us/hotels/wawwi-the-westin-warsaw/overview/"
-            >
-              Westin hotel
-              <br />
-              Warsaw
-            </a>
-          </li>
-        </ul>
-
-        {/* Next Block */}
-
+        
         <p className={styles.btwTexttwo}>(Про конференцію)</p>
 
         <h2 className={styles.titleProgram}>

@@ -1,0 +1,123 @@
+.HotelSection{
+    position: relative;
+    padding-top: 120px;
+}
+.programBackgroundSvg1{
+    position: absolute;
+    z-index: -1;
+    top: -50px;
+}
+.wrapperDateInfo{
+    max-width: 335px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #FFFFAC;
+    background-color: #FFFFAC;
+    color: #1B2021;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.wrapperDateInfo li:first-child{
+    padding: 18px 70px;
+}
+.date{
+    font-family: "Unbounded";
+    font-weight: 600;
+    font-size: 120px;
+    color: #1B2021;
+    margin-bottom: -30px;
+}
+.mounth{
+    font-family: "Unbounded";
+    font-weight: 600;
+    font-size: 36px;
+    text-transform: uppercase;
+    position: relative;
+    color: #1B2021;
+    margin-bottom: 52px;
+}
+.mounth::after{
+    content: '2025';
+    font-family: "Quentin";
+    font-size: 40px;
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    color: #9EB7E5;
+    font-weight: 400;
+}
+.wrapperDateInfo li:last-child{
+    position: relative;
+    overflow: hidden;
+    width: 333px;
+    height: 221px;
+}
+.westinhotelIMG{
+    object-fit: cover;
+    position: absolute;
+    z-index: 0;
+    width: 104%;
+    height: 102%;
+    left: 0;
+    top: 0;
+}
+.hotelName{
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Unbounded";
+    font-size: 26px;
+    text-transform: uppercase;
+    color: #FFFFAC;
+    text-align: center;
+    font-weight: 600; 
+    text-decoration: underline;
+    display: block;
+    width: 100%;
+}
+
+@media (min-width:768px){
+    .programBackgroundSvg1{
+        right: -5%;
+        top: -100px;
+    }
+    .wrapperDateInfo{
+        flex-direction: row;
+        max-width: 1377px;
+        justify-content: space-between;
+    }
+    .wrapperDateInfo li:first-child{
+        padding: 101px 30px 114px;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+    }
+    .wrapperDateInfo li:last-child{
+        width: 687px;
+        height: 460px;
+    }
+    .date{
+        font-size: 194px;
+    }
+    .mounth{
+        font-size: 58px;
+    }
+    .mounth::after{
+        font-size: 94px;
+        top: -50%;
+        left: 35%;
+    }
+    .westinhotelIMG{
+        width: 110%;
+        height: 110%;
+        z-index: 0;
+    }
+    .hotelName{
+        font-size: 52px;
+    }
+}

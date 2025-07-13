@@ -36,6 +36,7 @@ import PremiumTicketPage from "./Pages/TicketsPages/PremiumPage/PremiunTicketPag
 import LastMinutePage from "./Pages/TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./Pages/CheckPaymentPage/CheckPaymentPage";
 import HorobecPage from "./Pages/HorobecPage/HorobecPage";
+import HotelSection from "./components/HotelSection/HotelSecion";
 
 // Попытка плавного скролла
 
@@ -51,6 +52,7 @@ export default function App() {
           <>
             {isDesktop ? <HeaderComp /> : <Header />}
             {isDesktop ? <HeroComp /> : <Hero />}
+            <HotelSection />
             <Program />
             <Tema />
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
