@@ -1,16 +1,22 @@
 import { Schema, model } from "mongoose";
 
-const telegramUsersSchema = new Schema(
-    {
-        telegramID: { type: String, required: true, unique: true },
-        username: String,
-        firstName: String,
-        lastName: String,
-        languageCode: String,
-        isPremium: Boolean,
-        source: String,
-        createdAt: {type: Date, default: Date.now}
-    }
-)
+const transitionSchema = new Schema({
+  date: { type: Date, default: Date.now },
+  source: { type: String, default: "unknown" }
+});
 
-export const TelegramUser = model("TelegramUser", telegramUsersSchema)
+const telegramUsersSchema = new Schema(
+  {
+    telegramID: { type: String, required: true, unique: true },
+    username: String,
+    firstName: String,
+    lastName: String,
+    languageCode: String,
+    isPremium: Boolean,
+    source: String,
+    transitions: [transitionSchema], // Добавляем сюда
+    createdAt: { type: Date, default: Date.now }
+  }
+);
+
+export const TelegramUser = model("TelegramUser", telegramUsersSchema);

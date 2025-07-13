@@ -2,7 +2,10 @@ import styles from './TelegramBlock.module.css'
 
 export default function TelegramBlock() {
     return (
-      <section className={styles.sectionTelegramBlock}>
+      <section
+        className={styles.sectionTelegramBlock}
+        id="sectionTelegramBlockAnchor"
+      >
         <div className="container">
           <h2 className={styles.titleTelegram}>Telegram</h2>
           <div className={styles.wrapperTelegramInfo}>
@@ -13,9 +16,15 @@ export default function TelegramBlock() {
             </p>
             <a
               className={styles.linkToTelegramBot}
-              href="https://t.me/warsawkod_bot?start=warsawkod"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#sectionTelegramBlockAnchor"
+              onClick={(e) => {
+                e.preventDefault();
+                const uniqueStart = `site_${Date.now()}`;
+                window.open(
+                  `https://t.me/warsawkod_bot?start=${uniqueStart}`,
+                  "_blank"
+                );
+              }}
             >
               підписатись
             </a>
