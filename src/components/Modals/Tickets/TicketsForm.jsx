@@ -77,14 +77,12 @@ export default function TicketsForm({ isOpen, onClose }) {
       price *= 0.9;
     }
 
-    const isGoldPricePremium =
-      utmParams.utm_medium === "goldprice" && tariffName === "premium";
+    const isGoldAsLast =
+      utmParams.utm_medium === "goldAsLast" && tariffName === "gold";
 
-    if (isGoldPricePremium) {
-      const goldTariff = tariffs.find((t) => t.name.toLowerCase() === "gold");
-      if (goldTariff) {
-        price = goldTariff.price;
-      }
+    if (isGoldAsLast) {
+      const last = tariffs.find((t) => t.name.toLowerCase() === "last minute");
+      if (last) price = last.price;
     }
 
     return Math.round(price * formData.quantity);
@@ -222,13 +220,14 @@ export default function TicketsForm({ isOpen, onClose }) {
                 utmParams.utm_medium === "discount" &&
                 ["luxe", "premium"].includes(name);
 
-              const isGoldPricePremium =
-                utmParams.utm_medium === "goldprice" && name === "premium";
+              const isGoldAsLast =
+                utmParams.utm_medium === "goldAsLast" && name === "gold";
 
               const discountedPrice = isDiscount
                 ? Math.round(t.price * 0.9)
-                : isGoldPricePremium
-                ? tariffs.find((x) => x.name.toLowerCase() === "gold")?.price
+                : isGoldAsLast
+                ? tariffs.find((x) => x.name.toLowerCase() === "last minute")
+                    ?.price
                 : t.price;
 
               return (
@@ -239,7 +238,7 @@ export default function TicketsForm({ isOpen, onClose }) {
                 >
                   <span>
                     {t.name}
-                    {(isDiscount || isGoldPricePremium) && (
+                    {(isDiscount || isGoldAsLast) && (
                       <span className={styles.discountLabel}>
                         {isDiscount ? " (−10%)" : " (спецціна)"}
                       </span>
@@ -247,7 +246,7 @@ export default function TicketsForm({ isOpen, onClose }) {
                   </span>
 
                   <span>
-                    {isDiscount || isGoldPricePremium ? (
+                    {isDiscount || isGoldAsLast ? (
                       <>
                         <span className={styles.oldPrice}>{t.price}PLN</span>{" "}
                         <span className={styles.newPrice}>
