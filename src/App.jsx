@@ -38,6 +38,7 @@ import HorobecPage from "./Pages/HorobecPage/HorobecPage";
 import HotelSection from "./components/HotelSection/HotelSecion";
 import AboutConference from "./components/AboutConference/AboutConference";
 import WaitYouSection from "./components/WaitYouSection/WaitYouSection";
+import CreateLinkPage from "./Pages/CreateLinkPage/CreateLinkPage";
 
 // Попытка плавного скролла
 
@@ -90,6 +91,10 @@ export default function App() {
       <Route
         path="/check-payment/check/123456"
         element={<CheckPaymentPage />}
+      />
+      <Route
+        path="/check-payment/createlinkpage/arina"
+        element={<CreateLinkPage />}
       />
     </Routes>
   );
