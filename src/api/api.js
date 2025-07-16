@@ -42,6 +42,11 @@ class ApiClient {
     return data.data;
   }
 
+  async createHelperUserFormApplication(payload) {
+    const { data } = await this.axiosInstance.post("/helperusers", payload)
+    return data.data;
+  }
+
   // Moc Payload Data
   // {
   //   "companyName": "Tech Solutions Ltd.",
