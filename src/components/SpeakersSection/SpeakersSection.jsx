@@ -15,7 +15,11 @@ import Stripko from "./Stripko.webp";
 import Shihrova from "./Shihrova.webp";
 import Tokar from "./Tokar.webp";
 import Shotropa from "./Shotropa.webp";
-import Prudnikova from './Prudnikova.webp'
+import Prudnikova from './Prudnikova.webp';
+import Hovorova from './Hovorova.webp';
+import Prokopenko from "./Prokopenko.webp";
+import Zaliznyak from './Zaliznyak.webp';
+import Volk from "./Volk.webp";
 import Ask from "./ask.png";
 
 function useSlidesPerView() {
@@ -76,13 +80,14 @@ export default function SpeakersSection() {
     {
       id: 2,
       speakerName: "козачкова\nюлія",
-      speakerTema: "Уточнюється",
+      speakerTema: "Ген грошей",
       image: Kozachkova,
       speakerInstagram: "https://www.instagram.com/kozachkova_yuliia",
       speakerClass: "speakerNameClass2",
       numberOfSpeaker: "(02)",
       moreInfoBtnClass: "moreInfoBtn",
-      contentDetails: "Скоро дізнаєтесь про мене трохи більше. =)",
+      contentDetails:
+        "Психолог та коуч з одинадцятирічним досвідом практики, автор книги «Мистецтво БуТИ в ЦЕЙ:ЧАС», підприємиця, що створює WOW-продукти: мобільний додаток Teya, онлайн-магазин товарів Teya Shop, авторські тренінги, співзасновниця маркетингового агенства «Спокусливий бренд»",
     },
     {
       id: 3,
@@ -178,11 +183,63 @@ export default function SpeakersSection() {
       speakerTema: "Родові сценарії жінки, яка боїться мати більше",
       image: Prudnikova,
       speakerInstagram: "https://www.instagram.com/prudnikovavictoria/",
-      speakerClass: "speakerNameClass9",
+      speakerClass: "speakerNameClass10",
       numberOfSpeaker: "(10)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
         "Експерт з ментальної генетики. Спеціалізується на виявленні підсвідомих неконструктивних моделей думок. Консультант, 12 000 інд. Консультацій за 13 років. Cоціолог. Блогер. Автор методики «PPF Past Present Future» та «АУДИТИ ЖИТТЯ».Автор проекту Наставництва «Жінка. Гроші. Призначення». Автор книги «Історія (не)звичайної жінки, або Випусти на волю свого генія»",
+    },
+    {
+      id: 11,
+      speakerName: "Говорова\nАліна",
+      speakerTema: "Код жіночого оргазму: тіло, свідомість, дозволи",
+      image: Hovorova,
+      speakerInstagram:
+        "https://www.instagram.com/govorova.a_sexology?igsh=MWJpaHgwY3FkZDQ1aQ==",
+      speakerClass: "speakerNameClass11",
+      numberOfSpeaker: "(11)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Сертифікований сексолог, авторка проектів для жінок, мама трьох синів і жінка, яка обрала себе - не замість сім’ї, а поруч з нею. Бізнесвумен",
+    },
+    {
+      id: 12,
+      speakerName: "Прокопенко\nАнна",
+      speakerTema: "Уточнюється",
+      image: Prokopenko,
+      speakerInstagram:
+        "https://www.instagram.com/annaa.prokopenko?igsh=M3hmczVod3ZmemM4",
+      speakerClass: "speakerNameClass12",
+      numberOfSpeaker: "(12)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Майстер тілесних та енергопрактик, тантри, провідник до сексуальності та контакту з тілом Mentor of body and energy practices & Facilitator Kundalini Activation За 2 роки допомогла більше ніж 400 жінкам змінити життя, розкривши свою сексуальну енергію. Організатор авторських кемпів-ретритів/тренінгів по світу, де жінки через пробуження сексуальної енергії згадують себе і трансформують всі сфери життя",
+    },
+    {
+      id: 13,
+      speakerName: "Залізняк\nВіталія",
+      speakerTema: "Шлях жінки до її фінансової незалежності",
+      image: Zaliznyak,
+      speakerInstagram:
+        "https://www.instagram.com/vita_liia_/profilecard/?igsh=NmNmaGdhOXlsNjZp",
+      speakerClass: "speakerNameClass13",
+      numberOfSpeaker: "(13)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Експертка з інвестицій з досвідом понад 3 роки. Інвестую у фондовий ринок, криптовалюту, нерухомість. Маю ступінь доктора (PhD) від німецького університету. Засновниця курсу з інвестицій у фондовий ринок від доктора наук InvestBee. Збільшила свій дохід в 9 разів за останні 4 роки. Зростила свій капітал в 3 рази за останній рік. Створила авторську систему примноження капіталу. Випускниця академії лідерства. Моя місія - зробити українців багатшими. І не тільки в грошовому сенсі.",
+    },
+    {
+      id: 14,
+      speakerName: "Волк\nОлена",
+      speakerTema: "Як ми зробили X2 в обігу за рік: кейс агенції EvoTalents",
+      image: Volk,
+      speakerInstagram:
+        "https://www.instagram.com/volk_elena/profilecard/?igsh=bHRvNDltZm12aWpu",
+      speakerClass: "speakerNameClass14",
+      numberOfSpeaker: "(14)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "9+ років в бізнесі, засновниця ІТ рекрутингової агенції EvoTalents. Має сумарно 45 000+ підписників у соцмережах. Допомагає експертам ставати підприємцями на своїй авторській програмі EVBusiness. За період роботи з нею роблять запуски на 5000-10000$. Ментор підприємців в бізнес клубі Growth Factory. Авторка статей в ELLE, BAZAAR, Mc.today та іноземному Brainz. Інвестор, створила капітал в акціях провідних компанії, криптовалюті. Придбала дві нерухомості на Балі. Дружина та мама доньки 6ти років. Живе в Лондоні.",
     },
     {
       id: 12,
