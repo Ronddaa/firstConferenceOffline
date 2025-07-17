@@ -41,6 +41,8 @@ import HotelSection from "./components/HotelSection/HotelSecion";
 import AboutConference from "./components/AboutConference/AboutConference";
 import WaitYouSection from "./components/WaitYouSection/WaitYouSection";
 import CreateLinkPage from "./Pages/CreateLinkPage/CreateLinkPage";
+import YourDaySection from "./components/YourDaySection/YourDaySection";
+import YourDaySectionDesc from "./components/YourDaySection/YourDaySectionDesc";
 
 // Попытка плавного скролла
 
@@ -60,6 +62,7 @@ export default function App() {
             <AboutConference />
             {isDesktop ? <OurValuesDesctop /> : <OurValuesMobile />}
             <WaitYouSection />
+            {isDesktop ? <YourDaySectionDesc /> : <YourDaySection />}
             <Tema />
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
             {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />}

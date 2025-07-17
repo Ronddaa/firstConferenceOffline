@@ -1,0 +1,45 @@
+.swiper{
+    padding: 0 20px;
+}
+.slide{
+    border: 1px solid #FFFFAC;
+    padding: 25px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 313px;
+}
+.icons{
+    fill: #FFFFAC;
+}
+.titleSlideYouDay{
+    font-size: 18px;
+}
+.content{
+    font-size: 12px;
+}
+
+@media (min-width:768px){
+    .YourDaySectionList{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin: 0 auto;
+    }
+    .slide{
+        gap: 30px;
+        max-width: 48%;
+        height: auto;
+    }
+    .titleSlideYouDay{
+        font-size: 2.4vw;
+        margin-top: auto;
+    }
+    .content{
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+}
