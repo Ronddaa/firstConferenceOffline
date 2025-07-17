@@ -1,0 +1,39 @@
+.textBtw{
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 100px;
+}
+.wrapperItemsList{
+    display: flex;
+    flex-direction: column;
+}
+.itemsList{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 30px 40px;
+    transition: 0.3s;
+}
+.itemsList:hover{
+    background-color: #FFFFAC;
+}
+.itemsList:hover .titleList{
+    color: #FFFFAC;
+}
+.number{
+    color: #797979;
+    font-size: 18px;
+    font-weight: 600;
+}
+.titleList{
+    font-size: 1.8vw;
+    max-width: 980px;
+}
+.titleList span{
+    color: #FFFFAC;
+}
+.content{
+    color: #1B2021;
+    max-width: 574px;
+    font-size: 18px;
+}

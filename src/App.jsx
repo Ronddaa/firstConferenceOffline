@@ -25,6 +25,8 @@ import FooterComp from "./components/Footer/FooterComp/FooterComp";
 import SpeakersSectionComp from "./components/SpeakersSection/SpeakresSectionComp";
 import MarysyaHorobec from "./components/MarysyaHorobecSection/MarysyaHorobec";
 import HorobecSectionComp from "./components/MarysyaHorobecSection/MarysyaHorobecSectionComp/MarysyaHorobecComp";
+import OurValuesMobile from "./components/OurValuesSection/Mobile/OurValuesMobile";
+import OurValuesDesctop from "./components/OurValuesSection/Desctop/OurValuesDesctop";
 
 
 // 📄 Страницы
@@ -39,7 +41,6 @@ import HotelSection from "./components/HotelSection/HotelSecion";
 import AboutConference from "./components/AboutConference/AboutConference";
 import WaitYouSection from "./components/WaitYouSection/WaitYouSection";
 import CreateLinkPage from "./Pages/CreateLinkPage/CreateLinkPage";
-import OurValuesMobile from "./components/OurValuesSection/Mobile/OurValuesMobile";
 
 // Попытка плавного скролла
 
@@ -57,7 +58,7 @@ export default function App() {
             {isDesktop ? <HeroComp /> : <Hero />}
             <HotelSection />
             <AboutConference />
-            <OurValuesMobile />
+            {isDesktop ? <OurValuesDesctop /> : <OurValuesMobile />}
             <WaitYouSection />
             <Tema />
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
