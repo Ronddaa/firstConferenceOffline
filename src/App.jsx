@@ -39,6 +39,7 @@ import HotelSection from "./components/HotelSection/HotelSecion";
 import AboutConference from "./components/AboutConference/AboutConference";
 import WaitYouSection from "./components/WaitYouSection/WaitYouSection";
 import CreateLinkPage from "./Pages/CreateLinkPage/CreateLinkPage";
+import OurValuesMobile from "./components/OurValuesSection/Mobile/OurValuesMobile";
 
 // Попытка плавного скролла
 
@@ -56,6 +57,7 @@ export default function App() {
             {isDesktop ? <HeroComp /> : <Hero />}
             <HotelSection />
             <AboutConference />
+            <OurValuesMobile />
             <WaitYouSection />
             <Tema />
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
