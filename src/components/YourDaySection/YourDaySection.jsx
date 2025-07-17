@@ -38,22 +38,23 @@ export default function YourDaySection() {
 
   return (
     <section className={styles.YourDaySection}>
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={1.2}
-          pagination={{ clickable: true }}
-          className={styles.swiper}
-        >
-          {items.map((item) => (
-            <SwiperSlide key={item.id} className={styles.slide}>
-              <svg className={styles.icons} width={40} height={40}>
-                <use xlinkHref={`${sprite}#icon-${item.icon}`}></use>
-              </svg>
-              <h2 className={styles.titleSlideYouDay}>{item.title}</h2>
-              {item.content && <p className={styles.content}>{item.content}</p>}
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      <p className={styles.textBtw}>(Цей день для тебе, якщо ти:)</p>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={1.2}
+        pagination={{ clickable: true }}
+        className={styles.swiper}
+      >
+        {items.map((item) => (
+          <SwiperSlide key={item.id} className={styles.slide}>
+            <svg className={styles.icons} width={40} height={40}>
+              <use xlinkHref={`${sprite}#icon-${item.icon}`}></use>
+            </svg>
+            <h2 className={styles.titleSlideYouDay}>{item.title}</h2>
+            {item.content && <p className={styles.content}>{item.content}</p>}
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   );
 }

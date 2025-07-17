@@ -35,6 +35,7 @@ export default function YourDaySectionDesc() {
 
   return (
     <section className={styles.YourDaySection}>
+      <p className={styles.textBtw}>(Цей день для тебе, якщо ти:)</p>
       <div className="container">
         <ul className={styles.YourDaySectionList}>
           {items.map((item) => (
