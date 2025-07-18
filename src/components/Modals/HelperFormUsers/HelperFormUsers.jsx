@@ -35,19 +35,17 @@ export default function HelperFormUsers({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isValid) return;
-    const formData = {
-      fullName,
-      phone,
-    };
 
     try {
       const dataToSend = {
-        ...formData,
-        utmMarks: utmParams,
+        fullName,
+        phone,
+        telegram,
       };
-      await api.createHelperUserFormApplication(dataToSend);
 
-      //  ✅ Отправка события Lead в Meta CAPI
+      await api.createHelperUserFormApplication(dataToSend); // 🔹 Отправляем на сервер
+
+      // 🔹 Отправка события в Meta (можно оставить как есть)
       sendLeadToMeta({
         formType: "helperFormUsers",
         phone,
@@ -55,13 +53,14 @@ export default function HelperFormUsers({ isOpen, onClose }) {
         telegram,
       });
 
+      // Сброс полей
       setFullName("");
       setPhone("");
       setTelegram("");
 
       onClose();
     } catch (error) {
-      console.log(error);
+      console.error("Не вдалося надіслати заявку:", error);
     }
 
     console.log("Form was sent!");
