@@ -38,7 +38,6 @@ export default function HelperFormUsers({ isOpen, onClose }) {
     const formData = {
       fullName,
       phone,
-      telegram,
     };
 
     try {
@@ -86,7 +85,11 @@ export default function HelperFormUsers({ isOpen, onClose }) {
         <use xlinkHref={`${sprite}#icon-close`}></use>
       </svg>
 
-      <h2 className={styles.titleHelperFormUsers}>стати спікером</h2>
+      <h2 className={styles.titleHelperFormUsers}>залиш свої контакти</h2>
+      <p className={styles.textHelper}>
+        ми звʼяжемось з тобою, щоб допомогти обрати тариф та відповісти на всі
+        запитання!
+      </p>
 
       <form className={styles.HelperFormUsers} onSubmit={handleSubmit}>
         <input
