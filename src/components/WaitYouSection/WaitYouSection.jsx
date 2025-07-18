@@ -12,16 +12,18 @@ export default function WaitYouSection() {
         <ul className={styles.wrapperProgramList}>
           <li>
             <p className={styles.numberOfList}>(01)</p>
-            <h3 className={styles.titlelistOne}>Преміум-шоу</h3>
+            <h3 className={styles.titlelistOne}>
+              15+ спікерів <br /> із досвідом
+            </h3>
             <p className={styles.textlistOne}>
-              Показ дизайнерського одягу, бренд-зона з надзвичайним товаром,
-              кейтеринг від шеф кухарів, атмосфера гала-вечері з дрес-кодом
+              Ти почуєш про тіло з точки зору науки, про гроші - без
+              стереотипів, про секс - відкрито, без розмитих формулювань
             </p>
           </li>
           <li>
             <img
               className={styles.objectFitprogramIMG}
-              src={prgramLi1IMG}
+              src={prgramLi3IMG}
               alt="programIMG"
             />
           </li>
@@ -29,8 +31,10 @@ export default function WaitYouSection() {
             <p className={styles.numberOfList}>(02)</p>
             <h3 className={styles.titlelistTwo}>Нетворкінг</h3>
             <p className={styles.textlistTwo}>
-              Серед 300+ учасників і лідерів <br /> української спільноти в
-              Європі
+              Це - підприємці, засновниці проектів, творці змін, українки з
+              різних країн Європи. У тебе буде час і простір не тільки для
+              знайомств, а й для справжніх розмов - про ідеї, цілі, партнерство
+              й підтримку
             </p>
           </li>
           <li>
@@ -42,17 +46,17 @@ export default function WaitYouSection() {
           </li>
           <li>
             <p className={styles.numberOfList}>(03)</p>
-            <h3 className={styles.titlelistThree}>
-              12+ привілейованих спікерів
-            </h3>
+            <h3 className={styles.titlelistThree}>Преміум-шоу</h3>
             <p className={styles.textlistThree}>
-              про стан, тіло(генетику), гроші та секс
+              Показ мод від українських дизайнерів. Вишуканість авторського
+              меню. Усе це - на тлі гала-атмосфери з дрес-кодом, де важлива
+              кожна деталь - від освітлення до келиха у твоїй руці
             </p>
           </li>
           <li>
             <img
               className={styles.objectFitprogramIMG}
-              src={prgramLi3IMG}
+              src={prgramLi1IMG}
               alt="programIMG"
             />
           </li>
