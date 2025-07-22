@@ -76,6 +76,15 @@ class ApiClient {
     );
     return data;
   }
+
+  async checkPromoCode(code) {
+  try {
+    const { data } = await this.axiosInstance.get(`/promo/${code}`);
+    return data;
+  } catch (error) {
+    this.handleError(error);
+  }
+}
 }
 
 const api = new ApiClient();

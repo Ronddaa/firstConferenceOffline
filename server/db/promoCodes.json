@@ -1,0 +1,123 @@
+[
+  {
+    "code": "LUXE-7F3XKP",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+  {
+    "code": "LUXE-KP9MZQ",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+  {
+    "code": "LUXE-RM28JV",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+  {
+    "code": "LUXE-TQW9CY",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+  {
+    "code": "LUXE-HF8C2L",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+  {
+    "code": "LUXE-JVQ4TX",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+  {
+    "code": "LUXE-89ZKME",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+  {
+    "code": "LUXE-MCNX41",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+  {
+    "code": "LUXE-WUZ23P",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+  {
+    "code": "LUXE-4BL9NY",
+    "tariff": "LUXE",
+    "fixedPrice": 4250,
+    "used": false
+  },
+
+  {
+    "code": "PREMIUM-3DYH6C",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  },
+  {
+    "code": "PREMIUM-XMA7RQ",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  },
+  {
+    "code": "PREMIUM-FR5KZ8",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  },
+  {
+    "code": "PREMIUM-KT92LZ",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  },
+  {
+    "code": "PREMIUM-QZC4NY",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  },
+  {
+    "code": "PREMIUM-9HV3MX",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  },
+  {
+    "code": "PREMIUM-2CJXME",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  },
+  {
+    "code": "PREMIUM-LKNZ51",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  },
+  {
+    "code": "PREMIUM-VXZQYW",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  },
+  {
+    "code": "PREMIUM-JTY83F",
+    "tariff": "PREMIUM",
+    "fixedPrice": 1300,
+    "used": false
+  }
+]

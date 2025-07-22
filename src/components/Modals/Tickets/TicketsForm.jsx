@@ -6,11 +6,33 @@ import api from "../../../api/api";
 import { sendLeadToMeta } from "../../../utils/sendLeadToMeta";
 
 export default function TicketsForm({ isOpen, onClose }) {
+  const initialState = {
+    fullName: "",
+    email: "",
+    phone: "",
+    telegramNick: "",
+    tariff: "",
+    quantity: 1,
+    promoCode: "",
+  };
+
+  const [formData, setFormData] = useState(initialState);
+  const [promoInfo, setPromoInfo] = useState(null);
+  const [promoError, setPromoError] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   const [utmParams, setUtmParams] = useState({
     utm_source: "",
     utm_medium: "",
     utm_campaign: "",
   });
+
+  const tariffs = [
+    { name: "LAST MINUTE", price: 770 },
+    { name: "GOLD", price: 990 },
+    { name: "PREMIUM", price: 1400 },
+    { name: "LUXE", price: 5000 },
+  ];
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -21,29 +43,35 @@ export default function TicketsForm({ isOpen, onClose }) {
     });
   }, []);
 
-  const tariffs = [
-    { name: "LAST MINUTE", price: 770 },
-    { name: "GOLD", price: 990 },
-    { name: "PREMIUM", price: 1400 },
-    { name: "LUXE", price: 5000 },
-  ];
+  useEffect(() => {
+    const checkPromoCode = async () => {
+      if (!formData.promoCode) {
+        setPromoInfo(null);
+        setPromoError(null);
+        return;
+      }
 
-  const initialState = {
-    fullName: "",
-    email: "",
-    phone: "",
-    telegramNick: "",
-    tariff: "",
-    quantity: 1,
-  };
+      try {
+        const res = await fetch(`/api/promo/${formData.promoCode}`);
+        const data = await res.json();
+        console.log();
+        
 
-  const [formData, setFormData] = useState(initialState);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+        if (res.ok && data.valid) {
+          setPromoInfo(data);
+          setPromoError(null);
+        } else {
+          setPromoInfo(null);
+          setPromoError("Промокод недійсний або вже використаний");
+        }
+      } catch (err) {
+        setPromoInfo(null);
+        setPromoError("Помилка при перевірці промокода");
+      }
+    };
 
-  const isFormValid = Object.entries(formData).every(([key, value]) => {
-    if (key === "quantity") return value > 0;
-    return value.toString().trim() !== "";
-  });
+    checkPromoCode();
+  }, [formData.promoCode]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -66,16 +94,23 @@ export default function TicketsForm({ isOpen, onClose }) {
     const selected = tariffs.find((t) => t.name === formData.tariff);
     if (!selected) return 0;
 
-    let price = selected.price;
     const tariffName = selected.name.toLowerCase();
+
+    if (
+      promoInfo &&
+      promoInfo.tariff.toLowerCase() === tariffName &&
+      !promoError
+    ) {
+      return promoInfo.fixedPrice * formData.quantity;
+    }
+
+    let price = selected.price;
 
     const isDiscount =
       utmParams.utm_medium === "discount" &&
       ["luxe", "premium"].includes(tariffName);
 
-    if (isDiscount) {
-      price *= 0.9;
-    }
+    if (isDiscount) price *= 0.9;
 
     const isGoldAsLast =
       utmParams.utm_medium === "goldAsLast" && tariffName === "gold";
@@ -87,6 +122,12 @@ export default function TicketsForm({ isOpen, onClose }) {
 
     return Math.round(price * formData.quantity);
   };
+
+const isFormValid = Object.entries(formData).every(([key, value]) => {
+  if (key === "quantity") return value > 0;
+  if (key === "promoCode") return true; // ← промокод необязательный
+  return value.toString().trim() !== "";
+});
 
   const handleClose = () => {
     setFormData(initialState);
@@ -120,6 +161,7 @@ export default function TicketsForm({ isOpen, onClose }) {
           tariffs: [formData.tariff],
           ticketsQuantity: formData.quantity,
           totalAmount: calculateTotal(),
+          promoCode: formData.promoCode || undefined,
         },
         utmMarks: utmParams,
       });
@@ -192,12 +234,19 @@ export default function TicketsForm({ isOpen, onClose }) {
           onChange={handleChange}
           required
         />
+        <input
+          id="promoCode"
+          type="text"
+          className={styles.inputTicketsForm}
+          placeholder="Promo Code"
+          value={formData.promoCode}
+          onChange={handleChange}
+        />
 
         <p className={styles.biteForWriteTg}>
-          *заповнивши це поле у вас є можливість отримати подарунок від нас!
+          *заповнивши ці поля у вас є можливість отримати подарунок від нас!
         </p>
 
-        {/* Тарифы */}
         <div className={styles.dropdownWrapper}>
           <button
             type="button"
@@ -244,7 +293,6 @@ export default function TicketsForm({ isOpen, onClose }) {
                       </span>
                     )}
                   </span>
-
                   <span>
                     {isDiscount || isGoldAsLast ? (
                       <>
@@ -263,7 +311,6 @@ export default function TicketsForm({ isOpen, onClose }) {
           </ul>
         </div>
 
-        {/* Кол-во билетов */}
         <div className={styles.ticketCounter}>
           <span>Кількість квитків:</span>
           <div className={styles.counterControls}>

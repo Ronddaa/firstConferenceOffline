@@ -60,7 +60,7 @@ export default function HorobecSectionComp() {
                 відбудеться 24 серпня - у День Незалежності України - в рамках
                 конференції «КОД ЖІНКИ».
               </p>
-              <a href="#horobecSection" className={styles.linkToHorobecPage}>
+              <a href="/horobec" className={styles.linkToHorobecPage}>
                 детальніше про бранч
               </a>
             </li>

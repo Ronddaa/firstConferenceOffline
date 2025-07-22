@@ -19,6 +19,10 @@ const invoiceSchema = new Schema(
         type: String,
         required: true,
       },
+      promoCode: {
+  type: String,
+  default: "",
+},
     },
     purchase: {
       tariffs: {

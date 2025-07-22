@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import axios from "axios";
 import { fileURLToPath } from "url";
-import { dirname, join } from "path";
+import { dirname, join, resolve } from "path";
+import { readFile } from "fs/promises";
 
 import env from "./utils/env.js";
 import cookieParser from "cookie-parser";
@@ -17,6 +18,7 @@ import { utmTracker } from "./middlewares/utmMarks.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const promoPath = resolve(__dirname, "db", "promoCodes.json");
 
 await initMongoConnection();
 
@@ -95,11 +97,27 @@ app.post("/api/create-payment", async (req, res) => {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
+  if (purchase.promoCode) {
+    try {
+      const file = await readFile(promoPath, "utf-8");
+      const promoCodes = JSON.parse(file);
+      const promo = promoCodes.find((p) => p.code === purchase.promoCode);
+
+      if (!promo) {
+        return res.status(400).json({ error: "Промокод недійсний" });
+      }
+      if (promo.used) {
+        return res.status(400).json({ error: "Промокод уже використаний" });
+      }
+    } catch (err) {
+      console.error("Ошибка при проверке промокода:", err);
+      return res.status(500).json({ error: "Ошибка при проверке промокода" });
+    }
+  }
+
   try {
-    // 1. Создание записи в Mongo
     const invoice = await createInvoice({ user, purchase, utmMarks });
 
-    // 2. Получаем курс PLN → UAH
     const rate = await getPLNtoUAHRate();
     const convertedAmount = Math.round(purchase.totalAmount * rate * 100);
     console.log(
@@ -108,13 +126,12 @@ app.post("/api/create-payment", async (req, res) => {
       } UAH`
     );
 
-    // 3. Ссылки редиректа
     const redirectUrl = `https://warsawkod.women.place/thank-you/${invoice._id}`;
     const response = await axios.post(
       "https://api.monobank.ua/api/merchant/invoice/create",
       {
         amount: convertedAmount,
-        ccy: 980, // UAH
+        ccy: 980,
         redirectUrl,
         webHookUrl: "https://warsawkod.women.place/api/payment-callback",
       },
@@ -139,9 +156,10 @@ app.post("/api/create-payment", async (req, res) => {
     });
   } catch (error) {
     console.error("Ошибка при создании оплаты:", error.message);
-    res
-      .status(500)
-      .json({ error: "Failed to create payment", message: error.message });
+    res.status(500).json({
+      error: "Failed to create payment",
+      message: error.message,
+    });
   }
 });
 
@@ -176,6 +194,28 @@ app.post("/api/payment-callback", async (req, res) => {
     invoice.paymentData.status = statusMap[status] || "failed";
     await updateInvoiceById(invoice._id, invoice);
 
+    // ✅ Если платеж успешен — помечаем промокод как использованный
+    if (status === "success" && invoice.purchase.promoCode) {
+      try {
+        const file = await readFile(promoPath, "utf-8");
+        const promoCodes = JSON.parse(file);
+        const promoIndex = promoCodes.findIndex(
+          (p) => p.code === invoice.purchase.promoCode && !p.used
+        );
+
+        if (promoIndex !== -1) {
+          promoCodes[promoIndex].used = true;
+          const { writeFile } = await import("fs/promises");
+          await writeFile(promoPath, JSON.stringify(promoCodes, null, 2));
+          console.log(
+            `✅ Промокод ${promoCodes[promoIndex].code} помечен как использованный`
+          );
+        }
+      } catch (err) {
+        console.error("⚠️ Не удалось обновить статус промокода:", err);
+      }
+    }
+
     res.status(200).json({ message: "Payment status updated" });
   } catch (error) {
     console.error("Error in payment-callback:", error);
@@ -205,7 +245,7 @@ app.use(errorHandler);
 const PORT = 3000;
 const HOST = "127.1.5.121";
 
-import './telegram/bot.js'
+import "./telegram/bot.js";
 
 app.listen(PORT, HOST, () => {
   console.log(`Server is running on http://${HOST}:${PORT}`);
