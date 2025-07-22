@@ -14,13 +14,20 @@ const instagramLink = "https://www.instagram.com/kod.zhinky?igsh=MXQ5djN3cXBhenQ
 const siteLink = "https://warsawkod.women.place/?utm_source=Telegram_bot&utm_medium=referral&utm_campaign=telegram_bot";
 
 // 🔹 Функция для отправки заявки админу в личку
-export async function sendFormToAdmin({ fullName, phone, telegram }) {
+export async function sendFormToAdmin({ fullName, phone, telegram, utmParams = {} }) {
+  const { utm_source, utm_medium, utm_campaign } = utmParams;
+
   const message = `
 📝 <b>Нова заявка з форми</b>
 
 👤 Ім’я: ${fullName}
 📞 Телефон: ${phone}
 💬 Telegram: ${telegram || "не вказано"}
+
+📊 <b>UTM-мітки</b>
+🔹 utm_source: ${utm_source || "—"}
+🔹 utm_medium: ${utm_medium || "—"}
+🔹 utm_campaign: ${utm_campaign || "—"}
 `;
 
   try {

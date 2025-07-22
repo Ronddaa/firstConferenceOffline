@@ -41,6 +41,7 @@ export default function HelperFormUsers({ isOpen, onClose }) {
         fullName,
         phone,
         telegram,
+        utmParams
       };
 
       await api.createHelperUserFormApplication(dataToSend); // 🔹 Отправляем на сервер

@@ -27,7 +27,12 @@ import MarysyaHorobec from "./components/MarysyaHorobecSection/MarysyaHorobec";
 import HorobecSectionComp from "./components/MarysyaHorobecSection/MarysyaHorobecSectionComp/MarysyaHorobecComp";
 import OurValuesMobile from "./components/OurValuesSection/Mobile/OurValuesMobile";
 import OurValuesDesctop from "./components/OurValuesSection/Desctop/OurValuesDesctop";
-
+import HotelSection from "./components/HotelSection/HotelSecion";
+import AboutConference from "./components/AboutConference/AboutConference";
+import WaitYouSection from "./components/WaitYouSection/WaitYouSection";
+import CreateLinkPage from "./Pages/CreateLinkPage/CreateLinkPage";
+import YourDaySection from "./components/YourDaySection/YourDaySection";
+import YourDaySectionDesc from "./components/YourDaySection/YourDaySectionDesc";
 
 // 📄 Страницы
 import PageThx from "./Pages/PageThx/PageThx";
@@ -37,12 +42,8 @@ import PremiumTicketPage from "./Pages/TicketsPages/PremiumPage/PremiunTicketPag
 import LastMinutePage from "./Pages/TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./Pages/CheckPaymentPage/CheckPaymentPage";
 import HorobecPage from "./Pages/HorobecPage/HorobecPage";
-import HotelSection from "./components/HotelSection/HotelSecion";
-import AboutConference from "./components/AboutConference/AboutConference";
-import WaitYouSection from "./components/WaitYouSection/WaitYouSection";
-import CreateLinkPage from "./Pages/CreateLinkPage/CreateLinkPage";
-import YourDaySection from "./components/YourDaySection/YourDaySection";
-import YourDaySectionDesc from "./components/YourDaySection/YourDaySectionDesc";
+import Program from "./components/Program/Program";
+
 
 // Попытка плавного скролла
 
@@ -66,6 +67,7 @@ export default function App() {
             <Tema />
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
             {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />}
+            <Program />
             <ProgramOnConference />
             <Tickets />
             <PartnersSection />
@@ -98,6 +100,8 @@ export default function App() {
         path="/check-payment/check/123456"
         element={<CheckPaymentPage />}
       />
+
+      {/* Страничка создания меток */}
       <Route
         path="/check-payment/createlinkpage/arina"
         element={<CreateLinkPage />}
