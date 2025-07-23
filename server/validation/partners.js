@@ -5,10 +5,10 @@ export const createPartnerSchema = Joi.object({
   contactPerson: Joi.string().required(),
   contactInfo: Joi.string().required(),
   telegramNick: Joi.string().required(),
-  instagramLink: Joi.string().required(),
+  instagramLink: Joi.string().uri().required(),
   utmMarks: Joi.object({
-    utm_source: Joi.string(),
-    utm_medium: Joi.string(),
-    utm_campaign: Joi.string(),
-  }),
+    utm_source: Joi.string().allow(""),
+    utm_medium: Joi.string().allow(""),
+    utm_campaign: Joi.string().allow(""),
+  }).optional(),
 });
