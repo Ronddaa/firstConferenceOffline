@@ -12,7 +12,6 @@ import HeroComp from "./components/Hero/HeroComp/HeroComp";
 // 📌 Секции
 import Tema from "./components/Tema/Tema";
 import SpeakersSection from "./components/SpeakersSection/SpeakersSection";
-import ProgramOnConference from "./components/ProgramOnConference/ProgramOnConference";
 import Tickets from "./components/TicketsSection/TicketsSection";
 import PartnersSection from "./components/Partners/PartnersSection";
 import Auction from "./components/Auction/Auction";
@@ -68,7 +67,6 @@ export default function App() {
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
             {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />}
             <Program />
-            <ProgramOnConference />
             <Tickets />
             <PartnersSection />
             <Auction />
