@@ -99,3 +99,10 @@
     width: 310px;
     height: 310px;
 }
+.brunchInfo{
+    color: #FFFCF9;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0;
+    text-align: center;
+}

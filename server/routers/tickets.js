@@ -1,31 +1,27 @@
 import { Router } from "express";
-import { fileURLToPath } from "url";
-import { dirname, resolve } from "path";
-import fs from "fs/promises";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const ticketsPath = resolve(__dirname, "../db/tickets.json");
+import { InvoicesCollection } from "../db/models/invoices.js";
 
 const router = Router();
 
 router.get("/:invoiceId", async (req, res) => {
   try {
     const { invoiceId } = req.params;
-    const tickets = JSON.parse(await fs.readFile(ticketsPath, "utf-8"));
 
-    const ticket = tickets.find((t) => t.invoiceId === invoiceId);
+    // Ищем по paymentData.invoiceId
+    const ticket = await InvoicesCollection.findOne({
+      "paymentData.invoiceId": invoiceId,
+    });
 
     if (!ticket) {
       return res.status(404).json({ error: "Ticket not found" });
     }
 
     res.json({
-      brunchSelected: ticket.brunchSelected,
-      promo: ticket.promo, // если нет — null
+      brunchSelected: ticket.purchase.brunchSelected || false,
+      promo: ticket.user.promoCode || null,
     });
   } catch (error) {
-    console.error("Error reading tickets:", error);
+    console.error("Error fetching ticket from MongoDB:", error);
     res.status(500).json({ error: "Server error" });
   }
 });
