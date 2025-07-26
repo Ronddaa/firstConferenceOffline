@@ -27,12 +27,13 @@ export default function TicketsForm({ isOpen, onClose }) {
     utm_campaign: "",
   });
 
-  const tariffs = [
-    { name: "LAST MINUTE", price: 770 },
-    { name: "GOLD", price: 990 },
-    { name: "PREMIUM", price: 1400 },
-    { name: "LUXE", price: 5000 },
-  ];
+const tariffs = [
+  { name: "LAST MINUTE", price: 770 },
+  { name: "GOLD", price: 990 },
+  { name: "PREMIUM", price: 1400 },
+  { name: "LUXE", price: 5000 },
+  { name: "BRUNCH", price: 1100 }, // ← Добавили
+];
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -118,6 +119,10 @@ export default function TicketsForm({ isOpen, onClose }) {
     if (isGoldAsLast) {
       const last = tariffs.find((t) => t.name.toLowerCase() === "last minute");
       if (last) price = last.price;
+    }
+
+    if (tariffName === "brunch") {
+      return selected.price * formData.quantity; // без скидок, промокодов
     }
 
     return Math.round(price * formData.quantity);

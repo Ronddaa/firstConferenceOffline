@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-const validTariffs = ["Basik+", "Balance", "Luxe", "Only ticket"];
+const validTariffs = ["Basik+", "Balance", "Luxe", "Only ticket", "BRUNCH"];
 
 export const createInvoiceSchema = Joi.object({
   user: Joi.object({
