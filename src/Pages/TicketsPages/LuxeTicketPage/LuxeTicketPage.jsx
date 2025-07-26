@@ -10,18 +10,62 @@ import QRCode from "qrcode";
 
 export default function LuxeTicketPage() {
   const { invoiceId } = useParams();
+  const [brunchSelected, setBrunchSelected] = useState(null);
+  const [tariff, setTariff] = useState(null);
+  const [generatedPromo, setGeneratedPromo] = useState("");
+
+  // Генерация уникального промокода
+  const generatePromoCode = (tariff) => {
+    const randomPart = Math.random().toString(36).substring(2, 7).toUpperCase();
+    return `BRUNCH${tariff?.toUpperCase()}-${randomPart}`;
+  };
 
   useEffect(() => {
     if (!invoiceId) return;
 
-    const canvas = document.getElementById("qrCodeCanvas");
-    if (!canvas) {
-      console.warn("Canvas not found");
-      return;
-    }
+    // Подгружаем данные билета
+    const fetchTicketData = async () => {
+      try {
+        const res = await fetch(`/api/tickets/${invoiceId}`);
+        const data = await res.json();
 
-    // link to the admin panel, where security quard will check
-    // ticket data
+        setBrunchSelected(data.brunchSelected);
+        setTariff(data.tariff);
+
+        // Если бранч не куплен, генерируем и отправляем промокод
+        if (!data.brunchSelected && data.tariff) {
+          const promo = generatePromoCode(data.tariff);
+          setGeneratedPromo(promo);
+
+          // Сохраняем промокод на сервере
+          await fetch("/api/promo/add", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              code: promo,
+              tariff: data.tariff,
+              fixedPrice: data.tariff === "LUXE" ? 4250 : 1300, // или другая логика
+              used: false,
+            }),
+          });
+        }
+      } catch (err) {
+        console.error("Error loading ticket:", err);
+      }
+    };
+
+    fetchTicketData();
+  }, [invoiceId]);
+
+  // Генерация QR-кода
+  useEffect(() => {
+    if (!invoiceId) return;
+
+    const canvas = document.getElementById("qrCodeCanvas");
+    if (!canvas) return;
+
     const qrCodeLink = `https://admin.women.place/check/${invoiceId}`;
     QRCode.toCanvas(
       canvas,
@@ -35,7 +79,6 @@ export default function LuxeTicketPage() {
       },
       (err) => {
         if (err) console.error("QR code error:", err);
-        else console.log("QR code rendered successfully");
       }
     );
   }, [invoiceId]);
@@ -68,15 +111,9 @@ export default function LuxeTicketPage() {
         <li>білий</li>
       </ul>
       <ul className={styles.wrapperColors}>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        {[...Array(9)].map((_, idx) => (
+          <li key={idx}></li>
+        ))}
       </ul>
       <p className={styles.colorOurIvent}>кольори нашого заходу</p>
       <ul className={styles.wrapperOurDressIMG}>
@@ -92,6 +129,16 @@ export default function LuxeTicketPage() {
       </ul>
       <p className={styles.scanMe}>*заскануй код на конференції</p>
       <canvas id="qrCodeCanvas" className={styles.qrCodeHere}></canvas>
+
+      {/* 💬 Сообщение о бранче */}
+      {brunchSelected === true && (
+        <p className={styles.brunchInfo}>Бронювання на бранч MGVC включено</p>
+      )}
+      {brunchSelected === false && generatedPromo && (
+        <p className={styles.brunchInfo}>
+          Ваша знижка на бранч по промокоду: <strong>{generatedPromo}</strong>
+        </p>
+      )}
     </section>
   );
 }

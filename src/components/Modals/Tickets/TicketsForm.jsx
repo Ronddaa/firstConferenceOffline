@@ -20,6 +20,8 @@ export default function TicketsForm({ isOpen, onClose }) {
   const [promoInfo, setPromoInfo] = useState(null);
   const [promoError, setPromoError] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [brunchSelected, setBrunchSelected] = useState(false);
+  // const [brunchPromoCode, setBrunchPromoCode] = useState(null);
 
   const [utmParams, setUtmParams] = useState({
     utm_source: "",
@@ -91,42 +93,58 @@ const tariffs = [
     setDropdownOpen(false);
   };
 
-  const calculateTotal = () => {
-    const selected = tariffs.find((t) => t.name === formData.tariff);
-    if (!selected) return 0;
+  const getBrunchPrice = () => {
+    if (!brunchSelected) return 0;
 
-    const tariffName = selected.name.toLowerCase();
+    const tariff = formData.tariff.toLowerCase();
+    let discount = 0;
 
-    if (
-      promoInfo &&
-      promoInfo.tariff.toLowerCase() === tariffName &&
-      !promoError
-    ) {
-      return promoInfo.fixedPrice * formData.quantity;
-    }
+    if (tariff === "premium") discount = 0.1;
+    else if (tariff === "gold") discount = 0.15;
+    else if (tariff === "luxe") discount = 0.2;
 
-    let price = selected.price;
+    const brunch = tariffs.find((t) => t.name === "BRUNCH");
+    if (!brunch) return 0;
 
-    const isDiscount =
-      utmParams.utm_medium === "discount" &&
-      ["luxe", "premium"].includes(tariffName);
-
-    if (isDiscount) price *= 0.9;
-
-    const isGoldAsLast =
-      utmParams.utm_medium === "goldAsLast" && tariffName === "gold";
-
-    if (isGoldAsLast) {
-      const last = tariffs.find((t) => t.name.toLowerCase() === "last minute");
-      if (last) price = last.price;
-    }
-
-    if (tariffName === "brunch") {
-      return selected.price * formData.quantity; // без скидок, промокодов
-    }
-
-    return Math.round(price * formData.quantity);
+    return Math.round(brunch.price * (1 - discount));
   };
+
+const calculateTotal = () => {
+  const selected = tariffs.find((t) => t.name === formData.tariff);
+  if (!selected) return 0;
+
+  const tariffName = selected.name.toLowerCase();
+
+  if (
+    promoInfo &&
+    promoInfo.tariff.toLowerCase() === tariffName &&
+    !promoError
+  ) {
+    return promoInfo.fixedPrice * formData.quantity;
+  }
+
+  let price = selected.price;
+
+  const isDiscount =
+    utmParams.utm_medium === "discount" &&
+    ["luxe", "premium"].includes(tariffName);
+
+  if (isDiscount) price *= 0.9;
+
+  const isGoldAsLast =
+    utmParams.utm_medium === "goldAsLast" && tariffName === "gold";
+
+  if (isGoldAsLast) {
+    const last = tariffs.find((t) => t.name.toLowerCase() === "last minute");
+    if (last) price = last.price;
+  }
+
+  if (tariffName === "brunch") {
+    return selected.price * formData.quantity;
+  }
+
+  return Math.round(price * formData.quantity + getBrunchPrice());
+};
 
 const isFormValid = Object.entries(formData).every(([key, value]) => {
   if (key === "quantity") return value > 0;
@@ -167,6 +185,7 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
           ticketsQuantity: formData.quantity,
           totalAmount: calculateTotal(),
           promoCode: formData.promoCode || undefined,
+          brunchSelected: brunchSelected,
         },
         utmMarks: utmParams,
       });
@@ -261,6 +280,15 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
             {formData.tariff || "Оберіть тариф"}{" "}
             <span>{dropdownOpen ? "▲" : "▼"}</span>
           </button>
+
+          <label className={styles.brunchCheckbox}>
+            <input
+              type="checkbox"
+              checked={brunchSelected}
+              onChange={() => setBrunchSelected(!brunchSelected)}
+            />
+            Бранч MGVC від Марисі Горобець 24.08.25
+          </label>
 
           <ul
             className={`${styles.dropdownList} ${

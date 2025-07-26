@@ -25,19 +25,23 @@ const invoiceSchema = new Schema(
 },
     },
     purchase: {
-      tariffs: {
-        type: [String],
-        required: true,
-      },
-      ticketsQuantity: {
-        type: Number,
-        required: true,
-      },
-      totalAmount: {
-        type: Number,
-        required: true,
-      },
-    },
+  tariffs: {
+    type: [String],
+    required: true,
+  },
+  ticketsQuantity: {
+    type: Number,
+    required: true,
+  },
+  totalAmount: {
+    type: Number,
+    required: true,
+  },
+  brunchSelected: {
+    type: Boolean,
+    default: false,
+  },
+},
     paymentData: {
       invoiceId: {
         type: String,

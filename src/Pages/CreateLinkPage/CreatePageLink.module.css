@@ -2,6 +2,7 @@
     width: 100%;
     height: 100dvh;
     position: relative;
+    overflow: auto;
 }
 .containerCL{
     background-color: #fff;
@@ -15,11 +16,8 @@
     gap: 20px;
     padding: 20px;
     width: 40dvh;
-    height: 50dvh;
-    overflow-wrap: break-word;
-word-wrap: break-word;
-word-break: break-word; /* в крайнем случае */
-
+    /* height: 100dvh; */
+    overflow: hidden;
 }
 .input{
     padding: 10px;
