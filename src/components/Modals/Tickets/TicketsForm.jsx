@@ -106,7 +106,8 @@ const tariffs = [
     const brunch = tariffs.find((t) => t.name === "BRUNCH");
     if (!brunch) return 0;
 
-    return Math.round(brunch.price * (1 - discount));
+    const pricePerPerson = Math.round(brunch.price * (1 - discount));
+    return pricePerPerson * formData.quantity; // ← ключевая строка
   };
 
 const calculateTotal = () => {
