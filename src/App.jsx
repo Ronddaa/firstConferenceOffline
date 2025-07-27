@@ -32,6 +32,7 @@ import WaitYouSection from "./components/WaitYouSection/WaitYouSection";
 import CreateLinkPage from "./Pages/CreateLinkPage/CreateLinkPage";
 import YourDaySection from "./components/YourDaySection/YourDaySection";
 import YourDaySectionDesc from "./components/YourDaySection/YourDaySectionDesc";
+import Program from "./components/Program/Program";
 
 // 📄 Страницы
 import PageThx from "./Pages/PageThx/PageThx";
@@ -41,11 +42,8 @@ import PremiumTicketPage from "./Pages/TicketsPages/PremiumPage/PremiunTicketPag
 import LastMinutePage from "./Pages/TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./Pages/CheckPaymentPage/CheckPaymentPage";
 import HorobecPage from "./Pages/HorobecPage/HorobecPage";
-import Program from "./components/Program/Program";
-
 
 // Попытка плавного скролла
-
 
 export default function App() {
   const isDesktop = useIsDesktop();

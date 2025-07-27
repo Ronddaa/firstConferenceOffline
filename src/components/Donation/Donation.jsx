@@ -30,7 +30,8 @@ export default function Donation() {
               <h4 className={styles.titleLih43}>днів</h4>
             </li>
           </ul>
-          <a target='_blank'
+          <a
+            target="_blank"
             className={styles.detailsDonation}
             href="https://www.instagram.com/mobile_dental_ukraine?igsh=MWoxc2czZ2RnaHRxNA=="
           >
@@ -48,8 +49,12 @@ export default function Donation() {
           </h3>
           <p className={styles.numerOf}>(03)</p>
           <h3 className={styles.title}>
-            Усі кошти — <br />
-            <span>на підтримку</span> <span>ЗСУ</span>
+            Донат на 500€ =<br /> <span>1000€</span> сертифікат на <br /> керамічні
+            реставрації від <span>@kazo.younique</span>
+          </h3>
+          <p className={styles.numerOf}>(04)</p>
+          <h3 className={styles.title}>
+            Усі кошти — <br /> <span>на підтримку ЗСУ</span>
           </h3>
         </div>
         <div className="container">

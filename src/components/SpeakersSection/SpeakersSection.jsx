@@ -75,7 +75,8 @@ export default function SpeakersSection() {
       speakerClass: "speakerNameClass1",
       numberOfSpeaker: "(01)",
       moreInfoBtnClass: "moreInfoBtn",
-      contentDetails: "Скоро дізнаєтесь про мене трохи більше. =)",
+      contentDetails:
+        'Лікар загальної практики, дієтолог-ендокринолог, фуд-терапевт, спеціаліст в Anti-age харчуванні та функціональній медицині. Асистент кафедри біоорганічної та біологічної хімії НМУ ім. О. О. Богомольця. Аспірант.15 років у медицині, 12 років у дієтології та food-терапії. Спеціаліст в anti-age харчуванні. Спікер міжнародних наукових конференцій. Засновниця «Академії здоровʼя доктора Толстікової». Автор книг “Твій храм - здоров‘я”, "Стрес крiзь життя - мiй mood". Особистий лікар-дієтолог професійних спортсменів абсолютного чемпіона світу з боксу Олександра Усика, чемпіона Bellator Ярослава Амосова та тенісистки Катаріни Завацької та інших. Лікар дієтолог футбольного клубу Колос (Ковалівка).',
     },
     {
       id: 2,
@@ -205,7 +206,7 @@ export default function SpeakersSection() {
     {
       id: 12,
       speakerName: "Прокопенко\nАнна",
-      speakerTema: "Уточнюється",
+      speakerTema: "Тіло і сексуальна енергія, як чіт-код до життя",
       image: Prokopenko,
       speakerInstagram:
         "https://www.instagram.com/annaa.prokopenko?igsh=M3hmczVod3ZmemM4",
@@ -218,7 +219,7 @@ export default function SpeakersSection() {
     {
       id: 13,
       speakerName: "Залізняк\nВіталія",
-      speakerTema: "Шлях жінки до її фінансової незалежності",
+      speakerTema: "Фінансова незалежність жінки. Як за допомогою інвестицій вирости в грошах у 2025 році.",
       image: Zaliznyak,
       speakerInstagram:
         "https://www.instagram.com/vita_liia_/profilecard/?igsh=NmNmaGdhOXlsNjZp",
@@ -231,7 +232,7 @@ export default function SpeakersSection() {
     {
       id: 14,
       speakerName: "Волк\nОлена",
-      speakerTema: "Як ми зробили X2 в обігу за рік: кейс агенції EvoTalents",
+      speakerTema: "Код на X2: як ми розшифрували ріст бізнесу за рік",
       image: Volk,
       speakerInstagram:
         "https://www.instagram.com/volk_elena/profilecard/?igsh=bHRvNDltZm12aWpu",

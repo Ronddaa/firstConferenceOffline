@@ -51,7 +51,7 @@ const toggleListGold = () => {
           <li className={styles.styleForTicketsIMG}>
             <article className={styles.TicketsLastMinute}>
               <h3 className={styles.titleLM}>LAST MINUTE</h3>
-              <p className={styles.kolPlace}>Залишилось 100 місць</p>
+              <p className={styles.kolPlace}>Залишилось 7 місць</p>
               <ul className={styles.wrapperDetailsTariff}>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
@@ -94,7 +94,7 @@ const toggleListGold = () => {
                     <use xlinkHref={`${sprite}#icon-podkova`}></use>
                   </svg>
                   <div className={styles.wrapperLMwithList}>
-                    <p className={styles.detailsText}>Лекційна зала:</p>
+                    <p className={styles.detailsText}>Лекційна мала зала:</p>
                     <ul className={styles.wrapperLMList}>
                       <li>
                         можливість послухати лекції від експертів у своїх нішах

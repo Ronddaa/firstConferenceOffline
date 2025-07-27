@@ -13,45 +13,69 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 5px;
 }
-/* pdp logo */
-.wrapperLogoPDP{
+.wrapperPartners li{
+    border-radius: 10px;
     border: 1px solid #FFFFAC;
-    border-radius: 10px;
-    padding: 52px 24px;
+    width: 164px;
+    height: 88px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
-/* lavande logo */
-.lavandeLogo{
+.wrapperLogoPDP{
+    padding: 15px;
+}
+.wrapperLogoConciergePro{
+    padding: 15px;
+}
+.wrapperPartners li svg{
+    max-width: 164px;
+    max-height: 88px;
+}
+.wrapperPartners .ConciergeProLogo{
+    max-height: 58px;
+}
+.goPartnersBtn{
+    background: linear-gradient(90deg, #FFFCF9, #FFFFAC);
+    margin: 40px auto;
+    display: block;
+    border: none;
     border-radius: 10px;
-    max-width: 274px;
-    max-height: 148px;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 34px 69px;
+    color: #1B2021;
+    font-weight: 600;
 }
 
-@media(min-width:410px){
-    .PartnersSection{
-        padding: 250px 0;
-    }
-    .lavandeLogo{
-        max-width: 274px;
-        max-height: 158px;
-    }
-}
-
-@media(min-width:768px){
-    .textBtw{
-        font-size: 18px;
-        text-align: center;
-    }
+@media (min-width: 768px){
     .wrapperPartners{
-        flex-direction: row;
+        gap: 50px;
     }
-    .wrapperLogoPDP{
-        padding: 80px 55px;
+    .wrapperPartners li{
+        width: 22%;
+        height: 205px;
     }
-    .lavandeLogo{
+    .wrapperLogoLavande{
+        background-color: #fefb81;
+    }
+    .wrapperPartners li svg{
         max-width: 100%;
         max-height: 100%;
+    }
+    .wrapperPartners .ConciergeProLogo{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .wrapperPartners .lavandeLogo{
+        object-fit: cover;
+    }
+    .goPartnersBtn{
+        font-size: 18px;
+        margin: 60px auto;
     }
 }
