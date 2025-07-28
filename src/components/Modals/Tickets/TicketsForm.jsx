@@ -111,11 +111,12 @@ const tariffs = [
   };
 
 const calculateTotal = () => {
-  const selected = tariffs.find((t) => t.name === formData.tariff);
+    const selected = tariffs.find((t) => t.name === formData.tariff);
   if (!selected) return 0;
 
   const tariffName = selected.name.toLowerCase();
 
+  // Промокод приоритетен
   if (
     promoInfo &&
     promoInfo.tariff.toLowerCase() === tariffName &&
@@ -125,6 +126,12 @@ const calculateTotal = () => {
   }
 
   let price = selected.price;
+
+  // ✅ Спецусловие для startubhub
+  if (utmParams.utm_medium === "startubhub") {
+    if (tariffName === "premium") price = 1720;
+    if (tariffName === "luxe") price = 4700;
+  }
 
   const isDiscount =
     utmParams.utm_medium === "discount" &&
@@ -299,6 +306,20 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
             {tariffs.map((t) => {
               const name = t.name.toLowerCase();
 
+              let displayPrice = t.price;
+              let label = "";
+
+              if (utmParams.utm_medium === "startubhub") {
+                if (name === "premium") {
+                  displayPrice = 1720;
+                  label = "спецціна";
+                }
+                if (name === "luxe") {
+                  displayPrice = 4700;
+                  label = "спецціна";
+                }
+              }
+
               const isDiscount =
                 utmParams.utm_medium === "discount" &&
                 ["luxe", "premium"].includes(name);
@@ -306,12 +327,17 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
               const isGoldAsLast =
                 utmParams.utm_medium === "goldAsLast" && name === "gold";
 
-              const discountedPrice = isDiscount
-                ? Math.round(t.price * 0.9)
-                : isGoldAsLast
-                ? tariffs.find((x) => x.name.toLowerCase() === "last minute")
-                    ?.price
-                : t.price;
+              if (isDiscount) {
+                displayPrice = Math.round(t.price * 0.9);
+                label = "−10%";
+              }
+
+              if (isGoldAsLast) {
+                displayPrice = tariffs.find(
+                  (x) => x.name.toLowerCase() === "last minute"
+                )?.price;
+                label = "спецціна";
+              }
 
               return (
                 <li
@@ -321,18 +347,16 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
                 >
                   <span>
                     {t.name}
-                    {(isDiscount || isGoldAsLast) && (
-                      <span className={styles.discountLabel}>
-                        {isDiscount ? " (−10%)" : " (спецціна)"}
-                      </span>
+                    {label && (
+                      <span className={styles.discountLabel}> ({label})</span>
                     )}
                   </span>
                   <span>
-                    {isDiscount || isGoldAsLast ? (
+                    {displayPrice !== t.price ? (
                       <>
                         <span className={styles.oldPrice}>{t.price}PLN</span>{" "}
                         <span className={styles.newPrice}>
-                          {discountedPrice}PLN
+                          {displayPrice}PLN
                         </span>
                       </>
                     ) : (
