@@ -20,28 +20,28 @@ const invoiceSchema = new Schema(
         required: true,
       },
       promoCode: {
-  type: String,
-  default: "",
-},
+        type: String,
+        default: "",
+      },
     },
     purchase: {
-  tariffs: {
-    type: [String],
-    required: true,
-  },
-  ticketsQuantity: {
-    type: Number,
-    required: true,
-  },
-  totalAmount: {
-    type: Number,
-    required: true,
-  },
-  brunchSelected: {
-    type: Boolean,
-    default: false,
-  },
-},
+      tariffs: {
+        type: [String],
+        required: true,
+      },
+      ticketsQuantity: {
+        type: Number,
+        required: true,
+      },
+      totalAmount: {
+        type: Number,
+        required: true,
+      },
+      brunchSelected: {
+        type: Boolean,
+        default: false,
+      },
+    },
     paymentData: {
       invoiceId: {
         type: String,
