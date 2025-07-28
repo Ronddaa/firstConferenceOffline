@@ -7,7 +7,7 @@ export default function BranchSection() {
     return (
       <section className={styles.BranchSection}>
         <div className="container">
-          <p className={styles.textBtw}>Бранч традиційно об’єднає</p>
+          <p className="btwSectionText">Бранч традиційно об’єднає</p>
           <h2 className={styles.titleBranch}>50 відтінків жіночих енергій -</h2>
           <p className={styles.text_marginTop}>
             українських бізнес-берегинь, жінок, які сьогодні є амбасадорками
@@ -18,14 +18,15 @@ export default function BranchSection() {
             <ul className={styles.BranchSectionTitleDonatin}>
               <li>
                 <h3 className={styles.dontationTitle}>
-                  З початку повномасштабного вторгнення <br /> MGVC тримає 
+                  З початку повномасштабного вторгнення <br /> MGVC тримає
                   <span> благодійну місію:</span>
                 </h3>
               </li>
               <li>
                 <p className={styles.textDonatin}>
                   під час кожного бранчу відбуваються благодійні аукціони, кошти
-                  з яких спрямовуються на підтримку <br /> українських жінок-військових
+                  з яких спрямовуються на підтримку <br /> українських
+                  жінок-військових
                 </p>
               </li>
             </ul>

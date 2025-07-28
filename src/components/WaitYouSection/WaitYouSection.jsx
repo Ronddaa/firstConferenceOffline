@@ -8,7 +8,7 @@ export default function WaitYouSection() {
   return (
     <section className={styles.WaitYouSection} id="WaitYouSectionAnchor">
       <div className="container">
-        <p className={styles.textBtw}>(що на тебе чекає)</p>
+        <p className="btwSectionText">(що на тебе чекає)</p>
         <ul className={styles.wrapperProgramList}>
           <li>
             <p className={styles.numberOfList}>(01)</p>

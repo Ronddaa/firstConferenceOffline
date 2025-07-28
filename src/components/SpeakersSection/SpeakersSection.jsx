@@ -257,7 +257,7 @@ export default function SpeakersSection() {
 
   return (
     <section className={styles.SpeakersSection} id="speakersSectionAnchor">
-      <p className={styles.textBtwSection}>(наші спікери)</p>
+      <p className="btwSectionText">(наші спікери)</p>
       <Swiper
         scrollbar={{ hide: false, draggable: true }}
         modules={[Scrollbar]} // ⬅️ только Scrollbar

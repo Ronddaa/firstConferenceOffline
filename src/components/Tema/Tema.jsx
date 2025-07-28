@@ -28,7 +28,7 @@ export default function Tema() {
   return (
     <section className={styles.sectionTema} id="sectionTema">
       <div className={styles.backgrondShadow}></div>
-      <p className={styles.textSection}>(теми конференції)</p>
+      <p className="btwSectionText">(теми конференції)</p>
 
       <ul className={styles.wrapperTitles}>
         <li>

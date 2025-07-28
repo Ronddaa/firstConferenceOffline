@@ -8,7 +8,7 @@ export default function AboutConference() {
         id="AboutConferenceSectionAnchor"
       >
         <div className="container">
-          <p className={styles.btwsectionText}>(Про конференцію)</p>
+          <p className="btwSectionText">(Про конференцію)</p>
           <h2 className={styles.titleProgram}>
             створюємо <span>преміальний</span> простір для української спільноти
             в<span> Європі</span>
@@ -40,14 +40,19 @@ export default function AboutConference() {
           </h3>
           <ul className={styles.wrappperAboutList}>
             <li>
-              <h4 className={styles.titleLi}>Живі виступи <br /> українських експерток</h4>
+              <h4 className={styles.titleLi}>
+                Живі виступи <br /> українських експерток
+              </h4>
               <p className={styles.textLi}>у сексології, жіночому здоров’ї</p>
             </li>
             <li>
               <h4 className={styles.titleLi}>
-                Знайомства з лікарками, дослідницями тіла <br /> й всесвітньої культури
+                Знайомства з лікарками, дослідницями тіла <br /> й всесвітньої
+                культури
               </h4>
-              <p className={styles.textLi}>не для фото, а для реальних <br /> інсайтів і підтримки</p>
+              <p className={styles.textLi}>
+                не для фото, а для реальних <br /> інсайтів і підтримки
+              </p>
             </li>
           </ul>
         </article>

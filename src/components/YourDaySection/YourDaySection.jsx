@@ -38,7 +38,7 @@ export default function YourDaySection() {
 
   return (
     <section className={styles.YourDaySection}>
-      <p className={styles.textBtw}>(Цей день для тебе, якщо ти:)</p>
+      <p className="btwSectionText">(Цей день для тебе, <br /> якщо ти:)</p>
       <Swiper
         spaceBetween={20}
         slidesPerView={1.2}

@@ -1,8 +1,5 @@
-.textBtw{
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 12px;
-    margin-bottom: 40px;
+.YourDaySection{
+    padding-bottom: 100px;
 }
 .swiper{
     padding: 0 20px;

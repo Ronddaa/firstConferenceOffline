@@ -6,7 +6,7 @@ export default function MarysyaHorobec() {
     return (
       <section className={styles.MarysyaHorobecSection} id="horobecSection">
         <div className="container">
-          <p className={styles.textBtw}>
+          <p className="btwSectionText">
             (наша ведуча <br /> та бранч від MGVc)
           </p>
           <div className={styles.wrapperHorobecIMG}>

@@ -7,7 +7,7 @@ export default function HorobecSectionComp() {
   return (
     <section className={styles.horobecSectionComp}>
       <div className="container">
-        <p className={styles.textBtw}>(наша ведуча та бранч від MGVc)</p>
+        <p className="btwSectionText">(наша ведуча та бранч від MGVc)</p>
         <article className={styles.wrapperHorobecInfo}>
           <div className={styles.wrapperHorobecIMG}>
             <img className={styles.HorobecIMG} src={HorobecIMG} alt="img" />

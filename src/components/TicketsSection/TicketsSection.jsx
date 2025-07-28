@@ -46,7 +46,7 @@ const toggleListGold = () => {
   return (
     <section className={styles.sectionTickets} id="ticketsSectionAnchor">
       <div className="container">
-        <p className={styles.textBtwSection}>(тарифи на участь)</p>
+        <p className="btwSectionText">(тарифи на участь)</p>
         <ul className={styles.wrapperTicketsTariff}>
           <li className={styles.styleForTicketsIMG}>
             <article className={styles.TicketsLastMinute}>
@@ -496,25 +496,15 @@ const toggleListGold = () => {
                   </p>
                 </li>
               </ul>
-              <p className={styles.priceTextWillBe}>
+              <p className={styles.priceText}>
                 1900
                 <span className={styles.priceValue}>
                   <span className={styles.priceValue}>
                     <span className={styles.priceValue}>pln</span>
                   </span>
-                </span>
-                / <span>450&euro;</span>
-              </p>
-              <p className={styles.priceText}>
-                1400
-                <span className={styles.priceValue}>
-                  <span className={styles.priceValue}>
-                    <span className={styles.priceValue}>pln</span>
-                  </span>
                 </span>{" "}
-                /<span className={styles.priceEuro}>330&euro;</span>
+                /<span className={styles.priceEuro}>450&euro;</span>
               </p>
-              <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>{" "}
               <button
                 className={styles.btnBuyTariffPremium}
                 onClick={() => {

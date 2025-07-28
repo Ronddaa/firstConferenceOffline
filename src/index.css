@@ -80,7 +80,7 @@ div {
 }
 section {
   position: relative; /* MOBILE */
-  padding: 35px 0;
+  padding: 50px 0;
   overflow: hidden;
 }
 ul,
@@ -119,12 +119,25 @@ button{
   margin: 0 auto; /* MOBILE */
   padding: 0 20px;
 }
+.btwSectionText{
+  margin-bottom: 40px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  position: relative;
+  left: 50%;
+  z-index: 2;
+}
 
 @media (min-width:876px){
   section{
-    padding: 50px 0;
+    padding: 100px 0;
   }
   .container{
     padding: 0 40px;
+  }
+  .btwSectionText{
+    margin-bottom: 80px;
+    font-size: 18px;
   }
 }

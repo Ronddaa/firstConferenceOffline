@@ -255,7 +255,7 @@ export default function SpeakersSection() {
       id="speakersSectionAnchor"
       ref={containerRef}
     >
-      <p className={styles.textBtwSection}>(наші спікери)</p>
+      <p className="btwSectionText">(наші спікери)</p>
       <div ref={wrapperRef} className={styles.swiperCustomWrapper}>
         <div className={styles.swiperInner}>
           {speakers.map((speaker, index) => (

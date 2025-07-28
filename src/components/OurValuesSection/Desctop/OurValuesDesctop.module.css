@@ -1,8 +1,3 @@
-.textBtw{
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 100px;
-}
 .wrapperItemsList{
     display: flex;
     flex-direction: column;

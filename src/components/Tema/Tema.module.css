@@ -88,21 +88,7 @@ li .defoultStylestitle3{
   color: #FFFCF9;
 }
 
-.textSection {
-  font-size: 12px;
-  font-weight: 500;
-  position: absolute;
-  top: 70px;
-  right: 64px;
-  z-index: 2;
-  text-transform: uppercase;
-}
 @media (min-width:768px){
-  .textSection{
-    font-size: 18px;
-    right: 40%;
-    opacity: 0.8;
-  }
   .defoultStylestitle, .defoultStylestitle2, .defoultStylestitle3, .defoultStylestitle4{
     font-size: 6vw;
   }
