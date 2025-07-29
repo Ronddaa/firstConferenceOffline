@@ -30,7 +30,7 @@ export default function TicketsForm({ isOpen, onClose }) {
   });
 
 const tariffs = [
-  { name: "LAST MINUTE", price: 770 },
+  { name: "LAST MINUTE", price: 550 },
   { name: "GOLD", price: 990 },
   { name: "PREMIUM", price: 1900 },
   { name: "LUXE", price: 5000 },

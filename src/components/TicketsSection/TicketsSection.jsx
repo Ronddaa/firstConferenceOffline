@@ -147,7 +147,7 @@ const toggleListGold = () => {
                 / <span>200&euro;</span>
               </p>
               <p className={styles.priceText}>
-                770
+                550
                 <span className={styles.priceValue}>
                   <span className={styles.priceValue}>
                     <span className={styles.priceValue}>pln</span>
