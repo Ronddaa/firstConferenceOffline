@@ -161,7 +161,7 @@
 .heartList{
     display: flex;
     flex-direction: column;
-    gap: 70px;
+    gap: 40px;
     border-left: 1px solid #1B2021;
     padding-left: 40px;
 }
@@ -169,7 +169,7 @@
     max-width: 100%;
 }
 .number{
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     color: #1B2021;
     font-size: 18px;
     font-weight: 600;

@@ -132,7 +132,11 @@
   text-transform: uppercase;
   width: 100%;
 }
-
+.TicketsLastMinute .priceText{
+  border-bottom: 1px solid #1b2021;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+}
 .TicketsPremium .priceText {
   color: #fffcf9;
   padding: 30px 0;
@@ -171,6 +175,11 @@
   border-radius: 10px;
   text-transform: uppercase;
   width: 100%;
+}
+.TicketsLastMinute .btnBuyTariffGold{
+  cursor: not-allowed;
+  background: #797979;
+  color: #fffcf9;
 }
 
 .btnBuyTariffPremium {

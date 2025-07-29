@@ -64,7 +64,7 @@
   backdrop-filter: blur(4px);
   border-top: 1px solid #FFFFAC;
   left: 0;
-  padding: 20px;
+  padding: 25px 20px;
 }
 .speakerName{
   font-family: "Unbounded";
@@ -77,12 +77,9 @@
   background-clip: text;
   white-space: pre-line;
 }
-.speakerNameClass3{
+.speakerNameClass1, .speakerNameClass10{
   font-size: 18px;
-  padding: 4px 0;
-}
-.speakerNameClass10{
-  font-size: 22px;
+  padding: 5px 0;
 }
 .speakerNameClassLast{
   font-size: 18px;
@@ -168,17 +165,8 @@
     width: 360px;
     height: 540px;
   }
-  .speakerName{
-    font-size: 32px;
-    padding: 15px 0;
-  }
-  .speakerNameClass3{
-    font-size: 28px;
-    padding: 0;
-  }
   .speakerNameClass10{
-    font-size: 24px;
-    padding: 25px 0;
+    margin: -10px 0;
   }
   .speakerNameClassLast{
     font-size: 20px;
@@ -198,10 +186,6 @@
   width: max-content;
   gap: 20px;
   padding: 200px 20px 40px;
-}
-.speakerNameClass3{
-  font-size: 25px;
-  padding: 5px 0;
 }
 .contentDetails{
   margin: auto 0 50px;

@@ -4,7 +4,6 @@ import sprite from "../icons.svg";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Tolstikova from "./Tolstikova.webp";
-import Kozachkova from "./Kozachkova.webp";
 import Matushevska from "./Matushevska.webp";
 import Kozlova from "./Kozlova.webp";
 import Besborodih from "./Besborodih.webp";
@@ -18,6 +17,7 @@ import Hovorova from "./Hovorova.webp";
 import Prokopenko from "./Prokopenko.webp";
 import Zaliznyak from "./Zaliznyak.webp";
 import Volk from "./Volk.webp";
+import Bazhana from './Bazhana.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,15 +37,16 @@ export default function SpeakersSection() {
     const totalSlides = slidesRef.current.length;
     const container = wrapperRef.current;
 
+    gsap.set(slidesRef.current, { xPercent: 75 });
     const scrollTween = gsap.to(slidesRef.current, {
-      xPercent: -100 * (totalSlides - 1),
+      xPercent: -100 * (totalSlides - 2),
       ease: "none",
       scrollTrigger: {
         trigger: container,
         start: "bottom bottom",
         end: () => "+=" + container.offsetWidth,
         pin: true,
-        scrub: 1,
+        scrub: 3,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         horizontal: false,
@@ -61,128 +62,129 @@ export default function SpeakersSection() {
   const speakers = [
     {
       id: 1,
-      speakerName: "толстікова\nкатерина",
-      speakerTema:
-        "Їсти чи ні? Про що говорить наука: популярні міфи в дієтології",
-      image: Tolstikova,
-      speakerInstagram: "https://www.instagram.com/dr.tolstikova",
-      speakerClass: "speakerNameClass1",
-      numberOfSpeaker: "(01)",
-      moreInfoBtnClass: "moreInfoBtn",
-      contentDetails:
-        'Лікар загальної практики, дієтолог-ендокринолог, фуд-терапевт, спеціаліст в Anti-age харчуванні та функціональній медицині. Асистент кафедри біоорганічної та біологічної хімії НМУ ім. О. О. Богомольця. Аспірант.15 років у медицині, 12 років у дієтології та food-терапії. Спеціаліст в anti-age харчуванні. Спікер міжнародних наукових конференцій. Засновниця «Академії здоровʼя доктора Толстікової». Автор книг “Твій храм - здоров‘я”, "Стрес крiзь життя - мiй mood". Особистий лікар-дієтолог професійних спортсменів абсолютного чемпіона світу з боксу Олександра Усика, чемпіона Bellator Ярослава Амосова та тенісистки Катаріни Завацької та інших. Лікар дієтолог футбольного клубу Колос (Ковалівка).',
-    },
-    {
-      id: 2,
-      speakerName: "козачкова\nюлія",
-      speakerTema: "Ген грошей",
-      image: Kozachkova,
-      speakerInstagram: "https://www.instagram.com/kozachkova_yuliia",
-      speakerClass: "speakerNameClass2",
-      numberOfSpeaker: "(02)",
-      moreInfoBtnClass: "moreInfoBtn",
-      contentDetails:
-        "Психолог та коуч з одинадцятирічним досвідом практики, автор книги «Мистецтво БуТИ в ЦЕЙ:ЧАС», підприємиця, що створює WOW-продукти: мобільний додаток Teya, онлайн-магазин товарів Teya Shop, авторські тренінги, співзасновниця маркетингового агенства «Спокусливий бренд»",
-    },
-    {
-      id: 3,
       speakerName: "Матюшевська\nАнастасія-Олімпія",
       speakerTema: "Квантовий код жінки: як бажання створює реальність",
       image: Matushevska,
       speakerInstagram:
         "https://www.instagram.com/anastasia.olimpia.matushevska",
-      speakerClass: "speakerNameClass3",
-      numberOfSpeaker: "(03)",
+      speakerClass: "speakerNameClass1",
+      numberOfSpeaker: "(01)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
         "Психотерапевт, сексолог. Жінка, мама, партнерка, творчиня. Автор програм для майбутніх сексологів та психотерапевтів. Засновниця проєкту  «ЖІНКИ» - серії трансформаційних подій, ретритів і конференцій про глибину, сміливість і жіночу цілісність.",
     },
     {
-      id: 4,
+      id: 2,
       speakerName: "Козлова\nКатерина",
       speakerTema:
         "Автентичність і прояв: як жінці бути собою та масштабуватись через особистий бренд",
       image: Kozlova,
       speakerInstagram: "https://www.instagram.com/kozlova.katja",
-      speakerClass: "speakerNameClass4",
-      numberOfSpeaker: "(04)",
+      speakerClass: "speakerNameClass2",
+      numberOfSpeaker: "(02)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
         "Наставник особистих брендів, автор курсу по проявленості MANIFESTATION COURSE, трансформаційний маркетолог, модель, блогер",
     },
     {
-      id: 5,
-      speakerName: "Безбородих\nОлена",
+      id: 3,
+      speakerName: "толстікова\nкатерина",
       speakerTema:
-        '"Хороша дівчинка" не заробляє мільйони або Як жіночі сценарії формують фінансову стелю',
-      image: Besborodih,
-      speakerInstagram: "https://www.instagram.com/lenabezb",
-      speakerClass: "speakerNameClass5",
-      numberOfSpeaker: "(05)",
+        "Їсти чи ні? Про що говорить наука: популярні міфи в дієтології",
+      image: Tolstikova,
+      speakerInstagram: "https://www.instagram.com/dr.tolstikova",
+      speakerClass: "speakerNameClass3",
+      numberOfSpeaker: "(03)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Магістр бізнес адміністрування, викладач економіки, до війни керувала власним мережовим бізнесом понад 10 років, бакалавр психології, практикуючий психолог, гештальт-терапевт, тілесно-орієнтований терапевт.",
+        'Лікар загальної практики, дієтолог-ендокринолог, фуд-терапевт, спеціаліст в Anti-age харчуванні та функціональній медицині. Асистент кафедри біоорганічної та біологічної хімії НМУ ім. О. О. Богомольця. Аспірант.15 років у медицині, 12 років у дієтології та food-терапії. Спеціаліст в anti-age харчуванні. Спікер міжнародних наукових конференцій. Засновниця «Академії здоровʼя доктора Толстікової». Автор книг “Твій храм - здоров‘я”, "Стрес крiзь життя - мiй mood". Особистий лікар-дієтолог професійних спортсменів абсолютного чемпіона світу з боксу Олександра Усика, чемпіона Bellator Ярослава Амосова та тенісистки Катаріни Завацької та інших. Лікар дієтолог футбольного клубу Колос (Ковалівка).',
     },
     {
-      id: 6,
-      speakerName: "Стрипко\nТаня",
-      speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
-      image: Stripko,
-      speakerInstagram: "https://www.instagram.com/todorivaaa",
-      speakerClass: "speakerNameClass6",
-      numberOfSpeaker: "(06)",
-      moreInfoBtnClass: "moreInfoBtn",
-      contentDetails:
-        "Підприємиця з досвідом на трьох континентах: відкривала салони краси в таких країнах, як - Україна, Італія, Канада. Продюсер, власниця продюсерської агенції - заробила за 2 роки собі і експертам запуски на 1000000+$. Навчаю запускати навчальні проєкти, створювати  бренди з нуля. Запускаю експертів, які не просто красиво говорять, а дорого продають, власниця продюсерської агенції.",
-    },
-    {
-      id: 7,
+      id: 4,
       speakerName: "Щигрова\nЄвгенія",
       speakerTema: "Anti -Age, як код гнучкої жінки.\nAnti -Age та Stretching",
       image: Shihrova,
       speakerInstagram: "https://www.instagram.com/j.a.n.e_she/",
-      speakerClass: "speakerNameClass7",
-      numberOfSpeaker: "(07)",
+      speakerClass: "speakerNameClass4",
+      numberOfSpeaker: "(04)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
         "Дипломований спеціаліст у галузі «Фізична реабілітація» , персональний Тренер напрямку Stretching міжнародного рівня, власниця Online студії Jane System, спеціаліст з фітнес консалтінгу",
     },
     {
-      id: 8,
+      id: 5,
       speakerName: "Токар\nЯна",
       speakerTema:
         "Зовнішність можна покращити. Але чи вистачить сміливості стати собою?",
       image: Tokar,
       speakerInstagram: "https://www.instagram.com/dr.yana_tokar_",
-      speakerClass: "speakerNameClass8",
-      numberOfSpeaker: "(08)",
+      speakerClass: "speakerNameClass5",
+      numberOfSpeaker: "(05)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
         'Дерматологиня, хірургиня, доктор медицини, незалежний експерт світових брендів, спікер міжнародних конгресів, автор книги "Сонячна контрацепція" та YouTube каналу "не косметолог, а ЛІКАР", засновниця University of aesthetic medicine, спікер Польського інституту естетичної медицини.',
     },
     {
-      id: 9,
+      id: 6,
+      speakerName: "Безбородих\nОлена",
+      speakerTema:
+        '"Хороша дівчинка" не заробляє мільйони або Як жіночі сценарії формують фінансову стелю',
+      image: Besborodih,
+      speakerInstagram: "https://www.instagram.com/lenabezb",
+      speakerClass: "speakerNameClass6",
+      numberOfSpeaker: "(06)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Магістр бізнес адміністрування, викладач економіки, до війни керувала власним мережовим бізнесом понад 10 років, бакалавр психології, практикуючий психолог, гештальт-терапевт, тілесно-орієнтований терапевт.",
+    },
+    {
+      id: 7,
+      speakerName: "вікторія холмс\n(пруднікова)",
+      speakerTema: "Родові сценарії жінки, яка боїться мати більше",
+      image: Prudnikova,
+      speakerInstagram: "https://www.instagram.com/prudnikovavictoria/",
+      speakerClass: "speakerNameClass7",
+      numberOfSpeaker: "(7)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Експерт з ментальної генетики. Спеціалізується на виявленні підсвідомих неконструктивних моделей думок. Консультант, 12 000 інд. Консультацій за 13 років. Cоціолог. Блогер. Автор методики «PPF Past Present Future» та «АУДИТИ ЖИТТЯ».Автор проекту Наставництва «Жінка. Гроші. Призначення». Автор книги «Історія (не)звичайної жінки, або Випусти на волю свого генія»",
+    },
+    {
+      id: 8,
       speakerName: "Шотропа\nМішель",
       speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
       image: Shotropa,
       speakerInstagram: "https://www.instagram.com/mishel_shotropa",
-      speakerClass: "speakerNameClass9",
-      numberOfSpeaker: "(09)",
+      speakerClass: "speakerNameClass8",
+      numberOfSpeaker: "(08)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
         'Власниця маркетингової та PR-компанії "SHOTROPA MEDIA". 11 років у бізнесі. CEO "INSTAHACKS" - перше міжнародне комʼюніті для експертів. Співпрацюю з CHELSEA. Більше 4000+ учнів моїх навчальних програм по цілому світу',
     },
     {
+      id: 9,
+      speakerName: "Стрипко\nТаня",
+      speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
+      image: Stripko,
+      speakerInstagram: "https://www.instagram.com/todorivaaa",
+      speakerClass: "speakerNameClass9",
+      numberOfSpeaker: "(9)",
+      moreInfoBtnClass: "moreInfoBtn",
+      contentDetails:
+        "Підприємиця з досвідом на трьох континентах: відкривала салони краси в таких країнах, як - Україна, Італія, Канада. Продюсер, власниця продюсерської агенції - заробила за 2 роки собі і експертам запуски на 1000000+$. Навчаю запускати навчальні проєкти, створювати  бренди з нуля. Запускаю експертів, які не просто красиво говорять, а дорого продають, власниця продюсерської агенції.",
+    },
+
+    {
       id: 10,
-      speakerName: "вікторія холмс\n(пруднікова)",
-      speakerTema: "Родові сценарії жінки, яка боїться мати більше",
-      image: Prudnikova,
-      speakerInstagram: "https://www.instagram.com/prudnikovavictoria/",
+      speakerName: "Ольга\nЖивоткова\n(Бажана)",
+      speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
+      image: Bazhana,
+      speakerInstagram: "https://www.instagram.com/bazhana/",
       speakerClass: "speakerNameClass10",
       numberOfSpeaker: "(10)",
       moreInfoBtnClass: "moreInfoBtn",
       contentDetails:
-        "Експерт з ментальної генетики. Спеціалізується на виявленні підсвідомих неконструктивних моделей думок. Консультант, 12 000 інд. Консультацій за 13 років. Cоціолог. Блогер. Автор методики «PPF Past Present Future» та «АУДИТИ ЖИТТЯ».Автор проекту Наставництва «Жінка. Гроші. Призначення». Автор книги «Історія (не)звичайної жінки, або Випусти на волю свого генія»",
+        'Авторка пісень, співачка та музичний продюсер. Входить до числа найбільш затребуваних сонграйтерів в Україні. Її пісні виконують такі зірки, як Оля Полякова, Лобода, Злата Огнєвіч, ALEKSEEV, Ірина Білик, Наталія Могилевська, Міка Ньютон, Аліна Гросу та багато інших. Написала гімн Краматорську - одну зі своїх найзнаковіших робіт. Наразі продовжує творчу діяльність: продюсує артистів, виступає сольно та готує власні проєкти. Нагороджена орденом "За службу та звитягу" ІІІ ступеня.',
     },
     {
       id: 11,
@@ -213,7 +215,8 @@ export default function SpeakersSection() {
     {
       id: 13,
       speakerName: "Залізняк\nВіталія",
-      speakerTema: "Фінансова незалежність жінки. Як за допомогою інвестицій вирости в грошах у 2025 році.",
+      speakerTema:
+        "Фінансова незалежність жінки. Як за допомогою інвестицій вирости в грошах у 2025 році.",
       image: Zaliznyak,
       speakerInstagram:
         "https://www.instagram.com/vita_liia_/profilecard/?igsh=NmNmaGdhOXlsNjZp",

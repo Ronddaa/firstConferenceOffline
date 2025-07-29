@@ -72,11 +72,11 @@ export default function DonationComp() {
                 <li>
                   <p className={styles.number}>(03)</p>
                   <h3 className={styles.titleNumber}>
-                    Донат на 1000€ = 2000€ сертифікат на керамічні реставрації
-                    від <span>@kazo.younique</span>
+                    Донат на 500€ = <br /> 1000€ сертифікат на керамічні
+                    реставрації від <span>@kazo.younique</span>
                   </h3>
                   <p className={styles.textUnderTitleNumber}>
-                    *при виконанні від 10 реставрацій
+                    *при виконанні від 5 реставрацій
                   </p>
                   <p className={styles.textUnderTitleNumber}>
                     *сертифікат можна оформити для подарунку вашим рідним або

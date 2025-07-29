@@ -51,7 +51,7 @@ const toggleListGold = () => {
           <li className={styles.styleForTicketsIMG}>
             <article className={styles.TicketsLastMinute}>
               <h3 className={styles.titleLM}>LAST MINUTE</h3>
-              <p className={styles.kolPlace}>Залишилось 7 місць</p>
+              <p className={styles.kolPlace}>SOLD OUT</p>
               <ul className={styles.wrapperDetailsTariff}>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
@@ -147,20 +147,14 @@ const toggleListGold = () => {
                 / <span>200&euro;</span>
               </p>
               <p className={styles.priceText}>
-                550
-                <span className={styles.priceValue}>
-                  <span className={styles.priceValue}>
-                    <span className={styles.priceValue}>pln</span>
-                  </span>
-                </span>{" "}
-                /<span className={styles.priceEuro}>130&euro;</span>
+                sold out                
               </p>
-              <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>
               <button
                 className={styles.btnBuyTariffGold}
                 onClick={() => {
                   setmodalTickets(true);
                 }}
+                disabled
               >
                 придбати квиток
               </button>

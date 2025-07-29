@@ -4,7 +4,7 @@ import { TelegramUser } from "../db/models/telegramUsers.js";
 
 dotenv.config();
 
-const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
+const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: false });
 
 const adminId = 718830020; // My Telegram ID
 
