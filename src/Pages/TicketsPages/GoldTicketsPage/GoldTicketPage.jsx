@@ -9,10 +9,10 @@ import { useEffect } from "react";
 import QRCode from "qrcode";
 
 export default function GoldTicketPage() {
-  const { invoiceId } = useParams();
+  const { unifieduserId } = useParams();
 
   useEffect(() => {
-    if (!invoiceId) return;
+    if (!unifieduserId) return;
 
     const canvas = document.getElementById("qrCodeCanvas");
     if (!canvas) {
@@ -21,7 +21,7 @@ export default function GoldTicketPage() {
     }
     // link to the admin panel, where security quard will check
     // ticket data
-    const qrCodeLink = `https://admin.women.place/check/${invoiceId}`;
+    const qrCodeLink = `https://admin.women.place/check/${unifieduserId}`;
     QRCode.toCanvas(
       canvas,
       qrCodeLink,
@@ -37,7 +37,7 @@ export default function GoldTicketPage() {
         else console.log("QR code rendered successfully");
       }
     );
-  }, [invoiceId]);
+  }, [unifieduserId]);
 
   return (
     <section className={styles.GoldTicketPage}>

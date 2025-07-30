@@ -1,12 +1,12 @@
-import { InvoicesCollection } from "../db/models/invoices.js";
+import { unifiedusersCollection } from "../db/models/unifiedusers.js";
 import {
-  createInvoice,
-  getAllInvoices,
-  getInvoiceById,
-} from "../services/invoices.js";
+  createunifieduser,
+  getAllunifiedusers,
+  getunifieduserById,
+} from "../services/unifiedusers.js";
 import { sendTicket } from "../utils/sendTicket.js";
 
-export const createInvoiceController = async (req, res) => {
+export const createunifieduserController = async (req, res) => {
   const payload = req.body;
 
   //   try {
@@ -28,36 +28,36 @@ export const createInvoiceController = async (req, res) => {
   //   }
 
   // Создание новой записи
-  const invoice = await createInvoice(payload);
+  const unifieduser = await createunifieduser(payload);
   res.status(201).json({
     status: 201,
-    message: "Successfully created an invoice!",
-    data: invoice,
+    message: "Successfully created an unifieduser!",
+    data: unifieduser,
   });
 };
 
-export const getAllInvoicesController = async (req, res) => {
-  const invoice = await getAllInvoices();
+export const getAllunifiedusersController = async (req, res) => {
+  const unifieduser = await getAllunifiedusers();
   res.status(200).json({
     status: 200,
-    message: "Invoices was successfully found!",
-    data: invoice,
+    message: "unifiedusers was successfully found!",
+    data: unifieduser,
   });
 };
 
-export const getInvoiceByIdController = async (req, res) => {
-  const invoice = await getInvoiceById(req.params.id);
+export const getunifieduserByIdController = async (req, res) => {
+  const unifieduser = await getunifieduserById(req.params.id);
   res.status(200).json({
     status: 200,
-    message: "Invoice was successfully found!",
-    data: invoice,
+    message: "unifieduser was successfully found!",
+    data: unifieduser,
   });
 };
 
 export const sendTicketToUserController = async (req, res) => {
-  const invoice = await InvoicesCollection.findById(req.params.id);
-  const ticketName = invoice.purchase.tariffs[0].toLowerCase() + "Ticket";
-  const response = await sendTicket(invoice, ticketName);
+  const unifieduser = await unifiedusersCollection.findById(req.params.id);
+  const ticketName = unifieduser.purchase.tariffs[0].toLowerCase() + "Ticket";
+  const response = await sendTicket(unifieduser, ticketName);
   res.status(200).json({
     status: 200,
     message: "Ticket was successfully sent!",

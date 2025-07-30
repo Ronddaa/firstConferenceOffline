@@ -8,35 +8,35 @@ import api from "../../api/api";
 import { useParams } from "react-router-dom";
 
 export default function PageThx() {
-  const { invoiceId } = useParams();
-  const [invoiceData, setInvoiceData] = useState(null);
+  const { unifieduserId } = useParams();
+  const [unifieduserData, setunifieduserData] = useState(null);
   const ticketRef = useRef(null);
   const [ticketUrl, setTicketUrl] = useState(null);
 
   useEffect(() => {
-    if (!invoiceId) return;
+    if (!unifieduserId) return;
 
-    async function fetchInvoice() {
+    async function fetchunifieduser() {
       try {
-        const response = await api.getInvoiceById(invoiceId);
-        const invoice = response.data;
-        console.log(invoice);
-        setInvoiceData(invoice);
-        const tariffName = invoice.purchase.tariffs[0].toLowerCase();
+        const response = await api.getunifieduserById(unifieduserId);
+        const unifieduser = response.data;
+        console.log(unifieduser);
+        setunifieduserData(unifieduser);
+        const tariffName = unifieduser.purchase.tariffs[0].toLowerCase();
         const url = `${import.meta.env.VITE_FE_URL}/ticket/${tariffName}/${
-          invoice._id
+          unifieduser._id
         }`;
         setTicketUrl(url);
       } catch (error) {
         console.log("Failed to load ticket URL:", error);
       }
     }
-    fetchInvoice();
-  }, [invoiceId]);
+    fetchunifieduser();
+  }, [unifieduserId]);
 
   const handleDownloadTicket = async () => {
     if (!ticketRef.current) return;
-    if (!invoiceData) return;
+    if (!unifieduserData) return;
     const iframe = ticketRef.current;
     try {
       const iframeDocument =
@@ -47,7 +47,7 @@ export default function PageThx() {
         useCORS: true,
         backgroundColor: null,
       });
-      const tariffName = invoiceData.purchase.tariffs[0].toLowerCase();
+      const tariffName = unifieduserData.purchase.tariffs[0].toLowerCase();
       const link = document.createElement("a");
       link.download = `warsawcode-${tariffName}-ticket.png`;
       link.href = canvas.toDataURL("image/png");
@@ -59,7 +59,7 @@ export default function PageThx() {
 
   const handleSentTicketByEmail = async () => {
     try {
-      await api.sendTicketOnMailByInvoiceId(invoiceId);
+      await api.sendTicketOnMailByunifieduserId(unifieduserId);
       alert("Ваш квиток було успішно надіслано на пошту!");
     } catch (error) {
       alert(

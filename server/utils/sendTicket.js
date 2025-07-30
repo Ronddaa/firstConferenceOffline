@@ -3,7 +3,7 @@ import QRCode from "qrcode";
 import { sendEmail } from "./sendEmail.js";
 import { renderTemplate } from "./renderTemplate.js";
 
-export async function sendTicket(invoice, ticketName) {
+export async function sendTicket(unifieduser, ticketName) {
   // 1. Генерируем QR-код в base64
   const getCorrectQrCodeBackgroundColor = () => {
     switch (ticketName) {
@@ -19,7 +19,7 @@ export async function sendTicket(invoice, ticketName) {
   };
 
   const qrBuffer = await QRCode.toBuffer(
-    `https://admin.women.place/check/${invoice._id}`,
+    `https://admin.women.place/check/${unifieduser._id}`,
     {
       color: {
         dark: ticketName === "luxeTicket" ? "#ffffff" : "#000000",
@@ -28,14 +28,14 @@ export async function sendTicket(invoice, ticketName) {
     }
   );
 
-  console.log(`${ticketName} was sent to ${invoice.user.email}`);
+  console.log(`${ticketName} was sent to ${unifieduser.user.email}`);
   const ticketHtml = await renderTemplate(ticketName, {});
 
   const thxForPaymentHtml = await renderTemplate("thxForPayment", {});
 
   try {
     await sendEmail({
-      to: invoice.user.email,
+      to: unifieduser.user.email,
       subject: "А ось і твій квиток, як і обіцяли)",
       html: ticketHtml,
       attachments: [
@@ -50,5 +50,5 @@ export async function sendTicket(invoice, ticketName) {
     console.log(error);
   }
 
-  return { status: "success", email: invoice.user.email };
+  return { status: "success", email: unifieduser.user.email };
 }

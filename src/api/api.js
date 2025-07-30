@@ -43,7 +43,7 @@ class ApiClient {
   }
 
   async createHelperUserFormApplication(payload) {
-    const { data } = await this.axiosInstance.post("/helperusers", payload)
+    const { data } = await this.axiosInstance.post("/helperusers", payload);
     return data.data;
   }
 
@@ -65,26 +65,26 @@ class ApiClient {
     return data;
   }
 
-  async getInvoiceById(id) {
-    const { data } = await this.axiosInstance.get(`/invoices/${id}`);
+  async getunifieduserById(id) {
+    const { data } = await this.axiosInstance.get(`/unifiedusers/${id}`);
     return data;
   }
 
-  async sendTicketOnMailByInvoiceId(id) {
+  async sendTicketOnMailByunifieduserId(id) {
     const { data } = await this.axiosInstance.post(
-      `/invoices/sendTicket/${id}`
+      `/unifiedusers/sendTicket/${id}`
     );
     return data;
   }
 
   async checkPromoCode(code) {
-  try {
-    const { data } = await this.axiosInstance.get(`/promo/${code}`);
-    return data;
-  } catch (error) {
-    this.handleError(error);
+    try {
+      const { data } = await this.axiosInstance.get(`/promo/${code}`);
+      return data;
+    } catch (error) {
+      this.handleError(error);
+    }
   }
-}
 }
 
 const api = new ApiClient();
