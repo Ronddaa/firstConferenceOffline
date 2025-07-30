@@ -1,15 +1,15 @@
 import { Router } from "express";
-import { InvoicesCollection } from "../db/models/invoices.js";
+import { unifiedusersCollection } from "../db/models/unifiedusers.js";
 
 const router = Router();
 
-router.get("/:invoiceId", async (req, res) => {
+router.get("/:unifieduserId", async (req, res) => {
   try {
-    const { invoiceId } = req.params;
+    const { unifieduserId } = req.params;
 
-    // Ищем по paymentData.invoiceId
-    const ticket = await InvoicesCollection.findOne({
-      "paymentData.invoiceId": invoiceId,
+    // Ищем по paymentData.unifieduserId
+    const ticket = await unifiedusersCollection.findOne({
+      "paymentData.unifieduserId": unifieduserId,
     });
 
     if (!ticket) {

@@ -9,10 +9,13 @@ import env from "./utils/env.js";
 import cookieParser from "cookie-parser";
 import initMongoConnection from "./db/initMongoConnection.js";
 
-import { InvoicesCollection } from "./db/models/invoices.js";
+import { unifiedusersCollection } from "./db/models/unifiedusers.js";
 import router from "./routers/index.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
-import { createInvoice, updateInvoiceById } from "./services/invoices.js";
+import {
+  createunifieduser,
+  updateunifieduserById,
+} from "./services/unifiedusers.js";
 import { sendTicket } from "./utils/sendTicket.js";
 import { utmTracker } from "./middlewares/utmMarks.js";
 
@@ -116,7 +119,7 @@ app.post("/api/create-payment", async (req, res) => {
   }
 
   try {
-    const invoice = await createInvoice({ user, purchase, utmMarks });
+    const unifieduser = await createunifieduser({ user, purchase, utmMarks });
 
     const rate = await getPLNtoUAHRate();
     const convertedAmount = Math.round(purchase.totalAmount * rate * 100);
@@ -126,9 +129,9 @@ app.post("/api/create-payment", async (req, res) => {
       } UAH`
     );
 
-    const redirectUrl = `https://warsawkod.women.place/thank-you/${invoice._id}`;
+    const redirectUrl = `https://warsawkod.women.place/thank-you/${unifieduser._id}`;
     const response = await axios.post(
-      "https://api.monobank.ua/api/merchant/invoice/create",
+      "https://api.monobank.ua/api/merchant/unifieduser/create",
       {
         amount: convertedAmount,
         ccy: 980,
@@ -144,14 +147,14 @@ app.post("/api/create-payment", async (req, res) => {
     );
 
     const paymentData = {
-      invoiceId: response.data.invoiceId,
+      unifieduserId: response.data.unifieduserId,
       status: "pending",
     };
 
-    await updateInvoiceById(invoice._id, { paymentData });
+    await updateunifieduserById(unifieduser._id, { paymentData });
 
     res.status(200).json({
-      invoiceId: response.data.invoiceId,
+      unifieduserId: response.data.unifieduserId,
       pageUrl: response.data.pageUrl,
     });
   } catch (error) {
@@ -165,25 +168,25 @@ app.post("/api/create-payment", async (req, res) => {
 
 // ---------- Callback MonoBank ----------
 app.post("/api/payment-callback", async (req, res) => {
-  const { invoiceId, status } = req.body;
+  const { unifieduserId, status } = req.body;
   console.log("Received payment callback:", {
-    invoiceId,
+    unifieduserId,
     status,
     timestamp: new Date().toISOString(),
   });
 
-  if (!invoiceId || !status) {
-    return res.status(400).json({ error: "Missing invoiceId or status" });
+  if (!unifieduserId || !status) {
+    return res.status(400).json({ error: "Missing unifieduserId or status" });
   }
 
   try {
-    const invoice = await InvoicesCollection.findOne({
-      "paymentData.invoiceId": invoiceId,
+    const unifieduser = await unifiedusersCollection.findOne({
+      "paymentData.unifieduserId": unifieduserId,
     });
 
-    if (!invoice) {
-      console.log("Invoice not found for invoiceId:", invoiceId);
-      return res.status(404).json({ error: "Invoice not found" });
+    if (!unifieduser) {
+      console.log("unifieduser not found for unifieduserId:", unifieduserId);
+      return res.status(404).json({ error: "unifieduser not found" });
     }
 
     const statusMap = {
@@ -191,16 +194,16 @@ app.post("/api/payment-callback", async (req, res) => {
       pending: "pending",
     };
 
-    invoice.paymentData.status = statusMap[status] || "failed";
-    await updateInvoiceById(invoice._id, invoice);
+    unifieduser.paymentData.status = statusMap[status] || "failed";
+    await updateunifieduserById(unifieduser._id, unifieduser);
 
     // ✅ Если платеж успешен — помечаем промокод как использованный
-    if (status === "success" && invoice.purchase.promoCode) {
+    if (status === "success" && unifieduser.purchase.promoCode) {
       try {
         const file = await readFile(promoPath, "utf-8");
         const promoCodes = JSON.parse(file);
         const promoIndex = promoCodes.findIndex(
-          (p) => p.code === invoice.purchase.promoCode && !p.used
+          (p) => p.code === unifieduser.purchase.promoCode && !p.used
         );
 
         if (promoIndex !== -1) {

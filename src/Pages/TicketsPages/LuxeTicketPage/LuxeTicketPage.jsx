@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 
 export default function LuxeTicketPage() {
-  const { invoiceId } = useParams();
+  const { unifieduserId } = useParams();
   const [brunchSelected, setBrunchSelected] = useState(null);
   const [tariff, setTariff] = useState(null);
   const [generatedPromo, setGeneratedPromo] = useState("");
@@ -21,12 +21,12 @@ export default function LuxeTicketPage() {
   };
 
   useEffect(() => {
-    if (!invoiceId) return;
+    if (!unifieduserId) return;
 
     // Подгружаем данные билета
     const fetchTicketData = async () => {
       try {
-        const res = await fetch(`/api/tickets/${invoiceId}`);
+        const res = await fetch(`/api/tickets/${unifieduserId}`);
         const data = await res.json();
 
         setBrunchSelected(data.brunchSelected);
@@ -57,16 +57,16 @@ export default function LuxeTicketPage() {
     };
 
     fetchTicketData();
-  }, [invoiceId]);
+  }, [unifieduserId]);
 
   // Генерация QR-кода
   useEffect(() => {
-    if (!invoiceId) return;
+    if (!unifieduserId) return;
 
     const canvas = document.getElementById("qrCodeCanvas");
     if (!canvas) return;
 
-    const qrCodeLink = `https://admin.women.place/check/${invoiceId}`;
+    const qrCodeLink = `https://admin.women.place/check/${unifieduserId}`;
     QRCode.toCanvas(
       canvas,
       qrCodeLink,
@@ -81,7 +81,7 @@ export default function LuxeTicketPage() {
         if (err) console.error("QR code error:", err);
       }
     );
-  }, [invoiceId]);
+  }, [unifieduserId]);
 
   return (
     <section className={styles.LuxeTicketPage}>

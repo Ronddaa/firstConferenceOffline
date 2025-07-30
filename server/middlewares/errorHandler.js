@@ -1,4 +1,5 @@
 import { HttpError } from 'http-errors';
+import { MongooseError } from 'mongoose';
 
 export const errorHandler = (err, req, res, next) => {
   if (err instanceof HttpError) {
@@ -17,4 +18,14 @@ export const errorHandler = (err, req, res, next) => {
       message: err.message,
     },
   });
+
+  if(err instanceof MongooseError) {
+    res.status(400).json({
+      status: 400,
+      message: 'Database error',
+      data: {
+        message: err.message,
+      },
+    });
+  }
 };
