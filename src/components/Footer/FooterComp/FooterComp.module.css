@@ -8,12 +8,14 @@
     align-items: center;
     gap: 20px;
 }
-.wrapperNavigationList{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    gap: 10px 131px;
-    max-height: 100px;
+.wrapperNavigationList {
+  column-count: 3;
+  column-gap: 100px;
+}
+
+.wrapperNavigationList li {
+  break-inside: avoid;
+  margin-bottom: 10px;
 }
 .navigationLinkFooter{
     color: #1B2021;
