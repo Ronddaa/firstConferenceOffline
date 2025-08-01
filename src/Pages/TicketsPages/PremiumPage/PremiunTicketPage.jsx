@@ -5,40 +5,77 @@ import ourDress1 from "../ourDress1.webp";
 import ourDress2 from "../ourDress2.webp";
 import ourDress3 from "../ourDress3.webp";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 
 export default function PremiumTicketPage() {
-  const { unifieduserId } = useParams();
+  const { unifieduserId, conferenceId } = useParams();
+  const [ticketDetails, setTicketDetails] = useState(null); // Состояние для хранения данных билета
 
   useEffect(() => {
-    if (!unifieduserId) return;
-
-    const canvas = document.getElementById("qrCodeCanvas");
-    if (!canvas) {
-      console.warn("Canvas not found");
+    // Проверяем наличие обоих ID
+    if (!unifieduserId || !conferenceId) {
+      console.warn("Missing unifieduserId or conferenceId in URL parameters.");
       return;
     }
 
-    // link to the admin panel, where security quard will check
-    // ticket data
-    const qrCodeLink = `https://admin.women.place/check/${unifieduserId}`;
-    QRCode.toCanvas(
-      canvas,
-      qrCodeLink,
-      {
-        width: 200,
-        color: {
-          dark: "#1B2021",
-          light: "#FFFFFF00",
-        },
-      },
-      (err) => {
-        if (err) console.error("QR code error:", err);
-        else console.log("QR code rendered successfully");
+    // --- Шаг 1: Загрузка данных о билете ---
+    const fetchTicketData = async () => {
+      try {
+        // Здесь вам нужно сделать запрос к вашему бэкенду,
+        // чтобы получить конкретную конференцию для этого пользователя.
+        // Пример API-эндпоинта: GET /api/users/:unifieduserId/conferences/:conferenceId
+        // или GET /api/tickets/:conferenceId (если conferenceId сам по себе уникален)
+        const response = await fetch(
+          `/api/users/${unifieduserId}/conferences/${conferenceId}`
+        ); // Замените на ваш фактический эндпоинт
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json(); // Ожидаем, что бэкенд вернет объект конференции
+        setTicketDetails(data); // Сохраняем данные билета в состоянии
+        console.log("Ticket data fetched:", data);
+
+        // --- Шаг 2: Генерация QR-кода после получения данных ---
+        const canvas = document.getElementById("qrCodeCanvas");
+        if (!canvas) {
+          console.warn("Canvas not found");
+          return;
+        }
+
+        // QR-код теперь будет содержать оба ID
+        // Это позволит админ-панели точно знать, какой конкретно билет проверяется
+        const qrCodeLink = `https://admin.women.place/check/${unifieduserId}/${conferenceId}`;
+        QRCode.toCanvas(
+          canvas,
+          qrCodeLink,
+          {
+            width: 200,
+            color: {
+              dark: "#1B2021",
+              light: "#FFFFFF00",
+            },
+          },
+          (err) => {
+            if (err) console.error("QR code error:", err);
+            else console.log("QR code rendered successfully for:", qrCodeLink);
+          }
+        );
+      } catch (error) {
+        console.error("Failed to fetch ticket data:", error);
+        // Можно показать сообщение об ошибке пользователю
       }
+    };
+
+    fetchTicketData();
+  }, [unifieduserId, conferenceId]); // Зависимости useEffect
+
+  // Добавьте условный рендеринг, пока данные загружаются
+  if (!ticketDetails) {
+    return (
+      <section className={styles.PremiumPage}>Завантаження квитка...</section>
     );
-  }, [unifieduserId]);
+  }
 
   return (
     <section className={styles.PremiumTicketPage}>

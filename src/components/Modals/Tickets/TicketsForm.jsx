@@ -7,13 +7,15 @@ import { sendLeadToMeta } from "../../../utils/sendLeadToMeta";
 
 export default function TicketsForm({ isOpen, onClose }) {
   const initialState = {
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     telegramNick: "",
     tariff: "",
     quantity: 1,
     promoCode: "",
+    takeBrunch: false, // Добавлено для бранча
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -21,7 +23,6 @@ export default function TicketsForm({ isOpen, onClose }) {
   const [promoError, setPromoError] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [brunchSelected, setBrunchSelected] = useState(false);
-  // const [brunchPromoCode, setBrunchPromoCode] = useState(null);
 
   const [utmParams, setUtmParams] = useState({
     utm_source: "",
@@ -29,13 +30,13 @@ export default function TicketsForm({ isOpen, onClose }) {
     utm_campaign: "",
   });
 
-const tariffs = [
-  // { name: "LAST MINUTE", price: 550 },
-  { name: "GOLD", price: 990 },
-  { name: "PREMIUM", price: 1900 },
-  { name: "LUXE", price: 5000 },
-  { name: "BRUNCH", price: 1100 }, // ← Добавили
-];
+  const tariffs = [
+    // { name: "LAST MINUTE", price: 1 },
+    { name: "GOLD", price: 990 },
+    { name: "PREMIUM", price: 1900 },
+    { name: "LUXE", price: 5000 },
+    { name: "BRUNCH", price: 1100 },
+  ];
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -57,8 +58,7 @@ const tariffs = [
       try {
         const res = await fetch(`/api/promo/${formData.promoCode}`);
         const data = await res.json();
-        console.log();
-        
+        // console.log("Promo API response:", data); // Для отладки
 
         if (res.ok && data.valid) {
           setPromoInfo(data);
@@ -68,19 +68,26 @@ const tariffs = [
           setPromoError("Промокод недійсний або вже використаний");
         }
       } catch (err) {
+        console.error("Ошибка при проверке промокода на фронте:", err);
         setPromoInfo(null);
         setPromoError("Помилка при перевірці промокода");
       }
     };
 
-    checkPromoCode();
+    const delayDebounceFn = setTimeout(() => {
+      checkPromoCode();
+    }, 300); // Небольшая задержка для debounce
+
+    return () => clearTimeout(delayDebounceFn);
   }, [formData.promoCode]);
 
+  // Общий обработчик изменений в полях формы
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
+  // Обработчик изменения количества билетов
   const handleQuantityChange = (delta) => {
     setFormData((prev) => ({
       ...prev,
@@ -88,14 +95,21 @@ const tariffs = [
     }));
   };
 
+  // Обработчик выбора тарифа из выпадающего списка
   const handleSelectTariff = (name) => {
     setFormData((prev) => ({ ...prev, tariff: name }));
     setDropdownOpen(false);
   };
 
-  const getBrunchPrice = () => {
-    if (!brunchSelected) return 0;
+  // Обработчик для чекбокса бранча
+  const toggleBrunch = () => {
+    setBrunchSelected((prev) => !prev);
+    setFormData((prev) => ({ ...prev, takeBrunch: !prev })); // Обновляем takeBrunch в formData
+  };
 
+  // Логика расчета стоимости бранча (зависит от selectedTariff и quantity)
+  const getBrunchPrice = () => {
+    if (!formData.takeBrunch) return 0; // Используем formData.takeBrunch
     const tariff = formData.tariff.toLowerCase();
     let discount = 0;
 
@@ -107,72 +121,98 @@ const tariffs = [
     if (!brunch) return 0;
 
     const pricePerPerson = Math.round(brunch.price * (1 - discount));
-    return pricePerPerson * formData.quantity; // ← ключевая строка
+    return pricePerPerson * formData.quantity;
   };
 
-const calculateTotal = () => {
+  // Логика расчета общей суммы (в PLN), включая тариф, количество, промокод и бранч
+  const calculateTotal = () => {
     const selected = tariffs.find((t) => t.name === formData.tariff);
-  if (!selected) return 0;
+    if (!selected) return 0;
 
-  const tariffName = selected.name.toLowerCase();
+    const tariffName = selected.name.toLowerCase();
 
-  // Промокод приоритетен
-  if (
-    promoInfo &&
-    promoInfo.tariff.toLowerCase() === tariffName &&
-    !promoError
-  ) {
-    return promoInfo.fixedPrice * formData.quantity;
-  }
+    // Промокод имеет приоритет
+    if (
+      promoInfo &&
+      promoInfo.tariff?.toLowerCase() === tariffName && // Проверка на tariff? для безопасности
+      !promoError
+    ) {
+      return promoInfo.fixedPrice * formData.quantity;
+    }
 
-  let price = selected.price;
+    let price = selected.price;
 
-  // ✅ Спецусловие для startubhub
-  if (utmParams.utm_medium === "startubhub") {
-    if (tariffName === "premium") price = 1720;
-    if (tariffName === "luxe") price = 4700;
-  }
+    // Специальные условия для UTM-меток
+    if (utmParams.utm_medium === "startubhub") {
+      if (tariffName === "premium") price = 1720;
+      if (tariffName === "luxe") price = 4700;
+    }
 
-  const isDiscount =
-    utmParams.utm_medium === "discount" &&
-    ["luxe", "premium"].includes(tariffName);
+    const isDiscount =
+      utmParams.utm_medium === "discount" &&
+      ["luxe", "premium"].includes(tariffName);
 
-  if (isDiscount) price *= 0.9;
+    if (isDiscount) price *= 0.9;
 
-  const isGoldAsLast =
-    utmParams.utm_medium === "goldAsLast" && tariffName === "gold";
+    const isGoldAsLast =
+      utmParams.utm_medium === "goldAsLast" && tariffName === "gold";
 
-  if (isGoldAsLast) {
-    const last = tariffs.find((t) => t.name.toLowerCase() === "last minute");
-    if (last) price = last.price;
-  }
+    if (isGoldAsLast) {
+      const last = tariffs.find((t) => t.name.toLowerCase() === "last minute");
+      if (last) price = last.price;
+    }
 
-  if (tariffName === "brunch") {
-    return selected.price * formData.quantity;
-  }
+    // Отдельный тариф BRUNCH
+    if (tariffName === "brunch") {
+      return selected.price * formData.quantity;
+    }
 
-  return Math.round(price * formData.quantity + getBrunchPrice());
-};
+    return Math.round(price * formData.quantity + getBrunchPrice());
+  };
 
-const isFormValid = Object.entries(formData).every(([key, value]) => {
-  if (key === "quantity") return value > 0;
-  if (key === "promoCode") return true; // ← промокод необязательный
-  return value.toString().trim() !== "";
-});
+  // Проверка валидности формы для активации кнопки "перейти до оплати"
+  const isFormValid = () => {
+    return (
+      formData.firstName.trim() !== "" &&
+      formData.lastName.trim() !== "" &&
+      formData.email.trim() !== "" &&
+      formData.phone.trim() !== "" &&
+      formData.telegramNick.trim() !== "" && // Теперь telegramNick обязателен на фронте
+      formData.tariff.trim() !== "" &&
+      formData.quantity > 0
+    );
+  };
 
+  // Обработчик закрытия модального окна (сброс состояния формы)
   const handleClose = () => {
     setFormData(initialState);
+    setPromoInfo(null);
+    setPromoError(null);
+    setDropdownOpen(false);
+    setBrunchSelected(false);
     onClose();
   };
 
+  // Обработчик отправки формы (создание платежа)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isFormValid) return;
+    if (!isFormValid()) {
+      alert("Будь ласка, заповніть усі обов'язкові поля.");
+      return;
+    }
 
+    const cleanTelegramNick = formData.telegramNick.startsWith("@")
+      ? formData.telegramNick.substring(1)
+      : formData.telegramNick;
+
+    // Отправка данных в Meta (Facebook Pixel / Conversions API)
     sendLeadToMeta({
       formType: "client",
       phone: formData.phone,
-      name: formData.fullName,
+      fullName: {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+      },
       tariffName: formData.tariff,
       ticketQuantity: formData.quantity,
       purchaseValue: calculateTotal(),
@@ -181,31 +221,64 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
     });
 
     try {
+      // Отправка данных на ваш бэкенд для создания платежа
       const response = await api.createPayment({
         user: {
-          fullName: formData.fullName,
+          fullName: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+          },
           phoneNumber: formData.phone,
           email: formData.email.toLowerCase(),
-          telegramNick: formData.telegramNick,
+          telegram: {
+            // Отправляем только те поля, которые у нас есть или которые нужны для схемы
+            id: "", // Отправляем пустую строку, если нет Telegram ID
+            userName: cleanTelegramNick || "", // Отправляем значение или пустую строку
+            firstName: "", // Отправляем пустую строку
+            languageCode: "", // Отправляем пустую строку
+            phone: "", // Отправляем пустую строку
+            isPremium: false, // Отправляем false
+            source: [], // Отправляем пустой массив
+            transitions: [], // Отправляем пустой массив
+          },
         },
-        purchase: {
-          tariffs: [formData.tariff],
-          ticketsQuantity: formData.quantity,
-          totalAmount: calculateTotal(),
-          promoCode: formData.promoCode || undefined,
-          brunchSelected: brunchSelected,
-        },
-        utmMarks: utmParams,
+        conferences: [
+          {
+            conference: "warsawkod", // Название конференции
+            type: "offline", // Тип конференции (онлайн/оффлайн)
+            ticketType: formData.tariff, // Выбранный тариф
+            ticketsQuantity: formData.quantity, // Количество билетов
+            totalAmount: calculateTotal(), // Общая сумма (рассчитывается на фронтенде)
+            takeBrunch: formData.takeBrunch, // Выбрана ли опция бранча
+            paymentData: {
+              invoiceId: "", // Будет заполнено после создания платежа на бэкенде
+              status: "pending", // Начальный статус платежа
+            },
+            promoCode: formData.promoCode || "", // Промокод (пустая строка, если не заполнен)
+            utmMarks: [
+              // UTM-метки (массив объектов)
+              {
+                source: utmParams.utm_source || "",
+                medium: utmParams.utm_medium || "",
+                campaign: utmParams.utm_campaign || "",
+              },
+            ],
+          },
+        ],
       });
 
+      // Перенаправление на страницу оплаты Monobank
       if (response.pageUrl) {
         window.location.href = response.pageUrl;
       } else {
-        console.error("Не удалось получить ссылку на оплату");
+        console.error("Не вдалося отримати посилання на оплату від Monobank.");
+        alert("Виникла помилка. Будь ласка, спробуйте ще раз.");
       }
     } catch (error) {
-      console.error("Ошибка при создании платежа:", error);
-      alert("Щось пішло не так. Спробуйте ще раз.");
+      console.error("Помилка при створенні платежу:", error);
+      alert(
+        "Виникла помилка при створенні платежу. Будь ласка, спробуйте ще раз."
+      );
     }
   };
 
@@ -216,7 +289,7 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
       className={styles.modalTicketsFormContent}
       closeTimeoutMS={400}
       onRequestClose={handleClose}
-      ariaHideApp={false}
+      ariaHideApp={false} // Отключает предупреждение, если не используется React App
     >
       <svg
         className={styles.closeModalTicketsForm}
@@ -224,18 +297,29 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
         width={14}
         height={14}
       >
-        <use xlinkHref={`${sprite}#icon-close`} />
+        <use xlinkHref={`${sprite}#icon-close`} />{" "}
       </svg>
 
       <h2 className={styles.titleTicketsForm}>придбати квиток</h2>
 
       <form className={styles.TicketsForm} onSubmit={handleSubmit}>
+        {/* Поля ввода для имени, фамилии, email, телефона, Telegram ника и промокода */}
         <input
-          id="fullName"
+          id="firstName"
           type="text"
           className={styles.inputTicketsForm}
-          placeholder="Ім’я, прізвище"
-          value={formData.fullName}
+          placeholder="Ім’я"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          id="lastName"
+          type="text"
+          className={styles.inputTicketsForm}
+          placeholder="Прізвище"
+          value={formData.lastName}
           onChange={handleChange}
           required
         />
@@ -264,7 +348,7 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
           placeholder="Нік Telegram*"
           value={formData.telegramNick}
           onChange={handleChange}
-          required
+          required // Сделали обязательным на фронте
         />
         <input
           id="promoCode"
@@ -279,6 +363,7 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
           *заповнивши ці поля у вас є можливість отримати подарунок від нас!
         </p>
 
+        {/* Выпадающий список для выбора тарифа и чекбокс бранча */}
         <div className={styles.dropdownWrapper}>
           <button
             type="button"
@@ -293,7 +378,7 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
             <input
               type="checkbox"
               checked={brunchSelected}
-              onChange={() => setBrunchSelected(!brunchSelected)}
+              onChange={toggleBrunch}
             />
             Бранч MGVC від Марисі Горобець 24.08.25
           </label>
@@ -304,6 +389,9 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
             }`}
           >
             {tariffs.map((t) => {
+              // Исключаем "BRUNCH" из основного списка тарифов, если он отдельный
+              if (t.name === "BRUNCH") return null;
+
               const name = t.name.toLowerCase();
 
               let displayPrice = t.price;
@@ -369,6 +457,7 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
           </ul>
         </div>
 
+        {/* Счетчик количества билетов */}
         <div className={styles.ticketCounter}>
           <span>Кількість квитків:</span>
           <div className={styles.counterControls}>
@@ -391,18 +480,20 @@ const isFormValid = Object.entries(formData).every(([key, value]) => {
           </div>
         </div>
 
+        {/* Общая сумма к оплате */}
         <p className={styles.SumForTickets}>
           сума до сплати: {calculateTotal()} PLN
         </p>
 
+        {/* Кнопка отправки формы */}
         <button
           className={
-            isFormValid
+            isFormValid()
               ? styles.sendBtnTicketsForm
               : `${styles.sendBtnTicketsForm} ${styles.sendBtnTicketsFormNoValid}`
           }
           type="submit"
-          disabled={!isFormValid}
+          disabled={!isFormValid()}
         >
           перейти до оплати
         </button>

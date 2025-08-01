@@ -9,79 +9,73 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 
 export default function LuxeTicketPage() {
-  const { unifieduserId } = useParams();
-  const [brunchSelected, setBrunchSelected] = useState(null);
-  const [tariff, setTariff] = useState(null);
-  const [generatedPromo, setGeneratedPromo] = useState("");
-
-  // Генерация уникального промокода
-  const generatePromoCode = (tariff) => {
-    const randomPart = Math.random().toString(36).substring(2, 7).toUpperCase();
-    return `BRUNCH${tariff?.toUpperCase()}-${randomPart}`;
-  };
+  const { unifieduserId, conferenceId } = useParams();
+  const [ticketDetails, setTicketDetails] = useState(null); // Состояние для хранения данных билета
 
   useEffect(() => {
-    if (!unifieduserId) return;
+    // Проверяем наличие обоих ID
+    if (!unifieduserId || !conferenceId) {
+      console.warn("Missing unifieduserId or conferenceId in URL parameters.");
+      return;
+    }
 
-    // Подгружаем данные билета
+    // --- Шаг 1: Загрузка данных о билете ---
     const fetchTicketData = async () => {
       try {
-        const res = await fetch(`/api/tickets/${unifieduserId}`);
-        const data = await res.json();
-
-        setBrunchSelected(data.brunchSelected);
-        setTariff(data.tariff);
-
-        // Если бранч не куплен, генерируем и отправляем промокод
-        if (!data.brunchSelected && data.tariff) {
-          const promo = generatePromoCode(data.tariff);
-          setGeneratedPromo(promo);
-
-          // Сохраняем промокод на сервере
-          await fetch("/api/promo/add", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              code: promo,
-              tariff: data.tariff,
-              fixedPrice: data.tariff === "LUXE" ? 4250 : 1300, // или другая логика
-              used: false,
-            }),
-          });
+        // Здесь вам нужно сделать запрос к вашему бэкенду,
+        // чтобы получить конкретную конференцию для этого пользователя.
+        // Пример API-эндпоинта: GET /api/users/:unifieduserId/conferences/:conferenceId
+        // или GET /api/tickets/:conferenceId (если conferenceId сам по себе уникален)
+        const response = await fetch(
+          `/api/users/${unifieduserId}/conferences/${conferenceId}`
+        ); // Замените на ваш фактический эндпоинт
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      } catch (err) {
-        console.error("Error loading ticket:", err);
+        const data = await response.json(); // Ожидаем, что бэкенд вернет объект конференции
+        setTicketDetails(data); // Сохраняем данные билета в состоянии
+        console.log("Ticket data fetched:", data);
+
+        // --- Шаг 2: Генерация QR-кода после получения данных ---
+        const canvas = document.getElementById("qrCodeCanvas");
+        if (!canvas) {
+          console.warn("Canvas not found");
+          return;
+        }
+
+        // QR-код теперь будет содержать оба ID
+        // Это позволит админ-панели точно знать, какой конкретно билет проверяется
+        const qrCodeLink = `https://admin.women.place/check/${unifieduserId}/${conferenceId}`;
+        QRCode.toCanvas(
+          canvas,
+          qrCodeLink,
+          {
+            width: 200,
+            color: {
+              dark: "#1B2021",
+              light: "#FFFFFF00",
+            },
+          },
+          (err) => {
+            if (err) console.error("QR code error:", err);
+            else console.log("QR code rendered successfully for:", qrCodeLink);
+          }
+        );
+      } catch (error) {
+        console.error("Failed to fetch ticket data:", error);
+        // Можно показать сообщение об ошибке пользователю
       }
     };
 
     fetchTicketData();
-  }, [unifieduserId]);
+  }, [unifieduserId, conferenceId]); // Зависимости useEffect
 
-  // Генерация QR-кода
-  useEffect(() => {
-    if (!unifieduserId) return;
-
-    const canvas = document.getElementById("qrCodeCanvas");
-    if (!canvas) return;
-
-    const qrCodeLink = `https://admin.women.place/check/${unifieduserId}`;
-    QRCode.toCanvas(
-      canvas,
-      qrCodeLink,
-      {
-        width: 200,
-        color: {
-          dark: "#FFFFFF",
-          light: "#FFFFFF00",
-        },
-      },
-      (err) => {
-        if (err) console.error("QR code error:", err);
-      }
+  // Добавьте условный рендеринг, пока данные загружаются
+  if (!ticketDetails) {
+    return (
+      <section className={styles.LuxePage}>Завантаження квитка...</section>
     );
-  }, [unifieduserId]);
+  }
 
   return (
     <section className={styles.LuxeTicketPage}>
@@ -129,16 +123,6 @@ export default function LuxeTicketPage() {
       </ul>
       <p className={styles.scanMe}>*заскануй код на конференції</p>
       <canvas id="qrCodeCanvas" className={styles.qrCodeHere}></canvas>
-
-      {/* 💬 Сообщение о бранче */}
-      {brunchSelected === true && (
-        <p className={styles.brunchInfo}>Бронювання на бранч MGVC включено</p>
-      )}
-      {brunchSelected === false && generatedPromo && (
-        <p className={styles.brunchInfo}>
-          Ваша знижка на бранч по промокоду: <strong>{generatedPromo}</strong>
-        </p>
-      )}
     </section>
   );
 }

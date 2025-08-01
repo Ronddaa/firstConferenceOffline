@@ -4,7 +4,7 @@ import { useState } from "react";
 import TicketsForm from "../../Modals/Tickets/TicketsForm";
 import SpeakersForm from "../../Modals/Speakers/SpeakersForm";
 import PartnersForm from "../../Modals/Partners/PartnersForm";
-import logoFooter from '../logoFooter.svg'
+import logoFooter from "../logoFooter.svg";
 
 export default function FooterComp() {
   const [modalSpeakersIsOpen, setModalSpeakers] = useState(false);
@@ -120,7 +120,7 @@ export default function FooterComp() {
           <a
             target="_blank"
             className={styles.contactLink}
-            href="https://t.me/warsawkod_bot"
+            href="https://t.me/womenkod_bot"
           >
             TELEGRAM
           </a>

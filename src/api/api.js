@@ -30,13 +30,6 @@ class ApiClient {
     }
   }
 
-  // Moc Payload Data
-  // {
-  //   "fullName": "Jane Doe",
-  //   "phoneNumber": "+12331212343125678190",
-  //   "telegramUsername": "@j31231an1242131e_doe1",
-  //   "instagramLink": "https://instagram.com/jane.doe"
-  // }
   async createSpeakerApplication(payload) {
     const { data } = await this.axiosInstance.post("/speakers", payload);
     return data.data;
@@ -47,14 +40,6 @@ class ApiClient {
     return data.data;
   }
 
-  // Moc Payload Data
-  // {
-  //   "companyName": "Tech Solutions Ltd.",
-  //   "contactPerson": "Ivan Ivanov",
-  //   "contactInfo": "+380 123 456 7890",
-  //   "telegramNick": "Ivan_Ivan",
-  //   "instagramLink": "https://www.instagram.com/techsolutions"
-  // }
   async createPartnerApplication(payload) {
     const { data } = await this.axiosInstance.post("/partners", payload);
     return data.data;
@@ -65,8 +50,27 @@ class ApiClient {
     return data;
   }
 
+  async submitHelperUserFormApplication(formData) {
+    try {
+      const { data } = await this.axiosInstance.post(
+        "/submit-helper-form",
+        formData
+      );
+      return data;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
   async getunifieduserById(id) {
     const { data } = await this.axiosInstance.get(`/unifiedusers/${id}`);
+    return data;
+  }
+
+  async getSpecificConference(unifieduserId, conferenceId) {
+    const { data } = await this.axiosInstance.get(
+      `/unifiedusers/${unifieduserId}/conferences/${conferenceId}`
+    );
     return data;
   }
 

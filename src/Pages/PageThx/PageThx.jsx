@@ -8,35 +8,52 @@ import api from "../../api/api";
 import { useParams } from "react-router-dom";
 
 export default function PageThx() {
-  const { unifieduserId } = useParams();
-  const [unifieduserData, setunifieduserData] = useState(null);
+  const { unifieduserId, conferenceId } = useParams();
+  const [relevantConference, setRelevantConference] = useState(null);
   const ticketRef = useRef(null);
   const [ticketUrl, setTicketUrl] = useState(null);
 
   useEffect(() => {
-    if (!unifieduserId) return;
+    // ✅ Проверяем оба параметра из URL
+    if (!unifieduserId || !conferenceId) {
+      console.warn("Missing unifieduserId or conferenceId in URL parameters.");
+      return;
+    }
 
-    async function fetchunifieduser() {
+    async function fetchRelevantConference() {
       try {
-        const response = await api.getunifieduserById(unifieduserId);
-        const unifieduser = response.data;
-        console.log(unifieduser);
-        setunifieduserData(unifieduser);
-        const tariffName = unifieduser.purchase.tariffs[0].toLowerCase();
-        const url = `${import.meta.env.VITE_FE_URL}/ticket/${tariffName}/${
-          unifieduser._id
-        }`;
+        // ✅ Делаем запрос к новому эндпоинту, который возвращает ОДИН билет
+        const response = await api.getSpecificConference(
+          unifieduserId,
+          conferenceId
+        );
+        const fetchedConference = response;
+
+        console.log("Fetched specific conference data:", fetchedConference);
+
+        setRelevantConference(fetchedConference);
+
+        const tariffName = fetchedConference.ticketType
+          .toLowerCase()
+          .replace(/\s+/g, "-");
+        // ✅ Формируем уникальный URL для билета
+        const url = `${
+          import.meta.env.VITE_FE_URL
+        }/ticket/${tariffName}/${unifieduserId}/${conferenceId}`;
         setTicketUrl(url);
       } catch (error) {
-        console.log("Failed to load ticket URL:", error);
+        console.error("Failed to fetch conference data:", error);
+        // Здесь можно вывести сообщение об ошибке, если билет не найден
       }
     }
-    fetchunifieduser();
-  }, [unifieduserId]);
+    fetchRelevantConference();
+    // ✅ Добавляем conferenceId в зависимости useEffect
+  }, [unifieduserId, conferenceId]);
 
   const handleDownloadTicket = async () => {
-    if (!ticketRef.current) return;
-    if (!unifieduserData) return;
+    // Проверяем relevantConference
+    if (!ticketRef.current || !relevantConference) return;
+
     const iframe = ticketRef.current;
     try {
       const iframeDocument =
@@ -47,9 +64,11 @@ export default function PageThx() {
         useCORS: true,
         backgroundColor: null,
       });
-      const tariffName = unifieduserData.purchase.tariffs[0].toLowerCase();
+
+      // ✅ Используем данные из relevantConference
+      const tariffName = relevantConference.ticketType.toLowerCase();
       const link = document.createElement("a");
-      link.download = `warsawcode-${tariffName}-ticket.png`;
+      link.download = `warsawkod-${tariffName}-ticket.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
     } catch (err) {
@@ -58,7 +77,13 @@ export default function PageThx() {
   };
 
   const handleSentTicketByEmail = async () => {
+    // Эта функция все еще отправляет билет на почту по ID пользователя.
+    // Возможно, её тоже стоит обновить, чтобы она работала с конкретным билетом.
+    if (!unifieduserId || !conferenceId) return;
     try {
+      // ✅ Здесь нужно будет создать новый эндпоинт на бэкенде, который
+      // будет отправлять ОДИН билет, а не все билеты пользователя.
+      // Например: await api.sendSpecificTicketOnMail(unifieduserId, conferenceId);
       await api.sendTicketOnMailByunifieduserId(unifieduserId);
       alert("Ваш квиток було успішно надіслано на пошту!");
     } catch (error) {
@@ -161,7 +186,7 @@ export default function PageThx() {
       </p>
       <ul className={styles.wrapperConnectTelegramList}>
         <li>
-          <a className={styles.telegramLink} href="https://t.me/warsawkod_bot">
+          <a className={styles.telegramLink} href="https://t.me/womenkod_bot">
             приєднатись
             <svg className={styles.arrowListLink} width={24} height={24}>
               <use xlinkHref={`${sprite}#icon-arrow`}></use>

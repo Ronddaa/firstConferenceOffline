@@ -81,15 +81,25 @@ export default function App() {
       <Route path="/horobec" element={<HorobecPage />} />
 
       {/* Страницы билетов и оплаты */}
-      <Route path="/thank-you/:unifieduserId" element={<PageThx />} />
-      <Route path="/ticket/gold/:unifieduserId" element={<GoldTicketPage />} />
-      <Route path="/ticket/luxe/:unifieduserId" element={<LuxeTicketPage />} />
+      {/* Страницы билетов и оплаты */}
       <Route
-        path="/ticket/last-minute/:unifieduserId"
+        path="/thank-you/:unifieduserId/:conferenceId"
+        element={<PageThx />}
+      />
+      <Route
+        path="/ticket/gold/:unifieduserId/:conferenceId"
+        element={<GoldTicketPage />}
+      />
+      <Route
+        path="/ticket/luxe/:unifieduserId/:conferenceId"
+        element={<LuxeTicketPage />}
+      />
+      <Route
+        path="/ticket/last-minute/:unifieduserId/:conferenceId"
         element={<LastMinutePage />}
       />
       <Route
-        path="/ticket/premium/:unifieduserId"
+        path="/ticket/premium/:unifieduserId/:conferenceId"
         element={<PremiumTicketPage />}
       />
       <Route

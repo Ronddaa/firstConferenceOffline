@@ -27,8 +27,7 @@ export default function HelperFormUsers({ isOpen, onClose }) {
   }, []);
 
   useEffect(() => {
-    const allFieldsFilled =
-      fullName.trim() && phone.trim() && telegram.trim();
+    const allFieldsFilled = fullName.trim() && phone.trim() && telegram.trim();
     setIsValid(Boolean(allFieldsFilled));
   }, [fullName, phone, telegram]);
 
@@ -41,10 +40,11 @@ export default function HelperFormUsers({ isOpen, onClose }) {
         fullName,
         phone,
         telegram,
-        utmParams
+        utmParams,
       };
 
-      await api.createHelperUserFormApplication(dataToSend); // 🔹 Отправляем на сервер
+      // ✅ ИЗМЕНЕНИЕ: Отправляем данные на новый API-эндпоинт на вашем сервере
+      await api.submitHelperUserFormApplication(dataToSend);
 
       // 🔹 Отправка события в Meta (можно оставить как есть)
       sendLeadToMeta({

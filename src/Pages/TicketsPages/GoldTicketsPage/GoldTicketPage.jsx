@@ -5,39 +5,66 @@ import ourDress1 from "../ourDress1.webp";
 import ourDress2 from "../ourDress2.webp";
 import ourDress3 from "../ourDress3.webp";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 
 export default function GoldTicketPage() {
-  const { unifieduserId } = useParams();
+  const { unifieduserId, conferenceId } = useParams();
+  const [ticketDetails, setTicketDetails] = useState(null);
 
   useEffect(() => {
-    if (!unifieduserId) return;
+    if (!unifieduserId || !conferenceId) return;
 
-    const canvas = document.getElementById("qrCodeCanvas");
-    if (!canvas) {
-      console.warn("Canvas not found");
-      return;
-    }
-    // link to the admin panel, where security quard will check
-    // ticket data
-    const qrCodeLink = `https://admin.women.place/check/${unifieduserId}`;
-    QRCode.toCanvas(
-      canvas,
-      qrCodeLink,
-      {
-        width: 200,
-        color: {
-          dark: "#1B2021",
-          light: "#FFFFFF00",
-        },
-      },
-      (err) => {
-        if (err) console.error("QR code error:", err);
-        else console.log("QR code rendered successfully");
+    const fetchTicketData = async () => {
+      try {
+        const response = await fetch(
+          `/api/users/${unifieduserId}/conferences/${conferenceId}`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setTicketDetails(data);
+        console.log("Ticket data fetched:", data);
+
+        const canvas = document.getElementById("qrCodeCanvas");
+        if (!canvas) {
+          console.warn("Canvas not found");
+          return;
+        }
+        // link to the admin panel, where security quard will check
+        // ticket data
+        const qrCodeLink = `https://admin.women.place/check/${unifieduserId}`;
+        QRCode.toCanvas(
+          canvas,
+          qrCodeLink,
+          {
+            width: 200,
+            color: {
+              dark: "#1B2021",
+              light: "#FFFFFF00",
+            },
+          },
+          (err) => {
+            if (err) console.error("QR code error:", err);
+            else console.log("QR code rendered successfully");
+          }
+        );
+      } catch (error) {
+        console.error("Error fetching ticket data:", error);
       }
+    };
+
+    fetchTicketData();
+  }, [unifieduserId, conferenceId]);
+
+  if (!ticketDetails) {
+    return (
+      <section className={styles.GoldTicketPage}>
+        Завантаження квитка...
+      </section>
     );
-  }, [unifieduserId]);
+  }
 
   return (
     <section className={styles.GoldTicketPage}>

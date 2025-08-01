@@ -2,104 +2,62 @@ import Joi from "joi";
 
 export const createunifieduserSchema = Joi.object({
   fullName: Joi.object({
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
+    firstName: Joi.string().required().allow(""), // Обязательно, но может быть пустой строкой
+    lastName: Joi.string().required().allow(""), // Обязательно, но может быть пустой строкой
   }).required(),
 
-  emails: Joi.array()
-    .items(
-      Joi.object({
-        email: Joi.string().email().required(),
-        verified: Joi.boolean().default(false),
-        source: Joi.string().allow(""),
-        date: Joi.string().allow(""), // или Joi.date().allow(null, "")
-      }).unknown(true)
-    )
-    .optional(),
+  phoneNumber: Joi.string().required().allow(""), // Обязательно, но может быть пустой строкой
 
-  phones: Joi.array()
-    .items(
-      Joi.object({
-        phone: Joi.string().required(),
-        verified: Joi.boolean().default(false),
-        source: Joi.string().allow(""),
-        date: Joi.string().allow(""),
-      }).unknown(true)
-    )
-    .optional(),
+  email: Joi.string().email().required().allow(""), // Обязательно, но может быть пустой строкой
 
   telegram: Joi.object({
-    id: Joi.string().allow(""),
-    userName: Joi.string().allow(""),
-    firstName: Joi.string().allow(""),
-    languageCode: Joi.string().allow(""),
-    phone: Joi.string().allow(""),
-    isPremium: Joi.boolean().default(false),
-    source: Joi.string().allow(""),
+    id: Joi.string().allow("", null), // Может быть пустой строкой или null
+    userName: Joi.string().allow("", null), // Может быть пустой строкой или null
+    firstName: Joi.string().allow("", null), // Может быть пустой строкой или null
+    languageCode: Joi.string().allow("", null), // Может быть пустой строкой или null
+    phone: Joi.string().allow("", null), // Может быть пустой строкой или null
+    isPremium: Joi.boolean().allow(null), // Может быть null
+    source: Joi.array().items(Joi.string()).default([]), // Теперь массив строк, по умолчанию пустой массив
     transitions: Joi.array()
       .items(
         Joi.object({
-          date: Joi.string().allow(""),
-          source: Joi.string().allow(""),
-        }).unknown(true)
+          date: Joi.date().allow(null, ""), // Позволяем null или пустую строку для даты
+          source: Joi.string().allow("", null), // Позволяем пустую строку или null
+        })
       )
-      .optional(),
-  })
-    .optional()
-    .unknown(true),
+      .default([]), // По умолчанию пустой массив
+  }).optional(), // Делаем весь объект telegram необязательным
 
   conferences: Joi.array()
     .items(
       Joi.object({
-        type: Joi.string().valid("online", "offline").required(),
-        conference: Joi.string().required(),
-        utmMarks: Joi.array()
+        conference: Joi.string().required(), // Название конференции - обязательно
+        type: Joi.string().valid("online", "offline").required(), // Тип обязателен и должен быть 'online' или 'offline'
+        ticketType: Joi.string().required(), // Обязательный
+        ticketsQuantity: Joi.number().integer().min(1).required(), // Обязательный, целое число, минимум 1
+        totalAmount: Joi.number().min(0).required(), // Обязательный, число, минимум 0 (т.к. приходит с фронтенда)
+        takeBrunch: Joi.boolean().default(false), // По умолчанию false
+        paymentData: Joi.object({
+          invoiceId: Joi.string().allow("", null), // Может быть пустой строкой или null
+          status: Joi.string()
+            .valid("pending", "paid", "failed")
+            .default("pending"), // По умолчанию 'pending'
+        }).optional(), // Может отсутствовать при создании
+        promoCode: Joi.string().allow("", null).default(""), // Может быть пустой строкой или null, по умолчанию пустая строка
+        utmMarks: Joi.array() // Здесь ожидается массив из объекта/объектов
           .items(
             Joi.object({
-              source: Joi.string().allow(""),
-              medium: Joi.string().allow(""),
-              campaing: Joi.string().allow(""),
-            }).unknown(true)
+              source: Joi.string().allow("", null).default(""),
+              medium: Joi.string().allow("", null).default(""),
+              campaign: Joi.string().allow("", null).default(""),
+            })
           )
-          .optional(),
-
-        date: Joi.string().allow(""), // или Joi.date().allow(null, "")
-
-        purchase: Joi.object({
-          tarif: Joi.array().items(Joi.string()).optional(),
-          ticketsQuantity: Joi.alternatives()
-            .try(Joi.string().allow(""), Joi.number())
-            .optional(),
-          totalAmount: Joi.alternatives()
-            .try(Joi.string().allow(""), Joi.number())
-            .optional(),
-          promoCode: Joi.string().allow(""),
-          paymentData: Joi.object({
-            invocieId: Joi.string().allow(""),
-            status: Joi.string().allow(""),
-          })
-            .optional()
-            .unknown(true),
-        })
-          .optional()
-          .unknown(true),
-      }).unknown(true)
+          .default([]), // По умолчанию пустой массив
+      })
     )
-    .optional(),
+    .min(1) // Добавлено: conferences должен содержать хотя бы 1 элемент
+    .required(), // Добавлено: conferences - обязательный массив
 
-  retrite: Joi.array()
-    .items(
-      Joi.object({
-        firstName: Joi.string().allow(""),
-        lastName: Joi.string().allow(""),
-        phone: Joi.string().allow(""),
-        email: Joi.string().allow(""),
-        city: Joi.string().allow(""),
-        purchase: Joi.object().optional().unknown(true),
-      }).unknown(true)
-    )
-    .optional(),
-
-  createdAt: Joi.date().allow("", null).optional(),
-  updatedAt: Joi.date().allow("", null).optional(),
-}).unknown(true); // Разрешает любые дополнительные поля сверху
+  createdAt: Joi.date().optional(),
+  updatedAt: Joi.date().optional(),
+}).unknown(true); // Изменено на allowUnknown: false для строгой валидации

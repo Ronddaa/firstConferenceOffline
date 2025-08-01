@@ -80,7 +80,7 @@ export default function Footer() {
           <a
             target="_blank"
             className={styles.contactLink}
-            href="https://t.me/warsawkod_bot"
+            href="https://t.me/womenkod_bot"
           >
             TELEGRAM
           </a>
