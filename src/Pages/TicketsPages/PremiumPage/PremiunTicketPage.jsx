@@ -7,75 +7,67 @@ import ourDress3 from "../ourDress3.webp";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import QRCode from "qrcode";
+import api from "../../../api/api";
 
 export default function PremiumTicketPage() {
   const { unifieduserId, conferenceId } = useParams();
-  const [ticketDetails, setTicketDetails] = useState(null); // Состояние для хранения данных билета
+  const [ticketDetails, setTicketDetails] = useState(null); // --- Первый useEffect: ЗАГРУЗКА ДАННЫХ --- // Этот хук отвечает только за асинхронную загрузку данных с сервера. // Он срабатывает при первом рендере и при изменении ID пользователя/конференции.
 
   useEffect(() => {
-    // Проверяем наличие обоих ID
     if (!unifieduserId || !conferenceId) {
       console.warn("Missing unifieduserId or conferenceId in URL parameters.");
       return;
     }
 
-    // --- Шаг 1: Загрузка данных о билете ---
     const fetchTicketData = async () => {
       try {
-        // Здесь вам нужно сделать запрос к вашему бэкенду,
-        // чтобы получить конкретную конференцию для этого пользователя.
-        // Пример API-эндпоинта: GET /api/users/:unifieduserId/conferences/:conferenceId
-        // или GET /api/tickets/:conferenceId (если conferenceId сам по себе уникален)
-        const response = await fetch(
-          `/api/users/${unifieduserId}/conferences/${conferenceId}`
-        ); // Замените на ваш фактический эндпоинт
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json(); // Ожидаем, что бэкенд вернет объект конференции
-        setTicketDetails(data); // Сохраняем данные билета в состоянии
+        const data = await api.getSpecificConference(
+          unifieduserId,
+          conferenceId
+        ); // После получения данных обновляем состояние. // Это запускает перерисовку компонента.
+        setTicketDetails(data);
         console.log("Ticket data fetched:", data);
-
-        // --- Шаг 2: Генерация QR-кода после получения данных ---
-        const canvas = document.getElementById("qrCodeCanvas");
-        if (!canvas) {
-          console.warn("Canvas not found");
-          return;
-        }
-
-        // QR-код теперь будет содержать оба ID
-        // Это позволит админ-панели точно знать, какой конкретно билет проверяется
-        const qrCodeLink = `https://admin.women.place/check/${unifieduserId}/${conferenceId}`;
-        QRCode.toCanvas(
-          canvas,
-          qrCodeLink,
-          {
-            width: 200,
-            color: {
-              dark: "#1B2021",
-              light: "#FFFFFF00",
-            },
-          },
-          (err) => {
-            if (err) console.error("QR code error:", err);
-            else console.log("QR code rendered successfully for:", qrCodeLink);
-          }
-        );
       } catch (error) {
         console.error("Failed to fetch ticket data:", error);
-        // Можно показать сообщение об ошибке пользователю
       }
     };
 
     fetchTicketData();
-  }, [unifieduserId, conferenceId]); // Зависимости useEffect
+  }, [unifieduserId, conferenceId]); // --- Второй useEffect: ГЕНЕРАЦИЯ QR-КОДА --- // Этот хук срабатывает только тогда, когда `ticketDetails` перестанет быть `null`. // К этому моменту компонент уже отрисован, и <canvas> существует.
 
-  // Добавьте условный рендеринг, пока данные загружаются
+  useEffect(() => {
+    if (ticketDetails) {
+      const canvas = document.getElementById("qrCodeCanvas");
+      if (!canvas) {
+        // Это сообщение теперь вряд ли появится,
+        // но оставляем для надежности
+        console.warn("Canvas not found after ticket data loaded.");
+        return;
+      } // Генерируем QR-код, так как все необходимые данные и элементы уже на месте.
+      const qrCodeLink = `https://admin.women.place/check/${unifieduserId}/${conferenceId}`;
+      QRCode.toCanvas(
+        canvas,
+        qrCodeLink,
+        {
+          width: 200,
+          color: {
+            dark: "#1B2021",
+            light: "#FFFFFF00",
+          },
+        },
+        (err) => {
+          if (err) console.error("QR code error:", err);
+          else console.log("QR code rendered successfully for:", qrCodeLink);
+        }
+      );
+    }
+  }, [ticketDetails, unifieduserId, conferenceId]); // Условный рендеринг: пока `ticketDetails` равен null, // отображаем сообщение о загрузке.
+
   if (!ticketDetails) {
     return (
       <section className={styles.PremiumPage}>Завантаження квитка...</section>
     );
-  }
+  } // Когда данные загружены, отображаем основной контент с <canvas>.
 
   return (
     <section className={styles.PremiumTicketPage}>
@@ -100,8 +92,7 @@ export default function PremiumTicketPage() {
       />
       <h2 className={styles.dressCode}>Дрес-код:</h2>
       <ul className={styles.wrapperNameColor}>
-        <li>жовтий</li>
-        <li>пастельний блакитний</li>
+        <li>жовтий</li> <li>пастельний блакитний</li>
         <li>білий</li>
       </ul>
       <ul className={styles.wrapperColors}>

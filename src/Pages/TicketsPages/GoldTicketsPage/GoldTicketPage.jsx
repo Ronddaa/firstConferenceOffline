@@ -7,64 +7,67 @@ import ourDress3 from "../ourDress3.webp";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import QRCode from "qrcode";
+import api from "../../../api/api";
 
 export default function GoldTicketPage() {
   const { unifieduserId, conferenceId } = useParams();
-  const [ticketDetails, setTicketDetails] = useState(null);
+  const [ticketDetails, setTicketDetails] = useState(null); // --- Первый useEffect: ЗАГРУЗКА ДАННЫХ --- // Этот хук отвечает только за асинхронную загрузку данных с сервера. // Он срабатывает при первом рендере и при изменении ID пользователя/конференции.
 
   useEffect(() => {
-    if (!unifieduserId || !conferenceId) return;
+    if (!unifieduserId || !conferenceId) {
+      console.warn("Missing unifieduserId or conferenceId in URL parameters.");
+      return;
+    }
 
     const fetchTicketData = async () => {
       try {
-        const response = await fetch(
-          `/api/users/${unifieduserId}/conferences/${conferenceId}`
-        );
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
+        const data = await api.getSpecificConference(
+          unifieduserId,
+          conferenceId
+        ); // После получения данных обновляем состояние. // Это запускает перерисовку компонента.
         setTicketDetails(data);
         console.log("Ticket data fetched:", data);
-
-        const canvas = document.getElementById("qrCodeCanvas");
-        if (!canvas) {
-          console.warn("Canvas not found");
-          return;
-        }
-        // link to the admin panel, where security quard will check
-        // ticket data
-        const qrCodeLink = `https://admin.women.place/check/${unifieduserId}`;
-        QRCode.toCanvas(
-          canvas,
-          qrCodeLink,
-          {
-            width: 200,
-            color: {
-              dark: "#1B2021",
-              light: "#FFFFFF00",
-            },
-          },
-          (err) => {
-            if (err) console.error("QR code error:", err);
-            else console.log("QR code rendered successfully");
-          }
-        );
       } catch (error) {
-        console.error("Error fetching ticket data:", error);
+        console.error("Failed to fetch ticket data:", error);
       }
     };
 
     fetchTicketData();
-  }, [unifieduserId, conferenceId]);
+  }, [unifieduserId, conferenceId]); // --- Второй useEffect: ГЕНЕРАЦИЯ QR-КОДА --- // Этот хук срабатывает только тогда, когда `ticketDetails` перестанет быть `null`. // К этому моменту компонент уже отрисован, и <canvas> существует.
+
+  useEffect(() => {
+    if (ticketDetails) {
+      const canvas = document.getElementById("qrCodeCanvas");
+      if (!canvas) {
+        // Это сообщение теперь вряд ли появится,
+        // но оставляем для надежности
+        console.warn("Canvas not found after ticket data loaded.");
+        return;
+      } // Генерируем QR-код, так как все необходимые данные и элементы уже на месте.
+      const qrCodeLink = `https://admin.women.place/check/${unifieduserId}/${conferenceId}`;
+      QRCode.toCanvas(
+        canvas,
+        qrCodeLink,
+        {
+          width: 200,
+          color: {
+            dark: "#1B2021",
+            light: "#FFFFFF00",
+          },
+        },
+        (err) => {
+          if (err) console.error("QR code error:", err);
+          else console.log("QR code rendered successfully for:", qrCodeLink);
+        }
+      );
+    }
+  }, [ticketDetails, unifieduserId, conferenceId]); // Условный рендеринг: пока `ticketDetails` равен null, // отображаем сообщение о загрузке.
 
   if (!ticketDetails) {
     return (
-      <section className={styles.GoldTicketPage}>
-        Завантаження квитка...
-      </section>
+      <section className={styles.PremiumPage}>Завантаження квитка...</section>
     );
-  }
+  } // Когда данные загружены, отображаем основной контент с <canvas>.
 
   return (
     <section className={styles.GoldTicketPage}>
