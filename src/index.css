@@ -126,7 +126,7 @@ button{
   font-weight: 600;
   position: relative;
   left: 50%;
-  z-index: 2;
+  z-index: 6;
 }
 
 ::-webkit-scrollbar{

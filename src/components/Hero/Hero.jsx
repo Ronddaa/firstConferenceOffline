@@ -33,7 +33,6 @@ export default function Hero() {
           залишити заявку
         </button>
       </div>
-      <div className={styles.backgrondShadow}></div>
       <HelperFormUsers
         isOpen={modalHelperFormUsers}
         onClose={() => setModalHelperUser(false)}

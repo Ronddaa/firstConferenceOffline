@@ -1,6 +1,7 @@
 .HotelSection{
     position: relative;
     padding-top: 120px;
+    box-shadow: 0 -40px 100px 70px #1B2021;
 }
 .programBackgroundSvg1{
     position: absolute;
@@ -82,6 +83,9 @@
 }
 
 @media (min-width:768px){
+    .HotelSection{
+        box-shadow: 0 -40px 60px 100px #1B2021;
+    }
     .programBackgroundSvg1{
         right: -5%;
         top: -100px;

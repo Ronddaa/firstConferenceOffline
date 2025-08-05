@@ -2,6 +2,7 @@ import styles from "./PartnersSection.module.css";
 import { useState } from "react";
 import PartnersForm from "../Modals/Partners/PartnersForm";
 import spriteLogo from "./spriteLogo.svg";
+import AC from './911AC.svg';
 
 export default function PartnersSection() {
   const [modalPartnersIsOpen, setmodalPartners] = useState(false);
@@ -24,6 +25,9 @@ export default function PartnersSection() {
             <svg className={styles.ConciergeProLogo} width={202} height={165}>
               <use xlinkHref={`${spriteLogo}#logo-conciergepro`}></use>
             </svg>
+          </li>
+          <li className={styles.wrapperLogo911AC}>
+            <img src={AC} alt="911 AC" width={164} height={88}/>
           </li>
         </ul>
         <button

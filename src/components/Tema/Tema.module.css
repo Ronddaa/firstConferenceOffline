@@ -1,108 +1,84 @@
-/* 
-.scroll-lock {
-  overflow: hidden;
-  height: 100vh;
-  touch-action: none;
-} */
-
-.sectionTema {
-  padding: 0;
-  height: 100dvh;
-  overflow: hidden;
-  position: relative;
-}
-.sectionTema::before{
+.sectionTema::before {
+  box-shadow: inset 0 -180px 60px -60px #1b2021,
+    inset 0 300px 110px -60px #1b2021;
   position: absolute;
   content: "";
-  pointer-events: none;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  box-shadow: inset 0 160px 50px -70px #1B2021;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
 }
-.sectionTema :global(.mySwiper) {
-  height: 100dvh;
-}
-
-:global(.mySwiper) .swiperTema1,
-:global(.mySwiper) .swiperTema2,
-:global(.mySwiper) .swiperTema3,
-:global(.mySwiper) .swiperTema4 {
-  display: flex;
-  justify-content: center;
-  padding: 65px 17px 92px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  z-index: 0;
-}
-
-.swiperTema1 { background-image: url(./Tema1.webp); }
-.swiperTema2 { background-image: url(./Tema2.webp); }
-.swiperTema3 { background-image: url(./Tema3.webp); }
-.swiperTema4 { background-image: url(./Tema4.webp); }
-
 .wrapperTitles {
   position: absolute;
-  z-index: 2;
+  top: 50%;
+  left: 50%;
+  content: "";
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 2;
   pointer-events: none;
 }
-
+.sectionTema :global(.mySwiper) {
+  height: 100dvh;
+  position: relative;
+}
+.temaIMG {
+  object-fit: cover;
+  height: 100%;
+}
 .defoultStylestitle {
   font-weight: 600;
   font-size: 56px;
   text-transform: uppercase;
-  color: #434A39;
+  color: #434a39;
   transition: 0.3s;
 }
 
-li .defoultStylestitle2{
-margin-left: 54px;
+li .defoultStylestitle2 {
+  margin-left: 54px;
 }
-li .defoultStylestitle3{
+li .defoultStylestitle3 {
   margin-left: 94px;
-  }
-  li .defoultStylestitle4{
-    margin-left: 142px;
-    }
+}
+li .defoultStylestitle4 {
+  margin-left: 142px;
+}
 
 .defoultStylestitle span {
   font-size: 12px;
-  color: #434A39;
+  color: #434a39;
   font-family: "Mulish";
+  transition: 0.3s;
 }
 
 .activeTitle {
-  color: #FFFFAC;
+  color: #ffffac;
 }
 
 .activeTitle span {
-  color: #FFFCF9;
+  color: #fffcf9;
 }
 
-@media (min-width:768px){
-  .defoultStylestitle, .defoultStylestitle2, .defoultStylestitle3, .defoultStylestitle4{
-    font-size: 6vw;
+@media (min-width: 768px) {
+  .sectionTema::before {
+    box-shadow: inset 0 300px 60px -40px #1b2021;
   }
-  .wrapperTitles{
-    padding-top: 250px;
+  .temaIMG {
+    width: 100%;
   }
-  li .defoultStylestitle2{
-    margin-left: 45%;
-    }
-    li .defoultStylestitle3{
-      margin-left: 70%;
-      }
-      li .defoultStylestitle4{
-        margin-left: 100%;
-        }
-    
+  .defoultStylestitle {
+    font-size: 7vw;
+  }
+  li .defoultStylestitle2 {
+    margin-left: 20%;
+  }
+  li .defoultStylestitle3 {
+    margin-left: 40%;
+  }
+  li .defoultStylestitle4 {
+    margin-left: 60%;
+  }
 }

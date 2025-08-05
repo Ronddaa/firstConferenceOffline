@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Tema.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
+import Tema1 from "./Tema1.webp";
+import Tema2 from "./Tema2.webp";
+import Tema3 from "./Tema3.webp";
+import Tema4 from "./Tema4.webp";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -81,10 +85,18 @@ export default function Tema() {
         }}
         className="mySwiper"
       >
-        <SwiperSlide className={styles.swiperTema1}></SwiperSlide>
-        <SwiperSlide className={styles.swiperTema2}></SwiperSlide>
-        <SwiperSlide className={styles.swiperTema3}></SwiperSlide>
-        <SwiperSlide className={styles.swiperTema4}></SwiperSlide>
+        <SwiperSlide className={styles.swiperTema1}>
+          <img src={Tema1} alt="img" className={styles.temaIMG} />
+        </SwiperSlide>
+        <SwiperSlide className={styles.swiperTema2}>
+          <img src={Tema2} alt="img" className={styles.temaIMG} />
+        </SwiperSlide>
+        <SwiperSlide className={styles.swiperTema3}>
+          <img src={Tema3} alt="img" className={styles.temaIMG} />
+        </SwiperSlide>
+        <SwiperSlide className={styles.swiperTema4}>
+          <img src={Tema4} alt="img" className={styles.temaIMG} />
+        </SwiperSlide>
       </Swiper>
     </section>
   );
