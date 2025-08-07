@@ -45,7 +45,13 @@ export default function PartnersSection() {
             </a>
           </li>
           <li className={styles.wrapperLogo911AC}>
-            <img src={AC} alt="911 AC" />
+            <a
+              href="https://www.instagram.com/911_aesthetic_clinic?igsh=MW9yY2hldmZqNGxxaw=="
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={AC} alt="911 AC" />
+            </a>
           </li>
         </ul>
         <button
