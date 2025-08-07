@@ -12,22 +12,40 @@ export default function PartnersSection() {
         <p className="btwSectionText">(наші партнери)</p>
         <ul className={styles.wrapperPartners}>
           <li className={styles.wrapperLogoPDP}>
-            <svg className={styles.pdpLogo} width={223} height={40}>
-              <use xlinkHref={`${spriteLogo}#logo-pdp`}></use>
-            </svg>
+            <a
+              target="_blank"
+              href="https://www.instagram.com/pied.de.poule_warsaw?igsh=cGIzZWFrZGxuemdu"
+              rel="noopener noreferrer"
+            >
+              <svg className={styles.pdpLogo} width={223} height={40}>
+                <use xlinkHref={`${spriteLogo}#logo-pdp`}></use>
+              </svg>
+            </a>
           </li>
           <li className={styles.wrapperLogoLavande}>
-            <svg className={styles.lavandeLogo} width={382} height={205}>
-              <use xlinkHref={`${spriteLogo}#logo-lavande`}></use>
-            </svg>
+            <a
+              href="https://www.instagram.com/lavande.ua?igsh=MTM0Z3RnNGh2MTNpbA=="
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg className={styles.lavandeLogo} width={382} height={205}>
+                <use xlinkHref={`${spriteLogo}#logo-lavande`}></use>
+              </svg>
+            </a>
           </li>
           <li className={styles.wrapperLogoConciergePro}>
-            <svg className={styles.ConciergeProLogo} width={202} height={165}>
-              <use xlinkHref={`${spriteLogo}#logo-conciergepro`}></use>
-            </svg>
+            <a
+              href="https://t.me/concierge_pro"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg className={styles.ConciergeProLogo} width={202} height={165}>
+                <use xlinkHref={`${spriteLogo}#logo-conciergepro`}></use>
+              </svg>
+            </a>
           </li>
           <li className={styles.wrapperLogo911AC}>
-            <img src={AC} alt="911 AC"/>
+            <img src={AC} alt="911 AC" />
           </li>
         </ul>
         <button
