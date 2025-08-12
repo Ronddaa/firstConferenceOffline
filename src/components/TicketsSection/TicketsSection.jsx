@@ -1,6 +1,6 @@
 import styles from "./TicketsSection.module.css";
 import sprite from "../icons.svg";
-import TicketsForm from "../Modals/Tickets/TicketsForm";
+import TicketsForm from "../Modals/HelperFormUsers/HelperFormUsers";
 import { useState } from "react";
 import ShowPlace from "../Modals/ShowPlace/ShowPlace";
 import LastMinuteIMG from "./LastMinuteIMG.webp";

@@ -1,7 +1,7 @@
 import styles from "./HeaderComp.module.css";
 import SpeakersForm from "../../Modals/Speakers/SpeakersForm";
 import PartnersForm from "../../Modals/Partners/PartnersForm";
-import TicketsForm from "../../Modals/Tickets/TicketsForm";
+import TicketsForm from "../../Modals/HelperFormUsers/HelperFormUsers";
 import sprite from "../../icons.svg";
 import { useState, useEffect } from "react";
 

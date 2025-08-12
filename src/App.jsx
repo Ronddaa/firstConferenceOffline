@@ -22,11 +22,11 @@ import TelegramBlock from "./components/TelegramBlock/TelegramBlock";
 import Footer from "./components/Footer/Footer";
 import FooterComp from "./components/Footer/FooterComp/FooterComp";
 import SpeakersSectionComp from "./components/SpeakersSection/SpeakresSectionComp";
-import MarysyaHorobec from "./components/MarysyaHorobecSection/MarysyaHorobec";
+// import MarysyaHorobec from "./components/MarysyaHorobecSection/MarysyaHorobec";
 import HorobecSectionComp from "./components/MarysyaHorobecSection/MarysyaHorobecSectionComp/MarysyaHorobecComp";
 import OurValuesMobile from "./components/OurValuesSection/Mobile/OurValuesMobile";
 import OurValuesDesctop from "./components/OurValuesSection/Desctop/OurValuesDesctop";
-import HotelSection from "./components/HotelSection/HotelSecion";
+// import HotelSection from "./components/HotelSection/HotelSecion";
 import AboutConference from "./components/AboutConference/AboutConference";
 import WaitYouSection from "./components/WaitYouSection/WaitYouSection";
 import CreateLinkPage from "./Pages/CreateLinkPage/CreateLinkPage";
@@ -56,14 +56,14 @@ export default function App() {
           <>
             {isDesktop ? <HeaderComp /> : <Header />}
             {isDesktop ? <HeroComp /> : <Hero />}
-            <HotelSection />
+            {/* <HotelSection /> */}
             <AboutConference />
             {isDesktop ? <OurValuesDesctop /> : <OurValuesMobile />}
             <WaitYouSection />
             {isDesktop ? <YourDaySectionDesc /> : <YourDaySection />}
             <Tema />
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
-            {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />}
+            {/* {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />} */}
             <Program />
             <Tickets />
             <PartnersSection />

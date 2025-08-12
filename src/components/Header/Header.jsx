@@ -4,7 +4,7 @@ import sprite from "../icons.svg";
 import SpeakersForm from "../Modals/Speakers/SpeakersForm";
 import { useEffect, useState } from "react";
 import PartnersForm from "../Modals/Partners/PartnersForm";
-import TicketsForm from "../Modals/Tickets/TicketsForm";
+import TicketsForm from "../Modals/HelperFormUsers/HelperFormUsers";
 import BurgerMenu from "../Modals/BurgerMenu/BurgerMenu";
 
 export default function Header() {
