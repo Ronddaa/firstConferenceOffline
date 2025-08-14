@@ -142,13 +142,35 @@ export default function FooterComp() {
         </ul>
         <ul className={styles.wrapperPolicy}>
           <li>
-            <a className={styles.policyLink} href="#">
+            <a
+              className={styles.policyLink}
+              href="https://drive.google.com/file/d/1HbwsjGzJwpdm_lp1LWClBbUX8Ci8Q-M1/view"
+            >
+              Умови використання
+            </a>
+          </li>
+          <li>
+            <a
+              className={styles.policyLink}
+              href="https://drive.google.com/file/d/1_TYyH_dhW66qIaFlRDZe9a01M-8JqNaz/view"
+            >
+              Політика конфіденційності
+            </a>
+          </li>
+          <li>
+            <a
+              className={styles.policyLink}
+              href="https://drive.google.com/file/d/1TzXMsE8JAyBvNozd9QM6UVazsIPRkzED/view"
+            >
               публічна оферта
             </a>
           </li>
           <li>
-            <a className={styles.policyLink} href="#">
-              Політика конфіденційності
+            <a
+              className={styles.policyLink}
+              href="https://drive.google.com/file/d/1BIitnpEEKD12tyJ40hdB8ldIptkz4rTJ/view"
+            >
+              Згода на обробку персональних даних
             </a>
           </li>
         </ul>

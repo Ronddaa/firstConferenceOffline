@@ -129,7 +129,7 @@ export default function Footer() {
             className={styles.policyLink}
             href="https://drive.google.com/file/d/1BIitnpEEKD12tyJ40hdB8ldIptkz4rTJ/view"
           >
-            публічна оферта
+            Згода на обробку персональних даних
           </a>
         </li>
       </ul>
