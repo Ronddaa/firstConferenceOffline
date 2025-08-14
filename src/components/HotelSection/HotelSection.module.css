@@ -20,7 +20,7 @@
     overflow: hidden;
 }
 .wrapperDateInfo li:first-child{
-    padding: 18px 70px;
+    padding: 24px 60px 61px;
 }
 .date{
     font-family: "Unbounded";
@@ -32,7 +32,7 @@
 .mounth{
     font-family: "Unbounded";
     font-weight: 600;
-    font-size: 36px;
+    font-size: 26px;
     text-transform: uppercase;
     position: relative;
     color: #1B2021;
@@ -43,7 +43,7 @@
     font-family: "Quentin";
     font-size: 40px;
     position: absolute;
-    top: 105%;
+    top: 140%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-transform: uppercase;
@@ -65,22 +65,6 @@
     left: 0;
     top: 0;
 }
-.hotelName{
-    position: absolute;
-    z-index: 2;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-family: "Unbounded";
-    font-size: 26px;
-    text-transform: uppercase;
-    color: #FFFFAC;
-    text-align: center;
-    font-weight: 600; 
-    text-decoration: underline;
-    display: block;
-    width: 100%;
-}
 
 @media (min-width:768px){
     .HotelSection{
@@ -99,7 +83,7 @@
     .wrapperDateInfo li:first-child{
         padding: 101px 30px 114px;
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
     }
     .wrapperDateInfo li:last-child{
@@ -107,23 +91,19 @@
         height: 460px;
     }
     .date{
-        font-size: 194px;
+        font-size: 180px;
     }
     .mounth{
-        font-size: 58px;
-        margin: 100px 0 0;
+        font-size: 62px;
     }
     .mounth::after{
         font-size: 94px;
         top: -50%;
-        left: 35%;
+        left: 430px;
     }
     .westinhotelIMG{
         width: 110%;
         height: 110%;
         z-index: 0;
-    }
-    .hotelName{
-        font-size: 52px;
     }
 }

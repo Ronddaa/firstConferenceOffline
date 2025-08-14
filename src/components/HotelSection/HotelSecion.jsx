@@ -14,20 +14,15 @@ export default function HotelSection() {
       />
       <ul className={styles.wrapperDateInfo}>
         <li>
-          <p className={styles.date}>23</p>
-          <p className={styles.mounth}>серпня</p>
+          <p className={styles.date}>08</p>
+          <p className={styles.mounth}>листопада</p>
         </li>
         <li>
-          <img className={styles.westinhotelIMG} src={westinhotel} alt="Hotel" />
-          <a
-            className={styles.hotelName}
-            target="_blank"
-            href="https://www.marriott.com/en-us/hotels/wawwi-the-westin-warsaw/overview/"
-          >
-            Westin hotel
-            <br />
-            Warsaw
-          </a>
+          <img
+            className={styles.westinhotelIMG}
+            src={westinhotel}
+            alt="Hotel"
+          />
         </li>
       </ul>
     </section>
