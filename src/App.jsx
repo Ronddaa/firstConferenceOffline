@@ -58,11 +58,11 @@ export default function App() {
             {isDesktop ? <HeroComp /> : <Hero />}
             <HotelSection />
             <AboutConference />
-            {isDesktop ? <OurValuesDesctop /> : <OurValuesMobile />}
             <WaitYouSection />
             {isDesktop ? <YourDaySectionDesc /> : <YourDaySection />}
             <Tema />
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
+            {isDesktop ? <OurValuesDesctop /> : <OurValuesMobile />}
             {/* {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />} */}
             <Program />
             <Tickets />
