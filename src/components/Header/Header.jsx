@@ -56,20 +56,20 @@ export default function Header() {
           className={styles.buyBtnHeader}
           onClick={() => setmodalTickets(true)}
         >
-          придбати квиток{" "}
+          залишити заявку
           <svg className={styles.arrowList} width={21} height={21}>
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
           </svg>
         </button>
-          <svg
-            className={styles.burgerMenu}
-            width={40}
-            height={40}
-            onClick={() => setmodalBurgerMenu(true)}
-          >
-            <use xlinkHref={`${sprite}#icon-burger-menu`}></use>
-          </svg>
-        </div>
+        <svg
+          className={styles.burgerMenu}
+          width={40}
+          height={40}
+          onClick={() => setmodalBurgerMenu(true)}
+        >
+          <use xlinkHref={`${sprite}#icon-burger-menu`}></use>
+        </svg>
+      </div>
 
       {/* Блок с кнопками "Стати спікером / партнером" */}
       <ul

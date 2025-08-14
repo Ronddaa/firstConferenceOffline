@@ -128,7 +128,7 @@ export default function HeaderComp() {
           className={styles.buyBtnHeader}
           onClick={() => setModalTickets(true)}
         >
-          придбати квиток
+          залишити заявку
           <svg className={styles.arrowList} width={21} height={21}>
             <use xlinkHref={`${sprite}#icon-arrow`} />
           </svg>
