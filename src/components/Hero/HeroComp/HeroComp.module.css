@@ -1,5 +1,6 @@
 .HeroCompSection{
     padding: 19% 0 10%;
+    box-shadow: inset ;
 }
 .heroImgWrapper {
     position: absolute;
@@ -24,19 +25,11 @@
     margin-bottom: 5%;
   }
   .infoTextHero1{
-    max-width: 302px;
+    max-width: 38%;
     color: #FFFCF9;
     font-weight: 600;
     font-size: 1vw;
     text-transform: uppercase;
-  }
-  .infoTextHero2{
-    max-width: 251px;
-    color: #FFFCF9;
-    font-weight: 600;
-    font-size: 1vw;
-    text-transform: uppercase;
-    text-align: right;
   }
   .wrapperMainTitle{
     display: flex;

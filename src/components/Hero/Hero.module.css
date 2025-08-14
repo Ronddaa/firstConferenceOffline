@@ -42,8 +42,9 @@ line-height: 1;
     text-align: center;
     font-size: 40px;
     color: #FFFFAC;
+    margin-bottom: 30px;
 }
-.detailsTextHero1, .detailsTextHero2{
+.detailsTextHero1{
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;

@@ -23,15 +23,11 @@ export default function HeroComp() {
         <ul className={styles.wrapperHeroInfoText}>
           <li>
             <p className={styles.infoTextHero1}>
-              Преміальна українсько- <br /> європейська конференція <br /> у
+              Преміальна українсько-  європейська конференція  у
               форматі спікер-шоу
             </p>
           </li>
-          <li>
-            <p className={styles.infoTextHero2}>
-              до Дня Незалежності — <br /> для тих, хто творить <br /> майбутнє
-            </p>
-          </li>
+          
         </ul>
         <article className={styles.wrapperMainTitle}>
           <div>
