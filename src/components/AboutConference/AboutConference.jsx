@@ -28,34 +28,6 @@ export default function AboutConference() {
             </li>
           </ul>
         </div>
-        <article className={styles.wrapperArticle}>
-          <img
-            className={styles.aboutBackroundIMG}
-            src={aboutBackroundIMG}
-            alt="bacground"
-          />
-          <h3 className={styles.titleAbout}>
-            Ми створили «Код Жінки» як сучасний простір, де поєднується
-            <span> глибина і дія:</span>
-          </h3>
-          <ul className={styles.wrappperAboutList}>
-            <li>
-              <h4 className={styles.titleLi}>
-                Живі виступи <br /> українських експерток
-              </h4>
-              <p className={styles.textLi}>у сексології, жіночому здоров’ї</p>
-            </li>
-            <li>
-              <h4 className={styles.titleLi}>
-                Знайомства з лікарками, дослідницями тіла <br /> й всесвітньої
-                культури
-              </h4>
-              <p className={styles.textLi}>
-                не для фото, а для реальних <br /> інсайтів і підтримки
-              </p>
-            </li>
-          </ul>
-        </article>
       </section>
     );
 }
