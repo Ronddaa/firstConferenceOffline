@@ -4,7 +4,7 @@ import sprite from "../icons.svg";
 import SpeakersForm from "../Modals/Speakers/SpeakersForm";
 import { useEffect, useState } from "react";
 import PartnersForm from "../Modals/Partners/PartnersForm";
-import TicketsForm from "../Modals/HelperFormUsers/HelperFormUsers";
+import TicketsForm from "../Modals/Tickets/TicketsForm";
 import BurgerMenu from "../Modals/BurgerMenu/BurgerMenu";
 
 export default function Header() {
@@ -56,7 +56,7 @@ export default function Header() {
           className={styles.buyBtnHeader}
           onClick={() => setmodalTickets(true)}
         >
-          залишити заявку
+          придбати квиток
           <svg className={styles.arrowList} width={21} height={21}>
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
           </svg>

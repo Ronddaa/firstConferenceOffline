@@ -40,7 +40,7 @@ export default function BurgerMenu({ isOpen, onClose }) {
             setmodalTickets(true);
           }}
         >
-          придбати квиток{" "}
+          придбати квиток
           <svg className={styles.arrowList} width={21} height={21}>
             <use xlinkHref={`${sprite}#icon-arrow`}></use>
           </svg>

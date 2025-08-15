@@ -36,6 +36,7 @@ export default function TicketsForm({ isOpen, onClose }) {
     { name: "PREMIUM", price: 1900 },
     { name: "LUXE", price: 5000 },
     { name: "BRUNCH", price: 1100 },
+    {name: "CONCERT", price: 500 }
   ];
 
   useEffect(() => {

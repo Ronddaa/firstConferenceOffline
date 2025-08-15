@@ -1,7 +1,7 @@
 import styles from "./HeaderComp.module.css";
 import SpeakersForm from "../../Modals/Speakers/SpeakersForm";
 import PartnersForm from "../../Modals/Partners/PartnersForm";
-import TicketsForm from "../../Modals/HelperFormUsers/HelperFormUsers";
+import TicketsForm from "../../Modals/Tickets/TicketsForm";
 import sprite from "../../icons.svg";
 import { useState, useEffect } from "react";
 
@@ -128,7 +128,7 @@ export default function HeaderComp() {
           className={styles.buyBtnHeader}
           onClick={() => setModalTickets(true)}
         >
-          залишити заявку
+          придбати квиток
           <svg className={styles.arrowList} width={21} height={21}>
             <use xlinkHref={`${sprite}#icon-arrow`} />
           </svg>

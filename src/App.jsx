@@ -64,8 +64,9 @@ export default function App() {
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
             {isDesktop ? <OurValuesDesctop /> : <OurValuesMobile />}
             {/* {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />} */}
-            <Program />
+
             <Tickets />
+            <Program />
             <PartnersSection />
             <Auction />
             {isDesktop ? <DonationComp /> : <Donation />}

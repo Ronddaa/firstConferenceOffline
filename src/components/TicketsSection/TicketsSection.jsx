@@ -1,6 +1,6 @@
 import styles from "./TicketsSection.module.css";
 import sprite from "../icons.svg";
-import TicketsForm from "../Modals/HelperFormUsers/HelperFormUsers";
+import TicketsForm from "../Modals/Tickets/TicketsForm";
 import { useState } from "react";
 import LastMinuteIMG from "./LastMinuteIMG.webp";
 import GoldIMG from "./GoldIMG.webp";
@@ -609,6 +609,42 @@ const toggleListGold = () => {
             />
           </li>
         </ul>
+        <article className={styles.monatikticket}>
+          <h3 className={styles.titleConcert}>CONCERT</h3>
+          <ul className={styles.wrapperConcertDetails}>
+            <li>
+              <p className={styles.textConcert}>Залишилось 102 місця</p>
+            </li>
+            <li className={styles.wrapperConcertLi}>
+              <svg className={styles.detailsSVG} width={80} height={80}>
+                <use xlinkHref={`${sprite}#icon-micro`}></use>
+              </svg>
+              <p className={styles.detailsTextConcert}>
+                Вхід на фінальну частину конференції — ексклюзивний концерт
+                MONATIK
+              </p>
+            </li>
+            <li className={styles.wrapperConcertPrice}>
+              <p className={styles.priceText}>
+                500
+                <span className={styles.priceValue}>
+                  <span className={styles.priceValue}>
+                    <span className={styles.priceValue}>pln</span>
+                  </span>
+                </span>{" "}
+                /<span className={styles.priceEuro}>120&euro;</span>
+              </p>{" "}
+            </li>
+          </ul>
+          <button
+            className={styles.btnBuyTariffGold}
+            onClick={() => {
+              setmodalTickets(true);
+            }}
+          >
+            придбати квиток
+          </button>
+        </article>
       </div>
       <TicketsForm
         isOpen={modalTicketsIsOpen}

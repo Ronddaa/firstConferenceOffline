@@ -334,6 +334,50 @@
   color: #fffcf9;
 }
 
+.monatikticket{
+  border: 1px solid #000000;
+  padding: 25px 10px;
+  border-radius: 10px;
+}
+.titleConcert{
+  font-size: 52px;
+  text-align: center;
+   color: transparent;
+  background: linear-gradient(90deg, #1b2021, #9eb7e5);
+  -webkit-background-clip: text; /* Для Safari */
+  background-clip: text;
+  margin-bottom: 30px;
+}
+.wrapperConcertDetails{
+  padding: 0 23px;
+}
+.textConcert{
+  padding-bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #1b2021;
+  font-size: 12px;
+  border-bottom: 1px solid #1b2021;
+}
+.wrapperConcertLi{
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  padding: 25px 0;
+  border-bottom: 1px solid #1b2021;
+}
+.detailsTextConcert{
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #1b2021;
+  font-weight: 800;
+  max-width: 70%;
+  
+}
+.wrapperConcertPrice{
+  padding: 25px 0;
+}
+
 @media (min-width:768px){
   .ticketsIMG{
     display: block;
@@ -358,5 +402,28 @@
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
+  }
+  .titleConcert{
+    font-size: 162px;
+  }
+  .wrapperConcertDetails{
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .textConcert{
+    font-size: 18px;
+    font-weight: 700;
+  
+  }
+  .detailsTextConcert{
+    font-size: 18px;
+  }
+  .wrapperConcertPrice{
+
+  }
+  .monatikticket .btnBuyTariffGold{
+    max-width: 372px;
+    margin: 0 auto;
+    display: block;
   }
 }
