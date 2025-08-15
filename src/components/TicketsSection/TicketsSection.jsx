@@ -2,7 +2,6 @@ import styles from "./TicketsSection.module.css";
 import sprite from "../icons.svg";
 import TicketsForm from "../Modals/HelperFormUsers/HelperFormUsers";
 import { useState } from "react";
-import ShowPlace from "../Modals/ShowPlace/ShowPlace";
 import LastMinuteIMG from "./LastMinuteIMG.webp";
 import GoldIMG from "./GoldIMG.webp";
 import PremiumIMG from "./PremiumIMG.webp";
@@ -22,7 +21,6 @@ const items = [
 
 export default function Tickets() {
   const [modalTicketsIsOpen, setmodalTickets] = useState(false);
-  const [modalShowPlaceIsOpen, setmodalShowPlace] = useState(false);
   const [isExpandedLastMinute, setIsExpandedLastMinute] = useState(false);
   const [isExpandedGold, setIsExpandedGold] = useState(false);
   const [isExpandedPremium, setIsExpandedPremium] = useState(false);
@@ -51,14 +49,8 @@ const toggleListGold = () => {
           <li className={styles.styleForTicketsIMG}>
             <article className={styles.TicketsLastMinute}>
               <h3 className={styles.titleLM}>LAST MINUTE</h3>
-              <p className={styles.kolPlace}>SOLD OUT</p>
+              <p className={styles.kolPlace}>Залишилось 21 місце</p>
               <ul className={styles.wrapperDetailsTariff}>
-                <li>
-                  <svg className={styles.detailsSVG} width={28} height={28}>
-                    <use xlinkHref={`${sprite}#icon-diamond`}></use>
-                  </svg>
-                  <p className={styles.detailsText}>Місця: позначені зеленим</p>
-                </li>
                 <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-palms`}></use>
@@ -137,34 +129,16 @@ const toggleListGold = () => {
                   </p>
                 </li>
               </ul>
-              <p className={styles.priceTextWillBe}>
-                850
-                <span className={styles.priceValue}>
-                  <span className={styles.priceValue}>
-                    <span className={styles.priceValue}>pln</span>
-                  </span>
-                </span>
-                / <span>200&euro;</span>
-              </p>
               <p className={styles.priceText}>
-                sold out                
+                650 <span>pln</span>/<span>150€</span>
               </p>
               <button
                 className={styles.btnBuyTariffGold}
                 onClick={() => {
                   setmodalTickets(true);
                 }}
-                disabled
               >
                 придбати квиток
-              </button>
-              <button
-                className={styles.btnPlaceShow}
-                onClick={() => {
-                  setmodalShowPlace(true);
-                }}
-              >
-                переглянути місця
               </button>
             </article>
             <img
@@ -180,23 +154,6 @@ const toggleListGold = () => {
               <h3 className={styles.titleTariffCard}>GOLD</h3>
               <p className={styles.kolPlace}>Залишилось 98 місць</p>
               <ul className={styles.wrapperDetailsTariff}>
-                <li className={styles.LMwithList}>
-                  <svg className={styles.detailsSVG} width={28} height={28}>
-                    <use xlinkHref={`${sprite}#icon-diamond`}></use>
-                  </svg>
-                  <div className={styles.wrapperLMwithList}>
-                    <p className={styles.detailsText}>
-                      Місця: позначені жовтим
-                    </p>
-                    <ul className={styles.wrapperLMList}>
-                      <li>
-                        <span className={styles.colorBlueLi}>
-                          за банкетними столами
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
                 <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-palms`}></use>
@@ -256,7 +213,7 @@ const toggleListGold = () => {
                     <span>-10% знижка на бранч від MGVC</span>
                     <br />
                     <span className={styles.underPresidentRoomSpan}>
-                      наступного дня (24.08.2025)
+                      наступного дня
                     </span>
                   </p>
                 </li>
@@ -317,31 +274,15 @@ const toggleListGold = () => {
                 </span>
                 / <span>300&euro;</span>
               </p>
-              <p className={styles.priceText}>
-                990
-                <span className={styles.priceValue}>
-                  <span className={styles.priceValue}>
-                    <span className={styles.priceValue}>pln</span>
-                  </span>
-                </span>{" "}
-                /<span className={styles.priceEuro}>230&euro;</span>
-              </p>
-              <p className={styles.priceTextAfter}>*підвищення цін з 08.08</p>
+              <p className={styles.soldout}>SOLD OUT</p>
               <button
                 className={styles.btnBuyTariffGold}
                 onClick={() => {
                   setmodalTickets(true);
                 }}
+                disabled
               >
                 придбати квиток
-              </button>
-              <button
-                className={styles.btnPlaceShow}
-                onClick={() => {
-                  setmodalShowPlace(true);
-                }}
-              >
-                переглянути місця
               </button>
             </article>
             <img
@@ -357,19 +298,6 @@ const toggleListGold = () => {
               <h3 className={styles.titleTariffCard}>premium</h3>
               <p className={styles.kolPlace}>Залишилось 52 місця</p>
               <ul className={styles.wrapperDetailsTariff}>
-                <li className={styles.LMwithList}>
-                  <svg className={styles.detailsSVG} width={28} height={28}>
-                    <use xlinkHref={`${sprite}#icon-diamond`}></use>
-                  </svg>
-                  <div className={styles.wrapperLMwithList}>
-                    <p className={styles.detailsText}>
-                      Місця: позначені блакитним
-                    </p>
-                    <ul className={styles.wrapperLMList}>
-                      <li>за банкетними столами</li>
-                    </ul>
-                  </div>
-                </li>
                 <li className={styles.LMwithList}>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-palms`}></use>
@@ -428,7 +356,7 @@ const toggleListGold = () => {
                     <span>-15%</span> знижка на бранч <br /> від MGVC
                     <br />
                     <span className={styles.underPresidentRoomSpan}>
-                      наступного дня (24.08.2025)
+                      наступного дня
                     </span>
                   </p>
                 </li>
@@ -507,14 +435,6 @@ const toggleListGold = () => {
               >
                 придбати квиток
               </button>
-              <button
-                className={styles.btnPlaceShow}
-                onClick={() => {
-                  setmodalShowPlace(true);
-                }}
-              >
-                переглянути місця
-              </button>
             </article>
             <img
               src={PremiumIMG}
@@ -529,19 +449,6 @@ const toggleListGold = () => {
               <h3 className={styles.titleTariffCard}>LUXE</h3>
               <p className={styles.kolPlace}>Залишилось 25 місць</p>
               <ul className={styles.wrapperDetailsTariff}>
-                <li className={styles.LMwithList}>
-                  <svg className={styles.detailsSVG} width={28} height={28}>
-                    <use xlinkHref={`${sprite}#icon-diamond`}></use>
-                  </svg>
-                  <div className={styles.wrapperLMwithList}>
-                    <p className={styles.detailsText}>
-                      Місця: позначені червоним
-                    </p>
-                    <ul className={styles.wrapperLMList}>
-                      <li>за банкетними столами</li>
-                    </ul>
-                  </div>
-                </li>
                 <li>
                   <svg className={styles.detailsSVG} width={28} height={28}>
                     <use xlinkHref={`${sprite}#icon-palms`}></use>
@@ -634,7 +541,7 @@ const toggleListGold = () => {
                     <span>-20%</span> знижка на бранч від MGVC
                     <br />
                     <span className={styles.underPresidentRoomSpan}>
-                      наступного дня (24.08.2025)
+                      наступного дня
                     </span>
                   </p>
                 </li>
@@ -692,14 +599,6 @@ const toggleListGold = () => {
               >
                 придбати квиток
               </button>
-              <button
-                className={styles.btnPlaceShow}
-                onClick={() => {
-                  setmodalShowPlace(true);
-                }}
-              >
-                переглянути місця
-              </button>
             </article>
             <img
               src={LuxeIMG}
@@ -715,10 +614,6 @@ const toggleListGold = () => {
         isOpen={modalTicketsIsOpen}
         onClose={() => setmodalTickets(false)}
       ></TicketsForm>
-      <ShowPlace
-        isOpen={modalShowPlaceIsOpen}
-        onClose={() => setmodalShowPlace(false)}
-      ></ShowPlace>
     </section>
   );
 }

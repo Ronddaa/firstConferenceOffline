@@ -23,6 +23,10 @@
   border: 1px solid #1b2021;
   border-radius: 10px;
 }
+.TicketsGold{
+  background-color: #797979;
+  color: #929292 !important;
+}
 
 .TicketsPremium {
   background-color: #1b2021;
@@ -44,7 +48,7 @@
 }
 
 .kolPlace {
-  font-style: 12px;
+  font-size: 12px;
   color: #1b2021;
   margin-bottom: 5px;
 }
@@ -92,8 +96,7 @@
   color: #fffcf9;
 }
 
-.TicketsPremium .detailsText span,
-.TicketsGold .detailsText span {
+.TicketsPremium .detailsText span {
   color: #9eb7e5;
 }
 
@@ -136,6 +139,10 @@
   border-bottom: 1px solid #1b2021;
   margin-bottom: 40px;
   padding-bottom: 30px;
+  padding-top: 30px;
+}
+.TicketsLastMinute .priceText span{
+  font-size: 28px;
 }
 .TicketsPremium .priceText {
   color: #fffcf9;
@@ -176,12 +183,6 @@
   text-transform: uppercase;
   width: 100%;
 }
-.TicketsLastMinute .btnBuyTariffGold{
-  cursor: not-allowed;
-  background: #797979;
-  color: #fffcf9;
-}
-
 .btnBuyTariffPremium {
   background: linear-gradient(90deg, #ffffac, #ffffff);
   padding: 34px 84px;
@@ -192,23 +193,6 @@
   border-radius: 10px;
   text-transform: uppercase;
   width: 100%;
-}
-
-.btnPlaceShow {
-  background-color: transparent;
-  padding: 17px 78px;
-  color: #1b2021;
-  border: 1px solid #1b2021;
-  border-radius: 10px;
-  text-transform: uppercase;
-  font-size: 12px;
-  text-align: center;
-  width: 100%;
-}
-
-.TicketsPremium .btnPlaceShow {
-  color: #fffcf9;
-  border: 1px solid #fffcf9;
 }
 .wrapperDetailsTariff .LMwithList{
   display: flex;
@@ -331,6 +315,23 @@
 }
 .colorBlueLi{
   color: #9eb7e5;
+}
+
+.soldout{
+  text-align: center;
+  color: #7A0108;
+  font-size: 46px;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #929292;
+}
+
+.TicketsGold .btnBuyTariffGold{
+  cursor: not-allowed;
+  background: #595959;
+  color: #fffcf9;
 }
 
 @media (min-width:768px){
