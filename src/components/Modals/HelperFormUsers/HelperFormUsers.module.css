@@ -73,8 +73,7 @@
     margin-bottom: 20px;
 }
 .sendBtnHelperFormUsersNoValid{
-    background: transparent;
-    border: 1px solid #797979;
+    background: #A3A0A0;
     color: #797979;
 }
 .helperIMG{
@@ -86,9 +85,11 @@
 @media (min-width:768px){
     .modalHelperFormUsersContent {
     max-width: 70%;
+    max-height: 710px;
     padding: 0;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 .HelperFormUsers {
     padding: 40px;

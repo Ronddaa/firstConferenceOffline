@@ -34,6 +34,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  cursor: pointer;
 }
 .titleTicketsForm {
   font-weight: 600;
@@ -175,4 +176,14 @@
   font-size: 12px;
   text-decoration: line-through;
   opacity: 0.5;
+}
+
+@media(min-width: 768px){
+  .modalTicketsForm{
+    padding: 5%;
+  }
+  .modalTicketsFormContent{
+    width: 620px;
+    padding: 55px;
+  }
 }
