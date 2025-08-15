@@ -4,6 +4,7 @@ import sprite from "../../icons.svg";
 import Modal from "react-modal";
 import api from "../../../api/api";
 import { sendLeadToMeta } from "../../../utils/sendLeadToMeta"; // ✅ Импорт функции для отправки события в Meta
+import helperIMG from './helperIMG.webp'
 
 export default function HelperFormUsers({ isOpen, onClose }) {
   const [fullName, setFullName] = useState("");
@@ -85,13 +86,14 @@ export default function HelperFormUsers({ isOpen, onClose }) {
         <use xlinkHref={`${sprite}#icon-close`}></use>
       </svg>
 
-      <h2 className={styles.titleHelperFormUsers}>залиш свої контакти</h2>
-      <p className={styles.textHelper}>
-        ми звʼяжемось з тобою, щоб допомогти обрати тариф та відповісти на всі
-        запитання!
-      </p>
-
       <form className={styles.HelperFormUsers} onSubmit={handleSubmit}>
+        <h2 className={styles.titleHelperFormUsers}>
+          Ми раді, що ви зацікавилися нашим проєктом!
+        </h2>
+        <p className={styles.textHelper}>
+          Залиште свої контакти, і ми звʼяжемось з вами, щоб допомогти з вибором
+          тарифу та відповісти на всі запитання!
+        </p>
         <input
           id="fullName"
           type="text"
@@ -130,9 +132,10 @@ export default function HelperFormUsers({ isOpen, onClose }) {
           }
           disabled={!isValid}
         >
-          Надіслати заявку
+          Надіслати
         </button>
       </form>
+      <img className={styles.helperIMG} src={helperIMG} alt="warsaw" />
     </Modal>
   );
 }

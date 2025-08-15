@@ -103,10 +103,10 @@ export default function TicketsForm({ isOpen, onClose }) {
   };
 
   // Обработчик для чекбокса бранча
-  const toggleBrunch = () => {
-    setBrunchSelected((prev) => !prev);
-    setFormData((prev) => ({ ...prev, takeBrunch: !prev })); // Обновляем takeBrunch в formData
-  };
+  // const toggleBrunch = () => {
+  //   setBrunchSelected((prev) => !prev);
+  //   setFormData((prev) => ({ ...prev, takeBrunch: !prev })); // Обновляем takeBrunch в formData
+  // };
 
   // Логика расчета стоимости бранча (зависит от selectedTariff и quantity)
   const getBrunchPrice = () => {
@@ -375,14 +375,14 @@ export default function TicketsForm({ isOpen, onClose }) {
             <span>{dropdownOpen ? "▲" : "▼"}</span>
           </button>
 
-          <label className={styles.brunchCheckbox}>
+          {/* <label className={styles.brunchCheckbox}>
             <input
               type="checkbox"
               checked={brunchSelected}
               onChange={toggleBrunch}
             />
             Бранч MGVC від Марисі Горобець 24.08.25
-          </label>
+          </label> */}
 
           <ul
             className={`${styles.dropdownList} ${

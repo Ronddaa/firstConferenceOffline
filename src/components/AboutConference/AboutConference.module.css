@@ -31,6 +31,8 @@
 @media(min-width:768px){
     .titleProgram{
         font-size: 86px;
+        max-width: 1454px;
+        margin: 0 auto;
     }
     .wrappperTextAbout{
         flex-direction: row;
