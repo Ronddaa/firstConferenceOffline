@@ -19,9 +19,8 @@ export default function TelegramBlock() {
             href="#sectionTelegramBlockAnchor"
             onClick={(e) => {
               e.preventDefault();
-              const uniqueStart = `site_${Date.now()}`;
               window.open(
-                `https://t.me/womenkod_bot?start=${uniqueStart}`,
+                `https://t.me/womenkod_bot?start=womenkod`,
                 "_blank"
               );
             }}
