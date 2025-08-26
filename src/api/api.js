@@ -50,6 +50,15 @@ class ApiClient {
     return data;
   }
 
+  async createUnifieduser(payload) {
+    try {
+      const { data } = await this.axiosInstance.post("/unifiedusers", payload);
+      return data;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
   async submitHelperUserFormApplication(formData) {
     try {
       const { data } = await this.axiosInstance.post(

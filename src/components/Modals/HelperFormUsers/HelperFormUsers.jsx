@@ -3,12 +3,13 @@ import styles from "./HelperFormUsers.module.css";
 import sprite from "../../icons.svg";
 import Modal from "react-modal";
 import api from "../../../api/api";
-import { sendLeadToMeta } from "../../../utils/sendLeadToMeta"; // ✅ Импорт функции для отправки события в Meta
-import helperIMG from './helperIMG.webp'
+import { sendLeadToMeta } from "../../../utils/sendLeadToMeta";
+import helperIMG from "./helperIMG.webp";
 
 export default function HelperFormUsers({ isOpen, onClose }) {
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState(""); // Добавлено состояние для email
   const [telegram, setTelegram] = useState("");
   const [isValid, setIsValid] = useState(false);
 
@@ -28,44 +29,77 @@ export default function HelperFormUsers({ isOpen, onClose }) {
   }, []);
 
   useEffect(() => {
-    const allFieldsFilled = fullName.trim() && phone.trim() && telegram.trim();
+    // Обновлена валидация, чтобы включить email
+    const allFieldsFilled =
+      fullName.trim() && phone.trim() && email.trim() && telegram.trim();
     setIsValid(Boolean(allFieldsFilled));
-  }, [fullName, phone, telegram]);
+  }, [fullName, phone, email, telegram]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isValid) return;
 
     try {
-      const dataToSend = {
-        fullName,
-        phone,
-        telegram,
-        utmParams,
-      };
+      const cleanTelegram = telegram.startsWith("@")
+        ? telegram.substring(1)
+        : telegram;
 
-      // ✅ ИЗМЕНЕНИЕ: Отправляем данные на новый API-эндпоинт на вашем сервере
-      await api.submitHelperUserFormApplication(dataToSend);
+      await api.createUnifieduser({
+        fullName: {
+          firstName: fullName.split(" ")[0] || "",
+          lastName: fullName.split(" ").slice(1).join(" ") || "",
+        },
+        phoneNumber: phone,
+        email: email,
+        telegram: {
+          id: "",
+          userName: cleanTelegram || "",
+          firstName: "",
+          languageCode: "",
+          phone: "",
+          isPremium: false,
+          source: [],
+          transitions: [],
+        },
+        conferences: [
+          {
+            conference: `warsawkod ORDER`,
+            type: "offline",
+            ticketType: "helper",
+            ticketsQuantity: 1,
+            totalAmount: 0,
+            takeBrunch: false,
+            paymentData: { invoiceId: "", status: "pending" },
+            promoCode: "",
+            utmMarks: [
+              {
+                source: utmParams.utm_source || "",
+                medium: utmParams.utm_medium || "",
+                campaign: utmParams.utm_campaign || "",
+              },
+            ],
+          },
+        ],
+      });
 
-      // 🔹 Отправка события в Meta (можно оставить как есть)
       sendLeadToMeta({
         formType: "helperFormUsers",
         phone,
         name: fullName,
+        email, // Передаем email в Meta
         telegram,
       });
 
-      // Сброс полей
       setFullName("");
       setPhone("");
+      setEmail(""); // Очищаем email
       setTelegram("");
-
       onClose();
     } catch (error) {
-      console.error("Не вдалося надіслати заявку:", error);
+      console.error("Не вдалося зберегти заявку:", error);
     }
 
-    console.log("Form was sent!");
+    console.log("Helper form was saved to DB!");
   };
 
   return (
@@ -94,6 +128,7 @@ export default function HelperFormUsers({ isOpen, onClose }) {
           Залиште свої контакти, і ми звʼяжемось з вами, щоб допомогти з вибором
           тарифу та відповісти на всі запитання!
         </p>
+
         <input
           id="fullName"
           type="text"
@@ -114,6 +149,17 @@ export default function HelperFormUsers({ isOpen, onClose }) {
           required
         />
 
+        {/* Добавлено поле для email */}
+        <input
+          id="email"
+          type="email"
+          className={styles.inputHelperFormUsers}
+          placeholder="Електронна пошта"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+
         <input
           id="telegram"
           type="text"
@@ -121,6 +167,7 @@ export default function HelperFormUsers({ isOpen, onClose }) {
           placeholder="Нік Telegram"
           value={telegram}
           onChange={(e) => setTelegram(e.target.value)}
+          required
         />
 
         <button
