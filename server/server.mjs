@@ -3,7 +3,6 @@ import cors from "cors";
 import axios from "axios";
 import { fileURLToPath } from "url";
 import { dirname, join, resolve } from "path";
-import { readFile, writeFile } from "fs/promises";
 import TelegramBot from "node-telegram-bot-api";
 import mongoose from "mongoose";
 import { unifiedusersCollection } from "./db/models/unifiedusers.js";
@@ -21,7 +20,6 @@ import { utmTracker } from "./middlewares/utmMarks.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const promoPath = resolve(__dirname, "db", "promoCodes.json");
 
 await initMongoConnection();
 
@@ -71,8 +69,8 @@ const WEBHOOK_URL = env("WEBHOOK_URL");
 const PORT = env("PORT", 3000);
 const HOST = env("HOST", "0.0.0.0");
 
-const bot = new TelegramBot(BOT_TOKEN, { polling: false }); // Используем вебхуки
-const adminId = 718830020; // My Telegram ID
+const bot = new TelegramBot(BOT_TOKEN, { polling: false });
+const adminId = 718830020;
 
 const channelLink = "https://t.me/kodzhinky";
 const supportLink = "https://t.me/women_psyconference";
@@ -81,10 +79,6 @@ const instagramLink =
 const siteLink =
   "https://warsawkod.women.place/?utm_source=Telegram_bot&utm_medium=referral&utm_campaign=telegram_bot";
 
-/**
- * Отправляет информацию о новой заявке администратору через Telegram.
- * @param {{ fullName: string, phone: string, telegram: string, utmParams: { utm_source?: string, utm_medium?: string, utm_campaign?: string } }} formData Данные формы.
- */
 export async function sendFormToAdmin({
   fullName,
   phone,
@@ -114,7 +108,6 @@ export async function sendFormToAdmin({
   }
 }
 
-// 🔹 Обработка команды /start
 bot.onText(/\/start(?: (.+))?/, async (msg, match) => {
   const chatID = msg.chat.id;
   const source = match?.[1] || "unknown";
@@ -197,19 +190,16 @@ bot.onText(/\/start(?: (.+))?/, async (msg, match) => {
   }
 });
 
-// ✅ Endpoint для Telegram Webhook
 app.post(`/bot${BOT_TOKEN}`, (req, res) => {
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
 
-// ✅ НОВЫЙ ЭНДПОИНТ для обработки формы с сайта
 app.post("/api/submit-helper-form", async (req, res) => {
   const formData = req.body;
   console.log("📥 Получена заявка с сайта:", formData);
 
   try {
-    // 🔹 Вызываем функцию бота, чтобы отправить сообщение админу
     await sendFormToAdmin(formData);
     res.status(200).json({ message: "Заявка успешно отправлена админу." });
   } catch (error) {
@@ -218,7 +208,6 @@ app.post("/api/submit-helper-form", async (req, res) => {
   }
 });
 
-// ---------- Получение курса PLN→UAH из разных источников ----------
 async function getPLNtoUAHRateFromPrivat() {
   const { data } = await axios.get(
     "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5"
@@ -253,7 +242,6 @@ async function getPLNtoUAHRate() {
   }
 }
 
-// ---------- Создание платежа ----------
 app.post("/api/create-payment", async (req, res, next) => {
   const { user, conferences } = req.body;
 
@@ -269,23 +257,6 @@ app.post("/api/create-payment", async (req, res, next) => {
   }
 
   const purchase = conferences[0];
-  if (purchase.promoCode) {
-    try {
-      const file = await readFile(promoPath, "utf-8");
-      const promoCodes = JSON.parse(file);
-      const promo = promoCodes.find((p) => p.code === purchase.promoCode);
-
-      if (!promo) {
-        return res.status(400).json({ error: "Промокод недійсний" });
-      }
-      if (promo.used) {
-        return res.status(400).json({ error: "Промокод уже використаний" });
-      }
-    } catch (err) {
-      console.error("Ошибка при проверке промокода:", err);
-      return next(new Error(`Ошибка при проверке промокода: ${err.message}`));
-    }
-  }
 
   try {
     const totalAmountFromFrontend = purchase.totalAmount;
@@ -344,12 +315,11 @@ app.post("/api/create-payment", async (req, res, next) => {
       pageUrl: monoResponse.data.pageUrl,
     });
   } catch (error) {
-    console.error("Ошибка при создании оплаты:", error);
+    console.error("Ошибка при создании платежа:", error);
     next(error);
   }
 });
 
-// ---------- Callback MonoBank ----------
 app.post("/api/payment-callback", async (req, res, next) => {
   const { invoiceId, status } = req.body;
 
@@ -382,30 +352,6 @@ app.post("/api/payment-callback", async (req, res, next) => {
     if (conferenceToUpdate) {
       conferenceToUpdate.paymentData.status = statusMap[monoStatus] || "failed";
 
-      if (status === "success" && conferenceToUpdate.promoCode) {
-        try {
-          const file = await readFile(promoPath, "utf-8");
-          let promoCodes = JSON.parse(file);
-          const promoIndex = promoCodes.findIndex(
-            (p) => p.code === conferenceToUpdate.promoCode && !p.used
-          );
-
-          if (promoIndex !== -1) {
-            promoCodes[promoIndex].used = true;
-            await writeFile(promoPath, JSON.stringify(promoCodes, null, 2));
-            console.log(
-              `✅ Промокод ${promoCodes[promoIndex].code} помечен как использованный`
-            );
-          } else {
-            console.warn(
-              `⚠️ Промокод ${conferenceToUpdate.promoCode} не найден или уже использован при успешной оплате для invoiceId: ${invoiceId}`
-            );
-          }
-        } catch (err) {
-          console.error("⚠️ Не удалось обновить статус промокода:", err);
-        }
-      }
-
       await updateunifieduserById(unifieduser._id, {
         conferences: unifieduser.conferences,
       });
@@ -425,7 +371,6 @@ app.post("/api/payment-callback", async (req, res, next) => {
   }
 });
 
-// ---------- Статика и SPA ----------
 const staticFilesPath = join(__dirname, "../");
 
 app.use(
@@ -447,7 +392,6 @@ app.use(errorHandler);
 app.listen(PORT, HOST, async () => {
   console.log(`Сервер запущен по адресу: http://${HOST}:${PORT}`);
 
-  // Устанавливаем вебхук для Telegram
   try {
     const webhookURL = `${WEBHOOK_URL}/bot${BOT_TOKEN}`;
     await bot.setWebHook(webhookURL);
