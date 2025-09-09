@@ -20,7 +20,6 @@ export default function TicketsForm({ isOpen, onClose }) {
   const [formData, setFormData] = useState(initialState);
   const [promoError, setPromoError] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [isPromoValid, setIsPromoValid] = useState(false);
 
   const [utmParams, setUtmParams] = useState({
     utm_source: "",
@@ -50,16 +49,18 @@ export default function TicketsForm({ isOpen, onClose }) {
     const checkPromoCode = () => {
       const code = formData.promoCode.toUpperCase().trim();
       if (!code) {
-        setIsPromoValid(false);
         setPromoError(null);
         return;
       }
 
-      if (code === "WOMENKOD") {
-        setIsPromoValid(true);
+      if (
+        code === "WOMENKOD2025" ||
+        code === "AGIBALOVA10" ||
+        code === "ARINA10" ||
+        code === "WOMAN10"
+      ) {
         setPromoError(null);
       } else {
-        setIsPromoValid(false);
         setPromoError("Промокод недійсний");
       }
     };
@@ -93,12 +94,31 @@ export default function TicketsForm({ isOpen, onClose }) {
     if (!selected) return 0;
 
     let price = selected.price;
+    const promoCode = formData.promoCode.toUpperCase().trim();
 
-    if (isPromoValid) {
-      price *= 0.9;
+    if (promoCode === "WOMENKOD2025") {
+      price = Math.max(0, price - 20);
+    } else if (promoCode === "AGIBALOVA10" || promoCode === "WOMAN10") {
+      price = Math.max(0, price - 10);
+    } else if (promoCode === "ARINA10") {
+      price = Math.round(price * 0.9);
     }
 
     return Math.round(price * formData.quantity);
+  };
+
+  const getPromoMessage = () => {
+    const code = formData.promoCode.toUpperCase().trim();
+    if (!code || promoError) return null;
+
+    if (code === "WOMENKOD2025")
+      return "Промокод WOMENKOD2025 застосовано (-20€)";
+    if (code === "AGIBALOVA10")
+      return "Промокод AGIBALOVA10 застосовано (-10€)";
+    if (code === "ARINA10") return "Промокод ARINA10 застосовано (-10%)";
+    if (code === "WOMAN10") return "Промокод WOMAN10 застосовано (-10€)";
+
+    return null;
   };
 
   const isFormValid = () => {
@@ -116,7 +136,6 @@ export default function TicketsForm({ isOpen, onClose }) {
   const handleClose = () => {
     setFormData(initialState);
     setPromoError(null);
-    setIsPromoValid(false);
     setDropdownOpen(false);
     onClose();
   };
@@ -272,11 +291,10 @@ export default function TicketsForm({ isOpen, onClose }) {
           value={formData.promoCode}
           onChange={handleChange}
         />
+
         {promoError && <p className={styles.promoErrorText}>{promoError}</p>}
-        {isPromoValid && (
-          <p className={styles.promoSuccessText}>
-            Промокод застосовано! Ви отримали знижку 10%.
-          </p>
+        {getPromoMessage() && (
+          <p className={styles.promoSuccessText}>{getPromoMessage()}</p>
         )}
 
         <p className={styles.biteForWriteTg}>
@@ -299,15 +317,28 @@ export default function TicketsForm({ isOpen, onClose }) {
             }`}
           >
             {tariffs.map((t) => {
-              // Исключаем "BRUNCH" из основного списка
               if (t.name === "BRUNCH") return null;
 
               let displayPrice = t.price;
               let label = "";
+              const promoCode = formData.promoCode.toUpperCase().trim();
+              let hasPromo = false;
 
-              if (isPromoValid) {
+              if (promoCode === "WOMENKOD2025") {
+                displayPrice = Math.max(0, t.price - 20);
+                label = "-20€";
+                hasPromo = true;
+              } else if (
+                promoCode === "AGIBALOVA10" ||
+                promoCode === "WOMAN10"
+              ) {
+                displayPrice = Math.max(0, t.price - 10);
+                label = "-10€";
+                hasPromo = true;
+              } else if (promoCode === "ARINA10") {
                 displayPrice = Math.round(t.price * 0.9);
                 label = "-10%";
+                hasPromo = true;
               }
 
               return (
@@ -323,11 +354,11 @@ export default function TicketsForm({ isOpen, onClose }) {
                     )}
                   </span>
                   <span>
-                    {isPromoValid ? (
+                    {hasPromo ? (
                       <>
-                        <span className={styles.oldPrice}>{t.price}PLN</span>{" "}
+                        <span className={styles.oldPrice}>{t.price} PLN</span>{" "}
                         <span className={styles.newPrice}>
-                          {displayPrice}PLN
+                          {displayPrice} PLN
                         </span>
                       </>
                     ) : (
