@@ -1,14 +1,14 @@
 import styles from './MarysyaHorobec.module.css'
 import HorobecIMG from './MarysyahorobecMobile.webp'
-import logoMGVC from './LogoMGVC.webp'
+// import logoMGVC from './LogoMGVC.webp'
 
 export default function MarysyaHorobec() {
     return (
       <section className={styles.MarysyaHorobecSection} id="horobecSection">
+        <p className="btwSectionText">
+          (наша ведуча <br /> та бранч від MGVc)
+        </p>
         <div className="container">
-          <p className="btwSectionText">
-            (наша ведуча <br /> та бранч від MGVc)
-          </p>
           <div className={styles.wrapperHorobecIMG}>
             <img
               className={styles.HorobecIMG}
@@ -49,7 +49,7 @@ export default function MarysyaHorobec() {
               </p>
             </li>
           </ul>
-          <article className={styles.wrapperPurpleBlock}>
+          {/* <article className={styles.wrapperPurpleBlock}>
             <img className={styles.logoMGVC} src={logoMGVC} alt="MGVC Logo" />
             <h4 className={styles.titlePurpleBlock}>
               <span>Kod Zhinky &</span> <br /> Vision Brunch by <br />
@@ -63,7 +63,7 @@ export default function MarysyaHorobec() {
             <a href="/horobec" className={styles.linkToHorobecPage}>
               детальніше про бранч
             </a>
-          </article>
+          </article> */}
         </div>
       </section>
     );

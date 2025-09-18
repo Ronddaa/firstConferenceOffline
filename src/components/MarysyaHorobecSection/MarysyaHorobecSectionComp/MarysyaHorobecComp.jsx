@@ -1,6 +1,6 @@
 import styles from "../MarysyaHorobec.module.css";
 import HorobecIMG from "../MarysyahorobecMobile.webp";
-import logoMGVC from "../LogoMGVC.webp";
+// import logoMGVC from "../LogoMGVC.webp";
 import horobecSVG from './horobecSVG.svg'
 
 export default function HorobecSectionComp() {
@@ -48,7 +48,7 @@ export default function HorobecSectionComp() {
             </ul>
           </div>
         </article>
-        <article className={styles.wrapperLogoTeam}>
+        {/* <article className={styles.wrapperLogoTeam}>
           <ul>
             <li>
               <h4 className={styles.titlePurpleBlock}>
@@ -68,7 +68,7 @@ export default function HorobecSectionComp() {
               <img className={styles.logoMGVC} src={logoMGVC} alt="Logo" />
             </li>
           </ul>
-        </article>
+        </article> */}
       </div>
     </section>
   );

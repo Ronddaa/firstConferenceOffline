@@ -42,6 +42,8 @@ import PremiumTicketPage from "./Pages/TicketsPages/PremiumPage/PremiunTicketPag
 import LastMinutePage from "./Pages/TicketsPages/LastMinutePage/LastMinutePage";
 import CheckPaymentPage from "./Pages/CheckPaymentPage/CheckPaymentPage";
 import HorobecPage from "./Pages/HorobecPage/HorobecPage";
+import MarysyaHorobec from "./components/MarysyaHorobecSection/MarysyaHorobec";
+import HorobecSectionComp from "./components/MarysyaHorobecSection/MarysyaHorobecSectionComp/MarysyaHorobecComp";
 
 // Попытка плавного скролла
 
@@ -61,7 +63,9 @@ export default function App() {
             <WaitYouSection />
             {isDesktop ? <YourDaySectionDesc /> : <YourDaySection />}
             <Tema />
+
             {isDesktop ? <SpeakersSectionComp /> : <SpeakersSection />}
+            {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />}
             {isDesktop ? <OurValuesDesctop /> : <OurValuesMobile />}
             {/* {isDesktop ? <HorobecSectionComp /> : <MarysyaHorobec />} */}
 
