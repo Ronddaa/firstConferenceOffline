@@ -10,12 +10,9 @@ import Tolstikova from "./Tolstikova.webp";
 import Matushevska from "./Matushevska.webp";
 import Slobodyan from './SLOBODYAN.webp'
 import Besborodih from "./Besborodih.webp";
-import Stripko from "./Stripko.webp";
-import Shotropa from "./Shotropa.webp";
 import Hovorova from './Hovorova.webp';
 import Prokopenko from "./Prokopenko.webp";
 import Zaliznyak from './Zaliznyak.webp';
-import Volk from "./Volk.webp";
 import Bazhana from "./Bazhana.webp";
 import Erohina from "./Erohina.webp";
 import Filishin from "./Filishin.webp";
@@ -117,69 +114,44 @@ const speakers = [
   },
   {
     id: 5,
-    speakerName: "Шотропа\nМішель",
-    speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
-    image: Shotropa,
-    speakerInstagram: "https://www.instagram.com/mishel_shotropa",
-    speakerClass: "speakerNameClass8",
-    numberOfSpeaker: "(05)",
-    moreInfoBtnClass: "moreInfoBtn",
-    contentDetails:
-      'Власниця маркетингової та PR-компанії "SHOTROPA MEDIA". 11 років у бізнесі. CEO "INSTAHACKS" - перше міжнародне комʼюніті для експертів. Співпрацюю з CHELSEA. Більше 4000+ учнів моїх навчальних програм по цілому світу',
-  },
-  {
-    id: 6,
-    speakerName: "Стрипко\nТаня",
-    speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
-    image: Stripko,
-    speakerInstagram: "https://www.instagram.com/todorivaaa",
-    speakerClass: "speakerNameClass9",
-    numberOfSpeaker: "(06)",
-    moreInfoBtnClass: "moreInfoBtn",
-    contentDetails:
-      "Підприємиця з досвідом на трьох континентах: відкривала салони краси в таких країнах, як - Україна, Італія, Канада. Продюсер, власниця продюсерської агенції - заробила за 2 роки собі і експертам запуски на 1000000+$. Навчаю запускати навчальні проєкти, створювати бренди з нуля. Запускаю експертів, які не просто красиво говорять, а дорого продають, власниця продюсерської агенції.",
-  },
-
-  {
-    id: 7,
     speakerName: "Ольга\nЖивоткова\n(Бажана)",
     speakerTema: "Панельна дискусія: Продюсер - новий архітектор впливу",
     image: Bazhana,
     speakerInstagram: "https://www.instagram.com/bazhana/",
     speakerClass: "speakerNameClass10",
-    numberOfSpeaker: "(07)",
+    numberOfSpeaker: "(05)",
     moreInfoBtnClass: "moreInfoBtn",
     contentDetails:
       'Авторка пісень, співачка та музичний продюсер. Входить до числа найбільш затребуваних сонграйтерів в Україні. Її пісні виконують такі зірки, як Оля Полякова, Лобода, Злата Огнєвіч, ALEKSEEV, Ірина Білик, Наталія Могилевська, Міка Ньютон, Аліна Гросу та багато інших. Написала гімн Краматорську - одну зі своїх найзнаковіших робіт. Наразі продовжує творчу діяльність: продюсує артистів, виступає сольно та готує власні проєкти. Нагороджена орденом "За службу та звитягу" ІІІ ступеня.',
   },
   {
-    id: 8,
+    id: 6,
     speakerName: "Говорова\nАліна",
     speakerTema: "Код жіночого оргазму: тіло, свідомість, дозволи",
     image: Hovorova,
     speakerInstagram:
       "https://www.instagram.com/govorova.a_sexology?igsh=MWJpaHgwY3FkZDQ1aQ==",
     speakerClass: "speakerNameClass11",
-    numberOfSpeaker: "(08)",
+    numberOfSpeaker: "(06)",
     moreInfoBtnClass: "moreInfoBtn",
     contentDetails:
       "Сертифікований сексолог, авторка проектів для жінок, мама трьох синів і жінка, яка обрала себе - не замість сім’ї, а поруч з нею. Бізнесвумен",
   },
   {
-    id: 9,
+    id: 7,
     speakerName: "Прокопенко\nАнна",
     speakerTema: "Тіло і сексуальна енергія, як чіт-код до життя",
     image: Prokopenko,
     speakerInstagram:
       "https://www.instagram.com/annaa.prokopenko?igsh=M3hmczVod3ZmemM4",
     speakerClass: "speakerNameClass12",
-    numberOfSpeaker: "(09)",
+    numberOfSpeaker: "(07)",
     moreInfoBtnClass: "moreInfoBtn",
     contentDetails:
       "Майстер тілесних та енергопрактик, тантри, провідник до сексуальності та контакту з тілом Mentor of body and energy practices & Facilitator Kundalini Activation За 2 роки допомогла більше ніж 400 жінкам змінити життя, розкривши свою сексуальну енергію. Організатор авторських кемпів-ретритів/тренінгів по світу, де жінки через пробудження сексуальної енергії згадують себе і трансформують всі сфери життя",
   },
   {
-    id: 10,
+    id: 8,
     speakerName: "Залізняк\nВіталія",
     speakerTema:
       "Фінансова незалежність жінки. Як за допомогою інвестицій вирости в грошах у 2025 році.",
@@ -187,56 +159,43 @@ const speakers = [
     speakerInstagram:
       "https://www.instagram.com/vita_liia_/profilecard/?igsh=NmNmaGdhOXlsNjZp",
     speakerClass: "speakerNameClass13",
-    numberOfSpeaker: "(10)",
+    numberOfSpeaker: "(8)",
     moreInfoBtnClass: "moreInfoBtn",
     contentDetails:
       "Експертка з інвестицій з досвідом понад 3 роки. Інвестую у фондовий ринок, криптовалюту, нерухомість. Маю ступінь доктора (PhD) від німецького університету. Засновниця курсу з інвестицій у фондовий ринок від доктора наук InvestBee. Збільшила свій дохід в 9 разів за останні 4 роки. Зростила свій капітал в 3 рази за останній рік. Створила авторську систему примноження капіталу. Випускниця академії лідерства. Моя місія - зробити українців багатшими. І не тільки в грошовому сенсі.",
   },
   {
-    id: 11,
-    speakerName: "Волк\nОлена",
-    speakerTema: "Код на X2: як ми розшифрували ріст бізнесу за рік",
-    image: Volk,
-    speakerInstagram:
-      "https://www.instagram.com/volk_elena/profilecard/?igsh=bHRvNDltZm12aWpu",
-    speakerClass: "speakerNameClass14",
-    numberOfSpeaker: "(11)",
-    moreInfoBtnClass: "moreInfoBtn",
-    contentDetails:
-      "9+ років в бізнесі, засновниця ІТ рекрутингової агенції EvoTalents. Має сумарно 45 000+ підписників у соцмережах. Допомагає експертам ставати підприємцями на своїй авторській програмі EVBusiness. За період роботи з нею роблять запуски на 5000-10000$. Ментор підприємців в бізнес клубі Growth Factory. Авторка статей в ELLE, BAZAAR, Mc.today та іноземному Brainz. Інвестор, створила капітал в акціях провідних компанії, криптовалюті. Придбала дві нерухомості на Балі. Дружина та мама доньки 6ти років. Живе в Лондоні.",
-  },
-  {
-    id: 12,
+    id: 9,
     speakerName: "Єрохіна\nАнна",
-    speakerTema: "Фокус: заручниця тривоги чи власниця мрії?",
+    speakerTema: "Код резильєнтності: сила українки у світі хаосу",
     image: Erohina,
     speakerInstagram: "https://www.instagram.com/anna_yerokhina.psy/",
     speakerClass: "speakerNameClass14",
-    numberOfSpeaker: "(12)",
+    numberOfSpeaker: "(9)",
     moreInfoBtnClass: "moreInfoBtn",
     contentDetails:
       "Бізнесвумен, магістр політології, магістр психології, транзактний аналітик-психотерапевт, член Української спілки психотерапевтів (УСП) та Української спілки транзактних аналітиків (УСТА).",
   },
   {
-    id: 13,
+    id: 10,
     speakerName: "філішин\nОлег",
     speakerTema: "Тема уточнюється",
     image: Filishin,
     speakerInstagram: "https://www.instagram.com/filishin/",
     speakerClass: "speakerNameClass14",
-    numberOfSpeaker: "(13)",
+    numberOfSpeaker: "(10)",
     moreInfoBtnClass: "moreInfoBtn",
     contentDetails:
       "Продюсер, підприємець, наставник експертів, політиків, бізнесменів та громадських діячів з питань медійності\n⁃ Засновник єдиної Асоціації Лідерів Думок в Україні\n- Засновник міжнародної спільноти публічних людей BRAND PEOPLE\n- Головний медіа-експерт країни за версією Business Gravity Awards 2024\n⁃ Входить до ТОП-100 видатних людей України за версією національного рейтингу THE BEST OF UKRAINE у 2021 році",
   },
   {
-    id: 14,
+    id: 11,
     speakerName: "це ще не все!\nочікуй інформацію!",
     speakerTema: "Уточнюється",
     image: Ask,
     speakerInstagram: "",
     speakerClass: "speakerNameClassLast",
-    numberOfSpeaker: "(14)",
+    numberOfSpeaker: "(11)",
     moreInfoBtnClass: "moreInfoBtnDisplayNone",
     contentDetails: "",
   },
