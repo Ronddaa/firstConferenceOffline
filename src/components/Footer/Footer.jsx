@@ -111,7 +111,7 @@ export default function Footer() {
         <li>
           <a
             className={styles.policyLink}
-            href="https://drive.google.com/file/d/1_TYyH_dhW66qIaFlRDZe9a01M-8JqNaz/view"
+            href="https://barcelonakod.women.place/policy_offer/policy.html"
           >
             Політика конфіденційності
           </a>
@@ -119,7 +119,7 @@ export default function Footer() {
         <li>
           <a
             className={styles.policyLink}
-            href="https://drive.google.com/file/d/1TzXMsE8JAyBvNozd9QM6UVazsIPRkzED/view"
+            href="https://barcelonakod.women.place/policy_offer/offer.html"
           >
             публічна оферта
           </a>
